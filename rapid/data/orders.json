@@ -1,0 +1,19 @@
+{
+  "650305": {
+    "order_id": "650305",
+    "user_id": 8174646481,
+    "username": "xlmurrrrrr",
+    "wallet": "bc1qga6mx70jx0uvfuk39eqpyyfwh9fsxzme75ckt7",
+    "coin_symbol": "BTC",
+    "coin_amount": 0.0005,
+    "amount_rub": 2679.3525,
+    "payment_method": "💳 Карта",
+    "bank": "Сбербанк",
+    "requisites": "",
+    "requisites_sent": false,
+    "status": "pending_payment",
+    "created_at": 1770733766,
+    "updated_at": 1770733766,
+    "confirmed_by": null
+  }
+}

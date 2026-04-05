@@ -1,0 +1,34 @@
+{
+    "card": {
+        "bank": "Карта РФ",
+        "requisites": "4276 00XX XXXX XX12"
+    },
+    "spb": {
+        "bank": "СПБ",
+        "requisites": "+7 900 123 45 67"
+    },
+    "alfa": {
+        "bank": "Альфа-Банк",
+        "requisites": "4081 23XX XXXX XX56"
+    },
+    "sber": {
+        "bank": "Сбербанк",
+        "requisites": "5469 38XX XXXX XX89"
+    },
+    "ozon": {
+        "bank": "OZON Банк",
+        "requisites": "2200 70XX XXXX XX44"
+    },
+    "tbank": {
+        "bank": "Т-Банк",
+        "requisites": "5536 91XX XXXX XX77"
+    },
+    "sber_qr": {
+        "bank": "Сбер QR",
+        "requisites": "2200 70XX XXXX XX44"
+    },
+    "sim": {
+        "bank": "SIM-перевод",
+        "requisites": "2200 70XX XXXX XX44"
+    }
+}

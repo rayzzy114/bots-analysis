@@ -1,0 +1,20 @@
+[project]
+name = "rumariobtcbot-clone-v2"
+version = "0.1.0"
+description = "Flow-driven Telegram clone generated from captured flow"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+  "aiogram>=3.24.0",
+  "httpx>=0.28.1",
+  "python-dotenv>=1.1.1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = [
+  "smoke: basic health checks for runtime startup and critical path availability",
+  "e2e: end-to-end flow checks across user scenarios",
+  "unit: isolated unit-level checks",
+]

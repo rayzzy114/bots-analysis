@@ -1,0 +1,54 @@
+{
+  "6131246501": {
+    "trades_total": 0,
+    "turnover_rub": 0.0,
+    "invited": 0,
+    "bonus_balance": 0.0,
+    "history": [],
+    "addresses": []
+  },
+  "8174646481": {
+    "trades_total": 5,
+    "turnover_rub": 13052.5,
+    "invited": 0,
+    "bonus_balance": 130.53,
+    "history": [
+      {
+        "ts": 1770577306,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.0005,
+        "amount_rub": 2921.6
+      },
+      {
+        "ts": 1770577560,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.0005,
+        "amount_rub": 2924.91
+      },
+      {
+        "ts": 1770577724,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.0005,
+        "amount_rub": 2925.99
+      },
+      {
+        "ts": 1770578711,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.00054873,
+        "amount_rub": 3210.0
+      },
+      {
+        "ts": 1770578835,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.00018296,
+        "amount_rub": 1070.0
+      }
+    ],
+    "addresses": []
+  }
+}

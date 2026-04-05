@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mixer Admin Panel</title>
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --panel: #151b2a;
+      --line: #2a3652;
+      --text: #ebf0ff;
+      --muted: #9aa7c8;
+      --accent: #f7941c;
+      --ok: #29c37a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(1200px 500px at 20% 0%, #1a2453, var(--bg));
+      color: var(--text);
+      min-height: 100vh;
+      padding: 28px 16px;
+    }
+
+    .wrap {
+      width: min(920px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    .sub {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="number"],
+    input[type="url"],
+    input[type="file"] {
+      width: 100%;
+      border: 1px solid #33476d;
+      background: #11172a;
+      color: var(--text);
+      border-radius: 8px;
+      padding: 11px 12px;
+      font-size: 15px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 11px 16px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-save {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-reset {
+      background: #2a3652;
+      color: #d7e0ff;
+    }
+
+    .btn-link {
+      background: transparent;
+      border: 1px solid #40527d;
+      color: #cbd7ff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .btn-logout {
+      background: #3a2020;
+      color: #ff9a9a;
+      margin-left: auto;
+    }
+
+    .preview {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .preview img {
+      width: 170px;
+      height: 170px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid #40527d;
+      background: #fff;
+      padding: 8px;
+    }
+
+    .meta {
+      display: grid;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .k {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .status {
+      margin-top: 8px;
+      min-height: 20px;
+      font-size: 14px;
+      color: var(--ok);
+    }
+
+    code {
+      display: inline-block;
+      word-break: break-all;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 3px 6px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0 0 10px;
+      grid-column: 1 / -1;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    .hidden { display: none !important; }
+
+    /* Login screen */
+    .login-wrap {
+      max-width: 400px;
+      margin: 80px auto 0;
+    }
+
+    .login-wrap h1 {
+      margin-bottom: 8px;
+    }
+
+    .login-wrap .sub {
+      margin-bottom: 20px;
+    }
+
+    .login-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .preview { grid-template-columns: 1fr; }
+      .preview img { width: min(220px, 100%); height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen" class="login-wrap">
+    <div class="card">
+      <h1>Mixer Admin</h1>
+      <p class="sub">Log in to manage site settings.</p>
+      <form id="login-form" class="login-form">
+        <div class="field">
+          <label for="login-username">Login</label>
+          <input id="login-username" type="text" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="btn-save" type="submit">Log in</button>
+        <div class="status" id="login-status"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL (hidden until login) -->
+  <div id="admin-panel" class="wrap hidden">
+    <section class="card">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="flex:1">
+          <h1>Mixer Site Admin</h1>
+          <p class="sub">Commission, wallets, contacts, and links.</p>
+        </div>
+        <button class="btn-logout" id="logout-btn" type="button">Logout</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <form id="admin-form" class="grid">
+        <!-- Commission -->
+        <div class="section-title">Commission &amp; Wallet</div>
+        <div class="field">
+          <label for="fee-percent">Commission percent</label>
+          <input id="fee-percent" type="number" step="0.01" min="0" required>
+        </div>
+
+        <div class="field">
+          <label for="fee-fixed">Fixed fee BTC</label>
+          <input id="fee-fixed" type="number" step="0.00000001" min="0" required>
+        </div>
+
+        <div class="field full">
+          <label for="deposit-address">Deposit BTC address</label>
+          <input id="deposit-address" type="text" required>
+        </div>
+
+        <div class="field full">
+          <label for="qr-file">Upload new QR image (PNG/JPG)</label>
+          <input id="qr-file" type="file" accept="image/png,image/jpeg,image/webp">
+        </div>
+
+        <!-- Links & Contacts -->
+        <div class="section-title">Links &amp; Contacts</div>
+
+        <div class="field full">
+          <label for="telegram-bot-url">Telegram bot URL</label>
+          <input id="telegram-bot-url" type="text" placeholder="https://t.me/your_bot" required>
+        </div>
+
+        <div class="field full">
+          <label for="telegram-channel-url">Telegram channel URL</label>
+          <input id="telegram-channel-url" type="text" placeholder="https://t.me/your_channel" required>
+        </div>
+
+        <div class="field full">
+          <label for="onion-domain">.onion domain (without http://)</label>
+          <input id="onion-domain" type="text" placeholder="yourhash.onion" required>
+        </div>
+
+        <div class="field full actions">
+          <button class="btn-save" type="submit">Save</button>
+          <button class="btn-reset" id="reset-btn" type="button">Reset defaults</button>
+          <a class="btn-link" href="/en/" target="_blank" rel="noopener noreferrer">Open site</a>
+          <a class="btn-link" href="/en/mixer-result/" target="_blank" rel="noopener noreferrer">Open result page</a>
+        </div>
+      </form>
+      <div class="status" id="status"></div>
+    </section>
+
+    <section class="card preview">
+      <img id="qr-preview" src="/assets/payment_qr.png" alt="QR preview">
+      <div class="meta">
+        <div>
+          <span class="k">Current commission</span>
+          <strong id="commission-preview"></strong>
+        </div>
+        <div>
+          <span class="k">Current deposit address</span>
+          <code id="address-preview"></code>
+        </div>
+        <div>
+          <span class="k">Telegram bot</span>
+          <code id="bot-preview"></code>
+        </div>
+        <div>
+          <span class="k">Telegram channel</span>
+          <code id="channel-preview"></code>
+        </div>
+        <div>
+          <span class="k">.onion domain</span>
+          <code id="onion-preview"></code>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/site-config.js"></script>
+  <script>
+    (function () {
+      var api = window.MixerSiteConfig;
+      if (!api) return;
+
+      /* --- DOM refs --- */
+      var loginScreen = document.getElementById('login-screen');
+      var adminPanel = document.getElementById('admin-panel');
+      var loginForm = document.getElementById('login-form');
+      var loginUsernameInput = document.getElementById('login-username');
+      var loginPasswordInput = document.getElementById('login-password');
+      var loginStatus = document.getElementById('login-status');
+      var logoutBtn = document.getElementById('logout-btn');
+
+      var form = document.getElementById('admin-form');
+      var feePercentInput = document.getElementById('fee-percent');
+      var feeFixedInput = document.getElementById('fee-fixed');
+      var depositAddressInput = document.getElementById('deposit-address');
+      var qrFileInput = document.getElementById('qr-file');
+      var telegramBotUrlInput = document.getElementById('telegram-bot-url');
+      var telegramChannelUrlInput = document.getElementById('telegram-channel-url');
+      var onionDomainInput = document.getElementById('onion-domain');
+      var resetBtn = document.getElementById('reset-btn');
+      var qrPreview = document.getElementById('qr-preview');
+      var commissionPreview = document.getElementById('commission-preview');
+      var addressPreview = document.getElementById('address-preview');
+      var botPreview = document.getElementById('bot-preview');
+      var channelPreview = document.getElementById('channel-preview');
+      var onionPreview = document.getElementById('onion-preview');
+      var status = document.getElementById('status');
+
+      var state = api.loadConfig();
+      var loggedIn = false;
+
+      /* --- helpers --- */
+      function showLogin() {
+        loginScreen.classList.remove('hidden');
+        adminPanel.classList.add('hidden');
+      }
+
+      function showAdmin() {
+        loginScreen.classList.add('hidden');
+        adminPanel.classList.remove('hidden');
+      }
+
+      function render() {
+        feePercentInput.value = String(state.feePercent);
+        feeFixedInput.value = String(state.feeFixedBtc);
+        depositAddressInput.value = state.depositAddress;
+        telegramBotUrlInput.value = state.telegramBotUrl;
+        telegramChannelUrlInput.value = state.telegramChannelUrl;
+        onionDomainInput.value = state.onionDomain;
+
+        qrPreview.src = state.qrImageSrc;
+        commissionPreview.textContent = api.commissionText(state);
+        addressPreview.textContent = state.depositAddress;
+        botPreview.textContent = state.telegramBotUrl;
+        channelPreview.textContent = state.telegramChannelUrl;
+        onionPreview.textContent = state.onionDomain;
+      }
+
+      function setStatus(el, text, type) {
+        el.textContent = text || '';
+        if (type === 'error') { el.style.color = '#ff7272'; return; }
+        if (type === 'warning') { el.style.color = '#f7b24c'; return; }
+        el.style.color = '#29c37a';
+      }
+
+      function readQrAsDataUrl(file) {
+        return new Promise(function (resolve, reject) {
+          var reader = new FileReader();
+          reader.onload = function () { resolve(String(reader.result || '')); };
+          reader.onerror = function () { reject(new Error('Failed to read image')); };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      /* --- login --- */
+      loginForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var username = (loginUsernameInput.value || '').trim();
+        var password = loginPasswordInput.value || '';
+        if (!username || !password) {
+          setStatus(loginStatus, 'Enter login and password.', 'error');
+          return;
+        }
+        try {
+          await api.adminLogin(username, password);
+          loggedIn = true;
+          setStatus(loginStatus, '');
+          showAdmin();
+          await initAdmin();
+        } catch (err) {
+          setStatus(loginStatus, 'Invalid login or password.', 'error');
+        }
+      });
+
+      /* --- logout --- */
+      logoutBtn.addEventListener('click', async function () {
+        try { await api.adminLogout(); } catch (e) { /* ignore */ }
+        loggedIn = false;
+        showLogin();
+        loginPasswordInput.value = '';
+        setStatus(loginStatus, 'Logged out.', 'warning');
+      });
+
+      /* --- upload QR via file endpoint --- */
+      async function uploadQrFile(file) {
+        if (file.size > 2 * 1024 * 1024) {
+          throw new Error('Image too large (max 2 MB).');
+        }
+        var formData = new FormData();
+        formData.append('file', file);
+        var res = await fetch('/api/upload-qr', {
+          method: 'POST',
+          credentials: 'same-origin',
+          body: formData
+        });
+        if (!res.ok) {
+          var body = {};
+          try { body = await res.json(); } catch (e) {}
+          throw new Error(body.detail || 'Upload failed: ' + res.status);
+        }
+        return res.json();
+      }
+
+      /* --- save --- */
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        var onionRaw = (onionDomainInput.value || '').trim()
+          .replace(/^https?:\/\//, '').replace(/\/+$/, '');
+
+        var next = {
+          feePercent: Number(feePercentInput.value),
+          feeFixedBtc: Number(feeFixedInput.value),
+          depositAddress: (depositAddressInput.value || '').trim(),
+          telegramBotUrl: (telegramBotUrlInput.value || '').trim(),
+          telegramChannelUrl: (telegramChannelUrlInput.value || '').trim(),
+          onionDomain: onionRaw
+        };
+
+        if (!next.depositAddress) {
+          setStatus(status, 'Deposit BTC address is required.', 'error');
+          return;
+        }
+
+        /* Upload QR image as file if selected */
+        var file = qrFileInput.files && qrFileInput.files[0] ? qrFileInput.files[0] : null;
+        if (file) {
+          try {
+            setStatus(status, 'Uploading QR image...', 'warning');
+            var uploadResult = await uploadQrFile(file);
+            next.qrImageSrc = uploadResult.qrImageSrc;
+          } catch (err) {
+            setStatus(status, 'QR upload failed: ' + err.message, 'error');
+            return;
+          }
+        }
+
+        try {
+          state = await api.saveConfigRemote(next);
+        } catch (err) {
+          setStatus(status, 'Failed to save: ' + err.message, 'error');
+          return;
+        }
+
+        qrFileInput.value = '';
+        render();
+        setStatus(status, 'Saved. All users will get updates after reload.');
+      });
+
+      /* --- reset --- */
+      resetBtn.addEventListener('click', async function () {
+        try {
+          state = await api.resetConfigRemote();
+        } catch (err) {
+          setStatus(status, 'Failed to reset. Session may have expired.', 'error');
+          return;
+        }
+        qrFileInput.value = '';
+        render();
+        setStatus(status, 'Defaults restored.');
+      });
+
+      /* --- init --- */
+      async function initAdmin() {
+        try {
+          state = await api.loadConfigRemote();
+          setStatus(status, 'Connected to config API.');
+        } catch (err) {
+          setStatus(status, 'API unavailable. Start server first.', 'error');
+        }
+        render();
+      }
+
+      /* Check if already logged in (cookie) */
+      async function checkSession() {
+        try {
+          var me = await api.adminMe();
+          if (me && me.authenticated) {
+            loggedIn = true;
+            showAdmin();
+            await initAdmin();
+            return;
+          }
+        } catch (e) { /* not logged in */ }
+        showLogin();
+      }
+
+      checkSession();
+    })();
+  </script>
+</body>
+</html>

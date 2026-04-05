@@ -1,0 +1,1 @@
+Ошибка преобразования суммы: could not convert string to float: 'Е', текст: Е

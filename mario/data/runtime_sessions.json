@@ -1,0 +1,81 @@
+{
+  "sessions": [
+    {
+      "user_id": 6131246501,
+      "current_state_id": "dea2d09f86c418ad7e64269f922bf07c",
+      "history": [
+        "dea2d09f86c418ad7e64269f922bf07c",
+        "dea2d09f86c418ad7e64269f922bf07c"
+      ],
+      "pending_operation": null,
+      "pending_coin": null,
+      "pending_amount_raw": null,
+      "pending_payment_method": null,
+      "pending_wallet": null,
+      "last_quote_state_id": null,
+      "last_quote_coin_amount": null,
+      "last_quote_rub_amount": null,
+      "last_quote_net_amount": null,
+      "last_order_id": null,
+      "updated_at": "2026-02-24T20:54:55.430350+00:00"
+    },
+    {
+      "user_id": 9990001,
+      "current_state_id": "dea2d09f86c418ad7e64269f922bf07c",
+      "history": [
+        "dea2d09f86c418ad7e64269f922bf07c"
+      ],
+      "pending_operation": null,
+      "pending_coin": null,
+      "pending_amount_raw": null,
+      "pending_payment_method": null,
+      "pending_wallet": null,
+      "last_quote_state_id": null,
+      "last_quote_coin_amount": null,
+      "last_quote_rub_amount": null,
+      "last_quote_net_amount": null,
+      "last_order_id": null,
+      "updated_at": "2026-02-23T16:12:34.429114+00:00"
+    },
+    {
+      "user_id": 9990003,
+      "current_state_id": "dea2d09f86c418ad7e64269f922bf07c",
+      "history": [
+        "dea2d09f86c418ad7e64269f922bf07c"
+      ],
+      "pending_operation": null,
+      "pending_coin": null,
+      "pending_amount_raw": null,
+      "pending_payment_method": null,
+      "pending_wallet": null,
+      "last_quote_state_id": null,
+      "last_quote_coin_amount": null,
+      "last_quote_rub_amount": null,
+      "last_quote_net_amount": null,
+      "last_order_id": null,
+      "updated_at": "2026-02-23T16:12:58.871036+00:00"
+    },
+    {
+      "user_id": 998111,
+      "current_state_id": "dea2d09f86c418ad7e64269f922bf07c",
+      "history": [
+        "dea2d09f86c418ad7e64269f922bf07c",
+        "42a4226d19582cbc6edbe8bb9853131a",
+        "dcbdf7f8ccfc09fa685b4e691a6b9d07",
+        "a34fa4bdaeee02944576c7ff09f442d9",
+        "dea2d09f86c418ad7e64269f922bf07c"
+      ],
+      "pending_operation": null,
+      "pending_coin": null,
+      "pending_amount_raw": null,
+      "pending_payment_method": null,
+      "pending_wallet": null,
+      "last_quote_state_id": null,
+      "last_quote_coin_amount": null,
+      "last_quote_rub_amount": null,
+      "last_quote_net_amount": null,
+      "last_order_id": null,
+      "updated_at": "2026-02-23T19:08:11.928504+00:00"
+    }
+  ]
+}

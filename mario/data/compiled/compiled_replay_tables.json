@@ -1,0 +1,238 @@
+{
+  "meta": {
+    "generated_at": "2026-02-22T16:11:07.718386+00:00",
+    "quotes_count": 10,
+    "promos_count": 7,
+    "order_templates_count": 7
+  },
+  "prompt_states": {
+    "buy": {
+      "BTC": "37b805b8b5ff7721cc36399eb544fafb",
+      "LTC": "d1628cf2837e880dabf38edc1510e4fb",
+      "USDT": "4391b0262804f8f0ebe5e25b07b22d3c",
+      "TRX": "509c49e252d2a641a36cc9f12e8334a4"
+    },
+    "sell": {
+      "BTC": "cf112a5e2265f4b2c6b0375846c8972b",
+      "LTC": "d702ca0d0fd3b7f56a5f7b1f0338367b",
+      "USDT": "7cf5ba287563f2ed1799e313561609f7",
+      "XMR": "1b75f7c255c267708de9969b6c0a1e95"
+    }
+  },
+  "quotes": [
+    {
+      "state_id": "6677c6a34cb14b207a257b5582bbb8c3",
+      "operation": "buy",
+      "coin": "BTC",
+      "coin_amount": 0.00033,
+      "rub_amount": 2550.0,
+      "net_amount": 1738.0
+    },
+    {
+      "state_id": "77e13a147984da95e5ad2be41fe97afb",
+      "operation": "buy",
+      "coin": "LTC",
+      "coin_amount": 0.15,
+      "rub_amount": 1204.0,
+      "net_amount": 621.0
+    },
+    {
+      "state_id": "40e326a580739cc43dcab2c8da179721",
+      "operation": "buy",
+      "coin": "LTC",
+      "coin_amount": 0.42889,
+      "rub_amount": 2550.0,
+      "net_amount": 1774.0
+    },
+    {
+      "state_id": "7e31b306d6f92ae341f59de08ffb89d3",
+      "operation": "buy",
+      "coin": "TRC20",
+      "coin_amount": 2550.0,
+      "rub_amount": 238837.0,
+      "net_amount": null
+    },
+    {
+      "state_id": "980df86a1c1d3205a2b3605740d4bece",
+      "operation": "sell",
+      "coin": "BTC",
+      "coin_amount": 0.015,
+      "rub_amount": 84899.0,
+      "net_amount": null
+    },
+    {
+      "state_id": "1a6412a7d294a921dc3aeb9ce0b20290",
+      "operation": "sell",
+      "coin": "BTC",
+      "coin_amount": 0.015,
+      "rub_amount": 84905.0,
+      "net_amount": null
+    },
+    {
+      "state_id": "e86dd5aa1e821aae5588b1125464f9f6",
+      "operation": "sell",
+      "coin": "LTC",
+      "coin_amount": 1.5,
+      "rub_amount": 6936.0,
+      "net_amount": null
+    },
+    {
+      "state_id": "fb3072439e29b3aa32d851cbd55adbff",
+      "operation": "sell",
+      "coin": "USDT",
+      "coin_amount": 2500.0,
+      "rub_amount": 216218.0,
+      "net_amount": null
+    },
+    {
+      "state_id": "415bf399786fc7aeda3b02fcbd7947ff",
+      "operation": "sell",
+      "coin": "XMR",
+      "coin_amount": 0.15,
+      "rub_amount": 4226.0,
+      "net_amount": null
+    },
+    {
+      "state_id": "c8544538fb8008da3879f74822a07288",
+      "operation": "buy",
+      "coin": "TRX",
+      "coin_amount": 76.3,
+      "rub_amount": 2550.0,
+      "net_amount": null
+    }
+  ],
+  "promos": [
+    {
+      "state_id": "44462ee1f3a75bc4976e95cfad0ab6e6",
+      "coin": "BTC",
+      "coin_amount": 0.00033,
+      "pay_before": 2550.0,
+      "pay_after": 2440.0
+    },
+    {
+      "state_id": "d7d7e428d4b021012c1a6093dde5ec66",
+      "coin": "LTC",
+      "coin_amount": 0.15,
+      "pay_before": 1204.0,
+      "pay_after": 1108.0
+    },
+    {
+      "state_id": "748b78638cbfe9d7d1048c21d9578ed9",
+      "coin": "USDT",
+      "coin_amount": 2550.0,
+      "pay_before": 238837.0,
+      "pay_after": 236569.0
+    },
+    {
+      "state_id": "013804fbe833c27e73b86221d4a0ddbb",
+      "coin": "BTC",
+      "coin_amount": 0.015,
+      "pay_before": 84899.0,
+      "pay_after": 83880.0
+    },
+    {
+      "state_id": "0e211a382fff69e953a3c40b6798bca8",
+      "coin": "BTC",
+      "coin_amount": 0.015,
+      "pay_before": 84905.0,
+      "pay_after": 83886.0
+    },
+    {
+      "state_id": "d04646e9d3d2840fa55f19db766a83c6",
+      "coin": "XMR",
+      "coin_amount": 0.15,
+      "pay_before": 4226.0,
+      "pay_after": 4225.0
+    },
+    {
+      "state_id": "13d2ea29ae675d40bbf8772f13b86265",
+      "coin": "TRX",
+      "coin_amount": 76.3,
+      "pay_before": 2550.0,
+      "pay_after": 2460.0
+    }
+  ],
+  "order_templates": [
+    {
+      "state_id": "cae8faa0b012701d905f3c3ef9377739",
+      "coin": "BTC",
+      "sold_amount_raw": "0.015 btc",
+      "payout_rub": 84905.0,
+      "requisites_label": "btc",
+      "requisites_value": "bc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893",
+      "source_text": "✅Заявка №1771774402917\n\nПродаете: 0.015 btc\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 84905 ₽\nРеквизиты для перевода btc:\n\nbc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.\n\n Использован скидочный промокод: PERVAYA_SDELKA",
+      "buttons": [
+        "Оплатил",
+        "Отменить заявку"
+      ]
+    },
+    {
+      "state_id": "b34b307692203aa62375038376b86764",
+      "coin": "BTC",
+      "sold_amount_raw": "0.015 btc",
+      "payout_rub": 84905.0,
+      "requisites_label": "btc",
+      "requisites_value": "bc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893",
+      "source_text": "✅Заявка №1771774402917\n\nПродаете: 0.015 btc\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 84905 ₽\nРеквизиты для перевода btc:\n\nbc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.\n\n Использован скидочный промокод: PERVAYA_SDELKA",
+      "buttons": []
+    },
+    {
+      "state_id": "f363e7dac0fcc7eec0484b3513d9b019",
+      "coin": "LTC",
+      "sold_amount_raw": "1.5 ltc",
+      "payout_rub": 6936.0,
+      "requisites_label": "ltc",
+      "requisites_value": "ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym",
+      "source_text": "✅Заявка №1771774456199\n\nПродаете: 1.5 ltc\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 6936 ₽\nРеквизиты для перевода ltc:\n\nltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.",
+      "buttons": [
+        "Оплатил",
+        "Отменить заявку"
+      ]
+    },
+    {
+      "state_id": "6c4c4ece17ea0d47ee54e8db7e357e5b",
+      "coin": "LTC",
+      "sold_amount_raw": "1.5 ltc",
+      "payout_rub": 6936.0,
+      "requisites_label": "ltc",
+      "requisites_value": "ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym",
+      "source_text": "✅Заявка №1771774456199\n\nПродаете: 1.5 ltc\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 6936 ₽\nРеквизиты для перевода ltc:\n\nltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.",
+      "buttons": []
+    },
+    {
+      "state_id": "5a7c36b69ec3257cabf37545254f4306",
+      "coin": "LTC",
+      "sold_amount_raw": "1.5 ltc",
+      "payout_rub": 6936.0,
+      "requisites_label": "ltc",
+      "requisites_value": "ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym",
+      "source_text": "✅Заявка №1771774456199\n\nПродаете: 1.5 ltc\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 6936 ₽\nРеквизиты для перевода ltc:\n\nltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.",
+      "buttons": [
+        "Отправить номер оператору"
+      ]
+    },
+    {
+      "state_id": "e420ad2c17818d349e51f18c80a78390",
+      "coin": "USDT",
+      "sold_amount_raw": "2500 usdt",
+      "payout_rub": 216218.0,
+      "requisites_label": "usdt",
+      "requisites_value": "TVL7QeX1aLQX5d5fyFXpighpncmfzskXdp",
+      "source_text": "✅Заявка №1771774494291\n\nПродаете: 2500 usdt\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 216218 ₽\nРеквизиты для перевода usdt:\n\nTVL7QeX1aLQX5d5fyFXpighpncmfzskXdp\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.",
+      "buttons": [
+        "Оплатил",
+        "Отменить заявку"
+      ]
+    },
+    {
+      "state_id": "cc4b3d59fb3ac5d0cf2d687042be7d9f",
+      "coin": "USDT",
+      "sold_amount_raw": "2500 usdt",
+      "payout_rub": 216218.0,
+      "requisites_label": "usdt",
+      "requisites_value": "TVL7QeX1aLQX5d5fyFXpighpncmfzskXdp",
+      "source_text": "✅Заявка №1771774494291\n\nПродаете: 2500 usdt\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 216218 ₽\nРеквизиты для перевода usdt:\n\nTVL7QeX1aLQX5d5fyFXpighpncmfzskXdp\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.",
+      "buttons": []
+    }
+  ]
+}

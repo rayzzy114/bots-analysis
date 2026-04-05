@@ -1,0 +1,29 @@
+{
+  "commission_percent": 5.0,
+  "links": {
+    "support": "&lt;a href=\"https://t.me/Exchange24Thalland\"&gt;EX24PRO&lt;/a&gt;",
+    "offices": "https://t.me/Exchange24Thalland",
+    "reviews": "https://t.me/ex24pro_comments",
+    "tickets": "https://ex24.tickets/"
+  },
+  "sell_wallets": {},
+  "requisites": {
+    "mode": "single",
+    "single_bank": "Сбербанк",
+    "single_value": "2200 0000 0000 0000",
+    "payment_methods": [
+      "Перевод на карту",
+      "СБП"
+    ],
+    "split_by_method": {
+      "Перевод на карту": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "СБП": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      }
+    }
+  }
+}

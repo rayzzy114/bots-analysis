@@ -1,0 +1,21 @@
+{
+  "COMMISION": 0.05,
+  "BANK_DETAILS": {
+    "card": {
+      "name": "Банковская карта",
+      "details": "Карта: XXXX XXXX XXXX XXXX"
+    },
+    "sbp": {
+      "name": "СБП",
+      "details": "СБП ID: XXXXXXXXXX"
+    },
+    "sim": {
+      "name": "SIM (Мобильная связь)",
+      "details": "Номер телефона: +X XXX XXX-XX-XX"
+    },
+    "inbank": {
+      "name": "Внутрибанк",
+      "details": "какой то текст"
+    }
+  }
+}

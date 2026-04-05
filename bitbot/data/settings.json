@@ -1,0 +1,58 @@
+{
+  "commission_percent": 15.0,
+  "links": {
+    "faq": "https://t.me/example_faq",
+    "channel": "https://t.me/example_channel",
+    "chat": "https://t.me/example_chat",
+    "reviews": "https://t.me/example_reviews",
+    "review_form": "https://t.me/example_reviews",
+    "manager": "https://t.me/example_manager",
+    "operator": "https://t.me/example_support",
+    "terms": "https://t.me/example_terms"
+  },
+  "requisites": {
+    "mode": "single",
+    "single_bank": "Сбербанк",
+    "single_value": "2200 0000 0000 0000",
+    "payment_methods": [
+      "Номер карты (2211 руб.)",
+      "Номер телефона (2211 руб.)",
+      "АЛЬФА - АЛЬФА (2211 руб.)",
+      "Сим-карта (2211 руб.)",
+      "СБП(оплата по ссылке) (2061 руб.)",
+      "QR - code (2211 руб.)",
+      "БТ (2211 руб.)"
+    ],
+    "split_by_method": {
+      "Номер карты (2211 руб.)": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "Номер телефона (2211 руб.)": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "АЛЬФА - АЛЬФА (2211 руб.)": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "Сим-карта (2211 руб.)": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "СБП(оплата по ссылке) (2061 руб.)": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "QR - code (2211 руб.)": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "БТ (2211 руб.)": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      }
+    }
+  },
+  "sell_btc_address": "bc1q0s04allqymxq9p0zraa5wup0c24qjuckfvfxdx"
+}

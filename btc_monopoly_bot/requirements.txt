@@ -1,0 +1,4 @@
+aiosqlite
+aiogram
+dotenv
+aiohttp

@@ -1,0 +1,9 @@
+﻿{
+  "fee_percent": 4.5,
+  "fee_fixed_btc": 0.0007,
+  "deposit_btc_address": "bc1qga6mx70jx0uvfuk39eqpyyfwh9fsxzme75ckt7",
+  "site_url": "https://mixermoney.it.com",
+  "tor_url": "http://mixereztksljzma2owmv6hmsrci322lsje6m3svicoddk3xbgvhd2fid.onion/",
+  "order_min_btc": 0.003,
+  "order_max_btc": 50.0
+}

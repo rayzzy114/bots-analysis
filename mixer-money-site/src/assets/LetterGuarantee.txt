@@ -1,0 +1,25 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Mixer.money EN has generated the address:  389vzbZTbsxpk5yRP5PgCN58bMHAWCLzfG
+Mixing mode: Mixer.
+Cleansed coins will be sent to the forwarding address:
+1FfmbHfnpaZjKFvyi1okTjJJusN455paPH
+Maximum mixing time is 2  hours.
+This offer is valid for 168  hours from 2026-02-11 18:51:11  GMT
+Maximum service fee is: 1.5% + 0.00035 BTC.
+Warning: The maximum allowed amount for this mixing mode is 1.0 BTC.
+Do not exceed it, otherwise your coins will be processed in the Complete Anonymity mode,
+with higher commission (3.5% + 0.0007 BTC).
+PGP fingerprint: 63DFE7F602E8C7D50B1D2340FDAEC8327BBC8E99.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+iQEcBAEBAgAGBQJpjLN/AAoJENOygJVvDnyvH54H/A2VgkxF/3WjUhPWBASpp6BV
+qpkqx3t6N0Ai5h91txv+dnY4pSTCGRO2ZPYpQGdiqoFImPKcyfnU3V6YctanQU0v
+pYTbIdc9JYJvaTfR2mPDIBSoBSJ3Amy1R/o2kTFsmIt76aVAc3TwvQm3MBTCUWZN
+/IVdgNSWi6NVMl1pdRfZtP5ch4gt7dWkCvbNt1uBvggUAm3thcEqMVuElxKr53E3
+LTvTV7YummXg4k8XsL1hjU6aGjMu05RQrcUcVqGnakLiFkW1zs6PpA3Udn0TC6Sz
+P4B6V7Yamuujg9ahqDlFHb/3qUatlZlctBLErgqsU2Fwdba8UZIEo9rEIgBKUrg=
+=coky
+-----END PGP SIGNATURE-----

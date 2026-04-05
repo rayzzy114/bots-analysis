@@ -1,0 +1,3557 @@
+[
+  {
+    "index": 0,
+    "from": "f7df657dc44a55bb5f745478b8790482",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "Назад",
+    "action_key": "button:Назад",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "sell_coin_select",
+    "target_kind": "intro_banner",
+    "source_text_preview": "⭐️Какую крипту хочешь продать?",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "USDT(trc20)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Monero(XMR)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Litecoin",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Bitcoin",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 2,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "0b514638cae7532b9563fd2bb1ba47bc",
+    "original_action": "<next-message>",
+    "inferred_action": "⭐️Купить⭐️",
+    "action_key": "button:⭐️Купить⭐️",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:купить",
+      "buy-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "buy_coin_select",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "⭐️Какую крипту хочешь купить?",
+    "candidates": [
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:купить",
+          "buy-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🍄Продать🍄",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "from": "0b514638cae7532b9563fd2bb1ba47bc",
+    "to": "37b805b8b5ff7721cc36399eb544fafb",
+    "original_action": "<next-message>",
+    "inferred_action": "Bitcoin",
+    "action_key": "button:Bitcoin",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:bitcoin",
+      "coin-overlap:bitcoin",
+      "margin=6.90"
+    ],
+    "source_kind": "buy_coin_select",
+    "target_kind": "buy_amount_prompt",
+    "source_text_preview": "⭐️Какую крипту хочешь купить?",
+    "target_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в BITCOIN / Рублях  ✅Например: 0.6524 / 2550",
+    "candidates": [
+      {
+        "action": "Bitcoin",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:bitcoin",
+          "coin-overlap:bitcoin"
+        ]
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "USDT(trc20)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Tron(TRX)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Monero(XMR)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Litecoin",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "from": "37b805b8b5ff7721cc36399eb544fafb",
+    "to": "674952e17927d75d3fa605a894430989",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "buy_amount_prompt",
+    "target_kind": "info",
+    "source_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в BITCOIN / Рублях  ✅Например: 0.6524 / 2550",
+    "target_text_preview": "Расчёт суммы...",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "from": "674952e17927d75d3fa605a894430989",
+    "to": "6677c6a34cb14b207a257b5582bbb8c3",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "quote",
+    "source_text_preview": "Расчёт суммы...",
+    "target_text_preview": "Сумма к получению: 0.00033 Bitcoin Сумма к оплате: 2550 ₽ Сумма к зачислению: 1738 ₽",
+    "candidates": []
+  },
+  {
+    "index": 6,
+    "from": "6677c6a34cb14b207a257b5582bbb8c3",
+    "to": "44462ee1f3a75bc4976e95cfad0ab6e6",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "promo_confirm",
+    "source_text_preview": "Сумма к получению: 0.00033 Bitcoin Сумма к оплате: 2550 ₽ Сумма к зачислению: 1738 ₽",
+    "target_text_preview": "🕹Ты покупаешь Bitcoin: 0.00033 Тебе нужно будет оплатить: 2550 2440 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочешь",
+    "candidates": []
+  },
+  {
+    "index": 7,
+    "from": "44462ee1f3a75bc4976e95cfad0ab6e6",
+    "to": "e3d82312ac5b2db02138b85a54abd25c",
+    "original_action": "<next-message>",
+    "inferred_action": "Не использовать промокод",
+    "action_key": "button:Не использовать промокод",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "promo_confirm",
+    "target_kind": "payment_method_select",
+    "source_text_preview": "🕹Ты покупаешь Bitcoin: 0.00033 Тебе нужно будет оплатить: 2550 2440 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочешь",
+    "target_text_preview": "🎮Твоя заявка 🕹Покупка Bitcoin: 0.00033 🪙Нужно перевести: 2550 ₽ Выбери способ оплаты:",
+    "candidates": [
+      {
+        "action": "Не использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 8,
+    "from": "e3d82312ac5b2db02138b85a54abd25c",
+    "to": "d1a26ec0c237d85c27510e71a9786a92",
+    "original_action": "<next-message>",
+    "inferred_action": "🕹ТРАНСГРАН",
+    "action_key": "button:🕹ТРАНСГРАН",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "payment_method_select",
+    "target_kind": "info",
+    "source_text_preview": "🎮Твоя заявка 🕹Покупка Bitcoin: 0.00033 🪙Нужно перевести: 2550 ₽ Выбери способ оплаты:",
+    "target_text_preview": "⭐️На какой Bitcoin-адрес ты хочешь отправить 0.00033 btc. 📝Отправь кошелек:",
+    "candidates": [
+      {
+        "action": "🕹ТРАНСГРАН",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "📱СБП",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "💳КАРТА",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "from": "d1a26ec0c237d85c27510e71a9786a92",
+    "to": "78361a9584ffafc06f325d793728df47",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match"
+    ],
+    "source_kind": "info",
+    "target_kind": "info",
+    "source_text_preview": "⭐️На какой Bitcoin-адрес ты хочешь отправить 0.00033 btc. 📝Отправь кошелек:",
+    "target_text_preview": "Выберите способ доставки",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "from": "78361a9584ffafc06f325d793728df47",
+    "to": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "original_action": "<next-message>",
+    "inferred_action": "Обычная🥹20-80 минут",
+    "action_key": "button:Обычная🥹20-80 минут",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "token-overlap:минут",
+      "margin=0.00"
+    ],
+    "source_kind": "info",
+    "target_kind": "order_searching",
+    "source_text_preview": "Выберите способ доставки",
+    "target_text_preview": "⏳Поиск реквизита. Ожидание до 5 минут.  Так же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "candidates": [
+      {
+        "action": "Обычная🥹20-80 минут",
+        "score": 0.9,
+        "reasons": [
+          "token-overlap:минут"
+        ]
+      },
+      {
+        "action": "ВИП😎1-20 минут(+150₽)",
+        "score": 0.9,
+        "reasons": [
+          "token-overlap:минут"
+        ]
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 11,
+    "from": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_searching",
+    "target_kind": "intro_banner",
+    "source_text_preview": "⏳Поиск реквизита. Ожидание до 5 минут.  Так же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 12,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 13,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "0b514638cae7532b9563fd2bb1ba47bc",
+    "original_action": "<next-message>",
+    "inferred_action": "⭐️Купить⭐️",
+    "action_key": "button:⭐️Купить⭐️",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:купить",
+      "buy-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "buy_coin_select",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "⭐️Какую крипту хочешь купить?",
+    "candidates": [
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:купить",
+          "buy-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🍄Продать🍄",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "from": "0b514638cae7532b9563fd2bb1ba47bc",
+    "to": "d1628cf2837e880dabf38edc1510e4fb",
+    "original_action": "<next-message>",
+    "inferred_action": "Litecoin",
+    "action_key": "button:Litecoin",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:litecoin",
+      "coin-overlap:litecoin",
+      "margin=6.90"
+    ],
+    "source_kind": "buy_coin_select",
+    "target_kind": "buy_amount_prompt",
+    "source_text_preview": "⭐️Какую крипту хочешь купить?",
+    "target_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в LITECOIN / Рублях  ✅Например: 0.6524 / 2550",
+    "candidates": [
+      {
+        "action": "Litecoin",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:litecoin",
+          "coin-overlap:litecoin"
+        ]
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "USDT(trc20)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Tron(TRX)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Monero(XMR)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Bitcoin",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "from": "d1628cf2837e880dabf38edc1510e4fb",
+    "to": "77e13a147984da95e5ad2be41fe97afb",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "buy_amount_prompt",
+    "target_kind": "quote",
+    "source_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в LITECOIN / Рублях  ✅Например: 0.6524 / 2550",
+    "target_text_preview": "Сумма к получению: 0.15 Litecoin Сумма к оплате: 1204 ₽ Сумма к зачислению: 621 ₽",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 16,
+    "from": "77e13a147984da95e5ad2be41fe97afb",
+    "to": "d7d7e428d4b021012c1a6093dde5ec66",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "promo_confirm",
+    "source_text_preview": "Сумма к получению: 0.15 Litecoin Сумма к оплате: 1204 ₽ Сумма к зачислению: 621 ₽",
+    "target_text_preview": "🕹Ты покупаешь Litecoin: 0.15 Тебе нужно будет оплатить: 1204 1108 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочешь п",
+    "candidates": []
+  },
+  {
+    "index": 17,
+    "from": "d7d7e428d4b021012c1a6093dde5ec66",
+    "to": "18743c6bd3d9d6b335b096990e7851bd",
+    "original_action": "<next-message>",
+    "inferred_action": "Не использовать промокод",
+    "action_key": "button:Не использовать промокод",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "promo_confirm",
+    "target_kind": "payment_method_select",
+    "source_text_preview": "🕹Ты покупаешь Litecoin: 0.15 Тебе нужно будет оплатить: 1204 1108 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочешь п",
+    "target_text_preview": "🎮Твоя заявка 🕹Покупка Litecoin: 0.15 🪙Нужно перевести: 1204 ₽ Выбери способ оплаты:",
+    "candidates": [
+      {
+        "action": "Не использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 18,
+    "from": "18743c6bd3d9d6b335b096990e7851bd",
+    "to": "3809118b853907631ba4e82536b75748",
+    "original_action": "<next-message>",
+    "inferred_action": "🕹ТРАНСГРАН",
+    "action_key": "button:🕹ТРАНСГРАН",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "payment_method_select",
+    "target_kind": "info",
+    "source_text_preview": "🎮Твоя заявка 🕹Покупка Litecoin: 0.15 🪙Нужно перевести: 1204 ₽ Выбери способ оплаты:",
+    "target_text_preview": "⭐️На какой Litecoin-адрес ты хочешь отправить 0.15 ltc? 📝Отправь кошелек:",
+    "candidates": [
+      {
+        "action": "🕹ТРАНСГРАН",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "📱СБП",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "💳КАРТА",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 19,
+    "from": "3809118b853907631ba4e82536b75748",
+    "to": "326b57c30338efd092ba50533067cc8b",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match"
+    ],
+    "source_kind": "info",
+    "target_kind": "info",
+    "source_text_preview": "⭐️На какой Litecoin-адрес ты хочешь отправить 0.15 ltc? 📝Отправь кошелек:",
+    "target_text_preview": "Вы ввели невалидный кошелек.",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 20,
+    "from": "326b57c30338efd092ba50533067cc8b",
+    "to": "b2354174ce711dbe22f10c8d6bf3bbd7",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "source-looks-like-input-prompt"
+    ],
+    "source_kind": "info",
+    "target_kind": "order_searching",
+    "source_text_preview": "Вы ввели невалидный кошелек.",
+    "target_text_preview": "В процессе поиск реквизитов по предыдущей оформленной сделке.",
+    "candidates": []
+  },
+  {
+    "index": 21,
+    "from": "b2354174ce711dbe22f10c8d6bf3bbd7",
+    "to": "88f02cd302d810b785c068a172a01f05",
+    "original_action": "<next-message>",
+    "inferred_action": "Остановить поиск",
+    "action_key": "button:Остановить поиск",
+    "confidence": "high",
+    "confidence_score": 0.95,
+    "reasons": [
+      "token-overlap:поиск"
+    ],
+    "source_kind": "order_searching",
+    "target_kind": "order_searching",
+    "source_text_preview": "В процессе поиск реквизитов по предыдущей оформленной сделке.",
+    "target_text_preview": "Поиск реквизитов остановлен.",
+    "candidates": [
+      {
+        "action": "Остановить поиск",
+        "score": 0.9,
+        "reasons": [
+          "token-overlap:поиск"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 22,
+    "from": "88f02cd302d810b785c068a172a01f05",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_searching",
+    "target_kind": "intro_banner",
+    "source_text_preview": "Поиск реквизитов остановлен.",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 23,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 24,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "0b514638cae7532b9563fd2bb1ba47bc",
+    "original_action": "<next-message>",
+    "inferred_action": "⭐️Купить⭐️",
+    "action_key": "button:⭐️Купить⭐️",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:купить",
+      "buy-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "buy_coin_select",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "⭐️Какую крипту хочешь купить?",
+    "candidates": [
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:купить",
+          "buy-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🍄Продать🍄",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 25,
+    "from": "0b514638cae7532b9563fd2bb1ba47bc",
+    "to": "d1628cf2837e880dabf38edc1510e4fb",
+    "original_action": "<next-message>",
+    "inferred_action": "Litecoin",
+    "action_key": "button:Litecoin",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:litecoin",
+      "coin-overlap:litecoin",
+      "margin=6.90"
+    ],
+    "source_kind": "buy_coin_select",
+    "target_kind": "buy_amount_prompt",
+    "source_text_preview": "⭐️Какую крипту хочешь купить?",
+    "target_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в LITECOIN / Рублях  ✅Например: 0.6524 / 2550",
+    "candidates": [
+      {
+        "action": "Litecoin",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:litecoin",
+          "coin-overlap:litecoin"
+        ]
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "USDT(trc20)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Tron(TRX)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Monero(XMR)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Bitcoin",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 26,
+    "from": "d1628cf2837e880dabf38edc1510e4fb",
+    "to": "f259880f50bedcc33a0f40e1dd78e557",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "buy_amount_prompt",
+    "target_kind": "info",
+    "source_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в LITECOIN / Рублях  ✅Например: 0.6524 / 2550",
+    "target_text_preview": "Невалидное значение.",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 27,
+    "from": "f259880f50bedcc33a0f40e1dd78e557",
+    "to": "40e326a580739cc43dcab2c8da179721",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "quote",
+    "source_text_preview": "Невалидное значение.",
+    "target_text_preview": "Сумма к получению: 0.42889 Litecoin Сумма к оплате: 2550 ₽ Сумма к зачислению: 1774 ₽",
+    "candidates": []
+  },
+  {
+    "index": 28,
+    "from": "40e326a580739cc43dcab2c8da179721",
+    "to": "573ab4ee0c720077a8eee18fb11bf94c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "payment_method_select",
+    "source_text_preview": "Сумма к получению: 0.42889 Litecoin Сумма к оплате: 2550 ₽ Сумма к зачислению: 1774 ₽",
+    "target_text_preview": "🎮Твоя заявка 🕹Покупка Litecoin: 0.42889 🪙Нужно перевести: 2550 ₽ Выбери способ оплаты:",
+    "candidates": []
+  },
+  {
+    "index": 29,
+    "from": "573ab4ee0c720077a8eee18fb11bf94c",
+    "to": "a018ed10ea04185e03e1e203491d3de4",
+    "original_action": "<next-message>",
+    "inferred_action": "🕹ТРАНСГРАН",
+    "action_key": "button:🕹ТРАНСГРАН",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "payment_method_select",
+    "target_kind": "info",
+    "source_text_preview": "🎮Твоя заявка 🕹Покупка Litecoin: 0.42889 🪙Нужно перевести: 2550 ₽ Выбери способ оплаты:",
+    "target_text_preview": "⭐️На какой Litecoin-адрес ты хочешь отправить 0.42889 ltc? 📝Отправь кошелек:",
+    "candidates": [
+      {
+        "action": "🕹ТРАНСГРАН",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "📱СБП",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "💳КАРТА",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 30,
+    "from": "a018ed10ea04185e03e1e203491d3de4",
+    "to": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match"
+    ],
+    "source_kind": "info",
+    "target_kind": "order_searching",
+    "source_text_preview": "⭐️На какой Litecoin-адрес ты хочешь отправить 0.42889 ltc? 📝Отправь кошелек:",
+    "target_text_preview": "⏳Поиск реквизита. Ожидание до 5 минут.  Так же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 31,
+    "from": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_searching",
+    "target_kind": "intro_banner",
+    "source_text_preview": "⏳Поиск реквизита. Ожидание до 5 минут.  Так же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 32,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 33,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "0b514638cae7532b9563fd2bb1ba47bc",
+    "original_action": "<next-message>",
+    "inferred_action": "⭐️Купить⭐️",
+    "action_key": "button:⭐️Купить⭐️",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:купить",
+      "buy-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "buy_coin_select",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "⭐️Какую крипту хочешь купить?",
+    "candidates": [
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:купить",
+          "buy-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🍄Продать🍄",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 34,
+    "from": "0b514638cae7532b9563fd2bb1ba47bc",
+    "to": "4391b0262804f8f0ebe5e25b07b22d3c",
+    "original_action": "<next-message>",
+    "inferred_action": "USDT(trc20)",
+    "action_key": "button:USDT(trc20)",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "token-overlap:usdt",
+      "coin-overlap:usdt",
+      "margin=2.90"
+    ],
+    "source_kind": "buy_coin_select",
+    "target_kind": "buy_amount_prompt",
+    "source_text_preview": "⭐️Какую крипту хочешь купить?",
+    "target_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в USDT / Рублях  ✅Например: 0.6524 / 2550",
+    "candidates": [
+      {
+        "action": "USDT(trc20)",
+        "score": 2.9,
+        "reasons": [
+          "token-overlap:usdt",
+          "coin-overlap:usdt"
+        ]
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Tron(TRX)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Monero(XMR)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Litecoin",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Bitcoin",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 35,
+    "from": "4391b0262804f8f0ebe5e25b07b22d3c",
+    "to": "674952e17927d75d3fa605a894430989",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "buy_amount_prompt",
+    "target_kind": "info",
+    "source_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в USDT / Рублях  ✅Например: 0.6524 / 2550",
+    "target_text_preview": "Расчёт суммы...",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 36,
+    "from": "674952e17927d75d3fa605a894430989",
+    "to": "7e31b306d6f92ae341f59de08ffb89d3",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "quote",
+    "source_text_preview": "Расчёт суммы...",
+    "target_text_preview": "Сумма к получению: 2550 USDT(trc20) Сумма к оплате: 238837 ₽",
+    "candidates": []
+  },
+  {
+    "index": 37,
+    "from": "7e31b306d6f92ae341f59de08ffb89d3",
+    "to": "6b4b758a5c2632d362dd4c33911b152e",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "payment_method_select",
+    "source_text_preview": "Сумма к получению: 2550 USDT(trc20) Сумма к оплате: 238837 ₽",
+    "target_text_preview": "🎮Твоя заявка 🕹Покупка USDT(trc20): 2550 🪙Нужно перевести: 238837 ₽ Выбери способ оплаты:",
+    "candidates": []
+  },
+  {
+    "index": 38,
+    "from": "6b4b758a5c2632d362dd4c33911b152e",
+    "to": "3dad6305cfd49fe58edcd334baaa0086",
+    "original_action": "<next-message>",
+    "inferred_action": "🕹ТРАНСГРАН",
+    "action_key": "button:🕹ТРАНСГРАН",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "payment_method_select",
+    "target_kind": "wallet_prompt",
+    "source_text_preview": "🎮Твоя заявка 🕹Покупка USDT(trc20): 2550 🪙Нужно перевести: 238837 ₽ Выбери способ оплаты:",
+    "target_text_preview": "Введите USDT(trc20)-адрес кошелька, куда вы хотите отправить 2550 usdt.",
+    "candidates": [
+      {
+        "action": "🕹ТРАНСГРАН",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "📱СБП",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "💳КАРТА",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 39,
+    "from": "3dad6305cfd49fe58edcd334baaa0086",
+    "to": "88f02cd302d810b785c068a172a01f05",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match"
+    ],
+    "source_kind": "wallet_prompt",
+    "target_kind": "order_searching",
+    "source_text_preview": "Введите USDT(trc20)-адрес кошелька, куда вы хотите отправить 2550 usdt.",
+    "target_text_preview": "Поиск реквизитов остановлен.",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 40,
+    "from": "88f02cd302d810b785c068a172a01f05",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_searching",
+    "target_kind": "intro_banner",
+    "source_text_preview": "Поиск реквизитов остановлен.",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 41,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 42,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "0b514638cae7532b9563fd2bb1ba47bc",
+    "original_action": "<next-message>",
+    "inferred_action": "⭐️Купить⭐️",
+    "action_key": "button:⭐️Купить⭐️",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:купить",
+      "buy-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "buy_coin_select",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "⭐️Какую крипту хочешь купить?",
+    "candidates": [
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:купить",
+          "buy-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🍄Продать🍄",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 43,
+    "from": "0b514638cae7532b9563fd2bb1ba47bc",
+    "to": "4391b0262804f8f0ebe5e25b07b22d3c",
+    "original_action": "<next-message>",
+    "inferred_action": "USDT(trc20)",
+    "action_key": "button:USDT(trc20)",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "token-overlap:usdt",
+      "coin-overlap:usdt",
+      "margin=2.90"
+    ],
+    "source_kind": "buy_coin_select",
+    "target_kind": "buy_amount_prompt",
+    "source_text_preview": "⭐️Какую крипту хочешь купить?",
+    "target_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в USDT / Рублях  ✅Например: 0.6524 / 2550",
+    "candidates": [
+      {
+        "action": "USDT(trc20)",
+        "score": 2.9,
+        "reasons": [
+          "token-overlap:usdt",
+          "coin-overlap:usdt"
+        ]
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Tron(TRX)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Monero(XMR)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Litecoin",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Bitcoin",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 44,
+    "from": "4391b0262804f8f0ebe5e25b07b22d3c",
+    "to": "7e31b306d6f92ae341f59de08ffb89d3",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "buy_amount_prompt",
+    "target_kind": "quote",
+    "source_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в USDT / Рублях  ✅Например: 0.6524 / 2550",
+    "target_text_preview": "Сумма к получению: 2550 USDT(trc20) Сумма к оплате: 238837 ₽",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 45,
+    "from": "7e31b306d6f92ae341f59de08ffb89d3",
+    "to": "748b78638cbfe9d7d1048c21d9578ed9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "promo_confirm",
+    "source_text_preview": "Сумма к получению: 2550 USDT(trc20) Сумма к оплате: 238837 ₽",
+    "target_text_preview": "🕹Ты покупаешь USDT(trc20): 2550 Тебе нужно будет оплатить: 238837 236569 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Х",
+    "candidates": []
+  },
+  {
+    "index": 46,
+    "from": "748b78638cbfe9d7d1048c21d9578ed9",
+    "to": "6b4b758a5c2632d362dd4c33911b152e",
+    "original_action": "<next-message>",
+    "inferred_action": "Не использовать промокод",
+    "action_key": "button:Не использовать промокод",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "promo_confirm",
+    "target_kind": "payment_method_select",
+    "source_text_preview": "🕹Ты покупаешь USDT(trc20): 2550 Тебе нужно будет оплатить: 238837 236569 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Х",
+    "target_text_preview": "🎮Твоя заявка 🕹Покупка USDT(trc20): 2550 🪙Нужно перевести: 238837 ₽ Выбери способ оплаты:",
+    "candidates": [
+      {
+        "action": "Не использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 47,
+    "from": "6b4b758a5c2632d362dd4c33911b152e",
+    "to": "3dad6305cfd49fe58edcd334baaa0086",
+    "original_action": "<next-message>",
+    "inferred_action": "🕹ТРАНСГРАН",
+    "action_key": "button:🕹ТРАНСГРАН",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "payment_method_select",
+    "target_kind": "wallet_prompt",
+    "source_text_preview": "🎮Твоя заявка 🕹Покупка USDT(trc20): 2550 🪙Нужно перевести: 238837 ₽ Выбери способ оплаты:",
+    "target_text_preview": "Введите USDT(trc20)-адрес кошелька, куда вы хотите отправить 2550 usdt.",
+    "candidates": [
+      {
+        "action": "🕹ТРАНСГРАН",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "📱СБП",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "💳КАРТА",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 48,
+    "from": "3dad6305cfd49fe58edcd334baaa0086",
+    "to": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match"
+    ],
+    "source_kind": "wallet_prompt",
+    "target_kind": "order_searching",
+    "source_text_preview": "Введите USDT(trc20)-адрес кошелька, куда вы хотите отправить 2550 usdt.",
+    "target_text_preview": "⏳Поиск реквизита. Ожидание до 5 минут.  Так же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 49,
+    "from": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_searching",
+    "target_kind": "intro_banner",
+    "source_text_preview": "⏳Поиск реквизита. Ожидание до 5 минут.  Так же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 50,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 51,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "f7df657dc44a55bb5f745478b8790482",
+    "original_action": "<next-message>",
+    "inferred_action": "🍄Продать🍄",
+    "action_key": "button:🍄Продать🍄",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:продать",
+      "sell-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "sell_coin_select",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "⭐️Какую крипту хочешь продать?",
+    "candidates": [
+      {
+        "action": "🍄Продать🍄",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:продать",
+          "sell-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 52,
+    "from": "f7df657dc44a55bb5f745478b8790482",
+    "to": "cf112a5e2265f4b2c6b0375846c8972b",
+    "original_action": "<next-message>",
+    "inferred_action": "Bitcoin",
+    "action_key": "button:Bitcoin",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:bitcoin",
+      "coin-overlap:bitcoin",
+      "margin=6.90"
+    ],
+    "source_kind": "sell_coin_select",
+    "target_kind": "sell_amount_prompt",
+    "source_text_preview": "⭐️Какую крипту хочешь продать?",
+    "target_text_preview": "🕹Сколько ты хочешь продать? 📝Напиши сумму в BITCOIN ✅Например: 0.0012",
+    "candidates": [
+      {
+        "action": "Bitcoin",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:bitcoin",
+          "coin-overlap:bitcoin"
+        ]
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "USDT(trc20)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Monero(XMR)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Litecoin",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 53,
+    "from": "cf112a5e2265f4b2c6b0375846c8972b",
+    "to": "980df86a1c1d3205a2b3605740d4bece",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "sell_amount_prompt",
+    "target_kind": "quote",
+    "source_text_preview": "🕹Сколько ты хочешь продать? 📝Напиши сумму в BITCOIN ✅Например: 0.0012",
+    "target_text_preview": "Сумма к получению: 84899 ₽ Сумма к оплате: 0.015 btc",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 54,
+    "from": "980df86a1c1d3205a2b3605740d4bece",
+    "to": "013804fbe833c27e73b86221d4a0ddbb",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "promo_confirm",
+    "source_text_preview": "Сумма к получению: 84899 ₽ Сумма к оплате: 0.015 btc",
+    "target_text_preview": "🕹Ты покупаешь Bitcoin: 0.015 Тебе нужно будет оплатить: 84899 83880 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочешь",
+    "candidates": []
+  },
+  {
+    "index": 55,
+    "from": "013804fbe833c27e73b86221d4a0ddbb",
+    "to": "34ed2ebf090b450e4030af05fa292b36",
+    "original_action": "<next-message>",
+    "inferred_action": "Не использовать промокод",
+    "action_key": "button:Не использовать промокод",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "promo_confirm",
+    "target_kind": "info",
+    "source_text_preview": "🕹Ты покупаешь Bitcoin: 0.015 Тебе нужно будет оплатить: 84899 83880 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочешь",
+    "target_text_preview": "Введите 📲СБП реквизиты, куда вы хотите получить 84899 ₽.",
+    "candidates": [
+      {
+        "action": "Не использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 56,
+    "from": "34ed2ebf090b450e4030af05fa292b36",
+    "to": "b2354174ce711dbe22f10c8d6bf3bbd7",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match"
+    ],
+    "source_kind": "info",
+    "target_kind": "order_searching",
+    "source_text_preview": "Введите 📲СБП реквизиты, куда вы хотите получить 84899 ₽.",
+    "target_text_preview": "В процессе поиск реквизитов по предыдущей оформленной сделке.",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 57,
+    "from": "b2354174ce711dbe22f10c8d6bf3bbd7",
+    "to": "88f02cd302d810b785c068a172a01f05",
+    "original_action": "<next-message>",
+    "inferred_action": "Остановить поиск",
+    "action_key": "button:Остановить поиск",
+    "confidence": "high",
+    "confidence_score": 0.95,
+    "reasons": [
+      "token-overlap:поиск"
+    ],
+    "source_kind": "order_searching",
+    "target_kind": "order_searching",
+    "source_text_preview": "В процессе поиск реквизитов по предыдущей оформленной сделке.",
+    "target_text_preview": "Поиск реквизитов остановлен.",
+    "candidates": [
+      {
+        "action": "Остановить поиск",
+        "score": 0.9,
+        "reasons": [
+          "token-overlap:поиск"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 58,
+    "from": "88f02cd302d810b785c068a172a01f05",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_searching",
+    "target_kind": "intro_banner",
+    "source_text_preview": "Поиск реквизитов остановлен.",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 59,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 60,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "cf112a5e2265f4b2c6b0375846c8972b",
+    "original_action": "<next-message>",
+    "inferred_action": "🍄Продать🍄",
+    "action_key": "button:🍄Продать🍄",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:продать",
+      "sell-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "sell_amount_prompt",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "🕹Сколько ты хочешь продать? 📝Напиши сумму в BITCOIN ✅Например: 0.0012",
+    "candidates": [
+      {
+        "action": "🍄Продать🍄",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:продать",
+          "sell-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 61,
+    "from": "cf112a5e2265f4b2c6b0375846c8972b",
+    "to": "0cccfcbc67fcb15a1bd7df0087670d88",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "sell_amount_prompt",
+    "target_kind": "info",
+    "source_text_preview": "🕹Сколько ты хочешь продать? 📝Напиши сумму в BITCOIN ✅Например: 0.0012",
+    "target_text_preview": "Для расчета введите сумму в криптовалюте!  Например 0.001",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 62,
+    "from": "0cccfcbc67fcb15a1bd7df0087670d88",
+    "to": "1a6412a7d294a921dc3aeb9ce0b20290",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "source-looks-like-input-prompt"
+    ],
+    "source_kind": "info",
+    "target_kind": "quote",
+    "source_text_preview": "Для расчета введите сумму в криптовалюте!  Например 0.001",
+    "target_text_preview": "Сумма к получению: 84905 ₽ Сумма к оплате: 0.015 btc",
+    "candidates": []
+  },
+  {
+    "index": 63,
+    "from": "1a6412a7d294a921dc3aeb9ce0b20290",
+    "to": "0e211a382fff69e953a3c40b6798bca8",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "promo_confirm",
+    "source_text_preview": "Сумма к получению: 84905 ₽ Сумма к оплате: 0.015 btc",
+    "target_text_preview": "🕹Ты покупаешь Bitcoin: 0.015 Тебе нужно будет оплатить: 84905 83886 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочешь",
+    "candidates": []
+  },
+  {
+    "index": 64,
+    "from": "0e211a382fff69e953a3c40b6798bca8",
+    "to": "b213240feabeef4a5764bd68a74003c8",
+    "original_action": "<next-message>",
+    "inferred_action": "Не использовать промокод",
+    "action_key": "button:Не использовать промокод",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "promo_confirm",
+    "target_kind": "info",
+    "source_text_preview": "🕹Ты покупаешь Bitcoin: 0.015 Тебе нужно будет оплатить: 84905 83886 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочешь",
+    "target_text_preview": "Введите 📲СБП реквизиты, куда вы хотите получить 84905 ₽.",
+    "candidates": [
+      {
+        "action": "Не использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 65,
+    "from": "b213240feabeef4a5764bd68a74003c8",
+    "to": "cae8faa0b012701d905f3c3ef9377739",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match"
+    ],
+    "source_kind": "info",
+    "target_kind": "order_card",
+    "source_text_preview": "Введите 📲СБП реквизиты, куда вы хотите получить 84905 ₽.",
+    "target_text_preview": "✅Заявка №1771774402917  Продаете: 0.015 btc 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 84905 ₽ Реквизиты для перевода btc:  ",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 66,
+    "from": "cae8faa0b012701d905f3c3ef9377739",
+    "to": "dde88413e8078f96ae2373adf185cd56",
+    "original_action": "<next-message>",
+    "inferred_action": "Оплатил",
+    "action_key": "button:Оплатил",
+    "confidence": "low",
+    "confidence_score": 0.4,
+    "reasons": [
+      "payment-intent",
+      "margin=2.00"
+    ],
+    "source_kind": "order_card",
+    "target_kind": "order_found",
+    "source_text_preview": "✅Заявка №1771774402917  Продаете: 0.015 btc 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 84905 ₽ Реквизиты для перевода btc:  ",
+    "target_text_preview": "Реквизиты найдены.",
+    "candidates": [
+      {
+        "action": "Оплатил",
+        "score": 2.0,
+        "reasons": [
+          "payment-intent"
+        ]
+      },
+      {
+        "action": "Отменить заявку",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 67,
+    "from": "dde88413e8078f96ae2373adf185cd56",
+    "to": "b34b307692203aa62375038376b86764",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_found",
+    "target_kind": "order_card",
+    "source_text_preview": "Реквизиты найдены.",
+    "target_text_preview": "✅Заявка №1771774402917  Продаете: 0.015 btc 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 84905 ₽ Реквизиты для перевода btc:  ",
+    "candidates": []
+  },
+  {
+    "index": 68,
+    "from": "b34b307692203aa62375038376b86764",
+    "to": "9e33d7312db5e12ff86862923bdc252e",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "order_card",
+    "target_kind": "info",
+    "source_text_preview": "✅Заявка №1771774402917  Продаете: 0.015 btc 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 84905 ₽ Реквизиты для перевода btc:  ",
+    "target_text_preview": "Отправьте скрин перевода, либо чек оплаты.",
+    "candidates": []
+  },
+  {
+    "index": 69,
+    "from": "9e33d7312db5e12ff86862923bdc252e",
+    "to": "81f95908a0eeadfc3629d1161976375f",
+    "original_action": "<next-message>",
+    "inferred_action": "Назад",
+    "action_key": "button:Назад",
+    "confidence": "high",
+    "confidence_score": 0.95,
+    "reasons": [],
+    "source_kind": "info",
+    "target_kind": "info",
+    "source_text_preview": "Отправьте скрин перевода, либо чек оплаты.",
+    "target_text_preview": "Заявка успешно создана.",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 70,
+    "from": "81f95908a0eeadfc3629d1161976375f",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "intro_banner",
+    "source_text_preview": "Заявка успешно создана.",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 71,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 72,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "f7df657dc44a55bb5f745478b8790482",
+    "original_action": "<next-message>",
+    "inferred_action": "🍄Продать🍄",
+    "action_key": "button:🍄Продать🍄",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:продать",
+      "sell-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "sell_coin_select",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "⭐️Какую крипту хочешь продать?",
+    "candidates": [
+      {
+        "action": "🍄Продать🍄",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:продать",
+          "sell-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 73,
+    "from": "f7df657dc44a55bb5f745478b8790482",
+    "to": "d702ca0d0fd3b7f56a5f7b1f0338367b",
+    "original_action": "<next-message>",
+    "inferred_action": "Litecoin",
+    "action_key": "button:Litecoin",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:litecoin",
+      "coin-overlap:litecoin",
+      "margin=6.90"
+    ],
+    "source_kind": "sell_coin_select",
+    "target_kind": "sell_amount_prompt",
+    "source_text_preview": "⭐️Какую крипту хочешь продать?",
+    "target_text_preview": "🕹Сколько ты хочешь продать? 📝Напиши сумму в LITECOIN ✅Например: 0.0012",
+    "candidates": [
+      {
+        "action": "Litecoin",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:litecoin",
+          "coin-overlap:litecoin"
+        ]
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "USDT(trc20)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Monero(XMR)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Bitcoin",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 74,
+    "from": "d702ca0d0fd3b7f56a5f7b1f0338367b",
+    "to": "bc41350464e787d3f526b05b07c7eb9c",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "sell_amount_prompt",
+    "target_kind": "info",
+    "source_text_preview": "🕹Сколько ты хочешь продать? 📝Напиши сумму в LITECOIN ✅Например: 0.0012",
+    "target_text_preview": "Минимальная сумма продажи Litecoin = 1.5.",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 75,
+    "from": "bc41350464e787d3f526b05b07c7eb9c",
+    "to": "e86dd5aa1e821aae5588b1125464f9f6",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "quote",
+    "source_text_preview": "Минимальная сумма продажи Litecoin = 1.5.",
+    "target_text_preview": "Сумма к получению: 6936 ₽ Сумма к оплате: 1.5 ltc",
+    "candidates": []
+  },
+  {
+    "index": 76,
+    "from": "e86dd5aa1e821aae5588b1125464f9f6",
+    "to": "85e1460d264ab557f319c8b62f7a1cb7",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "info",
+    "source_text_preview": "Сумма к получению: 6936 ₽ Сумма к оплате: 1.5 ltc",
+    "target_text_preview": "Введите 📲СБП реквизиты, куда вы хотите получить 6936 ₽.",
+    "candidates": []
+  },
+  {
+    "index": 77,
+    "from": "85e1460d264ab557f319c8b62f7a1cb7",
+    "to": "f363e7dac0fcc7eec0484b3513d9b019",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match"
+    ],
+    "source_kind": "info",
+    "target_kind": "order_card",
+    "source_text_preview": "Введите 📲СБП реквизиты, куда вы хотите получить 6936 ₽.",
+    "target_text_preview": "✅Заявка №1771774456199  Продаете: 1.5 ltc 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 6936 ₽ Реквизиты для перевода ltc:  ltc",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 78,
+    "from": "f363e7dac0fcc7eec0484b3513d9b019",
+    "to": "dde88413e8078f96ae2373adf185cd56",
+    "original_action": "<next-message>",
+    "inferred_action": "Оплатил",
+    "action_key": "button:Оплатил",
+    "confidence": "low",
+    "confidence_score": 0.4,
+    "reasons": [
+      "payment-intent",
+      "margin=2.00"
+    ],
+    "source_kind": "order_card",
+    "target_kind": "order_found",
+    "source_text_preview": "✅Заявка №1771774456199  Продаете: 1.5 ltc 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 6936 ₽ Реквизиты для перевода ltc:  ltc",
+    "target_text_preview": "Реквизиты найдены.",
+    "candidates": [
+      {
+        "action": "Оплатил",
+        "score": 2.0,
+        "reasons": [
+          "payment-intent"
+        ]
+      },
+      {
+        "action": "Отменить заявку",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 79,
+    "from": "dde88413e8078f96ae2373adf185cd56",
+    "to": "6c4c4ece17ea0d47ee54e8db7e357e5b",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_found",
+    "target_kind": "order_card",
+    "source_text_preview": "Реквизиты найдены.",
+    "target_text_preview": "✅Заявка №1771774456199  Продаете: 1.5 ltc 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 6936 ₽ Реквизиты для перевода ltc:  ltc",
+    "candidates": []
+  },
+  {
+    "index": 80,
+    "from": "6c4c4ece17ea0d47ee54e8db7e357e5b",
+    "to": "48bacb7031bc81a78a256393f1f1dad6",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "order_card",
+    "target_kind": "info",
+    "source_text_preview": "✅Заявка №1771774456199  Продаете: 1.5 ltc 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 6936 ₽ Реквизиты для перевода ltc:  ltc",
+    "target_text_preview": "Вы действительно хотите отменить заявку?",
+    "candidates": []
+  },
+  {
+    "index": 81,
+    "from": "48bacb7031bc81a78a256393f1f1dad6",
+    "to": "5a7c36b69ec3257cabf37545254f4306",
+    "original_action": "<next-message>",
+    "inferred_action": "Да",
+    "action_key": "button:Да",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "button-text-in-target",
+      "margin=4.00"
+    ],
+    "source_kind": "info",
+    "target_kind": "order_card",
+    "source_text_preview": "Вы действительно хотите отменить заявку?",
+    "target_text_preview": "✅Заявка №1771774456199  Продаете: 1.5 ltc 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 6936 ₽ Реквизиты для перевода ltc:  ltc",
+    "candidates": [
+      {
+        "action": "Да",
+        "score": 4.0,
+        "reasons": [
+          "button-text-in-target"
+        ]
+      },
+      {
+        "action": "Нет",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 82,
+    "from": "5a7c36b69ec3257cabf37545254f4306",
+    "to": "8c420d05b595ee10bd97dd6653d9c777",
+    "original_action": "<next-message>",
+    "inferred_action": "Отправить номер оператору",
+    "action_key": "button:Отправить номер оператору",
+    "confidence": "high",
+    "confidence_score": 0.95,
+    "reasons": [],
+    "source_kind": "order_card",
+    "target_kind": "order_cancelled",
+    "source_text_preview": "✅Заявка №1771774456199  Продаете: 1.5 ltc 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 6936 ₽ Реквизиты для перевода ltc:  ltc",
+    "target_text_preview": "❗️ Заявка была отменена.",
+    "candidates": [
+      {
+        "action": "Отправить номер оператору",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 83,
+    "from": "8c420d05b595ee10bd97dd6653d9c777",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_cancelled",
+    "target_kind": "intro_banner",
+    "source_text_preview": "❗️ Заявка была отменена.",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 84,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 85,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "7cf5ba287563f2ed1799e313561609f7",
+    "original_action": "<next-message>",
+    "inferred_action": "🍄Продать🍄",
+    "action_key": "button:🍄Продать🍄",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:продать",
+      "sell-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "sell_amount_prompt",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "🕹Сколько ты хочешь продать? 📝Напиши сумму в USDT ✅Например: 0.0012",
+    "candidates": [
+      {
+        "action": "🍄Продать🍄",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:продать",
+          "sell-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 86,
+    "from": "7cf5ba287563f2ed1799e313561609f7",
+    "to": "fb3072439e29b3aa32d851cbd55adbff",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "sell_amount_prompt",
+    "target_kind": "quote",
+    "source_text_preview": "🕹Сколько ты хочешь продать? 📝Напиши сумму в USDT ✅Например: 0.0012",
+    "target_text_preview": "Сумма к получению: 216218 ₽ Сумма к оплате: 2500 usdt",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 87,
+    "from": "fb3072439e29b3aa32d851cbd55adbff",
+    "to": "1af33129f9df8457a70a3a576741ccba",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "info",
+    "source_text_preview": "Сумма к получению: 216218 ₽ Сумма к оплате: 2500 usdt",
+    "target_text_preview": "Введите 📲СБП реквизиты, куда вы хотите получить 216218 ₽.",
+    "candidates": []
+  },
+  {
+    "index": 88,
+    "from": "1af33129f9df8457a70a3a576741ccba",
+    "to": "e420ad2c17818d349e51f18c80a78390",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match"
+    ],
+    "source_kind": "info",
+    "target_kind": "order_card",
+    "source_text_preview": "Введите 📲СБП реквизиты, куда вы хотите получить 216218 ₽.",
+    "target_text_preview": "✅Заявка №1771774494291  Продаете: 2500 usdt 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 216218 ₽ Реквизиты для перевода usdt:",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 89,
+    "from": "e420ad2c17818d349e51f18c80a78390",
+    "to": "dde88413e8078f96ae2373adf185cd56",
+    "original_action": "<next-message>",
+    "inferred_action": "Оплатил",
+    "action_key": "button:Оплатил",
+    "confidence": "low",
+    "confidence_score": 0.4,
+    "reasons": [
+      "payment-intent",
+      "margin=2.00"
+    ],
+    "source_kind": "order_card",
+    "target_kind": "order_found",
+    "source_text_preview": "✅Заявка №1771774494291  Продаете: 2500 usdt 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 216218 ₽ Реквизиты для перевода usdt:",
+    "target_text_preview": "Реквизиты найдены.",
+    "candidates": [
+      {
+        "action": "Оплатил",
+        "score": 2.0,
+        "reasons": [
+          "payment-intent"
+        ]
+      },
+      {
+        "action": "Отменить заявку",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 90,
+    "from": "dde88413e8078f96ae2373adf185cd56",
+    "to": "cc4b3d59fb3ac5d0cf2d687042be7d9f",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_found",
+    "target_kind": "order_card",
+    "source_text_preview": "Реквизиты найдены.",
+    "target_text_preview": "✅Заявка №1771774494291  Продаете: 2500 usdt 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 216218 ₽ Реквизиты для перевода usdt:",
+    "candidates": []
+  },
+  {
+    "index": 91,
+    "from": "cc4b3d59fb3ac5d0cf2d687042be7d9f",
+    "to": "9e33d7312db5e12ff86862923bdc252e",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "order_card",
+    "target_kind": "info",
+    "source_text_preview": "✅Заявка №1771774494291  Продаете: 2500 usdt 📲СБП реквизиты: 79045678990  Ваш ранг: 👶, скидка 0.0 %  \\uD83D\\uDCB5Получаете: 216218 ₽ Реквизиты для перевода usdt:",
+    "target_text_preview": "Отправьте скрин перевода, либо чек оплаты.",
+    "candidates": []
+  },
+  {
+    "index": 92,
+    "from": "9e33d7312db5e12ff86862923bdc252e",
+    "to": "81f95908a0eeadfc3629d1161976375f",
+    "original_action": "<next-message>",
+    "inferred_action": "Назад",
+    "action_key": "button:Назад",
+    "confidence": "high",
+    "confidence_score": 0.95,
+    "reasons": [],
+    "source_kind": "info",
+    "target_kind": "info",
+    "source_text_preview": "Отправьте скрин перевода, либо чек оплаты.",
+    "target_text_preview": "Заявка успешно создана.",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 93,
+    "from": "81f95908a0eeadfc3629d1161976375f",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "intro_banner",
+    "source_text_preview": "Заявка успешно создана.",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 94,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 95,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "1b75f7c255c267708de9969b6c0a1e95",
+    "original_action": "<next-message>",
+    "inferred_action": "🍄Продать🍄",
+    "action_key": "button:🍄Продать🍄",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:продать",
+      "sell-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "sell_amount_prompt",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "🕹Сколько ты хочешь продать? 📝Напиши сумму в MONERO ✅Например: 0.0012",
+    "candidates": [
+      {
+        "action": "🍄Продать🍄",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:продать",
+          "sell-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 96,
+    "from": "1b75f7c255c267708de9969b6c0a1e95",
+    "to": "0cccfcbc67fcb15a1bd7df0087670d88",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "sell_amount_prompt",
+    "target_kind": "info",
+    "source_text_preview": "🕹Сколько ты хочешь продать? 📝Напиши сумму в MONERO ✅Например: 0.0012",
+    "target_text_preview": "Для расчета введите сумму в криптовалюте!  Например 0.001",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 97,
+    "from": "0cccfcbc67fcb15a1bd7df0087670d88",
+    "to": "674952e17927d75d3fa605a894430989",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "source-looks-like-input-prompt"
+    ],
+    "source_kind": "info",
+    "target_kind": "info",
+    "source_text_preview": "Для расчета введите сумму в криптовалюте!  Например 0.001",
+    "target_text_preview": "Расчёт суммы...",
+    "candidates": []
+  },
+  {
+    "index": 98,
+    "from": "674952e17927d75d3fa605a894430989",
+    "to": "415bf399786fc7aeda3b02fcbd7947ff",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "quote",
+    "source_text_preview": "Расчёт суммы...",
+    "target_text_preview": "Сумма к получению: 4226 ₽ Сумма к оплате: 0.15 xmr",
+    "candidates": []
+  },
+  {
+    "index": 99,
+    "from": "415bf399786fc7aeda3b02fcbd7947ff",
+    "to": "d04646e9d3d2840fa55f19db766a83c6",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "promo_confirm",
+    "source_text_preview": "Сумма к получению: 4226 ₽ Сумма к оплате: 0.15 xmr",
+    "target_text_preview": "🕹Ты покупаешь Monero(XMR): 0.15 Тебе нужно будет оплатить: 4226 4225 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочеш",
+    "candidates": []
+  },
+  {
+    "index": 100,
+    "from": "d04646e9d3d2840fa55f19db766a83c6",
+    "to": "7b268d0378402d84b8cc6e527dc85e56",
+    "original_action": "<next-message>",
+    "inferred_action": "Не использовать промокод",
+    "action_key": "button:Не использовать промокод",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "promo_confirm",
+    "target_kind": "info",
+    "source_text_preview": "🕹Ты покупаешь Monero(XMR): 0.15 Тебе нужно будет оплатить: 4226 4225 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочеш",
+    "target_text_preview": "Введите 📲СБП реквизиты, куда вы хотите получить 4226 ₽.",
+    "candidates": [
+      {
+        "action": "Не использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 101,
+    "from": "7b268d0378402d84b8cc6e527dc85e56",
+    "to": "02e4dec20eb6a5c88dd99a0068714ff5",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "back-intent"
+    ],
+    "source_kind": "info",
+    "target_kind": "error",
+    "source_text_preview": "Введите 📲СБП реквизиты, куда вы хотите получить 4226 ₽.",
+    "target_text_preview": "Произошла ошибка. 1771774546197 Введите /start для выхода в главное меню.",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 1.5,
+        "reasons": [
+          "back-intent"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 102,
+    "from": "02e4dec20eb6a5c88dd99a0068714ff5",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "source-looks-like-input-prompt"
+    ],
+    "source_kind": "error",
+    "target_kind": "intro_banner",
+    "source_text_preview": "Произошла ошибка. 1771774546197 Введите /start для выхода в главное меню.",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 103,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 104,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "42a4226d19582cbc6edbe8bb9853131a",
+    "original_action": "<next-message>",
+    "inferred_action": "🤑Большой розыгрыш🤑",
+    "action_key": "button:🤑Большой розыгрыш🤑",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "info",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "У тебя нету попыток на игру в лотерею.Чтобы получить попытку соверши сделку👇",
+    "candidates": [
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🍄Продать🍄",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 105,
+    "from": "42a4226d19582cbc6edbe8bb9853131a",
+    "to": "dcbdf7f8ccfc09fa685b4e691a6b9d07",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "info",
+    "source_text_preview": "У тебя нету попыток на игру в лотерею.Чтобы получить попытку соверши сделку👇",
+    "target_text_preview": "БОЛЬШОЙ РОЗЫГРЫШ ОТ Mario_BTC https://t.me/c/1730164192/500910",
+    "candidates": []
+  },
+  {
+    "index": 106,
+    "from": "dcbdf7f8ccfc09fa685b4e691a6b9d07",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "intro_banner",
+    "source_text_preview": "БОЛЬШОЙ РОЗЫГРЫШ ОТ Mario_BTC https://t.me/c/1730164192/500910",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 107,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 108,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "df8f03865ebbffd5bfe3a23c60399bb6",
+    "original_action": "<next-message>",
+    "inferred_action": "🎮 Реферальная программа 🎮",
+    "action_key": "button:🎮 Реферальная программа 🎮",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "token-overlap:программа,реферальная",
+      "referral-intent",
+      "margin=2.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "info",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "🍄 Реферальная программа Приглашай друзей — получай  монеты🪙 с каждой их сделки. ⭐️ Монетки можно: — потратить как скидку — или вывести 🔗 Твоя ссылка: https://t.",
+    "candidates": [
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 3.8,
+        "reasons": [
+          "token-overlap:программа,реферальная",
+          "referral-intent"
+        ]
+      },
+      {
+        "action": "История сделок",
+        "score": 0.9,
+        "reasons": [
+          "token-overlap:сделок"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🍄Продать🍄",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 109,
+    "from": "df8f03865ebbffd5bfe3a23c60399bb6",
+    "to": "4c15b322168dc7345ac8d4101a43ee2e",
+    "original_action": "<next-message>",
+    "inferred_action": "Вывод средств",
+    "action_key": "button:Вывод средств",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "token-overlap:средств",
+      "margin=0.90"
+    ],
+    "source_kind": "info",
+    "target_kind": "info",
+    "source_text_preview": "🍄 Реферальная программа Приглашай друзей — получай  монеты🪙 с каждой их сделки. ⭐️ Монетки можно: — потратить как скидку — или вывести 🔗 Твоя ссылка: https://t.",
+    "target_text_preview": "Минимальная сумма для вывода средств равна 500₽",
+    "candidates": [
+      {
+        "action": "Вывод средств",
+        "score": 0.9,
+        "reasons": [
+          "token-overlap:средств"
+        ]
+      },
+      {
+        "action": "Пригласить друга",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 110,
+    "from": "4c15b322168dc7345ac8d4101a43ee2e",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "intro_banner",
+    "source_text_preview": "Минимальная сумма для вывода средств равна 500₽",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 111,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  },
+  {
+    "index": 112,
+    "from": "dea2d09f86c418ad7e64269f922bf07c",
+    "to": "0b514638cae7532b9563fd2bb1ba47bc",
+    "original_action": "<next-message>",
+    "inferred_action": "⭐️Купить⭐️",
+    "action_key": "button:⭐️Купить⭐️",
+    "confidence": "high",
+    "confidence_score": 0.85,
+    "reasons": [
+      "button-text-in-target",
+      "token-overlap:купить",
+      "buy-intent",
+      "margin=6.90"
+    ],
+    "source_kind": "main_menu",
+    "target_kind": "buy_coin_select",
+    "source_text_preview": "Если бот завис - нажми /start",
+    "target_text_preview": "⭐️Какую крипту хочешь купить?",
+    "candidates": [
+      {
+        "action": "⭐️Купить⭐️",
+        "score": 6.9,
+        "reasons": [
+          "button-text-in-target",
+          "token-overlap:купить",
+          "buy-intent"
+        ]
+      },
+      {
+        "action": "🤑Большой розыгрыш🤑",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎰Бонус🎰",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🎮 Реферальная программа 🎮",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "🍄Продать🍄",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "История сделок",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 113,
+    "from": "0b514638cae7532b9563fd2bb1ba47bc",
+    "to": "509c49e252d2a641a36cc9f12e8334a4",
+    "original_action": "<next-message>",
+    "inferred_action": "Tron(TRX)",
+    "action_key": "button:Tron(TRX)",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "token-overlap:tron",
+      "coin-overlap:tron",
+      "margin=2.90"
+    ],
+    "source_kind": "buy_coin_select",
+    "target_kind": "buy_amount_prompt",
+    "source_text_preview": "⭐️Какую крипту хочешь купить?",
+    "target_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в TRON / Рублях  ✅Например: 0.6524 / 2550",
+    "candidates": [
+      {
+        "action": "Tron(TRX)",
+        "score": 2.9,
+        "reasons": [
+          "token-overlap:tron",
+          "coin-overlap:tron"
+        ]
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "USDT(trc20)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Monero(XMR)",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Litecoin",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Bitcoin",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 114,
+    "from": "509c49e252d2a641a36cc9f12e8334a4",
+    "to": "674952e17927d75d3fa605a894430989",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match",
+      "margin=0.00"
+    ],
+    "source_kind": "buy_amount_prompt",
+    "target_kind": "info",
+    "source_text_preview": "🕹Сколько ты хочешь купить? 📝Напиши сумму в TRON / Рублях  ✅Например: 0.6524 / 2550",
+    "target_text_preview": "Расчёт суммы...",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Калькулятор",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 115,
+    "from": "674952e17927d75d3fa605a894430989",
+    "to": "c8544538fb8008da3879f74822a07288",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "low",
+    "confidence_score": 0.3,
+    "reasons": [
+      "no-interactive-buttons-in-source"
+    ],
+    "source_kind": "info",
+    "target_kind": "quote",
+    "source_text_preview": "Расчёт суммы...",
+    "target_text_preview": "Сумма к получению: 76.3 Tron(TRX) Сумма к оплате: 2550 ₽",
+    "candidates": []
+  },
+  {
+    "index": 116,
+    "from": "c8544538fb8008da3879f74822a07288",
+    "to": "13d2ea29ae675d40bbf8772f13b86265",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "quote",
+    "target_kind": "promo_confirm",
+    "source_text_preview": "Сумма к получению: 76.3 Tron(TRX) Сумма к оплате: 2550 ₽",
+    "target_text_preview": "🕹Ты покупаешь Tron(TRX): 76.3 Тебе нужно будет оплатить: 2550 2460 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочешь ",
+    "candidates": []
+  },
+  {
+    "index": 117,
+    "from": "13d2ea29ae675d40bbf8772f13b86265",
+    "to": "3fb75c375615483587d78f4e5bf66da9",
+    "original_action": "<next-message>",
+    "inferred_action": "Не использовать промокод",
+    "action_key": "button:Не использовать промокод",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "promo_confirm",
+    "target_kind": "payment_method_select",
+    "source_text_preview": "🕹Ты покупаешь Tron(TRX): 76.3 Тебе нужно будет оплатить: 2550 2460 🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии  👨‍🔧 Хочешь ",
+    "target_text_preview": "🎮Твоя заявка 🕹Покупка Tron(TRX): 76.3 🪙Нужно перевести: 2550 ₽ Выбери способ оплаты:",
+    "candidates": [
+      {
+        "action": "Не использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Использовать промокод",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 118,
+    "from": "3fb75c375615483587d78f4e5bf66da9",
+    "to": "2bec2085ca504aeba5eccfb09eeaeb73",
+    "original_action": "<next-message>",
+    "inferred_action": "🕹ТРАНСГРАН",
+    "action_key": "button:🕹ТРАНСГРАН",
+    "confidence": "low",
+    "confidence_score": 0.2,
+    "reasons": [
+      "margin=0.00"
+    ],
+    "source_kind": "payment_method_select",
+    "target_kind": "wallet_prompt",
+    "source_text_preview": "🎮Твоя заявка 🕹Покупка Tron(TRX): 76.3 🪙Нужно перевести: 2550 ₽ Выбери способ оплаты:",
+    "target_text_preview": "Введите Tron(TRX)-адрес кошелька, куда вы хотите отправить 76.3trx.",
+    "candidates": [
+      {
+        "action": "🕹ТРАНСГРАН",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "📱СБП",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "💳КАРТА",
+        "score": 0.0,
+        "reasons": []
+      },
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 119,
+    "from": "2bec2085ca504aeba5eccfb09eeaeb73",
+    "to": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "original_action": "<next-message>",
+    "inferred_action": "__user_input__",
+    "action_key": "input:any",
+    "confidence": "medium",
+    "confidence_score": 0.65,
+    "reasons": [
+      "input-prompt-overrides-weak-button-match"
+    ],
+    "source_kind": "wallet_prompt",
+    "target_kind": "order_searching",
+    "source_text_preview": "Введите Tron(TRX)-адрес кошелька, куда вы хотите отправить 76.3trx.",
+    "target_text_preview": "⏳Поиск реквизита. Ожидание до 5 минут.  Так же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "candidates": [
+      {
+        "action": "Назад",
+        "score": 0.0,
+        "reasons": []
+      }
+    ]
+  },
+  {
+    "index": 120,
+    "from": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "to": "a34fa4bdaeee02944576c7ff09f442d9",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "order_searching",
+    "target_kind": "intro_banner",
+    "source_text_preview": "⏳Поиск реквизита. Ожидание до 5 минут.  Так же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "target_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "candidates": []
+  },
+  {
+    "index": 121,
+    "from": "a34fa4bdaeee02944576c7ff09f442d9",
+    "to": "dea2d09f86c418ad7e64269f922bf07c",
+    "original_action": "<next-message>",
+    "inferred_action": "__system__",
+    "action_key": "system:auto",
+    "confidence": "medium",
+    "confidence_score": 0.6,
+    "reasons": [
+      "non-interactive-system-transition"
+    ],
+    "source_kind": "intro_banner",
+    "target_kind": "main_menu",
+    "source_text_preview": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время! 💵Низкие комиссии⚡️Быстрые ответы 🤑Шанс получить бонус после каждого обмена 🔥Реферальная и ски",
+    "target_text_preview": "Если бот завис - нажми /start",
+    "candidates": []
+  }
+]

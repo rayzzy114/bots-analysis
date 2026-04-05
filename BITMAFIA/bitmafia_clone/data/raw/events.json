@@ -1,0 +1,370 @@
+[
+  {
+    "ts": "2026-03-12T14:49:37.660459+00:00",
+    "message_id": 173428,
+    "state_id": "88dac63e13813e9b633ada192fd4ac2b",
+    "from_action": "/start",
+    "text": "⚡",
+    "text_html": "⚡",
+    "text_markdown": "⚡",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-03-12T14:49:40.430980+00:00",
+    "message_id": 173429,
+    "state_id": "4fdfa881597ed3208ee0144e67604ef9",
+    "from_action": "🎩 О нас",
+    "text": "Приветствуем! Наша автоматизированная система очистки даёт возможность обмена Ваших грязных BTC (транзакции которых могут быть отслежены) на USDT (TRC,ERC), BTC (Чистый 0% AML), XMR, LTC, ETH.\n\nКаждая транзакция у нас — это надежная очистка криптовалют без верификаций и задержек. А также это надежность, качество, быстрота и множество направлений.",
+    "text_html": "Приветствуем! Наша автоматизированная система очистки даёт возможность обмена Ваших грязных BTC (транзакции которых могут быть отслежены) на USDT (TRC,ERC), BTC (Чистый 0% AML), XMR, LTC, ETH.\n\nКаждая транзакция у нас — это надежная очистка криптовалют без верификаций и задержек. А также это надежность, качество, быстрота и множество направлений.",
+    "text_markdown": "Приветствуем! Наша автоматизированная система очистки даёт возможность обмена Ваших грязных BTC (транзакции которых могут быть отслежены) на USDT (TRC,ERC), BTC (Чистый 0% AML), XMR, LTC, ETH.\n\nКаждая транзакция у нас — это надежная очистка криптовалют без верификаций и задержек. А также это надежность, качество, быстрота и множество направлений.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/photo_5998155393936766863.jpg",
+    "button_rows": [
+      [
+        {
+          "text": "Все о крипте",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://t.me/+9-b_IupCYGlhNmYy"
+        },
+        {
+          "text": "История очисток",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-03-12T14:49:40.460730+00:00",
+    "message_id": 173431,
+    "state_id": "f8fdecd0bd93fcde1650cfc24a580bc2",
+    "from_action": "🎩 О нас",
+    "text": "MixMafia — Ваш надежный финансовый партнер. Поможем безопасно, быстро и по выгодному курсу очистить валюту. Не производим AML и KYC проверки",
+    "text_html": "<strong>MixMafia</strong> — Ваш надежный финансовый партнер. Поможем безопасно, быстро и по выгодному курсу очистить валюту. Не производим AML и KYC проверки",
+    "text_markdown": "**MixMafia** — Ваш надежный финансовый партнер. Поможем безопасно, быстро и по выгодному курсу очистить валюту. Не производим AML и KYC проверки",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 8,
+        "inner_text": "MixMafia"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Отзывы",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Тарифы",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Канал",
+          "type": "KeyboardButtonUrl",
+          "row": 2,
+          "col": 0,
+          "url": "https://t.me/+WV8DeR3IFcswYjRi"
+        }
+      ],
+      [
+        {
+          "text": "Поддержка",
+          "type": "KeyboardButtonUrl",
+          "row": 3,
+          "col": 0,
+          "url": "https://t.me/BitMafia_support"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-03-12T14:49:52.330872+00:00",
+    "message_id": 173432,
+    "state_id": "be1949e87800c36bde4e4a44ce248601",
+    "from_action": "Отзывы",
+    "text": "Посмотреть или оставить отзывы о нашей работе Вы можете на одном из следующих форумов",
+    "text_html": "Посмотреть или оставить отзывы о нашей работе Вы можете на одном из следующих форумов",
+    "text_markdown": "Посмотреть или оставить отзывы о нашей работе Вы можете на одном из следующих форумов",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Канал с отзывами",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://t.me/+Nq1-DPuYxl00MzMy"
+        }
+      ],
+      [
+        {
+          "text": "Rutor",
+          "type": "KeyboardButtonUrl",
+          "row": 1,
+          "col": 0,
+          "url": "https://fit.rutor.fit/forums/bitmafia-io-qr-obmen-mixer.1569/"
+        }
+      ],
+      [
+        {
+          "text": "WayAway",
+          "type": "KeyboardButtonUrl",
+          "row": 2,
+          "col": 0,
+          "url": "https://wayaway.at/forums/bitmafia-io-qr-obmen-mikser.12964/"
+        }
+      ],
+      [
+        {
+          "text": "BigRC",
+          "type": "KeyboardButtonUrl",
+          "row": 3,
+          "col": 0,
+          "url": "https://bigrc.biz/forums/bitmafia-io-qr-chistka-btc-obnal.463/"
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-03-12T14:49:52.365610+00:00",
+    "message_id": 173434,
+    "state_id": "9d7af31161437907176c05ca0ebbd35f",
+    "from_action": "Отзывы",
+    "text": "Неизвестная команда",
+    "text_html": "Неизвестная команда",
+    "text_markdown": "Неизвестная команда",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-03-12T14:50:02.214880+00:00",
+    "message_id": 173435,
+    "state_id": "f8fdecd0bd93fcde1650cfc24a580bc2",
+    "from_action": "Отзывы",
+    "text": "MixMafia — Ваш надежный финансовый партнер. Поможем безопасно, быстро и по выгодному курсу очистить валюту. Не производим AML и KYC проверки",
+    "text_html": "<strong>MixMafia</strong> — Ваш надежный финансовый партнер. Поможем безопасно, быстро и по выгодному курсу очистить валюту. Не производим AML и KYC проверки",
+    "text_markdown": "**MixMafia** — Ваш надежный финансовый партнер. Поможем безопасно, быстро и по выгодному курсу очистить валюту. Не производим AML и KYC проверки",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 8,
+        "inner_text": "MixMafia"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Отзывы",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Тарифы",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Канал",
+          "type": "KeyboardButtonUrl",
+          "row": 2,
+          "col": 0,
+          "url": "https://t.me/+WV8DeR3IFcswYjRi"
+        }
+      ],
+      [
+        {
+          "text": "Поддержка",
+          "type": "KeyboardButtonUrl",
+          "row": 3,
+          "col": 0,
+          "url": "https://t.me/BitMafia_support"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-03-12T14:50:02.248293+00:00",
+    "message_id": 173436,
+    "state_id": "d09f391b05d3a634bb923cdf093dc2ed",
+    "from_action": "Отзывы",
+    "text": "BTC - Любая доступная монета\nтолько 2% и ничего более!",
+    "text_html": "BTC - Любая доступная монета\nтолько 2% и ничего более!",
+    "text_markdown": "BTC - Любая доступная монета\nтолько 2% и ничего более!",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-03-12T14:50:10.382047+00:00",
+    "message_id": 173437,
+    "state_id": "68f9f5412575078fc61099ba55bee131",
+    "from_action": "Отзывы",
+    "text": "Функция назад",
+    "text_html": "Функция назад",
+    "text_markdown": "Функция назад",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  }
+]

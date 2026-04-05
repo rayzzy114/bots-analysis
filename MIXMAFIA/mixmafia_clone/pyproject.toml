@@ -1,0 +1,21 @@
+[project]
+name = "mixmafia-clone"
+version = "0.1.0"
+description = "Flow-driven clone of MixMafiaBot (crypto mixer)"
+requires-python = ">=3.11"
+dependencies = [
+  "aiogram>=3.21.0",
+  "httpx>=0.28.1",
+  "python-dotenv>=1.0.1",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.4.1",
+  "ruff>=0.9.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,14 @@
+{
+    "help": {
+        "text": "ПОМОЩЬ ПО БОТУ/ОБМЕНУ",
+        "url": "https://google.com"
+    },
+    "reviews": {
+        "text": "ОТЗЫВЫ",
+        "url": "https://google.com"
+    },
+    "admin": {
+        "text": "АДМИН",
+        "url": "https://example.com"
+    }
+}

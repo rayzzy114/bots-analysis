@@ -1,0 +1,173 @@
+import hashlib
+import re
+from typing import Iterable
+
+# Base58 characters
+B58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+
+
+def base58_decode(v: str) -> bytes | None:
+    decimal = 0
+    for char in v:
+        if char not in B58_ALPHABET:
+            return None
+        decimal = decimal * 58 + B58_ALPHABET.index(char)
+    
+    res = []
+    while decimal > 0:
+        res.append(decimal % 256)
+        decimal //= 256
+    
+    # Handle leading '1's
+    pad = 0
+    for char in v:
+        if char == "1":
+            pad += 1
+        else:
+            break
+        
+    return bytes([0] * pad + res[::-1])
+
+
+def validate_base58_checksum(address: str) -> bool:
+    """Validate a Base58Check encoded address (BTC, TRX, LTC legacy)."""
+    try:
+        decoded = base58_decode(address)
+        if not decoded or len(decoded) < 5:
+            return False
+        
+        data, checksum = decoded[:-4], decoded[-4:]
+        hash1 = hashlib.sha256(data).digest()
+        hash2 = hashlib.sha256(hash1).digest()
+        
+        return hash2[:4] == checksum
+    except Exception:
+        return False
+
+
+def is_valid_crypto_address(address: str, symbol: str, network_hint: str = "") -> bool:
+    """Enhanced address validation with checksums."""
+    address = address.strip()
+    symbol = symbol.upper()
+    
+    if symbol == "BTC":
+        # Segwit (bech32) starts with bc1
+        if address.lower().startswith("bc1"):
+            return len(address) >= 42 and all(c in "qpzry9x8gf2tvdw0s3jn54khce6mua7l" for c in address[3:].lower())
+        # Legacy/P2SH starts with 1 or 3
+        if address.startswith(("1", "3")):
+            return validate_base58_checksum(address)
+        return False
+        
+    if symbol == "TRX":
+        if not address.startswith("T"):
+            return False
+        return validate_base58_checksum(address)
+    if symbol == "USDT":
+        hint = network_hint.upper()
+        has_evm_hint = bool(
+            re.search(r"\bBSC(?:\W*20)?\b|\bBEP\W*20\b|\bERC\W*20\b|\bETH\b|\bETHEREUM\b", hint)
+        )
+        has_trc_hint = bool(re.search(r"\bTRC\W*20\b|\bTRX\b|\bTRON\b", hint))
+
+        is_evm_address = bool(re.fullmatch(r"0x[a-fA-F0-9]{40}", address))
+        is_trc_address = address.startswith("T") and validate_base58_checksum(address)
+
+        if has_evm_hint and not has_trc_hint:
+            return is_evm_address
+        if has_trc_hint and not has_evm_hint:
+            return is_trc_address
+        # Fallback: accept both common USDT networks when no explicit hint.
+        return is_trc_address or is_evm_address
+        
+    if symbol == "ETH":
+        return bool(re.match(r"^0x[a-fA-F0-9]{40}$", address))
+        
+    if symbol == "LTC":
+        if address.lower().startswith("ltc1"):
+            return len(address) >= 43 and all(c in "qpzry9x8gf2tvdw0s3jn54khce6mua7l" for c in address[4:].lower())
+        if address.startswith(("L", "M", "3")):
+            return validate_base58_checksum(address)
+        return False
+
+    if symbol == "TON":
+        return bool(re.fullmatch(r"(?:EQ|UQ)[A-Za-z0-9_-]{46,64}", address))
+
+    if symbol == "XMR":
+        return bool(re.fullmatch(r"[1-9A-HJ-NP-Za-km-z]{95}|[1-9A-HJ-NP-Za-km-z]{106}", address))
+
+    return len(address) > 20 # Fallback for others
+
+
+def _parse_float(raw: str) -> float | None:
+    cleaned = raw.strip().replace(" ", "")
+    # Handle European format 1.000,50 -> 1000.50
+    if "." in cleaned and "," in cleaned:
+        if cleaned.rfind(".") > cleaned.rfind(","):
+            # Format: 1,000.50
+            cleaned = cleaned.replace(",", "")
+        else:
+            # Format: 1.000,50
+            cleaned = cleaned.replace(".", "").replace(",", ".")
+    else:
+        # Either no thousand separator, or only one type of separator
+        cleaned = cleaned.replace(",", ".")
+
+    cleaned = re.sub(r"[^0-9.]", "", cleaned)
+    if not cleaned or cleaned.count(".") > 1:
+        return None
+    try:
+        return float(cleaned)
+    except ValueError:
+        return None
+
+
+def parse_admin_ids(raw: str) -> set[int]:
+    result: set[int] = set()
+    for chunk in raw.split(","):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        try:
+            result.add(int(chunk))
+        except ValueError:
+            continue
+    return result
+
+
+def parse_amount(raw: str) -> float | None:
+    value = _parse_float(raw)
+    if value is None:
+        return None
+    if value <= 0:
+        return None
+    return value
+
+
+def parse_non_negative_amount(raw: str) -> float | None:
+    value = _parse_float(raw)
+    if value is None:
+        return None
+    if value < 0:
+        return None
+    return value
+
+
+def fmt_money(value: float) -> str:
+    return f"{round(value):,}".replace(",", " ")
+
+
+def fmt_coin(value: float) -> str:
+    return f"{value:.8f}".rstrip("0").rstrip(".")
+
+
+def safe_username(username: str | None) -> str:
+    if username:
+        return f"@{username}"
+    return "@N/A"
+
+
+def first_or_none(values: Iterable[str]) -> str | None:
+    for item in values:
+        return item
+    return None

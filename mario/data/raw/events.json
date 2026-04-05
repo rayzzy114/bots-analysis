@@ -1,0 +1,5655 @@
+[
+  {
+    "ts": "2026-02-22T15:27:24.946861+00:00",
+    "message_id": 163914,
+    "state_id": "f7df657dc44a55bb5f745478b8790482",
+    "from_action": "/start",
+    "text": "⭐️Какую крипту хочешь продать?",
+    "text_html": "⭐️Какую крипту хочешь продать?",
+    "text_markdown": "⭐️Какую крипту хочешь продать?",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690596.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Bitcoin",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Litecoin",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "USDT(trc20)",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Monero(XMR)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:27:25.461583+00:00",
+    "message_id": 163916,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:27:37.781580+00:00",
+    "message_id": 163917,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:27:44.822172+00:00",
+    "message_id": 163918,
+    "state_id": "0b514638cae7532b9563fd2bb1ba47bc",
+    "from_action": "<next-message>",
+    "text": "⭐️Какую крипту хочешь купить?",
+    "text_html": "⭐️Какую крипту хочешь купить?",
+    "text_markdown": "⭐️Какую крипту хочешь купить?",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690059.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Bitcoin",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Litecoin",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "USDT(trc20)",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Monero(XMR)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Tron(TRX)",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 5,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:27:47.644511+00:00",
+    "message_id": 163919,
+    "state_id": "37b805b8b5ff7721cc36399eb544fafb",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в BITCOIN / Рублях \n✅Например: 0.6524 / 2550",
+    "text_html": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в BITCOIN / Рублях \n✅Например: 0.6524 / 2550",
+    "text_markdown": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в BITCOIN / Рублях \n✅Например: 0.6524 / 2550",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:27:56.048571+00:00",
+    "message_id": 163921,
+    "state_id": "674952e17927d75d3fa605a894430989",
+    "from_action": "<next-message>",
+    "text": "Расчёт суммы...",
+    "text_html": "Расчёт суммы...",
+    "text_markdown": "Расчёт суммы...",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:27:56.696922+00:00",
+    "message_id": 163922,
+    "state_id": "6677c6a34cb14b207a257b5582bbb8c3",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 0.00033 Bitcoin\nСумма к оплате: 2550 ₽\nСумма к зачислению: 1738 ₽",
+    "text_html": "Сумма к получению: 0.00033 Bitcoin\nСумма к оплате: 2550 ₽\nСумма к зачислению: 1738 ₽",
+    "text_markdown": "Сумма к получению: 0.00033 Bitcoin\nСумма к оплате: 2550 ₽\nСумма к зачислению: 1738 ₽",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:28:03.576673+00:00",
+    "message_id": 163923,
+    "state_id": "44462ee1f3a75bc4976e95cfad0ab6e6",
+    "from_action": "<next-message>",
+    "text": "🕹Ты покупаешь Bitcoin: 0.00033\nТебе нужно будет оплатить: 2550 2440\n🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии\n\n👨‍🔧 Хочешь применить промо как скидку?",
+    "text_html": "<strong>🕹Ты покупаешь Bitcoin</strong>: 0.00033\n<strong>Тебе нужно будет оплатить</strong>: <del>2550</del> 2440\n🔥 Я дарю тебе промокод: <strong>PERVAYA_SDELKA</strong>, по которому будет скидка 20% от комиссии\n\n👨‍🔧 <strong>Хочешь применить промо</strong> как скидку?",
+    "text_markdown": "**🕹Ты покупаешь Bitcoin**: 0.00033\n**Тебе нужно будет оплатить**: ~~2550~~ 2440\n🔥 Я дарю тебе промокод: **PERVAYA_SDELKA**, по которому будет скидка 20% от комиссии\n\n👨‍🔧 **Хочешь применить промо** как скидку?",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 22,
+        "inner_text": "🕹Ты покупаешь Bitcoin"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 32,
+        "length": 25,
+        "inner_text": "Тебе нужно будет оплатить"
+      },
+      {
+        "type": "MessageEntityStrike",
+        "offset": 59,
+        "length": 4,
+        "inner_text": "2550"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 94,
+        "length": 14,
+        "inner_text": "PERVAYA_SDELKA"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 158,
+        "length": 22,
+        "inner_text": "Хочешь применить промо"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityStrike"
+    ],
+    "entity_count": 5,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690060.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Не использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:28:32.533376+00:00",
+    "message_id": 163924,
+    "state_id": "e3d82312ac5b2db02138b85a54abd25c",
+    "from_action": "<next-message>",
+    "text": "🎮Твоя заявка\n🕹Покупка Bitcoin: 0.00033\n🪙Нужно перевести: 2550 ₽\nВыбери способ оплаты:",
+    "text_html": "🎮<strong>Твоя заявка</strong>\n🕹<strong>Покупка Bitcoin</strong>: 0.00033\n🪙<strong>Нужно перевести</strong>: 2550 ₽\n<strong>Выбери способ оплаты:</strong>",
+    "text_markdown": "🎮**Твоя заявка**\n🕹**Покупка Bitcoin**: 0.00033\n🪙**Нужно перевести**: 2550 ₽\n**Выбери способ оплаты:**",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 2,
+        "length": 11,
+        "inner_text": "Твоя заявка"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 16,
+        "length": 15,
+        "inner_text": "Покупка Bitcoin"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 43,
+        "length": 15,
+        "inner_text": "Нужно перевести"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 67,
+        "length": 21,
+        "inner_text": "Выбери способ оплаты:"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690600.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "📱СБП",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "💳КАРТА",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🕹ТРАНСГРАН",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:28:40.083564+00:00",
+    "message_id": 163925,
+    "state_id": "d1a26ec0c237d85c27510e71a9786a92",
+    "from_action": "<next-message>",
+    "text": "⭐️На какой Bitcoin-адрес ты хочешь отправить 0.00033 btc.\n📝Отправь кошелек:",
+    "text_html": "⭐️На какой Bitcoin-адрес ты хочешь отправить 0.00033 btc.\n📝Отправь кошелек:",
+    "text_markdown": "⭐️На какой Bitcoin-адрес ты хочешь отправить 0.00033 btc.\n📝Отправь кошелек:",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5438390665115372122.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:29:00.554813+00:00",
+    "message_id": 163927,
+    "state_id": "78361a9584ffafc06f325d793728df47",
+    "from_action": "<next-message>",
+    "text": "Выберите способ доставки",
+    "text_html": "Выберите способ доставки",
+    "text_markdown": "Выберите способ доставки",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "ВИП😎1-20 минут(+150₽)",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Обычная🥹20-80 минут",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:29:21.964102+00:00",
+    "message_id": 163928,
+    "state_id": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "from_action": "<next-message>",
+    "text": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "text_html": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "text_markdown": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "entities": [
+      {
+        "type": "MessageEntityMention",
+        "offset": 87,
+        "length": 15,
+        "inner_text": "@BTC24MONEYnoch"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityMention"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:29:23.601829+00:00",
+    "message_id": 163930,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:29:24.690018+00:00",
+    "message_id": 163931,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:29:26.998757+00:00",
+    "message_id": 163932,
+    "state_id": "0b514638cae7532b9563fd2bb1ba47bc",
+    "from_action": "<next-message>",
+    "text": "⭐️Какую крипту хочешь купить?",
+    "text_html": "⭐️Какую крипту хочешь купить?",
+    "text_markdown": "⭐️Какую крипту хочешь купить?",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690059.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Bitcoin",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Litecoin",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "USDT(trc20)",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Monero(XMR)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Tron(TRX)",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 5,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:29:29.114622+00:00",
+    "message_id": 163933,
+    "state_id": "d1628cf2837e880dabf38edc1510e4fb",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в LITECOIN / Рублях \n✅Например: 0.6524 / 2550",
+    "text_html": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в LITECOIN / Рублях \n✅Например: 0.6524 / 2550",
+    "text_markdown": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в LITECOIN / Рублях \n✅Например: 0.6524 / 2550",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:29:32.887847+00:00",
+    "message_id": 163936,
+    "state_id": "77e13a147984da95e5ad2be41fe97afb",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 0.15 Litecoin\nСумма к оплате: 1204 ₽\nСумма к зачислению: 621 ₽",
+    "text_html": "Сумма к получению: 0.15 Litecoin\nСумма к оплате: 1204 ₽\nСумма к зачислению: 621 ₽",
+    "text_markdown": "Сумма к получению: 0.15 Litecoin\nСумма к оплате: 1204 ₽\nСумма к зачислению: 621 ₽",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:29:32.903601+00:00",
+    "message_id": 163937,
+    "state_id": "d7d7e428d4b021012c1a6093dde5ec66",
+    "from_action": "<next-message>",
+    "text": "🕹Ты покупаешь Litecoin: 0.15\nТебе нужно будет оплатить: 1204 1108\n🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии\n\n👨‍🔧 Хочешь применить промо как скидку?",
+    "text_html": "<strong>🕹Ты покупаешь Litecoin</strong>: 0.15\n<strong>Тебе нужно будет оплатить</strong>: <del>1204</del> 1108\n🔥 Я дарю тебе промокод: <strong>PERVAYA_SDELKA</strong>, по которому будет скидка 20% от комиссии\n\n👨‍🔧 <strong>Хочешь применить промо</strong> как скидку?",
+    "text_markdown": "**🕹Ты покупаешь Litecoin**: 0.15\n**Тебе нужно будет оплатить**: ~~1204~~ 1108\n🔥 Я дарю тебе промокод: **PERVAYA_SDELKA**, по которому будет скидка 20% от комиссии\n\n👨‍🔧 **Хочешь применить промо** как скидку?",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 23,
+        "inner_text": "🕹Ты покупаешь Litecoin"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 30,
+        "length": 25,
+        "inner_text": "Тебе нужно будет оплатить"
+      },
+      {
+        "type": "MessageEntityStrike",
+        "offset": 57,
+        "length": 4,
+        "inner_text": "1204"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 92,
+        "length": 14,
+        "inner_text": "PERVAYA_SDELKA"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 22,
+        "inner_text": "Хочешь применить промо"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityStrike"
+    ],
+    "entity_count": 5,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690060.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Не использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:29:35.491330+00:00",
+    "message_id": 163938,
+    "state_id": "18743c6bd3d9d6b335b096990e7851bd",
+    "from_action": "<next-message>",
+    "text": "🎮Твоя заявка\n🕹Покупка Litecoin: 0.15\n🪙Нужно перевести: 1204 ₽\nВыбери способ оплаты:",
+    "text_html": "🎮<strong>Твоя заявка</strong>\n🕹<strong>Покупка Litecoin</strong>: 0.15\n🪙<strong>Нужно перевести</strong>: 1204 ₽\n<strong>Выбери способ оплаты:</strong>",
+    "text_markdown": "🎮**Твоя заявка**\n🕹**Покупка Litecoin**: 0.15\n🪙**Нужно перевести**: 1204 ₽\n**Выбери способ оплаты:**",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 2,
+        "length": 11,
+        "inner_text": "Твоя заявка"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 16,
+        "length": 16,
+        "inner_text": "Покупка Litecoin"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 41,
+        "length": 15,
+        "inner_text": "Нужно перевести"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 65,
+        "length": 21,
+        "inner_text": "Выбери способ оплаты:"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690600.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "📱СБП",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "💳КАРТА",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🕹ТРАНСГРАН",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:29:46.965418+00:00",
+    "message_id": 163939,
+    "state_id": "3809118b853907631ba4e82536b75748",
+    "from_action": "<next-message>",
+    "text": "⭐️На какой Litecoin-адрес ты хочешь отправить 0.15 ltc?\n📝Отправь кошелек:",
+    "text_html": "⭐️На какой Litecoin-адрес ты хочешь отправить 0.15 ltc?\n📝Отправь кошелек:",
+    "text_markdown": "⭐️На какой Litecoin-адрес ты хочешь отправить 0.15 ltc?\n📝Отправь кошелек:",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5438390665115372493.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:29:58.755336+00:00",
+    "message_id": 163941,
+    "state_id": "326b57c30338efd092ba50533067cc8b",
+    "from_action": "<next-message>",
+    "text": "Вы ввели невалидный кошелек.",
+    "text_html": "Вы ввели невалидный кошелек.",
+    "text_markdown": "Вы ввели невалидный кошелек.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:30:05.451811+00:00",
+    "message_id": 163943,
+    "state_id": "326b57c30338efd092ba50533067cc8b",
+    "from_action": "<next-message>",
+    "text": "Вы ввели невалидный кошелек.",
+    "text_html": "Вы ввели невалидный кошелек.",
+    "text_markdown": "Вы ввели невалидный кошелек.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:30:23.742557+00:00",
+    "message_id": 163945,
+    "state_id": "326b57c30338efd092ba50533067cc8b",
+    "from_action": "<next-message>",
+    "text": "Вы ввели невалидный кошелек.",
+    "text_html": "Вы ввели невалидный кошелек.",
+    "text_markdown": "Вы ввели невалидный кошелек.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:30:55.033585+00:00",
+    "message_id": 163947,
+    "state_id": "b2354174ce711dbe22f10c8d6bf3bbd7",
+    "from_action": "<next-message>",
+    "text": "В процессе поиск реквизитов по предыдущей оформленной сделке.",
+    "text_html": "В процессе поиск реквизитов по предыдущей оформленной сделке.",
+    "text_markdown": "В процессе поиск реквизитов по предыдущей оформленной сделке.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Остановить поиск",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:30:57.330210+00:00",
+    "message_id": 163948,
+    "state_id": "88f02cd302d810b785c068a172a01f05",
+    "from_action": "<next-message>",
+    "text": "Поиск реквизитов остановлен.",
+    "text_html": "Поиск реквизитов остановлен.",
+    "text_markdown": "Поиск реквизитов остановлен.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:03.143809+00:00",
+    "message_id": 163950,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:31:03.673454+00:00",
+    "message_id": 163951,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:06.297606+00:00",
+    "message_id": 163952,
+    "state_id": "0b514638cae7532b9563fd2bb1ba47bc",
+    "from_action": "<next-message>",
+    "text": "⭐️Какую крипту хочешь купить?",
+    "text_html": "⭐️Какую крипту хочешь купить?",
+    "text_markdown": "⭐️Какую крипту хочешь купить?",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690059.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Bitcoin",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Litecoin",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "USDT(trc20)",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Monero(XMR)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Tron(TRX)",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 5,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:08.931086+00:00",
+    "message_id": 163953,
+    "state_id": "d1628cf2837e880dabf38edc1510e4fb",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в LITECOIN / Рублях \n✅Например: 0.6524 / 2550",
+    "text_html": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в LITECOIN / Рублях \n✅Например: 0.6524 / 2550",
+    "text_markdown": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в LITECOIN / Рублях \n✅Например: 0.6524 / 2550",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:25.381336+00:00",
+    "message_id": 163955,
+    "state_id": "f259880f50bedcc33a0f40e1dd78e557",
+    "from_action": "<next-message>",
+    "text": "Невалидное значение.",
+    "text_html": "Невалидное значение.",
+    "text_markdown": "Невалидное значение.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:25.400045+00:00",
+    "message_id": 163958,
+    "state_id": "40e326a580739cc43dcab2c8da179721",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 0.42889 Litecoin\nСумма к оплате: 2550 ₽\nСумма к зачислению: 1774 ₽",
+    "text_html": "Сумма к получению: 0.42889 Litecoin\nСумма к оплате: 2550 ₽\nСумма к зачислению: 1774 ₽",
+    "text_markdown": "Сумма к получению: 0.42889 Litecoin\nСумма к оплате: 2550 ₽\nСумма к зачислению: 1774 ₽",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:25.420649+00:00",
+    "message_id": 163960,
+    "state_id": "573ab4ee0c720077a8eee18fb11bf94c",
+    "from_action": "<next-message>",
+    "text": "🎮Твоя заявка\n🕹Покупка Litecoin: 0.42889\n🪙Нужно перевести: 2550 ₽\nВыбери способ оплаты:",
+    "text_html": "🎮<strong>Твоя заявка</strong>\n🕹<strong>Покупка Litecoin</strong>: 0.42889\n🪙<strong>Нужно перевести</strong>: 2550 ₽\n<strong>Выбери способ оплаты:</strong>",
+    "text_markdown": "🎮**Твоя заявка**\n🕹**Покупка Litecoin**: 0.42889\n🪙**Нужно перевести**: 2550 ₽\n**Выбери способ оплаты:**",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 2,
+        "length": 11,
+        "inner_text": "Твоя заявка"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 16,
+        "length": 16,
+        "inner_text": "Покупка Litecoin"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 44,
+        "length": 15,
+        "inner_text": "Нужно перевести"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 68,
+        "length": 21,
+        "inner_text": "Выбери способ оплаты:"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690600.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "📱СБП",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "💳КАРТА",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🕹ТРАНСГРАН",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:25.443297+00:00",
+    "message_id": 163961,
+    "state_id": "a018ed10ea04185e03e1e203491d3de4",
+    "from_action": "<next-message>",
+    "text": "⭐️На какой Litecoin-адрес ты хочешь отправить 0.42889 ltc?\n📝Отправь кошелек:",
+    "text_html": "⭐️На какой Litecoin-адрес ты хочешь отправить 0.42889 ltc?\n📝Отправь кошелек:",
+    "text_markdown": "⭐️На какой Litecoin-адрес ты хочешь отправить 0.42889 ltc?\n📝Отправь кошелек:",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5438390665115372493.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:25.457209+00:00",
+    "message_id": 163963,
+    "state_id": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "from_action": "<next-message>",
+    "text": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "text_html": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "text_markdown": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "entities": [
+      {
+        "type": "MessageEntityMention",
+        "offset": 87,
+        "length": 15,
+        "inner_text": "@BTC24MONEYnoch"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityMention"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:33.354046+00:00",
+    "message_id": 163965,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:31:33.918671+00:00",
+    "message_id": 163966,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:36.006029+00:00",
+    "message_id": 163967,
+    "state_id": "0b514638cae7532b9563fd2bb1ba47bc",
+    "from_action": "<next-message>",
+    "text": "⭐️Какую крипту хочешь купить?",
+    "text_html": "⭐️Какую крипту хочешь купить?",
+    "text_markdown": "⭐️Какую крипту хочешь купить?",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690059.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Bitcoin",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Litecoin",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "USDT(trc20)",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Monero(XMR)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Tron(TRX)",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 5,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:37.692526+00:00",
+    "message_id": 163968,
+    "state_id": "4391b0262804f8f0ebe5e25b07b22d3c",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в USDT / Рублях \n✅Например: 0.6524 / 2550",
+    "text_html": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в USDT / Рублях \n✅Например: 0.6524 / 2550",
+    "text_markdown": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в USDT / Рублях \n✅Например: 0.6524 / 2550",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:40.770935+00:00",
+    "message_id": 163970,
+    "state_id": "674952e17927d75d3fa605a894430989",
+    "from_action": "<next-message>",
+    "text": "Расчёт суммы...",
+    "text_html": "Расчёт суммы...",
+    "text_markdown": "Расчёт суммы...",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:56.510904+00:00",
+    "message_id": 163971,
+    "state_id": "7e31b306d6f92ae341f59de08ffb89d3",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 2550 USDT(trc20)\nСумма к оплате: 238837 ₽",
+    "text_html": "Сумма к получению: 2550 USDT(trc20)\nСумма к оплате: 238837 ₽",
+    "text_markdown": "Сумма к получению: 2550 USDT(trc20)\nСумма к оплате: 238837 ₽",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:31:56.532146+00:00",
+    "message_id": 163973,
+    "state_id": "6b4b758a5c2632d362dd4c33911b152e",
+    "from_action": "<next-message>",
+    "text": "🎮Твоя заявка\n🕹Покупка USDT(trc20): 2550\n🪙Нужно перевести: 238837 ₽\nВыбери способ оплаты:",
+    "text_html": "🎮<strong>Твоя заявка</strong>\n🕹<strong>Покупка USDT(trc20)</strong>: 2550\n🪙<strong>Нужно перевести</strong>: 238837 ₽\n<strong>Выбери способ оплаты:</strong>",
+    "text_markdown": "🎮**Твоя заявка**\n🕹**Покупка USDT(trc20)**: 2550\n🪙**Нужно перевести**: 238837 ₽\n**Выбери способ оплаты:**",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 2,
+        "length": 11,
+        "inner_text": "Твоя заявка"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 16,
+        "length": 19,
+        "inner_text": "Покупка USDT(trc20)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 44,
+        "length": 15,
+        "inner_text": "Нужно перевести"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 70,
+        "length": 21,
+        "inner_text": "Выбери способ оплаты:"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690600.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "📱СБП",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "💳КАРТА",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🕹ТРАНСГРАН",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:05.266812+00:00",
+    "message_id": 163974,
+    "state_id": "3dad6305cfd49fe58edcd334baaa0086",
+    "from_action": "<next-message>",
+    "text": "Введите USDT(trc20)-адрес кошелька, куда вы хотите отправить 2550 usdt.",
+    "text_html": "Введите USDT(trc20)-адрес кошелька, куда вы хотите отправить 2550 usdt.",
+    "text_markdown": "Введите USDT(trc20)-адрес кошелька, куда вы хотите отправить 2550 usdt.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5447480435116378492.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:05.788660+00:00",
+    "message_id": 163977,
+    "state_id": "88f02cd302d810b785c068a172a01f05",
+    "from_action": "<next-message>",
+    "text": "Поиск реквизитов остановлен.",
+    "text_html": "Поиск реквизитов остановлен.",
+    "text_markdown": "Поиск реквизитов остановлен.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:07.356210+00:00",
+    "message_id": 163979,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:32:08.423826+00:00",
+    "message_id": 163980,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:12.123035+00:00",
+    "message_id": 163981,
+    "state_id": "0b514638cae7532b9563fd2bb1ba47bc",
+    "from_action": "<next-message>",
+    "text": "⭐️Какую крипту хочешь купить?",
+    "text_html": "⭐️Какую крипту хочешь купить?",
+    "text_markdown": "⭐️Какую крипту хочешь купить?",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690059.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Bitcoin",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Litecoin",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "USDT(trc20)",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Monero(XMR)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Tron(TRX)",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 5,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:15.122266+00:00",
+    "message_id": 163982,
+    "state_id": "4391b0262804f8f0ebe5e25b07b22d3c",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в USDT / Рублях \n✅Например: 0.6524 / 2550",
+    "text_html": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в USDT / Рублях \n✅Например: 0.6524 / 2550",
+    "text_markdown": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в USDT / Рублях \n✅Например: 0.6524 / 2550",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:17.496430+00:00",
+    "message_id": 163985,
+    "state_id": "7e31b306d6f92ae341f59de08ffb89d3",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 2550 USDT(trc20)\nСумма к оплате: 238837 ₽",
+    "text_html": "Сумма к получению: 2550 USDT(trc20)\nСумма к оплате: 238837 ₽",
+    "text_markdown": "Сумма к получению: 2550 USDT(trc20)\nСумма к оплате: 238837 ₽",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:18.069503+00:00",
+    "message_id": 163986,
+    "state_id": "748b78638cbfe9d7d1048c21d9578ed9",
+    "from_action": "<next-message>",
+    "text": "🕹Ты покупаешь USDT(trc20): 2550\nТебе нужно будет оплатить: 238837 236569\n🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии\n\n👨‍🔧 Хочешь применить промо как скидку?",
+    "text_html": "<strong>🕹Ты покупаешь USDT(trc20)</strong>: 2550\n<strong>Тебе нужно будет оплатить</strong>: <del>238837</del> 236569\n🔥 Я дарю тебе промокод: <strong>PERVAYA_SDELKA</strong>, по которому будет скидка 20% от комиссии\n\n👨‍🔧 <strong>Хочешь применить промо</strong> как скидку?",
+    "text_markdown": "**🕹Ты покупаешь USDT(trc20)**: 2550\n**Тебе нужно будет оплатить**: ~~238837~~ 236569\n🔥 Я дарю тебе промокод: **PERVAYA_SDELKA**, по которому будет скидка 20% от комиссии\n\n👨‍🔧 **Хочешь применить промо** как скидку?",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 26,
+        "inner_text": "🕹Ты покупаешь USDT(trc20)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 33,
+        "length": 25,
+        "inner_text": "Тебе нужно будет оплатить"
+      },
+      {
+        "type": "MessageEntityStrike",
+        "offset": 60,
+        "length": 6,
+        "inner_text": "238837"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 99,
+        "length": 14,
+        "inner_text": "PERVAYA_SDELKA"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 163,
+        "length": 22,
+        "inner_text": "Хочешь применить промо"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityStrike"
+    ],
+    "entity_count": 5,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690060.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Не использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:19.745145+00:00",
+    "message_id": 163987,
+    "state_id": "6b4b758a5c2632d362dd4c33911b152e",
+    "from_action": "<next-message>",
+    "text": "🎮Твоя заявка\n🕹Покупка USDT(trc20): 2550\n🪙Нужно перевести: 238837 ₽\nВыбери способ оплаты:",
+    "text_html": "🎮<strong>Твоя заявка</strong>\n🕹<strong>Покупка USDT(trc20)</strong>: 2550\n🪙<strong>Нужно перевести</strong>: 238837 ₽\n<strong>Выбери способ оплаты:</strong>",
+    "text_markdown": "🎮**Твоя заявка**\n🕹**Покупка USDT(trc20)**: 2550\n🪙**Нужно перевести**: 238837 ₽\n**Выбери способ оплаты:**",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 2,
+        "length": 11,
+        "inner_text": "Твоя заявка"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 16,
+        "length": 19,
+        "inner_text": "Покупка USDT(trc20)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 44,
+        "length": 15,
+        "inner_text": "Нужно перевести"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 70,
+        "length": 21,
+        "inner_text": "Выбери способ оплаты:"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690600.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "📱СБП",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "💳КАРТА",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🕹ТРАНСГРАН",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:28.174131+00:00",
+    "message_id": 163988,
+    "state_id": "3dad6305cfd49fe58edcd334baaa0086",
+    "from_action": "<next-message>",
+    "text": "Введите USDT(trc20)-адрес кошелька, куда вы хотите отправить 2550 usdt.",
+    "text_html": "Введите USDT(trc20)-адрес кошелька, куда вы хотите отправить 2550 usdt.",
+    "text_markdown": "Введите USDT(trc20)-адрес кошелька, куда вы хотите отправить 2550 usdt.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5447480435116378492.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:28.186523+00:00",
+    "message_id": 163990,
+    "state_id": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "from_action": "<next-message>",
+    "text": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "text_html": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "text_markdown": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "entities": [
+      {
+        "type": "MessageEntityMention",
+        "offset": 87,
+        "length": 15,
+        "inner_text": "@BTC24MONEYnoch"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityMention"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:40.660099+00:00",
+    "message_id": 163992,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:32:41.213606+00:00",
+    "message_id": 163993,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:43.568010+00:00",
+    "message_id": 163994,
+    "state_id": "f7df657dc44a55bb5f745478b8790482",
+    "from_action": "<next-message>",
+    "text": "⭐️Какую крипту хочешь продать?",
+    "text_html": "⭐️Какую крипту хочешь продать?",
+    "text_markdown": "⭐️Какую крипту хочешь продать?",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690596.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Bitcoin",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Litecoin",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "USDT(trc20)",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Monero(XMR)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:59.791362+00:00",
+    "message_id": 163995,
+    "state_id": "cf112a5e2265f4b2c6b0375846c8972b",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в BITCOIN\n✅Например: 0.0012",
+    "text_html": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в BITCOIN\n✅Например: 0.0012",
+    "text_markdown": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в BITCOIN\n✅Например: 0.0012",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:59.816637+00:00",
+    "message_id": 163998,
+    "state_id": "980df86a1c1d3205a2b3605740d4bece",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 84899 ₽\nСумма к оплате: 0.015 btc",
+    "text_html": "Сумма к получению: 84899 ₽\nСумма к оплате: 0.015 btc",
+    "text_markdown": "Сумма к получению: 84899 ₽\nСумма к оплате: 0.015 btc",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:32:59.844187+00:00",
+    "message_id": 163999,
+    "state_id": "013804fbe833c27e73b86221d4a0ddbb",
+    "from_action": "<next-message>",
+    "text": "🕹Ты покупаешь Bitcoin: 0.015\nТебе нужно будет оплатить: 84899 83880\n🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии\n\n👨‍🔧 Хочешь применить промо как скидку?",
+    "text_html": "<strong>🕹Ты покупаешь Bitcoin</strong>: 0.015\n<strong>Тебе нужно будет оплатить</strong>: <del>84899</del> 83880\n🔥 Я дарю тебе промокод: <strong>PERVAYA_SDELKA</strong>, по которому будет скидка 20% от комиссии\n\n👨‍🔧 <strong>Хочешь применить промо</strong> как скидку?",
+    "text_markdown": "**🕹Ты покупаешь Bitcoin**: 0.015\n**Тебе нужно будет оплатить**: ~~84899~~ 83880\n🔥 Я дарю тебе промокод: **PERVAYA_SDELKA**, по которому будет скидка 20% от комиссии\n\n👨‍🔧 **Хочешь применить промо** как скидку?",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 22,
+        "inner_text": "🕹Ты покупаешь Bitcoin"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 30,
+        "length": 25,
+        "inner_text": "Тебе нужно будет оплатить"
+      },
+      {
+        "type": "MessageEntityStrike",
+        "offset": 57,
+        "length": 5,
+        "inner_text": "84899"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 94,
+        "length": 14,
+        "inner_text": "PERVAYA_SDELKA"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 158,
+        "length": 22,
+        "inner_text": "Хочешь применить промо"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityStrike"
+    ],
+    "entity_count": 5,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690060.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Не использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:08.781095+00:00",
+    "message_id": 164000,
+    "state_id": "34ed2ebf090b450e4030af05fa292b36",
+    "from_action": "<next-message>",
+    "text": "Введите 📲СБП реквизиты, куда вы хотите получить 84899 ₽.",
+    "text_html": "Введите 📲СБП реквизиты, куда вы хотите получить 84899 ₽.",
+    "text_markdown": "Введите 📲СБП реквизиты, куда вы хотите получить 84899 ₽.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:15.208622+00:00",
+    "message_id": 164002,
+    "state_id": "b2354174ce711dbe22f10c8d6bf3bbd7",
+    "from_action": "<next-message>",
+    "text": "В процессе поиск реквизитов по предыдущей оформленной сделке.",
+    "text_html": "В процессе поиск реквизитов по предыдущей оформленной сделке.",
+    "text_markdown": "В процессе поиск реквизитов по предыдущей оформленной сделке.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Остановить поиск",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:30.469269+00:00",
+    "message_id": 164003,
+    "state_id": "88f02cd302d810b785c068a172a01f05",
+    "from_action": "<next-message>",
+    "text": "Поиск реквизитов остановлен.",
+    "text_html": "Поиск реквизитов остановлен.",
+    "text_markdown": "Поиск реквизитов остановлен.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:30.483795+00:00",
+    "message_id": 164005,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:33:30.496977+00:00",
+    "message_id": 164006,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:30.510556+00:00",
+    "message_id": 164008,
+    "state_id": "cf112a5e2265f4b2c6b0375846c8972b",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в BITCOIN\n✅Например: 0.0012",
+    "text_html": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в BITCOIN\n✅Например: 0.0012",
+    "text_markdown": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в BITCOIN\n✅Например: 0.0012",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:30.542306+00:00",
+    "message_id": 164011,
+    "state_id": "0cccfcbc67fcb15a1bd7df0087670d88",
+    "from_action": "<next-message>",
+    "text": "Для расчета введите сумму в криптовалюте! \nНапример 0.001",
+    "text_html": "Для расчета введите сумму в криптовалюте! \nНапример 0.001",
+    "text_markdown": "Для расчета введите сумму в криптовалюте! \nНапример 0.001",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:33.268465+00:00",
+    "message_id": 164014,
+    "state_id": "1a6412a7d294a921dc3aeb9ce0b20290",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 84905 ₽\nСумма к оплате: 0.015 btc",
+    "text_html": "Сумма к получению: 84905 ₽\nСумма к оплате: 0.015 btc",
+    "text_markdown": "Сумма к получению: 84905 ₽\nСумма к оплате: 0.015 btc",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:33.300999+00:00",
+    "message_id": 164015,
+    "state_id": "0e211a382fff69e953a3c40b6798bca8",
+    "from_action": "<next-message>",
+    "text": "🕹Ты покупаешь Bitcoin: 0.015\nТебе нужно будет оплатить: 84905 83886\n🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии\n\n👨‍🔧 Хочешь применить промо как скидку?",
+    "text_html": "<strong>🕹Ты покупаешь Bitcoin</strong>: 0.015\n<strong>Тебе нужно будет оплатить</strong>: <del>84905</del> 83886\n🔥 Я дарю тебе промокод: <strong>PERVAYA_SDELKA</strong>, по которому будет скидка 20% от комиссии\n\n👨‍🔧 <strong>Хочешь применить промо</strong> как скидку?",
+    "text_markdown": "**🕹Ты покупаешь Bitcoin**: 0.015\n**Тебе нужно будет оплатить**: ~~84905~~ 83886\n🔥 Я дарю тебе промокод: **PERVAYA_SDELKA**, по которому будет скидка 20% от комиссии\n\n👨‍🔧 **Хочешь применить промо** как скидку?",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 22,
+        "inner_text": "🕹Ты покупаешь Bitcoin"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 30,
+        "length": 25,
+        "inner_text": "Тебе нужно будет оплатить"
+      },
+      {
+        "type": "MessageEntityStrike",
+        "offset": 57,
+        "length": 5,
+        "inner_text": "84905"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 94,
+        "length": 14,
+        "inner_text": "PERVAYA_SDELKA"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 158,
+        "length": 22,
+        "inner_text": "Хочешь применить промо"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityStrike"
+    ],
+    "entity_count": 5,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690060.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Не использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:36.131973+00:00",
+    "message_id": 164016,
+    "state_id": "b213240feabeef4a5764bd68a74003c8",
+    "from_action": "<next-message>",
+    "text": "Введите 📲СБП реквизиты, куда вы хотите получить 84905 ₽.",
+    "text_html": "Введите 📲СБП реквизиты, куда вы хотите получить 84905 ₽.",
+    "text_markdown": "Введите 📲СБП реквизиты, куда вы хотите получить 84905 ₽.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:41.096121+00:00",
+    "message_id": 164018,
+    "state_id": "cae8faa0b012701d905f3c3ef9377739",
+    "from_action": "<next-message>",
+    "text": "✅Заявка №1771774402917\n\nПродаете: 0.015 btc\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 84905 ₽\nРеквизиты для перевода btc:\n\nbc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.\n\n Использован скидочный промокод: PERVAYA_SDELKA",
+    "text_html": "✅<strong>Заявка №</strong><code>1771774402917</code>\n\n<strong>Продаете</strong>: 0.015 btc\n<strong>📲СБП реквизиты</strong>: <code>79045678990</code>\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5<strong>Получаете</strong>: <code>84905 ₽</code>\n<strong>Реквизиты для перевода btc:</strong>\n\n<code>bc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893</code>\n\n⏳<strong>Заявка действительна</strong>: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку <strong>Я оплатил(а)</strong>\nили же вы можете отменить данную заявку, нажав на кнопку <strong>Отменить заявку</strong>.\n\n<strong> Использован скидочный промокод</strong>: PERVAYA_SDELKA",
+    "text_markdown": "✅**Заявка №**`1771774402917`\n\n**Продаете**: 0.015 btc\n**📲СБП реквизиты**: `79045678990`\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5**Получаете**: `84905 ₽`\n**Реквизиты для перевода btc:**\n\n`bc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893`\n\n⏳**Заявка действительна**: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку **Я оплатил(а)**\nили же вы можете отменить данную заявку, нажав на кнопку **Отменить заявку**.\n\n** Использован скидочный промокод**: PERVAYA_SDELKA",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 1,
+        "length": 8,
+        "inner_text": "Заявка №"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 9,
+        "length": 13,
+        "inner_text": "1771774402917"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 24,
+        "length": 8,
+        "inner_text": "Продаете"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 44,
+        "length": 15,
+        "inner_text": "📲СБП реквизиты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 61,
+        "length": 11,
+        "inner_text": "79045678990"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 114,
+        "length": 9,
+        "inner_text": "Получаете"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 125,
+        "length": 7,
+        "inner_text": "84905 ₽"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 133,
+        "length": 27,
+        "inner_text": "Реквизиты для перевода btc:"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 162,
+        "length": 42,
+        "inner_text": "bc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 207,
+        "length": 20,
+        "inner_text": "Заявка действительна"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 313,
+        "length": 12,
+        "inner_text": "Я оплатил(а)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 383,
+        "length": 15,
+        "inner_text": "Отменить заявку"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 401,
+        "length": 31,
+        "inner_text": " Использован скидочный промокод"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode"
+    ],
+    "entity_count": 13,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Оплатил",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:33:41.126609+00:00",
+    "message_id": 164019,
+    "state_id": "dde88413e8078f96ae2373adf185cd56",
+    "from_action": "<next-message>",
+    "text": "Реквизиты найдены.",
+    "text_html": "Реквизиты найдены.",
+    "text_markdown": "Реквизиты найдены.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:01.335112+00:00",
+    "message_id": 164018,
+    "state_id": "b34b307692203aa62375038376b86764",
+    "from_action": "<next-message>",
+    "text": "✅Заявка №1771774402917\n\nПродаете: 0.015 btc\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 84905 ₽\nРеквизиты для перевода btc:\n\nbc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.\n\n Использован скидочный промокод: PERVAYA_SDELKA",
+    "text_html": "✅<strong>Заявка №</strong><code>1771774402917</code>\n\n<strong>Продаете</strong>: 0.015 btc\n<strong>📲СБП реквизиты</strong>: <code>79045678990</code>\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5<strong>Получаете</strong>: <code>84905 ₽</code>\n<strong>Реквизиты для перевода btc:</strong>\n\n<code>bc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893</code>\n\n⏳<strong>Заявка действительна</strong>: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку <strong>Я оплатил(а)</strong>\nили же вы можете отменить данную заявку, нажав на кнопку <strong>Отменить заявку</strong>.\n\n<strong> Использован скидочный промокод</strong>: PERVAYA_SDELKA",
+    "text_markdown": "✅**Заявка №**`1771774402917`\n\n**Продаете**: 0.015 btc\n**📲СБП реквизиты**: `79045678990`\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5**Получаете**: `84905 ₽`\n**Реквизиты для перевода btc:**\n\n`bc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893`\n\n⏳**Заявка действительна**: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку **Я оплатил(а)**\nили же вы можете отменить данную заявку, нажав на кнопку **Отменить заявку**.\n\n** Использован скидочный промокод**: PERVAYA_SDELKA",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 1,
+        "length": 8,
+        "inner_text": "Заявка №"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 9,
+        "length": 13,
+        "inner_text": "1771774402917"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 24,
+        "length": 8,
+        "inner_text": "Продаете"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 44,
+        "length": 15,
+        "inner_text": "📲СБП реквизиты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 61,
+        "length": 11,
+        "inner_text": "79045678990"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 114,
+        "length": 9,
+        "inner_text": "Получаете"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 125,
+        "length": 7,
+        "inner_text": "84905 ₽"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 133,
+        "length": 27,
+        "inner_text": "Реквизиты для перевода btc:"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 162,
+        "length": 42,
+        "inner_text": "bc1q3crqafv94waln9uzj7t03vp2a3qqsehztsg893"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 207,
+        "length": 20,
+        "inner_text": "Заявка действительна"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 313,
+        "length": 12,
+        "inner_text": "Я оплатил(а)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 383,
+        "length": 15,
+        "inner_text": "Отменить заявку"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 401,
+        "length": 31,
+        "inner_text": " Использован скидочный промокод"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode"
+    ],
+    "entity_count": 13,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:01.371135+00:00",
+    "message_id": 164020,
+    "state_id": "9e33d7312db5e12ff86862923bdc252e",
+    "from_action": "<next-message>",
+    "text": "Отправьте скрин перевода, либо чек оплаты.",
+    "text_html": "Отправьте скрин перевода, либо чек оплаты.",
+    "text_markdown": "Отправьте скрин перевода, либо чек оплаты.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:08.044294+00:00",
+    "message_id": 164022,
+    "state_id": "81f95908a0eeadfc3629d1161976375f",
+    "from_action": "<next-message>",
+    "text": "Заявка успешно создана.",
+    "text_html": "Заявка успешно создана.",
+    "text_markdown": "Заявка успешно создана.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:14.480254+00:00",
+    "message_id": 164024,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:34:15.034606+00:00",
+    "message_id": 164025,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:16.660080+00:00",
+    "message_id": 164026,
+    "state_id": "f7df657dc44a55bb5f745478b8790482",
+    "from_action": "<next-message>",
+    "text": "⭐️Какую крипту хочешь продать?",
+    "text_html": "⭐️Какую крипту хочешь продать?",
+    "text_markdown": "⭐️Какую крипту хочешь продать?",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690596.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Bitcoin",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Litecoin",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "USDT(trc20)",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Monero(XMR)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:32.919283+00:00",
+    "message_id": 164027,
+    "state_id": "d702ca0d0fd3b7f56a5f7b1f0338367b",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в LITECOIN\n✅Например: 0.0012",
+    "text_html": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в LITECOIN\n✅Например: 0.0012",
+    "text_markdown": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в LITECOIN\n✅Например: 0.0012",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:32.959774+00:00",
+    "message_id": 164030,
+    "state_id": "bc41350464e787d3f526b05b07c7eb9c",
+    "from_action": "<next-message>",
+    "text": "Минимальная сумма продажи Litecoin = 1.5.",
+    "text_html": "Минимальная сумма продажи Litecoin = 1.5.",
+    "text_markdown": "Минимальная сумма продажи Litecoin = 1.5.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:33.001243+00:00",
+    "message_id": 164033,
+    "state_id": "e86dd5aa1e821aae5588b1125464f9f6",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 6936 ₽\nСумма к оплате: 1.5 ltc",
+    "text_html": "Сумма к получению: 6936 ₽\nСумма к оплате: 1.5 ltc",
+    "text_markdown": "Сумма к получению: 6936 ₽\nСумма к оплате: 1.5 ltc",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:33.040473+00:00",
+    "message_id": 164035,
+    "state_id": "85e1460d264ab557f319c8b62f7a1cb7",
+    "from_action": "<next-message>",
+    "text": "Введите 📲СБП реквизиты, куда вы хотите получить 6936 ₽.",
+    "text_html": "Введите 📲СБП реквизиты, куда вы хотите получить 6936 ₽.",
+    "text_markdown": "Введите 📲СБП реквизиты, куда вы хотите получить 6936 ₽.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:35.268773+00:00",
+    "message_id": 164037,
+    "state_id": "f363e7dac0fcc7eec0484b3513d9b019",
+    "from_action": "<next-message>",
+    "text": "✅Заявка №1771774456199\n\nПродаете: 1.5 ltc\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 6936 ₽\nРеквизиты для перевода ltc:\n\nltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.",
+    "text_html": "✅<strong>Заявка №</strong><code>1771774456199</code>\n\n<strong>Продаете</strong>: 1.5 ltc\n<strong>📲СБП реквизиты</strong>: <code>79045678990</code>\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5<strong>Получаете</strong>: <code>6936 ₽</code>\n<strong>Реквизиты для перевода ltc:</strong>\n\n<code>ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym</code>\n\n⏳<strong>Заявка действительна</strong>: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку <strong>Я оплатил(а)</strong>\nили же вы можете отменить данную заявку, нажав на кнопку <strong>Отменить заявку</strong>.",
+    "text_markdown": "✅**Заявка №**`1771774456199`\n\n**Продаете**: 1.5 ltc\n**📲СБП реквизиты**: `79045678990`\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5**Получаете**: `6936 ₽`\n**Реквизиты для перевода ltc:**\n\n`ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym`\n\n⏳**Заявка действительна**: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку **Я оплатил(а)**\nили же вы можете отменить данную заявку, нажав на кнопку **Отменить заявку**.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 1,
+        "length": 8,
+        "inner_text": "Заявка №"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 9,
+        "length": 13,
+        "inner_text": "1771774456199"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 24,
+        "length": 8,
+        "inner_text": "Продаете"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 42,
+        "length": 15,
+        "inner_text": "📲СБП реквизиты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 59,
+        "length": 11,
+        "inner_text": "79045678990"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 112,
+        "length": 9,
+        "inner_text": "Получаете"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 123,
+        "length": 6,
+        "inner_text": "6936 ₽"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 130,
+        "length": 27,
+        "inner_text": "Реквизиты для перевода ltc:"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 159,
+        "length": 43,
+        "inner_text": "ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 205,
+        "length": 20,
+        "inner_text": "Заявка действительна"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 311,
+        "length": 12,
+        "inner_text": "Я оплатил(а)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 381,
+        "length": 15,
+        "inner_text": "Отменить заявку"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode"
+    ],
+    "entity_count": 12,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Оплатил",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:35.286517+00:00",
+    "message_id": 164038,
+    "state_id": "dde88413e8078f96ae2373adf185cd56",
+    "from_action": "<next-message>",
+    "text": "Реквизиты найдены.",
+    "text_html": "Реквизиты найдены.",
+    "text_markdown": "Реквизиты найдены.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:45.106318+00:00",
+    "message_id": 164037,
+    "state_id": "6c4c4ece17ea0d47ee54e8db7e357e5b",
+    "from_action": "<next-message>",
+    "text": "✅Заявка №1771774456199\n\nПродаете: 1.5 ltc\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 6936 ₽\nРеквизиты для перевода ltc:\n\nltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.",
+    "text_html": "✅<strong>Заявка №</strong><code>1771774456199</code>\n\n<strong>Продаете</strong>: 1.5 ltc\n<strong>📲СБП реквизиты</strong>: <code>79045678990</code>\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5<strong>Получаете</strong>: <code>6936 ₽</code>\n<strong>Реквизиты для перевода ltc:</strong>\n\n<code>ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym</code>\n\n⏳<strong>Заявка действительна</strong>: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку <strong>Я оплатил(а)</strong>\nили же вы можете отменить данную заявку, нажав на кнопку <strong>Отменить заявку</strong>.",
+    "text_markdown": "✅**Заявка №**`1771774456199`\n\n**Продаете**: 1.5 ltc\n**📲СБП реквизиты**: `79045678990`\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5**Получаете**: `6936 ₽`\n**Реквизиты для перевода ltc:**\n\n`ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym`\n\n⏳**Заявка действительна**: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку **Я оплатил(а)**\nили же вы можете отменить данную заявку, нажав на кнопку **Отменить заявку**.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 1,
+        "length": 8,
+        "inner_text": "Заявка №"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 9,
+        "length": 13,
+        "inner_text": "1771774456199"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 24,
+        "length": 8,
+        "inner_text": "Продаете"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 42,
+        "length": 15,
+        "inner_text": "📲СБП реквизиты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 59,
+        "length": 11,
+        "inner_text": "79045678990"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 112,
+        "length": 9,
+        "inner_text": "Получаете"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 123,
+        "length": 6,
+        "inner_text": "6936 ₽"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 130,
+        "length": 27,
+        "inner_text": "Реквизиты для перевода ltc:"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 159,
+        "length": 43,
+        "inner_text": "ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 205,
+        "length": 20,
+        "inner_text": "Заявка действительна"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 311,
+        "length": 12,
+        "inner_text": "Я оплатил(а)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 381,
+        "length": 15,
+        "inner_text": "Отменить заявку"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode"
+    ],
+    "entity_count": 12,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:45.143510+00:00",
+    "message_id": 164039,
+    "state_id": "48bacb7031bc81a78a256393f1f1dad6",
+    "from_action": "<next-message>",
+    "text": "Вы действительно хотите отменить заявку?",
+    "text_html": "Вы действительно хотите отменить заявку?",
+    "text_markdown": "Вы действительно хотите отменить заявку?",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Да",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "Нет",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:48.478317+00:00",
+    "message_id": 164037,
+    "state_id": "5a7c36b69ec3257cabf37545254f4306",
+    "from_action": "<next-message>",
+    "text": "✅Заявка №1771774456199\n\nПродаете: 1.5 ltc\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 6936 ₽\nРеквизиты для перевода ltc:\n\nltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.",
+    "text_html": "✅<strong>Заявка №</strong><code>1771774456199</code>\n\n<strong>Продаете</strong>: 1.5 ltc\n<strong>📲СБП реквизиты</strong>: <code>79045678990</code>\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5<strong>Получаете</strong>: <code>6936 ₽</code>\n<strong>Реквизиты для перевода ltc:</strong>\n\n<code>ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym</code>\n\n⏳<strong>Заявка действительна</strong>: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку <strong>Я оплатил(а)</strong>\nили же вы можете отменить данную заявку, нажав на кнопку <strong>Отменить заявку</strong>.",
+    "text_markdown": "✅**Заявка №**`1771774456199`\n\n**Продаете**: 1.5 ltc\n**📲СБП реквизиты**: `79045678990`\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5**Получаете**: `6936 ₽`\n**Реквизиты для перевода ltc:**\n\n`ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym`\n\n⏳**Заявка действительна**: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку **Я оплатил(а)**\nили же вы можете отменить данную заявку, нажав на кнопку **Отменить заявку**.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 1,
+        "length": 8,
+        "inner_text": "Заявка №"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 9,
+        "length": 13,
+        "inner_text": "1771774456199"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 24,
+        "length": 8,
+        "inner_text": "Продаете"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 42,
+        "length": 15,
+        "inner_text": "📲СБП реквизиты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 59,
+        "length": 11,
+        "inner_text": "79045678990"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 112,
+        "length": 9,
+        "inner_text": "Получаете"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 123,
+        "length": 6,
+        "inner_text": "6936 ₽"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 130,
+        "length": 27,
+        "inner_text": "Реквизиты для перевода ltc:"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 159,
+        "length": 43,
+        "inner_text": "ltc1qedwc6ec6pn99zzgapkuh5n56mz0q04jdhfpwym"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 205,
+        "length": 20,
+        "inner_text": "Заявка действительна"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 311,
+        "length": 12,
+        "inner_text": "Я оплатил(а)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 381,
+        "length": 15,
+        "inner_text": "Отменить заявку"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode"
+    ],
+    "entity_count": 12,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Отправить номер оператору",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:34:48.516622+00:00",
+    "message_id": 164040,
+    "state_id": "8c420d05b595ee10bd97dd6653d9c777",
+    "from_action": "<next-message>",
+    "text": "❗️ Заявка была отменена.",
+    "text_html": "❗️ Заявка была отменена.",
+    "text_markdown": "❗️ Заявка была отменена.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:03.870165+00:00",
+    "message_id": 164042,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:35:03.889331+00:00",
+    "message_id": 164043,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:03.936401+00:00",
+    "message_id": 164045,
+    "state_id": "7cf5ba287563f2ed1799e313561609f7",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в USDT\n✅Например: 0.0012",
+    "text_html": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в USDT\n✅Например: 0.0012",
+    "text_markdown": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в USDT\n✅Например: 0.0012",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:03.990787+00:00",
+    "message_id": 164048,
+    "state_id": "fb3072439e29b3aa32d851cbd55adbff",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 216218 ₽\nСумма к оплате: 2500 usdt",
+    "text_html": "Сумма к получению: 216218 ₽\nСумма к оплате: 2500 usdt",
+    "text_markdown": "Сумма к получению: 216218 ₽\nСумма к оплате: 2500 usdt",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:04.036278+00:00",
+    "message_id": 164050,
+    "state_id": "1af33129f9df8457a70a3a576741ccba",
+    "from_action": "<next-message>",
+    "text": "Введите 📲СБП реквизиты, куда вы хотите получить 216218 ₽.",
+    "text_html": "Введите 📲СБП реквизиты, куда вы хотите получить 216218 ₽.",
+    "text_markdown": "Введите 📲СБП реквизиты, куда вы хотите получить 216218 ₽.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:06.459948+00:00",
+    "message_id": 164052,
+    "state_id": "e420ad2c17818d349e51f18c80a78390",
+    "from_action": "<next-message>",
+    "text": "✅Заявка №1771774494291\n\nПродаете: 2500 usdt\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 216218 ₽\nРеквизиты для перевода usdt:\n\nTVL7QeX1aLQX5d5fyFXpighpncmfzskXdp\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.",
+    "text_html": "✅<strong>Заявка №</strong><code>1771774494291</code>\n\n<strong>Продаете</strong>: 2500 usdt\n<strong>📲СБП реквизиты</strong>: <code>79045678990</code>\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5<strong>Получаете</strong>: <code>216218 ₽</code>\n<strong>Реквизиты для перевода usdt:</strong>\n\n<code>TVL7QeX1aLQX5d5fyFXpighpncmfzskXdp</code>\n\n⏳<strong>Заявка действительна</strong>: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку <strong>Я оплатил(а)</strong>\nили же вы можете отменить данную заявку, нажав на кнопку <strong>Отменить заявку</strong>.",
+    "text_markdown": "✅**Заявка №**`1771774494291`\n\n**Продаете**: 2500 usdt\n**📲СБП реквизиты**: `79045678990`\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5**Получаете**: `216218 ₽`\n**Реквизиты для перевода usdt:**\n\n`TVL7QeX1aLQX5d5fyFXpighpncmfzskXdp`\n\n⏳**Заявка действительна**: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку **Я оплатил(а)**\nили же вы можете отменить данную заявку, нажав на кнопку **Отменить заявку**.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 1,
+        "length": 8,
+        "inner_text": "Заявка №"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 9,
+        "length": 13,
+        "inner_text": "1771774494291"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 24,
+        "length": 8,
+        "inner_text": "Продаете"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 44,
+        "length": 15,
+        "inner_text": "📲СБП реквизиты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 61,
+        "length": 11,
+        "inner_text": "79045678990"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 114,
+        "length": 9,
+        "inner_text": "Получаете"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 125,
+        "length": 8,
+        "inner_text": "216218 ₽"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 134,
+        "length": 28,
+        "inner_text": "Реквизиты для перевода usdt:"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 164,
+        "length": 34,
+        "inner_text": "TVL7QeX1aLQX5d5fyFXpighpncmfzskXdp"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 201,
+        "length": 20,
+        "inner_text": "Заявка действительна"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 307,
+        "length": 12,
+        "inner_text": "Я оплатил(а)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 377,
+        "length": 15,
+        "inner_text": "Отменить заявку"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode"
+    ],
+    "entity_count": 12,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Оплатил",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:07.009169+00:00",
+    "message_id": 164053,
+    "state_id": "dde88413e8078f96ae2373adf185cd56",
+    "from_action": "<next-message>",
+    "text": "Реквизиты найдены.",
+    "text_html": "Реквизиты найдены.",
+    "text_markdown": "Реквизиты найдены.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:11.277003+00:00",
+    "message_id": 164052,
+    "state_id": "cc4b3d59fb3ac5d0cf2d687042be7d9f",
+    "from_action": "<next-message>",
+    "text": "✅Заявка №1771774494291\n\nПродаете: 2500 usdt\n📲СБП реквизиты: 79045678990\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5Получаете: 216218 ₽\nРеквизиты для перевода usdt:\n\nTVL7QeX1aLQX5d5fyFXpighpncmfzskXdp\n\n⏳Заявка действительна: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку Я оплатил(а)\nили же вы можете отменить данную заявку, нажав на кнопку Отменить заявку.",
+    "text_html": "✅<strong>Заявка №</strong><code>1771774494291</code>\n\n<strong>Продаете</strong>: 2500 usdt\n<strong>📲СБП реквизиты</strong>: <code>79045678990</code>\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5<strong>Получаете</strong>: <code>216218 ₽</code>\n<strong>Реквизиты для перевода usdt:</strong>\n\n<code>TVL7QeX1aLQX5d5fyFXpighpncmfzskXdp</code>\n\n⏳<strong>Заявка действительна</strong>: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку <strong>Я оплатил(а)</strong>\nили же вы можете отменить данную заявку, нажав на кнопку <strong>Отменить заявку</strong>.",
+    "text_markdown": "✅**Заявка №**`1771774494291`\n\n**Продаете**: 2500 usdt\n**📲СБП реквизиты**: `79045678990`\n\nВаш ранг: 👶, скидка 0.0 %\n\n\\uD83D\\uDCB5**Получаете**: `216218 ₽`\n**Реквизиты для перевода usdt:**\n\n`TVL7QeX1aLQX5d5fyFXpighpncmfzskXdp`\n\n⏳**Заявка действительна**: 15 минут\n\n☑️После успешного перевода денег по указанному кошельку нажмите на кнопку **Я оплатил(а)**\nили же вы можете отменить данную заявку, нажав на кнопку **Отменить заявку**.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 1,
+        "length": 8,
+        "inner_text": "Заявка №"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 9,
+        "length": 13,
+        "inner_text": "1771774494291"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 24,
+        "length": 8,
+        "inner_text": "Продаете"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 44,
+        "length": 15,
+        "inner_text": "📲СБП реквизиты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 61,
+        "length": 11,
+        "inner_text": "79045678990"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 114,
+        "length": 9,
+        "inner_text": "Получаете"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 125,
+        "length": 8,
+        "inner_text": "216218 ₽"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 134,
+        "length": 28,
+        "inner_text": "Реквизиты для перевода usdt:"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 164,
+        "length": 34,
+        "inner_text": "TVL7QeX1aLQX5d5fyFXpighpncmfzskXdp"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 201,
+        "length": 20,
+        "inner_text": "Заявка действительна"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 307,
+        "length": 12,
+        "inner_text": "Я оплатил(а)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 377,
+        "length": 15,
+        "inner_text": "Отменить заявку"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode"
+    ],
+    "entity_count": 12,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:11.299158+00:00",
+    "message_id": 164054,
+    "state_id": "9e33d7312db5e12ff86862923bdc252e",
+    "from_action": "<next-message>",
+    "text": "Отправьте скрин перевода, либо чек оплаты.",
+    "text_html": "Отправьте скрин перевода, либо чек оплаты.",
+    "text_markdown": "Отправьте скрин перевода, либо чек оплаты.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:16.581534+00:00",
+    "message_id": 164056,
+    "state_id": "81f95908a0eeadfc3629d1161976375f",
+    "from_action": "<next-message>",
+    "text": "Заявка успешно создана.",
+    "text_html": "Заявка успешно создана.",
+    "text_markdown": "Заявка успешно создана.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:19.287348+00:00",
+    "message_id": 164058,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:35:19.840451+00:00",
+    "message_id": 164059,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:34.598047+00:00",
+    "message_id": 164061,
+    "state_id": "1b75f7c255c267708de9969b6c0a1e95",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в MONERO\n✅Например: 0.0012",
+    "text_html": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в MONERO\n✅Например: 0.0012",
+    "text_markdown": "🕹Сколько ты хочешь продать?\n📝Напиши сумму в MONERO\n✅Например: 0.0012",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:34.623447+00:00",
+    "message_id": 164064,
+    "state_id": "0cccfcbc67fcb15a1bd7df0087670d88",
+    "from_action": "<next-message>",
+    "text": "Для расчета введите сумму в криптовалюте! \nНапример 0.001",
+    "text_html": "Для расчета введите сумму в криптовалюте! \nНапример 0.001",
+    "text_markdown": "Для расчета введите сумму в криптовалюте! \nНапример 0.001",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:35.857179+00:00",
+    "message_id": 164066,
+    "state_id": "674952e17927d75d3fa605a894430989",
+    "from_action": "<next-message>",
+    "text": "Расчёт суммы...",
+    "text_html": "Расчёт суммы...",
+    "text_markdown": "Расчёт суммы...",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:36.446763+00:00",
+    "message_id": 164067,
+    "state_id": "415bf399786fc7aeda3b02fcbd7947ff",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 4226 ₽\nСумма к оплате: 0.15 xmr",
+    "text_html": "Сумма к получению: 4226 ₽\nСумма к оплате: 0.15 xmr",
+    "text_markdown": "Сумма к получению: 4226 ₽\nСумма к оплате: 0.15 xmr",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:36.508498+00:00",
+    "message_id": 164068,
+    "state_id": "d04646e9d3d2840fa55f19db766a83c6",
+    "from_action": "<next-message>",
+    "text": "🕹Ты покупаешь Monero(XMR): 0.15\nТебе нужно будет оплатить: 4226 4225\n🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии\n\n👨‍🔧 Хочешь применить промо как скидку?",
+    "text_html": "<strong>🕹Ты покупаешь Monero(XMR)</strong>: 0.15\n<strong>Тебе нужно будет оплатить</strong>: <del>4226</del> 4225\n🔥 Я дарю тебе промокод: <strong>PERVAYA_SDELKA</strong>, по которому будет скидка 20% от комиссии\n\n👨‍🔧 <strong>Хочешь применить промо</strong> как скидку?",
+    "text_markdown": "**🕹Ты покупаешь Monero(XMR)**: 0.15\n**Тебе нужно будет оплатить**: ~~4226~~ 4225\n🔥 Я дарю тебе промокод: **PERVAYA_SDELKA**, по которому будет скидка 20% от комиссии\n\n👨‍🔧 **Хочешь применить промо** как скидку?",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 26,
+        "inner_text": "🕹Ты покупаешь Monero(XMR)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 33,
+        "length": 25,
+        "inner_text": "Тебе нужно будет оплатить"
+      },
+      {
+        "type": "MessageEntityStrike",
+        "offset": 60,
+        "length": 4,
+        "inner_text": "4226"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 95,
+        "length": 14,
+        "inner_text": "PERVAYA_SDELKA"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 159,
+        "length": 22,
+        "inner_text": "Хочешь применить промо"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityStrike"
+    ],
+    "entity_count": 5,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690060.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Не использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:41.142806+00:00",
+    "message_id": 164069,
+    "state_id": "7b268d0378402d84b8cc6e527dc85e56",
+    "from_action": "<next-message>",
+    "text": "Введите 📲СБП реквизиты, куда вы хотите получить 4226 ₽.",
+    "text_html": "Введите 📲СБП реквизиты, куда вы хотите получить 4226 ₽.",
+    "text_markdown": "Введите 📲СБП реквизиты, куда вы хотите получить 4226 ₽.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:46.832464+00:00",
+    "message_id": 164071,
+    "state_id": "02e4dec20eb6a5c88dd99a0068714ff5",
+    "from_action": "<next-message>",
+    "text": "Произошла ошибка.\n1771774546197\nВведите /start для выхода в главное меню.",
+    "text_html": "Произошла ошибка.\n<code>1771774546197</code>\nВведите /start для выхода в главное меню.",
+    "text_markdown": "Произошла ошибка.\n`1771774546197`\nВведите /start для выхода в главное меню.",
+    "entities": [
+      {
+        "type": "MessageEntityCode",
+        "offset": 18,
+        "length": 13,
+        "inner_text": "1771774546197"
+      },
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 40,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand",
+      "MessageEntityCode"
+    ],
+    "entity_count": 2,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:35:49.647726+00:00",
+    "message_id": 164073,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:35:50.264181+00:00",
+    "message_id": 164074,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:06.180870+00:00",
+    "message_id": 164075,
+    "state_id": "42a4226d19582cbc6edbe8bb9853131a",
+    "from_action": "<next-message>",
+    "text": "У тебя нету попыток на игру в лотерею.Чтобы получить попытку соверши сделку👇",
+    "text_html": "У тебя нету попыток на игру в лотерею.Чтобы получить попытку соверши сделку👇",
+    "text_markdown": "У тебя нету попыток на игру в лотерею.Чтобы получить попытку соверши сделку👇",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:12.059564+00:00",
+    "message_id": 164076,
+    "state_id": "dcbdf7f8ccfc09fa685b4e691a6b9d07",
+    "from_action": "<next-message>",
+    "text": "БОЛЬШОЙ РОЗЫГРЫШ ОТ Mario_BTC\nhttps://t.me/c/1730164192/500910",
+    "text_html": "БОЛЬШОЙ РОЗЫГРЫШ ОТ Mario_BTC\n<a href=\"https://t.me/c/1730164192/500910\">https://t.me/c/1730164192/500910</a>",
+    "text_markdown": "БОЛЬШОЙ РОЗЫГРЫШ ОТ Mario_BTC\nhttps://t.me/c/1730164192/500910",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 30,
+        "length": 32,
+        "inner_text": "https://t.me/c/1730164192/500910"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690372.mp4",
+    "button_rows": [],
+    "text_links": [
+      "https://t.me/c/1730164192/500910"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:36:12.600402+00:00",
+    "message_id": 164078,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:36:12.626621+00:00",
+    "message_id": 164079,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:21.834269+00:00",
+    "message_id": 164080,
+    "state_id": "df8f03865ebbffd5bfe3a23c60399bb6",
+    "from_action": "<next-message>",
+    "text": "🍄 Реферальная программа\nПриглашай друзей — получай  монеты🪙 с каждой их сделки.\n⭐️ Монетки можно:\n— потратить как скидку\n— или вывести\n🔗 Твоя ссылка:\nhttps://t.me/ruMarioBTCbot?start=6131246501\n\n🪙Твой баланс: 0\n👥Сколько твоих рефералов: 0, активных 0\n👛Всего монет от рефералов: 0 \n💥Количество проведенных сделок:0 \nТвой ранг: 👶 \nТвоя скидка: 0.0%\n\n🎮 Зарабатывай, прокачивай ранг и Let’s-a go! 🍄",
+    "text_html": "🍄 Реферальная программа\nПриглашай друзей — получай  монеты🪙 с каждой их сделки.\n⭐️ Монетки можно:\n— потратить как скидку\n— или вывести\n🔗 Твоя ссылка:\n<a href=\"https://t.me/ruMarioBTCbot?start=6131246501\">https://t.me/ruMarioBTCbot?start=6131246501</a>\n\n🪙Твой баланс: 0\n👥Сколько твоих рефералов: 0, активных 0\n👛Всего монет от рефералов: 0 \n💥Количество проведенных сделок:0 \nТвой ранг: 👶 \nТвоя скидка: 0.0%\n\n🎮 Зарабатывай, прокачивай ранг и Let’s-a go! 🍄",
+    "text_markdown": "🍄 Реферальная программа\nПриглашай друзей — получай  монеты🪙 с каждой их сделки.\n⭐️ Монетки можно:\n— потратить как скидку\n— или вывести\n🔗 Твоя ссылка:\nhttps://t.me/ruMarioBTCbot?start=6131246501\n\n🪙Твой баланс: 0\n👥Сколько твоих рефералов: 0, активных 0\n👛Всего монет от рефералов: 0 \n💥Количество проведенных сделок:0 \nТвой ранг: 👶 \nТвоя скидка: 0.0%\n\n🎮 Зарабатывай, прокачивай ранг и Let’s-a go! 🍄",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 153,
+        "length": 43,
+        "inner_text": "https://t.me/ruMarioBTCbot?start=6131246501"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690249.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Пригласить друга",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Вывод средств",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": [
+      "https://t.me/ruMarioBTCbot?start=6131246501"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:36:23.497031+00:00",
+    "message_id": 164081,
+    "state_id": "4c15b322168dc7345ac8d4101a43ee2e",
+    "from_action": "<next-message>",
+    "text": "Минимальная сумма для вывода средств равна 500₽",
+    "text_html": "Минимальная сумма для вывода средств равна 500₽",
+    "text_markdown": "Минимальная сумма для вывода средств равна 500₽",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:26.882337+00:00",
+    "message_id": 164083,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  },
+  {
+    "ts": "2026-02-22T15:36:27.433946+00:00",
+    "message_id": 164084,
+    "state_id": "dea2d09f86c418ad7e64269f922bf07c",
+    "from_action": "<next-message>",
+    "text": "Если бот завис - нажми /start",
+    "text_html": "Если бот завис - нажми /start",
+    "text_markdown": "Если бот завис - нажми /start",
+    "entities": [
+      {
+        "type": "MessageEntityBotCommand",
+        "offset": 23,
+        "length": 6,
+        "inner_text": "/start"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBotCommand"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690055.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "⭐️Купить⭐️",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "🍄Продать🍄",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🤑Большой розыгрыш🤑",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎰Бонус🎰",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🎮 Реферальная программа 🎮",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "👨🏻‍🔧Оператор 24/7",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 0,
+          "url": "https://t.me/Mario_BTC_Operator"
+        },
+        {
+          "text": "💬Канал-Новости",
+          "type": "KeyboardButtonUrl",
+          "row": 5,
+          "col": 1,
+          "url": "https://t.me/Mario_BTC_Channel"
+        }
+      ],
+      [
+        {
+          "text": "🎯Курилка-Рулетки",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 0,
+          "url": "https://t.me/MarioBTCgroupe"
+        },
+        {
+          "text": "🫟Отзывы",
+          "type": "KeyboardButtonUrl",
+          "row": 6,
+          "col": 1,
+          "url": "https://t.me/MarioBTC_otzyvi"
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:30.278893+00:00",
+    "message_id": 164085,
+    "state_id": "0b514638cae7532b9563fd2bb1ba47bc",
+    "from_action": "<next-message>",
+    "text": "⭐️Какую крипту хочешь купить?",
+    "text_html": "⭐️Какую крипту хочешь купить?",
+    "text_markdown": "⭐️Какую крипту хочешь купить?",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5436138865301690059.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Bitcoin",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Litecoin",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "USDT(trc20)",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Monero(XMR)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Tron(TRX)",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 5,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:32.005001+00:00",
+    "message_id": 164086,
+    "state_id": "509c49e252d2a641a36cc9f12e8334a4",
+    "from_action": "<next-message>",
+    "text": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в TRON / Рублях \n✅Например: 0.6524 / 2550",
+    "text_html": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в TRON / Рублях \n✅Например: 0.6524 / 2550",
+    "text_markdown": "🕹Сколько ты хочешь купить?\n📝Напиши сумму в TRON / Рублях \n✅Например: 0.6524 / 2550",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [
+      [
+        {
+          "text": "Калькулятор",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:34.600803+00:00",
+    "message_id": 164088,
+    "state_id": "674952e17927d75d3fa605a894430989",
+    "from_action": "<next-message>",
+    "text": "Расчёт суммы...",
+    "text_html": "Расчёт суммы...",
+    "text_markdown": "Расчёт суммы...",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:35.190068+00:00",
+    "message_id": 164089,
+    "state_id": "c8544538fb8008da3879f74822a07288",
+    "from_action": "<next-message>",
+    "text": "Сумма к получению: 76.3 Tron(TRX)\nСумма к оплате: 2550 ₽",
+    "text_html": "Сумма к получению: 76.3 Tron(TRX)\nСумма к оплате: 2550 ₽",
+    "text_markdown": "Сумма к получению: 76.3 Tron(TRX)\nСумма к оплате: 2550 ₽",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:35.761133+00:00",
+    "message_id": 164090,
+    "state_id": "13d2ea29ae675d40bbf8772f13b86265",
+    "from_action": "<next-message>",
+    "text": "🕹Ты покупаешь Tron(TRX): 76.3\nТебе нужно будет оплатить: 2550 2460\n🔥 Я дарю тебе промокод: PERVAYA_SDELKA, по которому будет скидка 20% от комиссии\n\n👨‍🔧 Хочешь применить промо как скидку?",
+    "text_html": "<strong>🕹Ты покупаешь Tron(TRX)</strong>: 76.3\n<strong>Тебе нужно будет оплатить</strong>: <del>2550</del> 2460\n🔥 Я дарю тебе промокод: <strong>PERVAYA_SDELKA</strong>, по которому будет скидка 20% от комиссии\n\n👨‍🔧 <strong>Хочешь применить промо</strong> как скидку?",
+    "text_markdown": "**🕹Ты покупаешь Tron(TRX)**: 76.3\n**Тебе нужно будет оплатить**: ~~2550~~ 2460\n🔥 Я дарю тебе промокод: **PERVAYA_SDELKA**, по которому будет скидка 20% от комиссии\n\n👨‍🔧 **Хочешь применить промо** как скидку?",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 24,
+        "inner_text": "🕹Ты покупаешь Tron(TRX)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 31,
+        "length": 25,
+        "inner_text": "Тебе нужно будет оплатить"
+      },
+      {
+        "type": "MessageEntityStrike",
+        "offset": 58,
+        "length": 4,
+        "inner_text": "2550"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 93,
+        "length": 14,
+        "inner_text": "PERVAYA_SDELKA"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 157,
+        "length": 22,
+        "inner_text": "Хочешь применить промо"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityStrike"
+    ],
+    "entity_count": 5,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690060.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Не использовать промокод",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:38.491340+00:00",
+    "message_id": 164091,
+    "state_id": "3fb75c375615483587d78f4e5bf66da9",
+    "from_action": "<next-message>",
+    "text": "🎮Твоя заявка\n🕹Покупка Tron(TRX): 76.3\n🪙Нужно перевести: 2550 ₽\nВыбери способ оплаты:",
+    "text_html": "🎮<strong>Твоя заявка</strong>\n🕹<strong>Покупка Tron(TRX)</strong>: 76.3\n🪙<strong>Нужно перевести</strong>: 2550 ₽\n<strong>Выбери способ оплаты:</strong>",
+    "text_markdown": "🎮**Твоя заявка**\n🕹**Покупка Tron(TRX)**: 76.3\n🪙**Нужно перевести**: 2550 ₽\n**Выбери способ оплаты:**",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 2,
+        "length": 11,
+        "inner_text": "Твоя заявка"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 16,
+        "length": 17,
+        "inner_text": "Покупка Tron(TRX)"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 42,
+        "length": 15,
+        "inner_text": "Нужно перевести"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 66,
+        "length": 21,
+        "inner_text": "Выбери способ оплаты:"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "media": "media/video_5436138865301690600.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "📱СБП",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "💳КАРТА",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🕹ТРАНСГРАН",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:49.238522+00:00",
+    "message_id": 164092,
+    "state_id": "2bec2085ca504aeba5eccfb09eeaeb73",
+    "from_action": "<next-message>",
+    "text": "Введите Tron(TRX)-адрес кошелька, куда вы хотите отправить 76.3trx.",
+    "text_html": "Введите Tron(TRX)-адрес кошелька, куда вы хотите отправить 76.3trx.",
+    "text_markdown": "Введите Tron(TRX)-адрес кошелька, куда вы хотите отправить 76.3trx.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "media": "media/video_5251757332328648336.mp4",
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:36:49.779277+00:00",
+    "message_id": 164094,
+    "state_id": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "from_action": "<next-message>",
+    "text": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "text_html": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "text_markdown": "⏳Поиск реквизита. Ожидание до 5 минут.\n\nТак же вы можете сделать обмен через оператора @BTC24MONEYnoch",
+    "entities": [
+      {
+        "type": "MessageEntityMention",
+        "offset": 87,
+        "length": 15,
+        "inner_text": "@BTC24MONEYnoch"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityMention"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": null,
+    "button_rows": [],
+    "text_links": []
+  },
+  {
+    "ts": "2026-02-22T15:37:09.267570+00:00",
+    "message_id": 164096,
+    "state_id": "a34fa4bdaeee02944576c7ff09f442d9",
+    "from_action": "<next-message>",
+    "text": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "text_html": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:<a href=\"https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06\">https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06</a>",
+    "text_markdown": "🍄MarioBTCbot 24/7👾 -  сервис обмена для тех, кто ценит своё время!\n💵Низкие комиссии⚡️Быстрые ответы\n🤑Шанс получить бонус после каждого обмена\n🔥Реферальная и скидочная программа\n🪙Больше сумма обмен - ниже комиссия!\n⬆️Больше сделок  - больше скидка!\n⛔️Не сотрудничаем с мошенниками/no scam\n🧤Правила и условия использования сервиса:https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06",
+    "entities": [
+      {
+        "type": "MessageEntityUrl",
+        "offset": 336,
+        "length": 89,
+        "inner_text": "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityUrl"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": false,
+    "media": "media/media_163916.bin",
+    "button_rows": [],
+    "text_links": [
+      "https://telegra.ph/Pravila-ispolzovaniya-servisa-httpstmeMarioBTCbot-i-ego-politika-01-06"
+    ]
+  }
+]

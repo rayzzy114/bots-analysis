@@ -1,0 +1,57 @@
+{
+  "commission_percent": 15.0,
+  "links": {
+    "faq": "https://telegra.ph/Instrukciya-po-vzaimodejstviyu-s-avtomaticheskim-botom---obmennikom-servisa-RAPID-EXCHANGE-05-02",
+    "channel": "https://t.me/RAPID_EX_CHANNEL",
+    "chat": "https://t.me/RAPID_EX_CHAT",
+    "reviews": "https://t.me/RAPID_EX_REVIEWS",
+    "review_form": "https://t.me/RAPID_EX_Admin",
+    "manager": "https://t.me/RAPID_EX_Manager",
+    "operator": "https://t.me/RAPID_EX_Operator",
+    "terms": "https://telegra.ph/Polzovatelskoe-soglashenie-servisa-Rapid-Exchange-08-21"
+  },
+  "requisites": {
+    "mode": "single",
+    "single_bank": "Сбербанк",
+    "single_value": "2200 0000 0000 0000",
+    "payment_methods": [
+      "💳 Карта",
+      "СБП 📱",
+      "❌ QR код",
+      "❌ QR (Альфа-Альфа)",
+      "🏦 Внутрибанк. перевод 🏦",
+      "❌ Моб. связь (СИМ)",
+      "💱 Трансграничный перевод 💱"
+    ],
+    "split_by_method": {
+      "💳 Карта": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "СБП 📱": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "❌ QR код": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "❌ QR (Альфа-Альфа)": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "🏦 Внутрибанк. перевод 🏦": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "❌ Моб. связь (СИМ)": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "💱 Трансграничный перевод 💱": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "8174646481": {
+    "trades_total": 1,
+    "turnover_rub": 2679.35,
+    "invited": 0,
+    "bonus_balance": 26.79,
+    "history": [
+      {
+        "ts": 1770733766,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.0005,
+        "amount_rub": 2679.35
+      }
+    ],
+    "addresses": []
+  }
+}

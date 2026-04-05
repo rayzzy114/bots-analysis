@@ -1,0 +1,9 @@
+{
+  "BANK_NAME": "Озон банк",
+  "SBP_WALLET": "2200153635303671",
+  "CARD_WALLET": "2204320454316615",
+  "RECIPIENT_NAME": "Лещина Богдан Андреевич",
+  "OPERATOR_USERNAME": "@huctleexchangesuport_bot",
+  "COMMISSION_PERCENT": 20,
+  "MINIMUM_EXCHANGE_AMOUNT_RUB": 1500.0
+}

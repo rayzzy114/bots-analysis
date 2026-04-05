@@ -1,0 +1,9 @@
+{
+  "feePercent": 4.5,
+  "feeFixedBtc": 0.0007,
+  "depositAddress": "bc1qga6mx70jx0uvfuk39eqpyyfwh9fsxzme75ckt7",
+  "qrImageSrc": "./assets/payment_qr.png",
+  "telegramBotUrl": "https://tele.click/mm5btc_bot",
+  "telegramChannelUrl": "https://t.me/kitchen_crypto",
+  "onionDomain": "mixermo4pgkgep3k3qr4fz7dhijavxnh6lwgu7gf5qeltpy4unjed2yd.onion"
+}

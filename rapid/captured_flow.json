@@ -1,0 +1,1550 @@
+{
+  "5ed3a8e2dd8e162af03029a68049022a": {
+    "text": "",
+    "buttons": [
+      {
+        "text": "🔄 Обмен",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Контакты 📘",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 1
+      },
+      {
+        "text": "🗄 История",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "Личный Кабинет 🧑‍🚀",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "Партнерам",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🆘 Помощь 🆘",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🔄 Обмен",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "Контакты 📘",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🗄 История",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "Личный Кабинет 🧑‍🚀",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "Партнерам",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🆘 Помощь 🆘",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": "media\\main_menu_cover_a.jpg",
+    "text_links": []
+  },
+  "390d06fac1d19a492ff5bf3658fd7b7b": {
+    "text": "Рады приветствовать Вас!\n\n🌐 Вы воспользовались автоматическим ботом - обменником сервиса по обмену криптовалют и других электронных валют RAPID EXCHANGE!\n\n✅ Мы предлагаем Вам удобный интерфейс и по настоящему простой и быстрый обмен по привлекательно низким ценам!\n\n🤖 Чтобы совершить обмен, нажмите кнопку \"Обмен\" в главном меню снизу и мы Вас сопроводим до успешного исполнения любой Вашей заявки!\n\n❗ Убедительная просьба, перед взаимодействием с ботом, ознакомьтесь с инструкцией, продолжая вы соглашаетесь с условиями в инструкции.",
+    "buttons": [
+      {
+        "text": "⚙ Инструкция",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 0,
+        "url": "https://telegra.ph/Instrukciya-po-vzaimodejstviyu-s-avtomaticheskim-botom---obmennikom-servisa-RAPID-EXCHANGE-05-02"
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "⚙ Инструкция",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://telegra.ph/Instrukciya-po-vzaimodejstviyu-s-avtomaticheskim-botom---obmennikom-servisa-RAPID-EXCHANGE-05-02"
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "8828878935c4ef037179a153ce5d91c7": {
+    "text": "",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\main_menu_cover_a.jpg",
+    "text_links": []
+  },
+  "ebb021aeb1944a9ee69b8bd26cfb2c0c": {
+    "text": "Чтобы продать криптовалюту, напишите нашему оператору",
+    "buttons": [
+      {
+        "text": "👨‍🚀 Оператор",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 0,
+        "url": "https://t.me/RAPID_EX_Operator"
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "👨‍🚀 Оператор",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://t.me/RAPID_EX_Operator"
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "33550d4a0bf5a22db75c777eb13a4ee1": {
+    "text": "🌐 Добро пожаловать!\nВ данном разделе хранится информация по Вашим активам в сервисе 🚀RAPID EXCHANGE🚀\n\nЧтобы получить бонусы, нужно выполнить несколько простых шагов:\n\n✅ Поделиться с другом Вашей уникальной реферальной ссылкой\n(Ваша ссылка снизу)\n\n✅ Приглашенный друг должен совершить обмен через нашего автоматического бота - обменника (строго перейдя по Вашей ссылке)\n\n✅ Вам будет начислено до 10% в бонусах от суммы, уплаченной комиссии Вашего приглашенного друга. Бонусы отобразятся в данном разделе, а также при списании во время обмена.(1 бонус = 1 рубль)\n\n🎈 Бонусы: 0\n💰 Баланс: 0\n👥 Кол-во приглашенных: 0\n📄 Ваша реферальная ссылка:\nt.me/RAPID_EX_BOT?start=6131246501\n\n📕 Подробнее о Реферальной программе, Вы можете узнать, нажав \"Помощь\" —> \"Инструкция\"",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\cabinet_overview.jpg",
+    "text_links": [
+      "t.me/RAPID_EX_BOT?start=6131246501"
+    ]
+  },
+  "d9673bea68536af620f97462a4983b05": {
+    "text": "🔥 УВАЖАЕМЫЙ КЛИЕНТ! У НАС СНОВА ОТЛИЧНЫЕ НОВОСТИ!🔥\n\n🎉 Добавлены реквизиты метод Карта от 4 000 ₽!\n🎉 Добавлены реквизиты метод СБП от 7 000 ₽!\n🎉 Добавлены реквизиты метод QR от 3 000 ₽!\n🎉 Добавлены реквизиты Трансграничный метод от 1 000 ₽!\n\n\n🟢 Работаем честно и прозрачно в любых рыночных условиях.\n🟢 Каждая операция — это безопасность, чёткий процесс и наша ответственность.\n\n✅ Удобные обмeны!\n✅ Понятные условия!\n✅ Доверенный сервис!\n\nСписок банков для оплаты по трансграничному методу:\n\n1.ВТБ-банк\n2.ПСБ-банк\n3.Т-банк\n4.Альфа-банк\n5.Уралсиб-банк\n6.Газпром-банк\n\n❗️Важно: Другие банки могут блокировать перевод за границу, поэтому рекомендуется использовать вышеуказанные банки❗️\n\n🚀 RAPID EXCHANGE - Надёжнее и Быстрее Каждого!",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\promo_news_01.jpg",
+    "text_links": []
+  },
+  "76df9c5ac51f35edfe7a15c796f06e73": {
+    "text": "🔥 УВАЖАЕМЫЙ КЛИЕНТ! У НАС СНОВА ОТЛИЧНЫЕ НОВОСТИ!🔥\n\n🤩 Комиссии сервиса по всем направлениям снижены!🤩\n\n🟢 Работаем честно и прозрачно в любых рыночных условиях.\n🟢 Каждая операция — это безопасность, чёткий процесс и наша ответственность.\n\n✅ Удобные обмeны!\n✅ Понятные условия!\n✅ Доверенный сервис!\n\n🚀 RAPID EXCHANGE - Надёжнее и Быстрее Каждого!",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\promo_news_02.jpg",
+    "text_links": []
+  },
+  "334799c07e3bc4a2d3d1f4add6b749cf": {
+    "text": "🔥 УВАЖАЕМЫЙ КЛИЕНТ! У НАС СНОВА ОТЛИЧНЫЕ НОВОСТИ!🔥\n\n🎉 Добавлены реквизиты метод Карта от 5 000 ₽!\n🎉 Добавлены реквизиты метод СБП от 7 000 ₽!\n🎉 Добавлены реквизиты Трансграничный метод от 1 000 ₽!\n🎉 Добавлены реквизиты метод Внутрибанк ВТБ-ВТБ от 5 000 ₽!\n\n🟢 Работаем честно и прозрачно в любых рыночных условиях.\n🟢 Каждая операция — это безопасность, чёткий процесс и наша ответственность.\n\n✅ Удобные обмeны!\n✅ Понятные условия!\n✅ Доверенный сервис!\n\nСписок банков для оплаты по трансграничному методу:\n\n1.ВТБ-банк\n2.ПСБ-банк\n3.Т-банк\n4.Альфа-банк\n5.Уралсиб-банк\n6.Газпром-банк\n\n❗️Важно: Другие банки могут блокировать перевод за границу, поэтому рекомендуется использовать вышеуказанные банки❗️\n\n🚀 RAPID EXCHANGE - Надёжнее и Быстрее Каждого!",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\promo_news_03.jpg",
+    "text_links": []
+  },
+  "036aa1fa3f37a792976c94f8fe16cfa8": {
+    "text": "",
+    "buttons": [
+      {
+        "text": "🔄 Обмен",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Контакты 📘",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 1
+      },
+      {
+        "text": "🗄 История",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "Личный Кабинет 🧑‍🚀",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "Партнерам",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🆘 Помощь 🆘",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🔄 Обмен",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "Контакты 📘",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🗄 История",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "Личный Кабинет 🧑‍🚀",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "Партнерам",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🆘 Помощь 🆘",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": "media\\main_menu_cover_b.jpg",
+    "text_links": []
+  },
+  "d8179509e955f0642f5eee47106d56f2": {
+    "text": "🌐 RAPID EXCHANGE в полном объеме предоставляет инструкцию по эксплуатации нашего автоматического бота - обменника. Вы можете ознакомиться с ней, нажав кнопку \"Инструкция\".\n\n📬 Также Вы можете задать интересующий Вас вопрос по работе нашего бота - обменника в личных сообщениях с оператором.",
+    "buttons": [
+      {
+        "text": "👨‍🚀 Оператор",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 0,
+        "url": "https://t.me/RAPID_EX_Operator"
+      },
+      {
+        "text": "⚙ Инструкция",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 1,
+        "url": "https://telegra.ph/Instrukciya-po-vzaimodejstviyu-s-avtomaticheskim-botom---obmennikom-servisa-RAPID-EXCHANGE-05-02"
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "👨‍🚀 Оператор",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://t.me/RAPID_EX_Operator"
+        },
+        {
+          "text": "⚙ Инструкция",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 1,
+          "url": "https://telegra.ph/Instrukciya-po-vzaimodejstviyu-s-avtomaticheskim-botom---obmennikom-servisa-RAPID-EXCHANGE-05-02"
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "02f95f6db6edf92df776f7bbaf983db9": {
+    "text": "",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\main_menu_cover_b.jpg",
+    "text_links": []
+  },
+  "fb7f39a4c9ddb6f73c145c48f620c7df": {
+    "text": "Какую валюту Вы хотите купить?",
+    "buttons": [
+      {
+        "text": "BTC",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "LTC",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 1
+      },
+      {
+        "text": "ETH",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 2
+      },
+      {
+        "text": "SOL",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "USDT",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "Другое",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 2
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "BTC",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "LTC",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        },
+        {
+          "text": "ETH",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 2
+        }
+      ],
+      [
+        {
+          "text": "SOL",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "USDT",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 1
+        },
+        {
+          "text": "Другое",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 2
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "ac92e28a05d99490c186f643ec57f6d9": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.00019429 BTC\nдо 0.0291436 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "7ecc30e7c7c14b1e7a7a2de95ad40c49": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: LTC (Litecoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в LTC!\nот 0.24309134 LTC\nдо 36.4637016 LTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "84908c7f4117a9405f3419fb4496043b": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: ETH (ERC 20)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в ETH!\nот 0.00668875 ETH\nдо 1.00331193 ETH",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "7ef49a46b384bbd48ced4333baeae942": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: SOL (Solana)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в SOL!\nот 0.15465249 SOL\nдо 23.19787322 SOL",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "bd053d13b9f5cd022294170b554d642b": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: USDT (TRC 20)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в USDT!\nот 13.05 USDT\nдо 1957.97 USDT",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "f8f12d4782ec3a1e8252f64f009f009c": {
+    "text": "❗В данном разделе будут добавлены новые криптовалюты и другие электронные валюты, сформированные по Вашим запросам!\n\n🤝 Вы можете написать нашему менеджеру и предложить добавить интересующую Вас валюту в наш обменный сервис!\n\n✅ Чтобы не упускать появление новых монет и других важных событий, подпишитесь на наш канал и присоединяйтесь к нашему чату!",
+    "buttons": [
+      {
+        "text": "💬 Чат",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 0,
+        "url": "https://t.me/RAPID_EX_CHAT"
+      },
+      {
+        "text": "Канал 📰",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 1,
+        "url": "https://t.me/RAPID_EX_CHANNEL"
+      },
+      {
+        "text": "🤝 Менеджер",
+        "type": "KeyboardButtonUrl",
+        "row": 1,
+        "col": 0,
+        "url": "https://t.me/RAPID_EX_Manager"
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "💬 Чат",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://t.me/RAPID_EX_CHAT"
+        },
+        {
+          "text": "Канал 📰",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 1,
+          "url": "https://t.me/RAPID_EX_CHANNEL"
+        }
+      ],
+      [
+        {
+          "text": "🤝 Менеджер",
+          "type": "KeyboardButtonUrl",
+          "row": 1,
+          "col": 0,
+          "url": "https://t.me/RAPID_EX_Manager"
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "f926cdaa54b21656b0bcd756aa7816d1": {
+    "text": "🙏 Пожалуйста, обращайтесь к сотрудникам, которые компетентны в ваших вопросах!\n\n💰 Оператор - вопросы связанные с обменом и выплатами: заявки, оплата, комиссии, бонусы, выплаты с розыгрышей из чата, а также вопросы по взаимодействию с нашим автоматическим ботом - обменником.\n\n🤝 Менеджер - вопросы по рекламе, акциям, скидкам, предложения по сотрудничеству, вопросы о недавних изменениях внутри сервиса, предстоящие технические работы (изменения и инф. о тех. работах публикуются в канале), график работы и жалобы на работу сервиса и сотрудников.\n\n🎮 Администратор чата - вопросы о денежных розыгрышах и играх в чате, правила чата, жалобы на других участников чата, изменение прав доступа к чату для аккаунта.",
+    "buttons": [
+      {
+        "text": "🤝 Менеджер",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 0,
+        "url": "https://t.me/RAPID_EX_Manager"
+      },
+      {
+        "text": "Канал 📰",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 1,
+        "url": "https://t.me/RAPID_EX_CHANNEL"
+      },
+      {
+        "text": "👨‍🚀 Оператор",
+        "type": "KeyboardButtonUrl",
+        "row": 1,
+        "col": 0,
+        "url": "https://t.me/RAPID_EX_Operator"
+      },
+      {
+        "text": "Отзывы 📣",
+        "type": "KeyboardButtonUrl",
+        "row": 1,
+        "col": 1,
+        "url": "https://t.me/RAPID_EX_REVIEWS"
+      },
+      {
+        "text": "🎮 Чат-Админ",
+        "type": "KeyboardButtonUrl",
+        "row": 2,
+        "col": 0,
+        "url": "https://t.me/RAPID_EX_Admin"
+      },
+      {
+        "text": "Чат 💬",
+        "type": "KeyboardButtonUrl",
+        "row": 2,
+        "col": 1,
+        "url": "https://t.me/RAPID_EX_CHAT"
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🤝 Менеджер",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://t.me/RAPID_EX_Manager"
+        },
+        {
+          "text": "Канал 📰",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 1,
+          "url": "https://t.me/RAPID_EX_CHANNEL"
+        }
+      ],
+      [
+        {
+          "text": "👨‍🚀 Оператор",
+          "type": "KeyboardButtonUrl",
+          "row": 1,
+          "col": 0,
+          "url": "https://t.me/RAPID_EX_Operator"
+        },
+        {
+          "text": "Отзывы 📣",
+          "type": "KeyboardButtonUrl",
+          "row": 1,
+          "col": 1,
+          "url": "https://t.me/RAPID_EX_REVIEWS"
+        }
+      ],
+      [
+        {
+          "text": "🎮 Чат-Админ",
+          "type": "KeyboardButtonUrl",
+          "row": 2,
+          "col": 0,
+          "url": "https://t.me/RAPID_EX_Admin"
+        },
+        {
+          "text": "Чат 💬",
+          "type": "KeyboardButtonUrl",
+          "row": 2,
+          "col": 1,
+          "url": "https://t.me/RAPID_EX_CHAT"
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "b3d2363c92d40a05d82c7ceb28d7b2db": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.00019326 BTC\nдо 0.02898891 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "0d3fcaa213fb05de855d32e167dc44e7": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00146607 BTC\n\n🔸Укажите кошелек!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "3f854859483210f0258ce4066c5d8d90": {
+    "text": "❗️ Вы указали неверный кошелек!\n⚠️ Проверьте верно ли он скопирован и вставьте повторно!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "cc8daf8a7148b91fb65fc53a65254c5d": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.00019262 BTC\nдо 0.02889243 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "8fdee5e7e92dddb74a1abe5be624a680": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00120558 BTC\n\n🔸Укажите кошелек!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "b868d8d3fd4f618a097e96656fe1f153": {
+    "text": "👀 Проверьте и подтвердите Ваши данные!\n\nВаша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00120558 BTC\nСпособ оплаты: Карта\nКошелек: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\n\n🎈 Используйте \"Бонусы\"\n✅ Чтобы продолжить, нажмите \"Подтвердить\"\n🔁 Если вы допустили ошибку, нажмите \"Заново\"\n\n❗️ Нажав кнопку \"Подтвердить\", Вы автоматически соглашаетесь с условиями сделки!",
+    "buttons": [
+      {
+        "text": "✅ Подтвердить",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Бонусы 🎈",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 1
+      },
+      {
+        "text": "🔁 Заново",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "✅ Подтвердить",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "Бонусы 🎈",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🔁 Заново",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": [
+      "https://telegra.ph/Polzovatelskoe-soglashenie-servisa-Rapid-Exchange-08-21"
+    ]
+  },
+  "3c81e8134349069fe23d897cc244a625": {
+    "text": "Тут можно посмотреть историю ваших сделок",
+    "buttons": [
+      {
+        "text": "История сделок",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "История сделок",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "f73aa46fb5fb87104fd72f1f612019b1": {
+    "text": "Какую операцию Вы хотите совершить?",
+    "buttons": [
+      {
+        "text": "🛒 Купить",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Продать 💳",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🛒 Купить",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "Продать 💳",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "752227799aa15062698b35983d7b15f1": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.00019146 BTC\nдо 0.02871931 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "226e6b6a84d7233041518845fa67511c": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00136512 BTC\n\n🔸Укажите кошелек!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "c3b6c60472b1b04888ca68d23b6cc296": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00136512 BTC\nКошелек: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\n\n🔸 Выберите способ оплаты!\n\n🔸Для оплаты по Вашей заявке на данный момент доступны следующие методы оплаты:\n\n— Карта\n— СБП\n— Трансграничный перевод\n— Внутрибанк. перевод\n\nУведомляем, что для каждого метода предусмотрен свой лимит по сумме. Отсутствие других методов в списке говорит о том, что их лимиты временно выше и не подходят для указанной вами суммы.\n\n❗️Для получения дополнительных методов оплаты рекомендуем увеличить сумму сделки.❗️",
+    "buttons": [
+      {
+        "text": "💳 Карта",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "СБП 📱",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 1
+      },
+      {
+        "text": "❌ QR код",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "❌ QR (Альфа-Альфа)",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "🏦 Внутрибанк. перевод 🏦",
+        "type": "KeyboardButtonCallback",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "❌ Моб. связь (СИМ)",
+        "type": "KeyboardButtonCallback",
+        "row": 3,
+        "col": 0
+      },
+      {
+        "text": "💱 Трансграничный перевод 💱",
+        "type": "KeyboardButtonCallback",
+        "row": 4,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "💳 Карта",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "СБП 📱",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "❌ QR код",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "❌ QR (Альфа-Альфа)",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🏦 Внутрибанк. перевод 🏦",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "❌ Моб. связь (СИМ)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "💱 Трансграничный перевод 💱",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "39b845e2066f2eef5e51948860395bdb": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00144918 BTC\n\n🔸Укажите кошелек!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "28f464b9934c54453ab4caecdd96298c": {
+    "text": "Вы оплатили: 9280\nБанк: Ozon Банк:\n2204321011570124 (Васильев Юрий Иванович)\n\nВы получаете: 0.00144918 BTC\nСпособ оплаты: Карта\nВаш кошелек: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\n\nВаша заявка №676798\n⏳ Находится в обработке, пожалуйста, ожидайте ответ!\n\n❗️ Все вопросы и претензии по обмену принимаются в течение 48 часов.\n\n❗️ Среднее время обработки 15 мин. (после отправки средств)\nЕсли Вы не получили ответ от бота, напишите оператору ⤵️",
+    "buttons": [
+      {
+        "text": "👨‍🚀 Оператор",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 0,
+        "url": "https://t.me/RAPID_EX_Operator"
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "👨‍🚀 Оператор",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://t.me/RAPID_EX_Operator"
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "d0e208b733cda0b4bebb2e662dff6a7e": {
+    "text": "⚠️ Оплатите или отмените предыдущую заявку, чтобы создать новую",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "706057f052f0d2910a1d08835a3273bc": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.00019188 BTC\nдо 0.02878178 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "b5be648e40b119036e9d70cfb96e2664": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00116528 BTC\n\n🔸Укажите кошелек!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "8a853240e7713dbd4e1119cf48a91905": {
+    "text": "Ваша заявка: №676804\n\n❌ Вы самостоятельно отменили данную заявку!\n\n✅ Чтобы создать новую, выберите нужную валюту из предложенных в сообщении выше или нажмите \"Обмен\" в меню снизу!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "da4ee593163a4068eb89998cdfe33451": {
+    "text": "🔥 УВАЖАЕМЫЙ КЛИЕНТ! У НАС СНОВА ОТЛИЧНЫЕ НОВОСТИ!🔥\n\n🎉 Добавлены реквизиты метод Карта от 5 000 ₽!\n🎉 Добавлены реквизиты метод СБП от 5 000 ₽!\n🎉 Добавлены реквизиты Трансграничный метод от 1 000 ₽!\n🎉 Добавлены реквизиты метод QR от 3 000 ₽!\n🎉 Добавлены реквизиты метод Внутрибанк ВТБ-ВТБ от 5 000 ₽!\n\n🟢 Работаем честно и прозрачно в любых рыночных условиях.\n🟢 Каждая операция — это безопасность, чёткий процесс и наша ответственность.\n\n✅ Удобные обмeны!\n✅ Понятные условия!\n✅ Доверенный сервис!\n\nСписок банков для оплаты по трансграничному методу:\n\n1.ВТБ-банк\n2.ПСБ-банк\n3.Т-банк\n4.Альфа-банк\n5.Уралсиб-банк\n6.Газпром-банк\n\n❗️Важно: Другие банки могут блокировать перевод за границу, поэтому рекомендуется использовать вышеуказанные банки❗️\n\n🚀 RAPID EXCHANGE - Надёжнее и Быстрее Каждого!",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\promo_news_04.jpg",
+    "text_links": []
+  },
+  "d73c361a7651209ae4324a5e70567ad1": {
+    "text": "🔥 УВАЖАЕМЫЙ КЛИЕНТ! У НАС СНОВА ОТЛИЧНЫЕ НОВОСТИ!🔥\n\n🎉 Добавлены реквизиты метод Карта от 5 000 ₽!\n🎉 Добавлены реквизиты метод СБП от 5 000 ₽!\n🎉 Добавлены реквизиты Трансграничный метод от 1 000 ₽!\n🎉 Добавлены реквизиты метод QR от 3 000 ₽!\n🎉 Добавлены реквизиты метод Внутрибанк ВТБ-ВТБ, Альфа-Альфа от 5 000 ₽!\n\n🟢 Работаем честно и прозрачно в любых рыночных условиях.\n🟢 Каждая операция — это безопасность, чёткий процесс и наша ответственность.\n\n✅ Удобные обмeны!\n✅ Понятные условия!\n✅ Доверенный сервис!\n\nСписок банков для оплаты по трансграничному методу:\n\n1.ВТБ-банк\n2.ПСБ-банк\n3.Т-банк\n4.Альфа-банк\n5.Уралсиб-банк\n6.Газпром-банк\n\n❗️Важно: Другие банки могут блокировать перевод за границу, поэтому рекомендуется использовать вышеуказанные банки❗️\n\n🚀 RAPID EXCHANGE - Надёжнее и Быстрее Каждого!",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\promo_news_05.jpg",
+    "text_links": []
+  },
+  "ff1ec950f6d68af56e1971208e5b28c1": {
+    "text": "🔥 УВАЖАЕМЫЙ КЛИЕНТ! У НАС СНОВА ОТЛИЧНЫЕ НОВОСТИ!🔥\n\n🎉 Добавлены реквизиты метод Карта от 6 000 ₽!\n🎉 Добавлены реквизиты метод СБП от 7 000 ₽!\n🎉 Добавлены реквизиты Трансграничный метод от 1 000 ₽!\n🎉 Добавлены реквизиты метод QR от 3 000 ₽!\n🎉 Добавлены реквизиты метод Внутрибанк ВТБ-ВТБ, Альфа-Альфа от 5 000 ₽!\n\n🟢 Работаем честно и прозрачно в любых рыночных условиях.\n🟢 Каждая операция — это безопасность, чёткий процесс и наша ответственность.\n\n✅ Удобные обмeны!\n✅ Понятные условия!\n✅ Доверенный сервис!\n\nСписок банков для оплаты по трансграничному методу:\n\n1.ВТБ-банк\n2.ПСБ-банк\n3.Т-банк\n4.Альфа-банк\n5.Уралсиб-банк\n6.Газпром-банк\n\n❗️Важно: Другие банки могут блокировать перевод за границу, поэтому рекомендуется использовать вышеуказанные банки❗️\n\n🚀 RAPID EXCHANGE - Надёжнее и Быстрее Каждого!",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\promo_news_06.jpg",
+    "text_links": []
+  },
+  "68ecc82e240b0112a138388f00049d4d": {
+    "text": "🔥 УВАЖАЕМЫЙ КЛИЕНТ! У НАС СНОВА ОТЛИЧНЫЕ НОВОСТИ!🔥\n\n🎉 Добавлены реквизиты метод Карта от 5 000 ₽!\n🎉 Добавлены реквизиты метод СБП от 7 000 ₽!\n🎉 Добавлены реквизиты Трансграничный метод от 1 000 ₽!\n🎉 Добавлены реквизиты метод Внутрибанк ВТБ-ВТБ, Альфа-Альфа от 5 000 ₽!\n\n🟢 Работаем честно и прозрачно в любых рыночных условиях.\n🟢 Каждая операция — это безопасность, чёткий процесс и наша ответственность.\n\n✅ Удобные обмeны!\n✅ Понятные условия!\n✅ Доверенный сервис!\n\nСписок банков для оплаты по трансграничному методу:\n\n1.ВТБ-банк\n2.ПСБ-банк\n3.Т-банк\n4.Альфа-банк\n5.Уралсиб-банк\n6.Газпром-банк\n\n❗️Важно: Другие банки могут блокировать перевод за границу, поэтому рекомендуется использовать вышеуказанные банки❗️\n\n🚀 RAPID EXCHANGE - Надёжнее и Быстрее Каждого!",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\promo_news_07.jpg",
+    "text_links": []
+  },
+  "4e71685b893cdd7408e47325b3d21ed9": {
+    "text": "",
+    "buttons": [
+      {
+        "text": "🔄 Обмен",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Контакты 📘",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 1
+      },
+      {
+        "text": "🗄 История",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "Личный Кабинет 🧑‍🚀",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "Партнерам",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🆘 Помощь 🆘",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🔄 Обмен",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "Контакты 📘",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🗄 История",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "Личный Кабинет 🧑‍🚀",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "Партнерам",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🆘 Помощь 🆘",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": "media\\exchange_cover.jpg",
+    "text_links": []
+  },
+  "f8d30f846a410482317b659f91acf8c2": {
+    "text": "",
+    "buttons": [],
+    "button_rows": [],
+    "media": "media\\exchange_cover.jpg",
+    "text_links": []
+  },
+  "e830dc980b3f4e6cdb5583cf532c908e": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.00018809 BTC\nдо 0.02821316 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "8c18dfa923776b23d869f4a80eede9b1": {
+    "text": "Введите корректное значение валюты",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "2a5f9c7afca813687443545a5f628f14": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00227718 BTC\n\n🔸Укажите кошелек!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "ef017d43340ea180d4c6a5a8df4ee6e9": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.00018843 BTC\nдо 0.02826394 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "4e2780824231984cec56d844a814b889": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00125567 BTC\n\n🔸Укажите кошелек!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "976afffe110380312b01329a059a1bb9": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.00018858 BTC\nдо 0.02828697 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "53edecc4e1567efa762968b84e9ca942": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00169722 BTC\n\n🔸Укажите кошелек!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "ebdd0517c0d52ac2a43739e2c4b41d56": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.00018858 BTC\nдо 0.02828705 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "cc01ca71849c6ba122e24d2e585ffec2": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.00018832 BTC\nдо 0.028248 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "4ca9e3a5589162796ff69ab3e4610982": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в BTC!\nот 0.0001887 BTC\nдо 0.0283045 BTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "07dabe96799f896a710b816fffa46ade": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: BTC (Bitcoin)\nКол-во: 0.00157241 BTC\n\n🔸Укажите кошелек!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "b6c680303965fab0505142ce48997c52": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: LTC (Litecoin)\n\n🔹 Введите сумму в Рублях!\nот 1000 Рублей\nдо 150000 Рублей\n\n🔸 Или введите сумму в LTC!\nот 0.24426407 LTC\nдо 36.63961035 LTC",
+    "buttons": [
+      {
+        "text": "🚀 Рассчитать стоимость",
+        "type": "KeyboardButtonSwitchInline",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🚀 Рассчитать стоимость",
+          "type": "KeyboardButtonSwitchInline",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "ab77886281eb909b073a489c1c45e108": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: LTC (Litecoin)\nКол-во: 2.3629702 LTC\n\n🔸Укажите кошелек!",
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "6a15759bca0b175d22b69928fa6f006e": {
+    "text": "Ваша заявка:\n\nОперация: Покупка\nВалюта: LTC (Litecoin)\nКол-во: 2.3629702 LTC\nКошелек: ltc1qg82h9m6k9n9f3q2w8f8l2m7f9h7n4k3s2x1d0c\n\n🔸 Выберите способ оплаты!\n\n🔸Для оплаты по Вашей заявке на данный момент доступны следующие методы оплаты:\n\n— Карта\n— СБП\n— Трансграничный перевод\n— Внутрибанк. перевод\n\nУведомляем, что для каждого метода предусмотрен свой лимит по сумме. Отсутствие других методов в списке говорит о том, что их лимиты временно выше и не подходят для указанной вами суммы.\n\n❗️Для получения дополнительных методов оплаты рекомендуем увеличить сумму сделки.❗️",
+    "buttons": [
+      {
+        "text": "💳 Карта",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "СБП 📱",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 1
+      },
+      {
+        "text": "❌ QR код",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "❌ QR (Альфа-Альфа)",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "🏦 Внутрибанк. перевод 🏦",
+        "type": "KeyboardButtonCallback",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "❌ Моб. связь (СИМ)",
+        "type": "KeyboardButtonCallback",
+        "row": 3,
+        "col": 0
+      },
+      {
+        "text": "💱 Трансграничный перевод 💱",
+        "type": "KeyboardButtonCallback",
+        "row": 4,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "💳 Карта",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "СБП 📱",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "❌ QR код",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "❌ QR (Альфа-Альфа)",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🏦 Внутрибанк. перевод 🏦",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "❌ Моб. связь (СИМ)",
+          "type": "KeyboardButtonCallback",
+          "row": 3,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "💱 Трансграничный перевод 💱",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "6483d6b351052dbd0b70c9be9e72231e": {
+    "text": "👀 Проверьте и подтвердите Ваши данные!\n\nВаша заявка:\n\nОперация: Покупка\nВалюта: LTC (Litecoin)\nКол-во: 2.3629702 LTC\nСпособ оплаты: СБП\nКошелек: ltc1qg82h9m6k9n9f3q2w8f8l2m7f9h7n4k3s2x1d0c\n\n🎈 Используйте \"Бонусы\"\n✅ Чтобы продолжить, нажмите \"Подтвердить\"\n🔁 Если вы допустили ошибку, нажмите \"Заново\"\n\n❗️ Нажав кнопку \"Подтвердить\", Вы автоматически соглашаетесь с условиями сделки!",
+    "buttons": [
+      {
+        "text": "✅ Подтвердить",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Бонусы 🎈",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 1
+      },
+      {
+        "text": "🔁 Заново",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "✅ Подтвердить",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "Бонусы 🎈",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "🔁 Заново",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": [
+      "https://telegra.ph/Polzovatelskoe-soglashenie-servisa-Rapid-Exchange-08-21"
+    ]
+  },
+  "b1598d5b51303a3d46b9f1db19302c5f": {
+    "text": "Ваша заявка: № 679694\n\n⚠️ Подбираем для Вас реквизиты, они появятся здесь!\nМы пришлем дополнительное уведомление!\n\nВы получите: 2.3629702 LTC\nСпособ оплаты: СБП\nВаш кошелек: ltc1qg82h9m6k9n9f3q2w8f8l2m7f9h7n4k3s2x1d0c\n\n\n❌ Если Вы хотите отменить заявку, нажмите \"Отмена\"!",
+    "buttons": [
+      {
+        "text": "⛔ Отмена",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "⛔ Отмена",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  }
+}

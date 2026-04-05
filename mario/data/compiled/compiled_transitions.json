@@ -1,0 +1,1246 @@
+{
+  "meta": {
+    "generated_at": "2026-02-22T16:11:07.716614+00:00",
+    "states_count": 70,
+    "edges_count": 122,
+    "confidence_counts": {
+      "low": 34,
+      "medium": 67,
+      "high": 21
+    }
+  },
+  "by_state": {
+    "f7df657dc44a55bb5f745478b8790482": {
+      "button:Назад": "a34fa4bdaeee02944576c7ff09f442d9",
+      "button:Bitcoin": "cf112a5e2265f4b2c6b0375846c8972b",
+      "button:Litecoin": "d702ca0d0fd3b7f56a5f7b1f0338367b"
+    },
+    "a34fa4bdaeee02944576c7ff09f442d9": {
+      "system:auto": "dea2d09f86c418ad7e64269f922bf07c"
+    },
+    "dea2d09f86c418ad7e64269f922bf07c": {
+      "button:⭐️Купить⭐️": "0b514638cae7532b9563fd2bb1ba47bc",
+      "button:🍄Продать🍄": "f7df657dc44a55bb5f745478b8790482",
+      "button:🤑Большой розыгрыш🤑": "42a4226d19582cbc6edbe8bb9853131a",
+      "button:🎮 Реферальная программа 🎮": "df8f03865ebbffd5bfe3a23c60399bb6"
+    },
+    "0b514638cae7532b9563fd2bb1ba47bc": {
+      "button:Bitcoin": "37b805b8b5ff7721cc36399eb544fafb",
+      "button:Litecoin": "d1628cf2837e880dabf38edc1510e4fb",
+      "button:USDT(trc20)": "4391b0262804f8f0ebe5e25b07b22d3c",
+      "button:Tron(TRX)": "509c49e252d2a641a36cc9f12e8334a4"
+    },
+    "37b805b8b5ff7721cc36399eb544fafb": {
+      "input:any": "674952e17927d75d3fa605a894430989"
+    },
+    "674952e17927d75d3fa605a894430989": {
+      "system:auto": "c8544538fb8008da3879f74822a07288"
+    },
+    "6677c6a34cb14b207a257b5582bbb8c3": {
+      "system:auto": "44462ee1f3a75bc4976e95cfad0ab6e6"
+    },
+    "44462ee1f3a75bc4976e95cfad0ab6e6": {
+      "button:Не использовать промокод": "e3d82312ac5b2db02138b85a54abd25c"
+    },
+    "e3d82312ac5b2db02138b85a54abd25c": {
+      "button:🕹ТРАНСГРАН": "d1a26ec0c237d85c27510e71a9786a92"
+    },
+    "d1a26ec0c237d85c27510e71a9786a92": {
+      "input:any": "78361a9584ffafc06f325d793728df47"
+    },
+    "78361a9584ffafc06f325d793728df47": {
+      "button:Обычная🥹20-80 минут": "17a1c62fc22ebe33abd7ef66b65c1ab2"
+    },
+    "17a1c62fc22ebe33abd7ef66b65c1ab2": {
+      "system:auto": "a34fa4bdaeee02944576c7ff09f442d9"
+    },
+    "d1628cf2837e880dabf38edc1510e4fb": {
+      "input:any": "f259880f50bedcc33a0f40e1dd78e557"
+    },
+    "77e13a147984da95e5ad2be41fe97afb": {
+      "system:auto": "d7d7e428d4b021012c1a6093dde5ec66"
+    },
+    "d7d7e428d4b021012c1a6093dde5ec66": {
+      "button:Не использовать промокод": "18743c6bd3d9d6b335b096990e7851bd"
+    },
+    "18743c6bd3d9d6b335b096990e7851bd": {
+      "button:🕹ТРАНСГРАН": "3809118b853907631ba4e82536b75748"
+    },
+    "3809118b853907631ba4e82536b75748": {
+      "input:any": "326b57c30338efd092ba50533067cc8b"
+    },
+    "326b57c30338efd092ba50533067cc8b": {
+      "input:any": "b2354174ce711dbe22f10c8d6bf3bbd7"
+    },
+    "b2354174ce711dbe22f10c8d6bf3bbd7": {
+      "button:Остановить поиск": "88f02cd302d810b785c068a172a01f05"
+    },
+    "88f02cd302d810b785c068a172a01f05": {
+      "system:auto": "a34fa4bdaeee02944576c7ff09f442d9"
+    },
+    "f259880f50bedcc33a0f40e1dd78e557": {
+      "system:auto": "40e326a580739cc43dcab2c8da179721"
+    },
+    "40e326a580739cc43dcab2c8da179721": {
+      "system:auto": "573ab4ee0c720077a8eee18fb11bf94c"
+    },
+    "573ab4ee0c720077a8eee18fb11bf94c": {
+      "button:🕹ТРАНСГРАН": "a018ed10ea04185e03e1e203491d3de4"
+    },
+    "a018ed10ea04185e03e1e203491d3de4": {
+      "input:any": "17a1c62fc22ebe33abd7ef66b65c1ab2"
+    },
+    "4391b0262804f8f0ebe5e25b07b22d3c": {
+      "input:any": "7e31b306d6f92ae341f59de08ffb89d3"
+    },
+    "7e31b306d6f92ae341f59de08ffb89d3": {
+      "system:auto": "748b78638cbfe9d7d1048c21d9578ed9"
+    },
+    "6b4b758a5c2632d362dd4c33911b152e": {
+      "button:🕹ТРАНСГРАН": "3dad6305cfd49fe58edcd334baaa0086"
+    },
+    "3dad6305cfd49fe58edcd334baaa0086": {
+      "input:any": "88f02cd302d810b785c068a172a01f05"
+    },
+    "748b78638cbfe9d7d1048c21d9578ed9": {
+      "button:Не использовать промокод": "6b4b758a5c2632d362dd4c33911b152e"
+    },
+    "cf112a5e2265f4b2c6b0375846c8972b": {
+      "input:any": "980df86a1c1d3205a2b3605740d4bece"
+    },
+    "980df86a1c1d3205a2b3605740d4bece": {
+      "system:auto": "013804fbe833c27e73b86221d4a0ddbb"
+    },
+    "013804fbe833c27e73b86221d4a0ddbb": {
+      "button:Не использовать промокод": "34ed2ebf090b450e4030af05fa292b36"
+    },
+    "34ed2ebf090b450e4030af05fa292b36": {
+      "input:any": "b2354174ce711dbe22f10c8d6bf3bbd7"
+    },
+    "0cccfcbc67fcb15a1bd7df0087670d88": {
+      "input:any": "674952e17927d75d3fa605a894430989"
+    },
+    "1a6412a7d294a921dc3aeb9ce0b20290": {
+      "system:auto": "0e211a382fff69e953a3c40b6798bca8"
+    },
+    "0e211a382fff69e953a3c40b6798bca8": {
+      "button:Не использовать промокод": "b213240feabeef4a5764bd68a74003c8"
+    },
+    "b213240feabeef4a5764bd68a74003c8": {
+      "input:any": "cae8faa0b012701d905f3c3ef9377739"
+    },
+    "cae8faa0b012701d905f3c3ef9377739": {
+      "button:Оплатил": "dde88413e8078f96ae2373adf185cd56"
+    },
+    "dde88413e8078f96ae2373adf185cd56": {
+      "system:auto": "cc4b3d59fb3ac5d0cf2d687042be7d9f"
+    },
+    "b34b307692203aa62375038376b86764": {
+      "system:auto": "9e33d7312db5e12ff86862923bdc252e"
+    },
+    "9e33d7312db5e12ff86862923bdc252e": {
+      "button:Назад": "81f95908a0eeadfc3629d1161976375f"
+    },
+    "81f95908a0eeadfc3629d1161976375f": {
+      "system:auto": "a34fa4bdaeee02944576c7ff09f442d9"
+    },
+    "d702ca0d0fd3b7f56a5f7b1f0338367b": {
+      "input:any": "bc41350464e787d3f526b05b07c7eb9c"
+    },
+    "bc41350464e787d3f526b05b07c7eb9c": {
+      "system:auto": "e86dd5aa1e821aae5588b1125464f9f6"
+    },
+    "e86dd5aa1e821aae5588b1125464f9f6": {
+      "system:auto": "85e1460d264ab557f319c8b62f7a1cb7"
+    },
+    "85e1460d264ab557f319c8b62f7a1cb7": {
+      "input:any": "f363e7dac0fcc7eec0484b3513d9b019"
+    },
+    "f363e7dac0fcc7eec0484b3513d9b019": {
+      "button:Оплатил": "dde88413e8078f96ae2373adf185cd56"
+    },
+    "6c4c4ece17ea0d47ee54e8db7e357e5b": {
+      "system:auto": "48bacb7031bc81a78a256393f1f1dad6"
+    },
+    "48bacb7031bc81a78a256393f1f1dad6": {
+      "button:Да": "5a7c36b69ec3257cabf37545254f4306"
+    },
+    "5a7c36b69ec3257cabf37545254f4306": {
+      "button:Отправить номер оператору": "8c420d05b595ee10bd97dd6653d9c777"
+    },
+    "8c420d05b595ee10bd97dd6653d9c777": {
+      "system:auto": "a34fa4bdaeee02944576c7ff09f442d9"
+    },
+    "7cf5ba287563f2ed1799e313561609f7": {
+      "input:any": "fb3072439e29b3aa32d851cbd55adbff"
+    },
+    "fb3072439e29b3aa32d851cbd55adbff": {
+      "system:auto": "1af33129f9df8457a70a3a576741ccba"
+    },
+    "1af33129f9df8457a70a3a576741ccba": {
+      "input:any": "e420ad2c17818d349e51f18c80a78390"
+    },
+    "e420ad2c17818d349e51f18c80a78390": {
+      "button:Оплатил": "dde88413e8078f96ae2373adf185cd56"
+    },
+    "cc4b3d59fb3ac5d0cf2d687042be7d9f": {
+      "system:auto": "9e33d7312db5e12ff86862923bdc252e"
+    },
+    "1b75f7c255c267708de9969b6c0a1e95": {
+      "input:any": "0cccfcbc67fcb15a1bd7df0087670d88"
+    },
+    "415bf399786fc7aeda3b02fcbd7947ff": {
+      "system:auto": "d04646e9d3d2840fa55f19db766a83c6"
+    },
+    "d04646e9d3d2840fa55f19db766a83c6": {
+      "button:Не использовать промокод": "7b268d0378402d84b8cc6e527dc85e56"
+    },
+    "7b268d0378402d84b8cc6e527dc85e56": {
+      "input:any": "02e4dec20eb6a5c88dd99a0068714ff5"
+    },
+    "02e4dec20eb6a5c88dd99a0068714ff5": {
+      "input:any": "a34fa4bdaeee02944576c7ff09f442d9"
+    },
+    "42a4226d19582cbc6edbe8bb9853131a": {
+      "system:auto": "dcbdf7f8ccfc09fa685b4e691a6b9d07"
+    },
+    "dcbdf7f8ccfc09fa685b4e691a6b9d07": {
+      "system:auto": "a34fa4bdaeee02944576c7ff09f442d9"
+    },
+    "df8f03865ebbffd5bfe3a23c60399bb6": {
+      "button:Вывод средств": "4c15b322168dc7345ac8d4101a43ee2e"
+    },
+    "4c15b322168dc7345ac8d4101a43ee2e": {
+      "system:auto": "a34fa4bdaeee02944576c7ff09f442d9"
+    },
+    "509c49e252d2a641a36cc9f12e8334a4": {
+      "input:any": "674952e17927d75d3fa605a894430989"
+    },
+    "c8544538fb8008da3879f74822a07288": {
+      "system:auto": "13d2ea29ae675d40bbf8772f13b86265"
+    },
+    "13d2ea29ae675d40bbf8772f13b86265": {
+      "button:Не использовать промокод": "3fb75c375615483587d78f4e5bf66da9"
+    },
+    "3fb75c375615483587d78f4e5bf66da9": {
+      "button:🕹ТРАНСГРАН": "2bec2085ca504aeba5eccfb09eeaeb73"
+    },
+    "2bec2085ca504aeba5eccfb09eeaeb73": {
+      "input:any": "17a1c62fc22ebe33abd7ef66b65c1ab2"
+    }
+  },
+  "default_next": {
+    "f7df657dc44a55bb5f745478b8790482": "d702ca0d0fd3b7f56a5f7b1f0338367b",
+    "a34fa4bdaeee02944576c7ff09f442d9": "dea2d09f86c418ad7e64269f922bf07c",
+    "dea2d09f86c418ad7e64269f922bf07c": "0b514638cae7532b9563fd2bb1ba47bc",
+    "0b514638cae7532b9563fd2bb1ba47bc": "d1628cf2837e880dabf38edc1510e4fb",
+    "37b805b8b5ff7721cc36399eb544fafb": "674952e17927d75d3fa605a894430989",
+    "674952e17927d75d3fa605a894430989": "c8544538fb8008da3879f74822a07288",
+    "6677c6a34cb14b207a257b5582bbb8c3": "44462ee1f3a75bc4976e95cfad0ab6e6",
+    "44462ee1f3a75bc4976e95cfad0ab6e6": "e3d82312ac5b2db02138b85a54abd25c",
+    "e3d82312ac5b2db02138b85a54abd25c": "d1a26ec0c237d85c27510e71a9786a92",
+    "d1a26ec0c237d85c27510e71a9786a92": "78361a9584ffafc06f325d793728df47",
+    "78361a9584ffafc06f325d793728df47": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "17a1c62fc22ebe33abd7ef66b65c1ab2": "a34fa4bdaeee02944576c7ff09f442d9",
+    "d1628cf2837e880dabf38edc1510e4fb": "f259880f50bedcc33a0f40e1dd78e557",
+    "77e13a147984da95e5ad2be41fe97afb": "d7d7e428d4b021012c1a6093dde5ec66",
+    "d7d7e428d4b021012c1a6093dde5ec66": "18743c6bd3d9d6b335b096990e7851bd",
+    "18743c6bd3d9d6b335b096990e7851bd": "3809118b853907631ba4e82536b75748",
+    "3809118b853907631ba4e82536b75748": "326b57c30338efd092ba50533067cc8b",
+    "326b57c30338efd092ba50533067cc8b": "b2354174ce711dbe22f10c8d6bf3bbd7",
+    "b2354174ce711dbe22f10c8d6bf3bbd7": "88f02cd302d810b785c068a172a01f05",
+    "88f02cd302d810b785c068a172a01f05": "a34fa4bdaeee02944576c7ff09f442d9",
+    "f259880f50bedcc33a0f40e1dd78e557": "40e326a580739cc43dcab2c8da179721",
+    "40e326a580739cc43dcab2c8da179721": "573ab4ee0c720077a8eee18fb11bf94c",
+    "573ab4ee0c720077a8eee18fb11bf94c": "a018ed10ea04185e03e1e203491d3de4",
+    "a018ed10ea04185e03e1e203491d3de4": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+    "4391b0262804f8f0ebe5e25b07b22d3c": "7e31b306d6f92ae341f59de08ffb89d3",
+    "7e31b306d6f92ae341f59de08ffb89d3": "748b78638cbfe9d7d1048c21d9578ed9",
+    "6b4b758a5c2632d362dd4c33911b152e": "3dad6305cfd49fe58edcd334baaa0086",
+    "3dad6305cfd49fe58edcd334baaa0086": "88f02cd302d810b785c068a172a01f05",
+    "748b78638cbfe9d7d1048c21d9578ed9": "6b4b758a5c2632d362dd4c33911b152e",
+    "cf112a5e2265f4b2c6b0375846c8972b": "980df86a1c1d3205a2b3605740d4bece",
+    "980df86a1c1d3205a2b3605740d4bece": "013804fbe833c27e73b86221d4a0ddbb",
+    "013804fbe833c27e73b86221d4a0ddbb": "34ed2ebf090b450e4030af05fa292b36",
+    "34ed2ebf090b450e4030af05fa292b36": "b2354174ce711dbe22f10c8d6bf3bbd7",
+    "0cccfcbc67fcb15a1bd7df0087670d88": "674952e17927d75d3fa605a894430989",
+    "1a6412a7d294a921dc3aeb9ce0b20290": "0e211a382fff69e953a3c40b6798bca8",
+    "0e211a382fff69e953a3c40b6798bca8": "b213240feabeef4a5764bd68a74003c8",
+    "b213240feabeef4a5764bd68a74003c8": "cae8faa0b012701d905f3c3ef9377739",
+    "cae8faa0b012701d905f3c3ef9377739": "dde88413e8078f96ae2373adf185cd56",
+    "dde88413e8078f96ae2373adf185cd56": "cc4b3d59fb3ac5d0cf2d687042be7d9f",
+    "b34b307692203aa62375038376b86764": "9e33d7312db5e12ff86862923bdc252e",
+    "9e33d7312db5e12ff86862923bdc252e": "81f95908a0eeadfc3629d1161976375f",
+    "81f95908a0eeadfc3629d1161976375f": "a34fa4bdaeee02944576c7ff09f442d9",
+    "d702ca0d0fd3b7f56a5f7b1f0338367b": "bc41350464e787d3f526b05b07c7eb9c",
+    "bc41350464e787d3f526b05b07c7eb9c": "e86dd5aa1e821aae5588b1125464f9f6",
+    "e86dd5aa1e821aae5588b1125464f9f6": "85e1460d264ab557f319c8b62f7a1cb7",
+    "85e1460d264ab557f319c8b62f7a1cb7": "f363e7dac0fcc7eec0484b3513d9b019",
+    "f363e7dac0fcc7eec0484b3513d9b019": "dde88413e8078f96ae2373adf185cd56",
+    "6c4c4ece17ea0d47ee54e8db7e357e5b": "48bacb7031bc81a78a256393f1f1dad6",
+    "48bacb7031bc81a78a256393f1f1dad6": "5a7c36b69ec3257cabf37545254f4306",
+    "5a7c36b69ec3257cabf37545254f4306": "8c420d05b595ee10bd97dd6653d9c777",
+    "8c420d05b595ee10bd97dd6653d9c777": "a34fa4bdaeee02944576c7ff09f442d9",
+    "7cf5ba287563f2ed1799e313561609f7": "fb3072439e29b3aa32d851cbd55adbff",
+    "fb3072439e29b3aa32d851cbd55adbff": "1af33129f9df8457a70a3a576741ccba",
+    "1af33129f9df8457a70a3a576741ccba": "e420ad2c17818d349e51f18c80a78390",
+    "e420ad2c17818d349e51f18c80a78390": "dde88413e8078f96ae2373adf185cd56",
+    "cc4b3d59fb3ac5d0cf2d687042be7d9f": "9e33d7312db5e12ff86862923bdc252e",
+    "1b75f7c255c267708de9969b6c0a1e95": "0cccfcbc67fcb15a1bd7df0087670d88",
+    "415bf399786fc7aeda3b02fcbd7947ff": "d04646e9d3d2840fa55f19db766a83c6",
+    "d04646e9d3d2840fa55f19db766a83c6": "7b268d0378402d84b8cc6e527dc85e56",
+    "7b268d0378402d84b8cc6e527dc85e56": "02e4dec20eb6a5c88dd99a0068714ff5",
+    "02e4dec20eb6a5c88dd99a0068714ff5": "a34fa4bdaeee02944576c7ff09f442d9",
+    "42a4226d19582cbc6edbe8bb9853131a": "dcbdf7f8ccfc09fa685b4e691a6b9d07",
+    "dcbdf7f8ccfc09fa685b4e691a6b9d07": "a34fa4bdaeee02944576c7ff09f442d9",
+    "df8f03865ebbffd5bfe3a23c60399bb6": "4c15b322168dc7345ac8d4101a43ee2e",
+    "4c15b322168dc7345ac8d4101a43ee2e": "a34fa4bdaeee02944576c7ff09f442d9",
+    "509c49e252d2a641a36cc9f12e8334a4": "674952e17927d75d3fa605a894430989",
+    "c8544538fb8008da3879f74822a07288": "13d2ea29ae675d40bbf8772f13b86265",
+    "13d2ea29ae675d40bbf8772f13b86265": "3fb75c375615483587d78f4e5bf66da9",
+    "3fb75c375615483587d78f4e5bf66da9": "2bec2085ca504aeba5eccfb09eeaeb73",
+    "2bec2085ca504aeba5eccfb09eeaeb73": "17a1c62fc22ebe33abd7ef66b65c1ab2"
+  },
+  "transitions": {
+    "f7df657dc44a55bb5f745478b8790482": {
+      "button:Назад": [
+        {
+          "to_state": "a34fa4bdaeee02944576c7ff09f442d9",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ],
+      "button:Bitcoin": [
+        {
+          "to_state": "cf112a5e2265f4b2c6b0375846c8972b",
+          "count": 1,
+          "weight": 3.0,
+          "confidence": "high",
+          "confidence_score": 0.85
+        }
+      ],
+      "button:Litecoin": [
+        {
+          "to_state": "d702ca0d0fd3b7f56a5f7b1f0338367b",
+          "count": 1,
+          "weight": 3.0,
+          "confidence": "high",
+          "confidence_score": 0.85
+        }
+      ]
+    },
+    "a34fa4bdaeee02944576c7ff09f442d9": {
+      "system:auto": [
+        {
+          "to_state": "dea2d09f86c418ad7e64269f922bf07c",
+          "count": 14,
+          "weight": 28.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "dea2d09f86c418ad7e64269f922bf07c": {
+      "button:⭐️Купить⭐️": [
+        {
+          "to_state": "0b514638cae7532b9563fd2bb1ba47bc",
+          "count": 6,
+          "weight": 18.0,
+          "confidence": "high",
+          "confidence_score": 0.85
+        }
+      ],
+      "button:🍄Продать🍄": [
+        {
+          "to_state": "f7df657dc44a55bb5f745478b8790482",
+          "count": 2,
+          "weight": 6.0,
+          "confidence": "high",
+          "confidence_score": 0.85
+        },
+        {
+          "to_state": "cf112a5e2265f4b2c6b0375846c8972b",
+          "count": 1,
+          "weight": 3.0,
+          "confidence": "high",
+          "confidence_score": 0.85
+        },
+        {
+          "to_state": "7cf5ba287563f2ed1799e313561609f7",
+          "count": 1,
+          "weight": 3.0,
+          "confidence": "high",
+          "confidence_score": 0.85
+        },
+        {
+          "to_state": "1b75f7c255c267708de9969b6c0a1e95",
+          "count": 1,
+          "weight": 3.0,
+          "confidence": "high",
+          "confidence_score": 0.85
+        }
+      ],
+      "button:🤑Большой розыгрыш🤑": [
+        {
+          "to_state": "42a4226d19582cbc6edbe8bb9853131a",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ],
+      "button:🎮 Реферальная программа 🎮": [
+        {
+          "to_state": "df8f03865ebbffd5bfe3a23c60399bb6",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "0b514638cae7532b9563fd2bb1ba47bc": {
+      "button:Bitcoin": [
+        {
+          "to_state": "37b805b8b5ff7721cc36399eb544fafb",
+          "count": 1,
+          "weight": 3.0,
+          "confidence": "high",
+          "confidence_score": 0.85
+        }
+      ],
+      "button:Litecoin": [
+        {
+          "to_state": "d1628cf2837e880dabf38edc1510e4fb",
+          "count": 2,
+          "weight": 6.0,
+          "confidence": "high",
+          "confidence_score": 0.85
+        }
+      ],
+      "button:USDT(trc20)": [
+        {
+          "to_state": "4391b0262804f8f0ebe5e25b07b22d3c",
+          "count": 2,
+          "weight": 4.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ],
+      "button:Tron(TRX)": [
+        {
+          "to_state": "509c49e252d2a641a36cc9f12e8334a4",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "37b805b8b5ff7721cc36399eb544fafb": {
+      "input:any": [
+        {
+          "to_state": "674952e17927d75d3fa605a894430989",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "674952e17927d75d3fa605a894430989": {
+      "system:auto": [
+        {
+          "to_state": "c8544538fb8008da3879f74822a07288",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        },
+        {
+          "to_state": "7e31b306d6f92ae341f59de08ffb89d3",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        },
+        {
+          "to_state": "6677c6a34cb14b207a257b5582bbb8c3",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        },
+        {
+          "to_state": "415bf399786fc7aeda3b02fcbd7947ff",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        }
+      ]
+    },
+    "6677c6a34cb14b207a257b5582bbb8c3": {
+      "system:auto": [
+        {
+          "to_state": "44462ee1f3a75bc4976e95cfad0ab6e6",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "44462ee1f3a75bc4976e95cfad0ab6e6": {
+      "button:Не использовать промокод": [
+        {
+          "to_state": "e3d82312ac5b2db02138b85a54abd25c",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "e3d82312ac5b2db02138b85a54abd25c": {
+      "button:🕹ТРАНСГРАН": [
+        {
+          "to_state": "d1a26ec0c237d85c27510e71a9786a92",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "d1a26ec0c237d85c27510e71a9786a92": {
+      "input:any": [
+        {
+          "to_state": "78361a9584ffafc06f325d793728df47",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "78361a9584ffafc06f325d793728df47": {
+      "button:Обычная🥹20-80 минут": [
+        {
+          "to_state": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "17a1c62fc22ebe33abd7ef66b65c1ab2": {
+      "system:auto": [
+        {
+          "to_state": "a34fa4bdaeee02944576c7ff09f442d9",
+          "count": 4,
+          "weight": 8.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "d1628cf2837e880dabf38edc1510e4fb": {
+      "input:any": [
+        {
+          "to_state": "f259880f50bedcc33a0f40e1dd78e557",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        },
+        {
+          "to_state": "77e13a147984da95e5ad2be41fe97afb",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "77e13a147984da95e5ad2be41fe97afb": {
+      "system:auto": [
+        {
+          "to_state": "d7d7e428d4b021012c1a6093dde5ec66",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "d7d7e428d4b021012c1a6093dde5ec66": {
+      "button:Не использовать промокод": [
+        {
+          "to_state": "18743c6bd3d9d6b335b096990e7851bd",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "18743c6bd3d9d6b335b096990e7851bd": {
+      "button:🕹ТРАНСГРАН": [
+        {
+          "to_state": "3809118b853907631ba4e82536b75748",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "3809118b853907631ba4e82536b75748": {
+      "input:any": [
+        {
+          "to_state": "326b57c30338efd092ba50533067cc8b",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "326b57c30338efd092ba50533067cc8b": {
+      "input:any": [
+        {
+          "to_state": "b2354174ce711dbe22f10c8d6bf3bbd7",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "b2354174ce711dbe22f10c8d6bf3bbd7": {
+      "button:Остановить поиск": [
+        {
+          "to_state": "88f02cd302d810b785c068a172a01f05",
+          "count": 2,
+          "weight": 6.0,
+          "confidence": "high",
+          "confidence_score": 0.95
+        }
+      ]
+    },
+    "88f02cd302d810b785c068a172a01f05": {
+      "system:auto": [
+        {
+          "to_state": "a34fa4bdaeee02944576c7ff09f442d9",
+          "count": 3,
+          "weight": 6.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "f259880f50bedcc33a0f40e1dd78e557": {
+      "system:auto": [
+        {
+          "to_state": "40e326a580739cc43dcab2c8da179721",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        }
+      ]
+    },
+    "40e326a580739cc43dcab2c8da179721": {
+      "system:auto": [
+        {
+          "to_state": "573ab4ee0c720077a8eee18fb11bf94c",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "573ab4ee0c720077a8eee18fb11bf94c": {
+      "button:🕹ТРАНСГРАН": [
+        {
+          "to_state": "a018ed10ea04185e03e1e203491d3de4",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "a018ed10ea04185e03e1e203491d3de4": {
+      "input:any": [
+        {
+          "to_state": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "4391b0262804f8f0ebe5e25b07b22d3c": {
+      "input:any": [
+        {
+          "to_state": "7e31b306d6f92ae341f59de08ffb89d3",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        },
+        {
+          "to_state": "674952e17927d75d3fa605a894430989",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "7e31b306d6f92ae341f59de08ffb89d3": {
+      "system:auto": [
+        {
+          "to_state": "748b78638cbfe9d7d1048c21d9578ed9",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        },
+        {
+          "to_state": "6b4b758a5c2632d362dd4c33911b152e",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "6b4b758a5c2632d362dd4c33911b152e": {
+      "button:🕹ТРАНСГРАН": [
+        {
+          "to_state": "3dad6305cfd49fe58edcd334baaa0086",
+          "count": 2,
+          "weight": 2.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "3dad6305cfd49fe58edcd334baaa0086": {
+      "input:any": [
+        {
+          "to_state": "88f02cd302d810b785c068a172a01f05",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        },
+        {
+          "to_state": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "748b78638cbfe9d7d1048c21d9578ed9": {
+      "button:Не использовать промокод": [
+        {
+          "to_state": "6b4b758a5c2632d362dd4c33911b152e",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "cf112a5e2265f4b2c6b0375846c8972b": {
+      "input:any": [
+        {
+          "to_state": "980df86a1c1d3205a2b3605740d4bece",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        },
+        {
+          "to_state": "0cccfcbc67fcb15a1bd7df0087670d88",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "980df86a1c1d3205a2b3605740d4bece": {
+      "system:auto": [
+        {
+          "to_state": "013804fbe833c27e73b86221d4a0ddbb",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "013804fbe833c27e73b86221d4a0ddbb": {
+      "button:Не использовать промокод": [
+        {
+          "to_state": "34ed2ebf090b450e4030af05fa292b36",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "34ed2ebf090b450e4030af05fa292b36": {
+      "input:any": [
+        {
+          "to_state": "b2354174ce711dbe22f10c8d6bf3bbd7",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "0cccfcbc67fcb15a1bd7df0087670d88": {
+      "input:any": [
+        {
+          "to_state": "674952e17927d75d3fa605a894430989",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        },
+        {
+          "to_state": "1a6412a7d294a921dc3aeb9ce0b20290",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "1a6412a7d294a921dc3aeb9ce0b20290": {
+      "system:auto": [
+        {
+          "to_state": "0e211a382fff69e953a3c40b6798bca8",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "0e211a382fff69e953a3c40b6798bca8": {
+      "button:Не использовать промокод": [
+        {
+          "to_state": "b213240feabeef4a5764bd68a74003c8",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "b213240feabeef4a5764bd68a74003c8": {
+      "input:any": [
+        {
+          "to_state": "cae8faa0b012701d905f3c3ef9377739",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "cae8faa0b012701d905f3c3ef9377739": {
+      "button:Оплатил": [
+        {
+          "to_state": "dde88413e8078f96ae2373adf185cd56",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.4
+        }
+      ]
+    },
+    "dde88413e8078f96ae2373adf185cd56": {
+      "system:auto": [
+        {
+          "to_state": "cc4b3d59fb3ac5d0cf2d687042be7d9f",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        },
+        {
+          "to_state": "b34b307692203aa62375038376b86764",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        },
+        {
+          "to_state": "6c4c4ece17ea0d47ee54e8db7e357e5b",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "b34b307692203aa62375038376b86764": {
+      "system:auto": [
+        {
+          "to_state": "9e33d7312db5e12ff86862923bdc252e",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        }
+      ]
+    },
+    "9e33d7312db5e12ff86862923bdc252e": {
+      "button:Назад": [
+        {
+          "to_state": "81f95908a0eeadfc3629d1161976375f",
+          "count": 2,
+          "weight": 6.0,
+          "confidence": "high",
+          "confidence_score": 0.95
+        }
+      ]
+    },
+    "81f95908a0eeadfc3629d1161976375f": {
+      "system:auto": [
+        {
+          "to_state": "a34fa4bdaeee02944576c7ff09f442d9",
+          "count": 2,
+          "weight": 2.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        }
+      ]
+    },
+    "d702ca0d0fd3b7f56a5f7b1f0338367b": {
+      "input:any": [
+        {
+          "to_state": "bc41350464e787d3f526b05b07c7eb9c",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "bc41350464e787d3f526b05b07c7eb9c": {
+      "system:auto": [
+        {
+          "to_state": "e86dd5aa1e821aae5588b1125464f9f6",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        }
+      ]
+    },
+    "e86dd5aa1e821aae5588b1125464f9f6": {
+      "system:auto": [
+        {
+          "to_state": "85e1460d264ab557f319c8b62f7a1cb7",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "85e1460d264ab557f319c8b62f7a1cb7": {
+      "input:any": [
+        {
+          "to_state": "f363e7dac0fcc7eec0484b3513d9b019",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "f363e7dac0fcc7eec0484b3513d9b019": {
+      "button:Оплатил": [
+        {
+          "to_state": "dde88413e8078f96ae2373adf185cd56",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.4
+        }
+      ]
+    },
+    "6c4c4ece17ea0d47ee54e8db7e357e5b": {
+      "system:auto": [
+        {
+          "to_state": "48bacb7031bc81a78a256393f1f1dad6",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        }
+      ]
+    },
+    "48bacb7031bc81a78a256393f1f1dad6": {
+      "button:Да": [
+        {
+          "to_state": "5a7c36b69ec3257cabf37545254f4306",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "5a7c36b69ec3257cabf37545254f4306": {
+      "button:Отправить номер оператору": [
+        {
+          "to_state": "8c420d05b595ee10bd97dd6653d9c777",
+          "count": 1,
+          "weight": 3.0,
+          "confidence": "high",
+          "confidence_score": 0.95
+        }
+      ]
+    },
+    "8c420d05b595ee10bd97dd6653d9c777": {
+      "system:auto": [
+        {
+          "to_state": "a34fa4bdaeee02944576c7ff09f442d9",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "7cf5ba287563f2ed1799e313561609f7": {
+      "input:any": [
+        {
+          "to_state": "fb3072439e29b3aa32d851cbd55adbff",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "fb3072439e29b3aa32d851cbd55adbff": {
+      "system:auto": [
+        {
+          "to_state": "1af33129f9df8457a70a3a576741ccba",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "1af33129f9df8457a70a3a576741ccba": {
+      "input:any": [
+        {
+          "to_state": "e420ad2c17818d349e51f18c80a78390",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "e420ad2c17818d349e51f18c80a78390": {
+      "button:Оплатил": [
+        {
+          "to_state": "dde88413e8078f96ae2373adf185cd56",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.4
+        }
+      ]
+    },
+    "cc4b3d59fb3ac5d0cf2d687042be7d9f": {
+      "system:auto": [
+        {
+          "to_state": "9e33d7312db5e12ff86862923bdc252e",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        }
+      ]
+    },
+    "1b75f7c255c267708de9969b6c0a1e95": {
+      "input:any": [
+        {
+          "to_state": "0cccfcbc67fcb15a1bd7df0087670d88",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "415bf399786fc7aeda3b02fcbd7947ff": {
+      "system:auto": [
+        {
+          "to_state": "d04646e9d3d2840fa55f19db766a83c6",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "d04646e9d3d2840fa55f19db766a83c6": {
+      "button:Не использовать промокод": [
+        {
+          "to_state": "7b268d0378402d84b8cc6e527dc85e56",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "7b268d0378402d84b8cc6e527dc85e56": {
+      "input:any": [
+        {
+          "to_state": "02e4dec20eb6a5c88dd99a0068714ff5",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "02e4dec20eb6a5c88dd99a0068714ff5": {
+      "input:any": [
+        {
+          "to_state": "a34fa4bdaeee02944576c7ff09f442d9",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "42a4226d19582cbc6edbe8bb9853131a": {
+      "system:auto": [
+        {
+          "to_state": "dcbdf7f8ccfc09fa685b4e691a6b9d07",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        }
+      ]
+    },
+    "dcbdf7f8ccfc09fa685b4e691a6b9d07": {
+      "system:auto": [
+        {
+          "to_state": "a34fa4bdaeee02944576c7ff09f442d9",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        }
+      ]
+    },
+    "df8f03865ebbffd5bfe3a23c60399bb6": {
+      "button:Вывод средств": [
+        {
+          "to_state": "4c15b322168dc7345ac8d4101a43ee2e",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "4c15b322168dc7345ac8d4101a43ee2e": {
+      "system:auto": [
+        {
+          "to_state": "a34fa4bdaeee02944576c7ff09f442d9",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.3
+        }
+      ]
+    },
+    "509c49e252d2a641a36cc9f12e8334a4": {
+      "input:any": [
+        {
+          "to_state": "674952e17927d75d3fa605a894430989",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    },
+    "c8544538fb8008da3879f74822a07288": {
+      "system:auto": [
+        {
+          "to_state": "13d2ea29ae675d40bbf8772f13b86265",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.6
+        }
+      ]
+    },
+    "13d2ea29ae675d40bbf8772f13b86265": {
+      "button:Не использовать промокод": [
+        {
+          "to_state": "3fb75c375615483587d78f4e5bf66da9",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "3fb75c375615483587d78f4e5bf66da9": {
+      "button:🕹ТРАНСГРАН": [
+        {
+          "to_state": "2bec2085ca504aeba5eccfb09eeaeb73",
+          "count": 1,
+          "weight": 1.0,
+          "confidence": "low",
+          "confidence_score": 0.2
+        }
+      ]
+    },
+    "2bec2085ca504aeba5eccfb09eeaeb73": {
+      "input:any": [
+        {
+          "to_state": "17a1c62fc22ebe33abd7ef66b65c1ab2",
+          "count": 1,
+          "weight": 2.0,
+          "confidence": "medium",
+          "confidence_score": 0.65
+        }
+      ]
+    }
+  }
+}

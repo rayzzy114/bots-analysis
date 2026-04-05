@@ -1,0 +1,2758 @@
+{
+  "0fd1215c02e9db96b239c37b6acdef8c": {
+    "text": "Пройдите капчу для использования бота",
+    "text_html": "Пройдите капчу для использования бота",
+    "text_markdown": "Пройдите капчу для использования бота",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "f3t0V",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "d3Gue",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 1
+      },
+      {
+        "text": "rfp6p",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "G5zaR",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "f3t0V",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "d3Gue",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "rfp6p",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "G5zaR",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 1
+        }
+      ]
+    ],
+    "media": "media/photo_5880884889631001926.jpg",
+    "text_links": []
+  },
+  "88dac63e13813e9b633ada192fd4ac2b": {
+    "text": "⚡",
+    "text_html": "⚡",
+    "text_markdown": "⚡",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "🏠 Главная",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "🧹 Чистка BTC",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "💵 Партнерам",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "💼 Обмен",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🎩 О нас",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "4fdfa881597ed3208ee0144e67604ef9": {
+    "text": "Приветствуем! Наша автоматизированная система очистки даёт возможность обмена Ваших грязных BTC (транзакции которых могут быть отслежены) на USDT (TRC,ERC), BTC (Чистый 0% AML), XMR, LTC, ETH.\n\nКаждая транзакция у нас — это надежная очистка криптовалют без верификаций и задержек. А также это надежность, качество, быстрота и множество направлений.",
+    "text_html": "Приветствуем! Наша автоматизированная система очистки даёт возможность обмена Ваших грязных BTC (транзакции которых могут быть отслежены) на USDT (TRC,ERC), BTC (Чистый 0% AML), XMR, LTC, ETH.\n\nКаждая транзакция у нас — это надежная очистка криптовалют без верификаций и задержек. А также это надежность, качество, быстрота и множество направлений.",
+    "text_markdown": "Приветствуем! Наша автоматизированная система очистки даёт возможность обмена Ваших грязных BTC (транзакции которых могут быть отслежены) на USDT (TRC,ERC), BTC (Чистый 0% AML), XMR, LTC, ETH.\n\nКаждая транзакция у нас — это надежная очистка криптовалют без верификаций и задержек. А также это надежность, качество, быстрота и множество направлений.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "Все о крипте",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 0,
+        "url": "https://t.me/+9-b_IupCYGlhNmYy"
+      },
+      {
+        "text": "История очисток",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Все о крипте",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://t.me/+9-b_IupCYGlhNmYy"
+        },
+        {
+          "text": "История очисток",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ]
+    ],
+    "media": "media/photo_5998155393936766863.jpg",
+    "text_links": []
+  },
+  "284d5cfc59970be99aaac311a653e1b6": {
+    "text": "Выберите валюту, которую хотите получить\n\nВнимание! Комиссия для валют может быть разной и зависеть от сетевой нагрузки и прочих факторов!",
+    "text_html": "<strong>Выберите валюту, которую хотите получить</strong>\n\nВнимание! Комиссия для валют может быть разной и зависеть от сетевой нагрузки и прочих факторов!",
+    "text_markdown": "**Выберите валюту, которую хотите получить**\n\nВнимание! Комиссия для валют может быть разной и зависеть от сетевой нагрузки и прочих факторов!",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 40,
+        "inner_text": "Выберите валюту, которую хотите получить"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Чистые BTC",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Ethereum",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 1
+      },
+      {
+        "text": "Tether ERC-20",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "Tether TRC-20",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "Litecoin",
+        "type": "KeyboardButtonCallback",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "Monero",
+        "type": "KeyboardButtonCallback",
+        "row": 2,
+        "col": 1
+      },
+      {
+        "text": "Нужно другое направление?",
+        "type": "KeyboardButtonUrl",
+        "row": 3,
+        "col": 0,
+        "url": "https://t.me/BitMafia_support"
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Чистые BTC",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        },
+        {
+          "text": "Ethereum",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "Tether ERC-20",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "Tether TRC-20",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "Litecoin",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "Monero",
+          "type": "KeyboardButtonCallback",
+          "row": 2,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "Нужно другое направление?",
+          "type": "KeyboardButtonUrl",
+          "row": 3,
+          "col": 0,
+          "url": "https://t.me/BitMafia_support"
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "c8bbdd5a521c742cf8dcb1e0745a747a": {
+    "text": "Введите адрес для получения чистых средств\n\nВы выбрали получить: Чистые BTC\n\nМинимальная сумма заявки: 0.001 BTC\n\nКомиссия сервиса: 1.5%\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_html": "<strong>Введите адрес для получения чистых средств</strong>\n\nВы выбрали получить: <strong>Чистые BTC</strong>\n\nМинимальная сумма заявки: <strong>0.001 BTC</strong>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_markdown": "**Введите адрес для получения чистых средств**\n\nВы выбрали получить: **Чистые BTC**\n\nМинимальная сумма заявки: **0.001 BTC**\n\nКомиссия сервиса: **1.5%**\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 42,
+        "inner_text": "Введите адрес для получения чистых средств"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 65,
+        "length": 10,
+        "inner_text": "Чистые BTC"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 103,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 132,
+        "length": 4,
+        "inner_text": "1.5%"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "d615f636e36bbace6beda4341b6a5ef0": {
+    "text": "⚡️Заявка №2531851\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1q3ljysstgyvpakferddf3s36efgtgdt32hp85e2\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\n1FfmbHfnpaZjKFvyi1okTjJJusN455paPH\n\nВалюта: Чистые BTC\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>2531851</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1q3ljysstgyvpakferddf3s36efgtgdt32hp85e2</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>1FfmbHfnpaZjKFvyi1okTjJJusN455paPH</code>\n\nВалюта: <strong>Чистые BTC</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**2531851**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1q3ljysstgyvpakferddf3s36efgtgdt32hp85e2`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`1FfmbHfnpaZjKFvyi1okTjJJusN455paPH`\n\nВалюта: **Чистые BTC**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "2531851"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1q3ljysstgyvpakferddf3s36efgtgdt32hp85e2"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 34,
+        "inner_text": "1FfmbHfnpaZjKFvyi1okTjJJusN455paPH"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 255,
+        "length": 10,
+        "inner_text": "Чистые BTC"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 310,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 8,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "70d3f29b381fc0e4038404481c540a05": {
+    "text": "⚡️Заявка №2531851\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1q3ljysstgyvpakferddf3s36efgtgdt32hp85e2\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\n1FfmbHfnpaZjKFvyi1okTjJJusN455paPH\n\nВалюта: Чистые BTC\n\nТранзакции: Пока не поступало\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>2531851</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1q3ljysstgyvpakferddf3s36efgtgdt32hp85e2</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>1FfmbHfnpaZjKFvyi1okTjJJusN455paPH</code>\n\nВалюта: <strong>Чистые BTC</strong>\n\nТранзакции: <strong>Пока не поступало</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**2531851**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1q3ljysstgyvpakferddf3s36efgtgdt32hp85e2`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`1FfmbHfnpaZjKFvyi1okTjJJusN455paPH`\n\nВалюта: **Чистые BTC**\n\nТранзакции: **Пока не поступало**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "2531851"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1q3ljysstgyvpakferddf3s36efgtgdt32hp85e2"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 34,
+        "inner_text": "1FfmbHfnpaZjKFvyi1okTjJJusN455paPH"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 255,
+        "length": 10,
+        "inner_text": "Чистые BTC"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 279,
+        "length": 17,
+        "inner_text": "Пока не поступало"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 341,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 9,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "01d19d8710d13c813b846edb35825d31": {
+    "text": "Обмен #2531851 отменен",
+    "text_html": "Обмен #2531851 отменен",
+    "text_markdown": "Обмен #2531851 отменен",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "🏠 Главная",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "🧹 Чистка BTC",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "💵 Партнерам",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "💼 Обмен",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🎩 О нас",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "9d7af31161437907176c05ca0ebbd35f": {
+    "text": "Неизвестная команда",
+    "text_html": "Неизвестная команда",
+    "text_markdown": "Неизвестная команда",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "🏠 Главная",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "🧹 Чистка BTC",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "💵 Партнерам",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "💼 Обмен",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🎩 О нас",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "6f53582cdb659315aa939eaf8d2a9b99": {
+    "text": "Введите адрес для получения чистых средств\n\nВы выбрали получить: Ethereum\n\nМинимальная сумма заявки: 0.001 BTC\n\nКомиссия сервиса: 1.5%\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_html": "<strong>Введите адрес для получения чистых средств</strong>\n\nВы выбрали получить: <strong>Ethereum</strong>\n\nМинимальная сумма заявки: <strong>0.001 BTC</strong>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_markdown": "**Введите адрес для получения чистых средств**\n\nВы выбрали получить: **Ethereum**\n\nМинимальная сумма заявки: **0.001 BTC**\n\nКомиссия сервиса: **1.5%**\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 42,
+        "inner_text": "Введите адрес для получения чистых средств"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 65,
+        "length": 8,
+        "inner_text": "Ethereum"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 101,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 130,
+        "length": 4,
+        "inner_text": "1.5%"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "74da890fa20a31d98f977125110b7658": {
+    "text": "⚡️Заявка №9301852\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1qgure5hwehsa9f5p7t92y3z72c5hqq4txlq5px7\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\n0xC257274276a4E539741Ca11b590B9447B26A8051\n\nВалюта: Ethereum\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>9301852</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1qgure5hwehsa9f5p7t92y3z72c5hqq4txlq5px7</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>0xC257274276a4E539741Ca11b590B9447B26A8051</code>\n\nВалюта: <strong>Ethereum</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**9301852**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1qgure5hwehsa9f5p7t92y3z72c5hqq4txlq5px7`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`0xC257274276a4E539741Ca11b590B9447B26A8051`\n\nВалюта: **Ethereum**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "9301852"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1qgure5hwehsa9f5p7t92y3z72c5hqq4txlq5px7"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 42,
+        "inner_text": "0xC257274276a4E539741Ca11b590B9447B26A8051"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 263,
+        "length": 8,
+        "inner_text": "Ethereum"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 316,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 8,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "172bebec167237124091fec4472d621d": {
+    "text": "⚡️Заявка №9301852\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1qgure5hwehsa9f5p7t92y3z72c5hqq4txlq5px7\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\n0xC257274276a4E539741Ca11b590B9447B26A8051\n\nВалюта: Ethereum\n\nТранзакции: Пока не поступало\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>9301852</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1qgure5hwehsa9f5p7t92y3z72c5hqq4txlq5px7</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>0xC257274276a4E539741Ca11b590B9447B26A8051</code>\n\nВалюта: <strong>Ethereum</strong>\n\nТранзакции: <strong>Пока не поступало</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**9301852**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1qgure5hwehsa9f5p7t92y3z72c5hqq4txlq5px7`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`0xC257274276a4E539741Ca11b590B9447B26A8051`\n\nВалюта: **Ethereum**\n\nТранзакции: **Пока не поступало**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "9301852"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1qgure5hwehsa9f5p7t92y3z72c5hqq4txlq5px7"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 42,
+        "inner_text": "0xC257274276a4E539741Ca11b590B9447B26A8051"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 263,
+        "length": 8,
+        "inner_text": "Ethereum"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 285,
+        "length": 17,
+        "inner_text": "Пока не поступало"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 347,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 9,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "a4156335f1872bf3d4123e929e1dc724": {
+    "text": "Обмен #9301852 отменен",
+    "text_html": "Обмен #9301852 отменен",
+    "text_markdown": "Обмен #9301852 отменен",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "🏠 Главная",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "🧹 Чистка BTC",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "💵 Партнерам",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "💼 Обмен",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🎩 О нас",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "bc134684dcf58f132a89730bb420e0cc": {
+    "text": "Введите адрес для получения чистых средств\n\nВы выбрали получить: Tether ERC-20\n\nМинимальная сумма заявки: 0.001 BTC\n\nКомиссия сервиса: 1.5%\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_html": "<strong>Введите адрес для получения чистых средств</strong>\n\nВы выбрали получить: <strong>Tether ERC-20</strong>\n\nМинимальная сумма заявки: <strong>0.001 BTC</strong>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_markdown": "**Введите адрес для получения чистых средств**\n\nВы выбрали получить: **Tether ERC-20**\n\nМинимальная сумма заявки: **0.001 BTC**\n\nКомиссия сервиса: **1.5%**\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 42,
+        "inner_text": "Введите адрес для получения чистых средств"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 65,
+        "length": 13,
+        "inner_text": "Tether ERC-20"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 106,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 135,
+        "length": 4,
+        "inner_text": "1.5%"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "9a7e01ea07b6d4f67429030fd60cfb27": {
+    "text": "⚡️Заявка №7711853\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1qrx3w2sz24t5r7dg8skmzushsggw8x0lfjwm8nl\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\n0xdAC17F958D2ee523a2206206994597C13D831ec7\n\nВалюта: Tether ERC-20\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>7711853</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1qrx3w2sz24t5r7dg8skmzushsggw8x0lfjwm8nl</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>0xdAC17F958D2ee523a2206206994597C13D831ec7</code>\n\nВалюта: <strong>Tether ERC-20</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**7711853**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1qrx3w2sz24t5r7dg8skmzushsggw8x0lfjwm8nl`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`0xdAC17F958D2ee523a2206206994597C13D831ec7`\n\nВалюта: **Tether ERC-20**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "7711853"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1qrx3w2sz24t5r7dg8skmzushsggw8x0lfjwm8nl"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 42,
+        "inner_text": "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 263,
+        "length": 13,
+        "inner_text": "Tether ERC-20"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 321,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 8,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "d3a8fad1bc904c69ee7f79b9630fe95d": {
+    "text": "⚡️Заявка №7711853\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1qrx3w2sz24t5r7dg8skmzushsggw8x0lfjwm8nl\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\n0xdAC17F958D2ee523a2206206994597C13D831ec7\n\nВалюта: Tether ERC-20\n\nТранзакции: Пока не поступало\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>7711853</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1qrx3w2sz24t5r7dg8skmzushsggw8x0lfjwm8nl</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>0xdAC17F958D2ee523a2206206994597C13D831ec7</code>\n\nВалюта: <strong>Tether ERC-20</strong>\n\nТранзакции: <strong>Пока не поступало</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**7711853**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1qrx3w2sz24t5r7dg8skmzushsggw8x0lfjwm8nl`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`0xdAC17F958D2ee523a2206206994597C13D831ec7`\n\nВалюта: **Tether ERC-20**\n\nТранзакции: **Пока не поступало**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "7711853"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1qrx3w2sz24t5r7dg8skmzushsggw8x0lfjwm8nl"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 42,
+        "inner_text": "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 263,
+        "length": 13,
+        "inner_text": "Tether ERC-20"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 290,
+        "length": 17,
+        "inner_text": "Пока не поступало"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 352,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 9,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "ab550e7bdc87f467990c843d3ce2f8f2": {
+    "text": "Обмен #7711853 отменен",
+    "text_html": "Обмен #7711853 отменен",
+    "text_markdown": "Обмен #7711853 отменен",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "🏠 Главная",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "🧹 Чистка BTC",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "💵 Партнерам",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "💼 Обмен",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🎩 О нас",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "9b04aa1f9784955acc1d511ea96a8160": {
+    "text": "Введите адрес для получения чистых средств\n\nВы выбрали получить: Tether TRC-20\n\nМинимальная сумма заявки: 0.001 BTC\n\nКомиссия сервиса: 1.5%\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_html": "<strong>Введите адрес для получения чистых средств</strong>\n\nВы выбрали получить: <strong>Tether TRC-20</strong>\n\nМинимальная сумма заявки: <strong>0.001 BTC</strong>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_markdown": "**Введите адрес для получения чистых средств**\n\nВы выбрали получить: **Tether TRC-20**\n\nМинимальная сумма заявки: **0.001 BTC**\n\nКомиссия сервиса: **1.5%**\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 42,
+        "inner_text": "Введите адрес для получения чистых средств"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 65,
+        "length": 13,
+        "inner_text": "Tether TRC-20"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 106,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 135,
+        "length": 4,
+        "inner_text": "1.5%"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "389131c9a6fae5d3c77f923c800d682f": {
+    "text": "⚡️Заявка №1531854\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1qk9c7ea2nt5axc4w5gh606cq38p8jj679hfequp\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\nTYJrM2XU96VYhfjZphSeJb2dHawx7QFG9M\n\nВалюта: Tether TRC-20\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>1531854</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1qk9c7ea2nt5axc4w5gh606cq38p8jj679hfequp</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>TYJrM2XU96VYhfjZphSeJb2dHawx7QFG9M</code>\n\nВалюта: <strong>Tether TRC-20</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**1531854**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1qk9c7ea2nt5axc4w5gh606cq38p8jj679hfequp`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`TYJrM2XU96VYhfjZphSeJb2dHawx7QFG9M`\n\nВалюта: **Tether TRC-20**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "1531854"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1qk9c7ea2nt5axc4w5gh606cq38p8jj679hfequp"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 34,
+        "inner_text": "TYJrM2XU96VYhfjZphSeJb2dHawx7QFG9M"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 255,
+        "length": 13,
+        "inner_text": "Tether TRC-20"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 313,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 8,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "f60b18a5bffb5fdb89599c690c5c5a69": {
+    "text": "⚡️Заявка №1531854\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1qk9c7ea2nt5axc4w5gh606cq38p8jj679hfequp\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\nTYJrM2XU96VYhfjZphSeJb2dHawx7QFG9M\n\nВалюта: Tether TRC-20\n\nТранзакции: Пока не поступало\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>1531854</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1qk9c7ea2nt5axc4w5gh606cq38p8jj679hfequp</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>TYJrM2XU96VYhfjZphSeJb2dHawx7QFG9M</code>\n\nВалюта: <strong>Tether TRC-20</strong>\n\nТранзакции: <strong>Пока не поступало</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**1531854**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1qk9c7ea2nt5axc4w5gh606cq38p8jj679hfequp`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`TYJrM2XU96VYhfjZphSeJb2dHawx7QFG9M`\n\nВалюта: **Tether TRC-20**\n\nТранзакции: **Пока не поступало**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "1531854"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1qk9c7ea2nt5axc4w5gh606cq38p8jj679hfequp"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 34,
+        "inner_text": "TYJrM2XU96VYhfjZphSeJb2dHawx7QFG9M"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 255,
+        "length": 13,
+        "inner_text": "Tether TRC-20"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 282,
+        "length": 17,
+        "inner_text": "Пока не поступало"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 344,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 9,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "f0c7778067a0c6183d26cbb4b867bbc4": {
+    "text": "Обмен #1531854 отменен",
+    "text_html": "Обмен #1531854 отменен",
+    "text_markdown": "Обмен #1531854 отменен",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "🏠 Главная",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "🧹 Чистка BTC",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "💵 Партнерам",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "💼 Обмен",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🎩 О нас",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "85e86125374d833455e6c43a6a8866ef": {
+    "text": "Введите адрес для получения чистых средств\n\nВы выбрали получить: Litecoin\n\nМинимальная сумма заявки: 0.001 BTC\n\nКомиссия сервиса: 1.5%\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_html": "<strong>Введите адрес для получения чистых средств</strong>\n\nВы выбрали получить: <strong>Litecoin</strong>\n\nМинимальная сумма заявки: <strong>0.001 BTC</strong>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_markdown": "**Введите адрес для получения чистых средств**\n\nВы выбрали получить: **Litecoin**\n\nМинимальная сумма заявки: **0.001 BTC**\n\nКомиссия сервиса: **1.5%**\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 42,
+        "inner_text": "Введите адрес для получения чистых средств"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 65,
+        "length": 8,
+        "inner_text": "Litecoin"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 101,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 130,
+        "length": 4,
+        "inner_text": "1.5%"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "c9b22348761f7d08315e2c20904c8f58": {
+    "text": "⚡️Заявка №4561855\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1qh24kfnp49j7kg7pg3ax5a7k2dejtkuywxmzfjn\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\nLaEPJC3dw7SN9giVovVprzB1n6KYQyYktf\n\nВалюта: Litecoin\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>4561855</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1qh24kfnp49j7kg7pg3ax5a7k2dejtkuywxmzfjn</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>LaEPJC3dw7SN9giVovVprzB1n6KYQyYktf</code>\n\nВалюта: <strong>Litecoin</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**4561855**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1qh24kfnp49j7kg7pg3ax5a7k2dejtkuywxmzfjn`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`LaEPJC3dw7SN9giVovVprzB1n6KYQyYktf`\n\nВалюта: **Litecoin**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "4561855"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1qh24kfnp49j7kg7pg3ax5a7k2dejtkuywxmzfjn"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 34,
+        "inner_text": "LaEPJC3dw7SN9giVovVprzB1n6KYQyYktf"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 255,
+        "length": 8,
+        "inner_text": "Litecoin"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 308,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 8,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "2cfb40a472293f25db0ef054703ddbc2": {
+    "text": "⚡️Заявка №4561855\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1qh24kfnp49j7kg7pg3ax5a7k2dejtkuywxmzfjn\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\nLaEPJC3dw7SN9giVovVprzB1n6KYQyYktf\n\nВалюта: Litecoin\n\nТранзакции: Пока не поступало\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>4561855</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1qh24kfnp49j7kg7pg3ax5a7k2dejtkuywxmzfjn</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>LaEPJC3dw7SN9giVovVprzB1n6KYQyYktf</code>\n\nВалюта: <strong>Litecoin</strong>\n\nТранзакции: <strong>Пока не поступало</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**4561855**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1qh24kfnp49j7kg7pg3ax5a7k2dejtkuywxmzfjn`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`LaEPJC3dw7SN9giVovVprzB1n6KYQyYktf`\n\nВалюта: **Litecoin**\n\nТранзакции: **Пока не поступало**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "4561855"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1qh24kfnp49j7kg7pg3ax5a7k2dejtkuywxmzfjn"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 34,
+        "inner_text": "LaEPJC3dw7SN9giVovVprzB1n6KYQyYktf"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 255,
+        "length": 8,
+        "inner_text": "Litecoin"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 277,
+        "length": 17,
+        "inner_text": "Пока не поступало"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 339,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 9,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "66048d389aa1bd2714fa4e69e31564fe": {
+    "text": "Обмен #4561855 отменен",
+    "text_html": "Обмен #4561855 отменен",
+    "text_markdown": "Обмен #4561855 отменен",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "🏠 Главная",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "🧹 Чистка BTC",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "💵 Партнерам",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "💼 Обмен",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🎩 О нас",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "38846bfffee22ac2a9570706c0772c71": {
+    "text": "Введите адрес для получения чистых средств\n\nВы выбрали получить: Monero\n\nМинимальная сумма заявки: 0.001 BTC\n\nКомиссия сервиса: 1.5%\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_html": "<strong>Введите адрес для получения чистых средств</strong>\n\nВы выбрали получить: <strong>Monero</strong>\n\nМинимальная сумма заявки: <strong>0.001 BTC</strong>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "text_markdown": "**Введите адрес для получения чистых средств**\n\nВы выбрали получить: **Monero**\n\nМинимальная сумма заявки: **0.001 BTC**\n\nКомиссия сервиса: **1.5%**\n\nРекомендуется использовать уникальный новый адрес для каждой операции получения средств. Это повышает безопасность и обеспечивает лучшую конфиденциальность ваших транзакций. Перед тем как подтвердить отправку или выполнить транзакцию, тщательно проверьте введенный адрес. Убедитесь, что он точно соответствует назначению и не содержит ошибок. Ошибки в адресе могут привести к потере средств или их отправке на неверный адрес, что может быть необратимым.",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 42,
+        "inner_text": "Введите адрес для получения чистых средств"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 65,
+        "length": 6,
+        "inner_text": "Monero"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 99,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 128,
+        "length": 4,
+        "inner_text": "1.5%"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 4,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  },
+  "317e051f4bc939ec52fca9a311c17f56": {
+    "text": "⚡️Заявка №4321856\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1qnx30rjntzmr0huuz0cs5uegf0vd45ttud5huaw\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\n47Kv7Szy7ePGBgoYtfXCEH2R4peJsmNfEhD8zQ1sEgBRNiN5Xmt6bp8W96nUZ9Ea1cXrkA2hkESxkSKuJMzH9qkNDHwaLU4\n\nВалюта: Monero\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>4321856</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1qnx30rjntzmr0huuz0cs5uegf0vd45ttud5huaw</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>47Kv7Szy7ePGBgoYtfXCEH2R4peJsmNfEhD8zQ1sEgBRNiN5Xmt6bp8W96nUZ9Ea1cXrkA2hkESxkSKuJMzH9qkNDHwaLU4</code>\n\nВалюта: <strong>Monero</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**4321856**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1qnx30rjntzmr0huuz0cs5uegf0vd45ttud5huaw`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`47Kv7Szy7ePGBgoYtfXCEH2R4peJsmNfEhD8zQ1sEgBRNiN5Xmt6bp8W96nUZ9Ea1cXrkA2hkESxkSKuJMzH9qkNDHwaLU4`\n\nВалюта: **Monero**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "4321856"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1qnx30rjntzmr0huuz0cs5uegf0vd45ttud5huaw"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 95,
+        "inner_text": "47Kv7Szy7ePGBgoYtfXCEH2R4peJsmNfEhD8zQ1sEgBRNiN5Xmt6bp8W96nUZ9Ea1cXrkA2hkESxkSKuJMzH9qkNDHwaLU4"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 316,
+        "length": 6,
+        "inner_text": "Monero"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 367,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 8,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "d111d367ee0ba881bc64320a173e6ecf": {
+    "text": "⚡️Заявка №4321856\n\nСтатус: Ожидает оплаты\n\nРеквизиты сервиса:\nbc1qnx30rjntzmr0huuz0cs5uegf0vd45ttud5huaw\n\nКомиссия сервиса: 1.5%\n\nМинимальная сумма обмена: 0.001 BTC\n\nАдрес, на который поступят чистые средства:\n47Kv7Szy7ePGBgoYtfXCEH2R4peJsmNfEhD8zQ1sEgBRNiN5Xmt6bp8W96nUZ9Ea1cXrkA2hkESxkSKuJMzH9qkNDHwaLU4\n\nВалюта: Monero\n\nТранзакции: Пока не поступало\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_html": "⚡️Заявка №<strong>4321856</strong>\n\nСтатус: <strong>Ожидает оплаты</strong>\n\nРеквизиты сервиса:\n<code>bc1qnx30rjntzmr0huuz0cs5uegf0vd45ttud5huaw</code>\n\nКомиссия сервиса: <strong>1.5%</strong>\n\nМинимальная сумма обмена: <strong>0.001 BTC</strong>\n\nАдрес, на который поступят чистые средства:\n<code>47Kv7Szy7ePGBgoYtfXCEH2R4peJsmNfEhD8zQ1sEgBRNiN5Xmt6bp8W96nUZ9Ea1cXrkA2hkESxkSKuJMzH9qkNDHwaLU4</code>\n\nВалюта: <strong>Monero</strong>\n\nТранзакции: <strong>Пока не поступало</strong>\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "text_markdown": "⚡️Заявка №**4321856**\n\nСтатус: **Ожидает оплаты**\n\nРеквизиты сервиса:\n`bc1qnx30rjntzmr0huuz0cs5uegf0vd45ttud5huaw`\n\nКомиссия сервиса: **1.5%**\n\nМинимальная сумма обмена: **0.001 BTC**\n\nАдрес, на который поступят чистые средства:\n`47Kv7Szy7ePGBgoYtfXCEH2R4peJsmNfEhD8zQ1sEgBRNiN5Xmt6bp8W96nUZ9Ea1cXrkA2hkESxkSKuJMzH9qkNDHwaLU4`\n\nВалюта: **Monero**\n\nТранзакции: **Пока не поступало**\n\nАктуальный контакт для связи с поддержкой:\n@BitMafia_support",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 10,
+        "length": 7,
+        "inner_text": "4321856"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 27,
+        "length": 14,
+        "inner_text": "Ожидает оплаты"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 62,
+        "length": 42,
+        "inner_text": "bc1qnx30rjntzmr0huuz0cs5uegf0vd45ttud5huaw"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 4,
+        "inner_text": "1.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 156,
+        "length": 9,
+        "inner_text": "0.001 BTC"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 211,
+        "length": 95,
+        "inner_text": "47Kv7Szy7ePGBgoYtfXCEH2R4peJsmNfEhD8zQ1sEgBRNiN5Xmt6bp8W96nUZ9Ea1cXrkA2hkESxkSKuJMzH9qkNDHwaLU4"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 316,
+        "length": 6,
+        "inner_text": "Monero"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 336,
+        "length": 17,
+        "inner_text": "Пока не поступало"
+      },
+      {
+        "type": "MessageEntityMention",
+        "offset": 398,
+        "length": 17,
+        "inner_text": "@BitMafia_support"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode",
+      "MessageEntityMention"
+    ],
+    "entity_count": 9,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Проверить оплату",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Отменить заявку",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Проверить оплату",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Отменить заявку",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "934bfdaf7d70e428b18dd6a66d6e86ea": {
+    "text": "Обмен #4321856 отменен",
+    "text_html": "Обмен #4321856 отменен",
+    "text_markdown": "Обмен #4321856 отменен",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "🏠 Главная",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "🧹 Чистка BTC",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "💵 Партнерам",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "💼 Обмен",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🎩 О нас",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "c29d0d3980d8a8219be3234530c1eef9": {
+    "text": "Вы можете приглашать участников по собственной персональной ссылке и получать 0.5% с их оборота.\n\nМинимальная сумма вывода: 0.0001 BTC\n\nПриглашено вами: 0 человек\n\nВаш реферальный баланс: 0 BTC\n\nВсего выведено: 0 BTC\n\nВаша партнерская ссылка:\nhttps://t.me/MixMafiaBot?start=tK2kVWYTdz",
+    "text_html": "Вы можете приглашать участников по собственной персональной ссылке и получать <strong>0.5%</strong> с их оборота.\n\nМинимальная сумма вывода: <strong>0.0001</strong> BTC\n\nПриглашено вами: <strong>0</strong> человек\n\nВаш реферальный баланс: <strong>0</strong> BTC\n\nВсего выведено: <strong>0</strong> BTC\n\nВаша партнерская ссылка:\n<code>https://t.me/MixMafiaBot?start=tK2kVWYTdz</code>",
+    "text_markdown": "Вы можете приглашать участников по собственной персональной ссылке и получать **0.5%** с их оборота.\n\nМинимальная сумма вывода: **0.0001** BTC\n\nПриглашено вами: **0** человек\n\nВаш реферальный баланс: **0** BTC\n\nВсего выведено: **0** BTC\n\nВаша партнерская ссылка:\n`https://t.me/MixMafiaBot?start=tK2kVWYTdz`",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 78,
+        "length": 4,
+        "inner_text": "0.5%"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 124,
+        "length": 6,
+        "inner_text": "0.0001"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 153,
+        "length": 1,
+        "inner_text": "0"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 188,
+        "length": 1,
+        "inner_text": "0"
+      },
+      {
+        "type": "MessageEntityBold",
+        "offset": 211,
+        "length": 1,
+        "inner_text": "0"
+      },
+      {
+        "type": "MessageEntityCode",
+        "offset": 243,
+        "length": 41,
+        "inner_text": "https://t.me/MixMafiaBot?start=tK2kVWYTdz"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold",
+      "MessageEntityCode"
+    ],
+    "entity_count": 6,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Запросить вывод",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "История операций",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Запросить вывод",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "История операций",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": [
+      "https://t.me/MixMafiaBot?start=tK2kVWYTdz"
+    ]
+  },
+  "1296ca570fd5bccf707cb2a58dd47822": {
+    "text": "Операций по партнерскому счету не производилось.",
+    "text_html": "Операций по партнерскому счету не производилось.",
+    "text_markdown": "Операций по партнерскому счету не производилось.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "🏠 Главная",
+        "type": "KeyboardButton",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "🧹 Чистка BTC",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "💵 Партнерам",
+        "type": "KeyboardButton",
+        "row": 1,
+        "col": 1
+      },
+      {
+        "text": "💼 Обмен",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 0
+      },
+      {
+        "text": "🎩 О нас",
+        "type": "KeyboardButton",
+        "row": 2,
+        "col": 1
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "🏠 Главная",
+          "type": "KeyboardButton",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "🧹 Чистка BTC",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 0
+        },
+        {
+          "text": "💵 Партнерам",
+          "type": "KeyboardButton",
+          "row": 1,
+          "col": 1
+        }
+      ],
+      [
+        {
+          "text": "💼 Обмен",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 0
+        },
+        {
+          "text": "🎩 О нас",
+          "type": "KeyboardButton",
+          "row": 2,
+          "col": 1
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "1ad879a7ad596dfa75246f85e43b2e07": {
+    "text": "Если вы желаете купить или продать криптовалюту, вы можете перейти в наш бот-обменник. BitMafia — ваш надежный партнёр для обмена криптовалют с минимальными комиссиями.\n\nНаш криптовалютный бот-обменник предлагает безопасные и быстрые сделки, качественный сервис, надёжность и лучшие курсы обмена.",
+    "text_html": "Если вы желаете купить или продать криптовалюту, вы можете перейти в наш бот-обменник. BitMafia — ваш надежный партнёр для обмена криптовалют с минимальными комиссиями.\n\nНаш криптовалютный бот-обменник предлагает безопасные и быстрые сделки, качественный сервис, надёжность и лучшие курсы обмена.",
+    "text_markdown": "Если вы желаете купить или продать криптовалюту, вы можете перейти в наш бот-обменник. BitMafia — ваш надежный партнёр для обмена криптовалют с минимальными комиссиями.\n\nНаш криптовалютный бот-обменник предлагает безопасные и быстрые сделки, качественный сервис, надёжность и лучшие курсы обмена.",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "💼 Перейти",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 0,
+        "url": "https://t.me/bitmafia_bot"
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "💼 Перейти",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://t.me/bitmafia_bot"
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "f8fdecd0bd93fcde1650cfc24a580bc2": {
+    "text": "MixMafia — Ваш надежный финансовый партнер. Поможем безопасно, быстро и по выгодному курсу очистить валюту. Не производим AML и KYC проверки",
+    "text_html": "<strong>MixMafia</strong> — Ваш надежный финансовый партнер. Поможем безопасно, быстро и по выгодному курсу очистить валюту. Не производим AML и KYC проверки",
+    "text_markdown": "**MixMafia** — Ваш надежный финансовый партнер. Поможем безопасно, быстро и по выгодному курсу очистить валюту. Не производим AML и KYC проверки",
+    "entities": [
+      {
+        "type": "MessageEntityBold",
+        "offset": 0,
+        "length": 8,
+        "inner_text": "MixMafia"
+      }
+    ],
+    "entity_types": [
+      "MessageEntityBold"
+    ],
+    "entity_count": 1,
+    "has_formatting": true,
+    "has_rich_formatting": true,
+    "buttons": [
+      {
+        "text": "Отзывы",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      },
+      {
+        "text": "Тарифы",
+        "type": "KeyboardButtonCallback",
+        "row": 1,
+        "col": 0
+      },
+      {
+        "text": "Канал",
+        "type": "KeyboardButtonUrl",
+        "row": 2,
+        "col": 0,
+        "url": "https://t.me/+WV8DeR3IFcswYjRi"
+      },
+      {
+        "text": "Поддержка",
+        "type": "KeyboardButtonUrl",
+        "row": 3,
+        "col": 0,
+        "url": "https://t.me/BitMafia_support"
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Отзывы",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Тарифы",
+          "type": "KeyboardButtonCallback",
+          "row": 1,
+          "col": 0
+        }
+      ],
+      [
+        {
+          "text": "Канал",
+          "type": "KeyboardButtonUrl",
+          "row": 2,
+          "col": 0,
+          "url": "https://t.me/+WV8DeR3IFcswYjRi"
+        }
+      ],
+      [
+        {
+          "text": "Поддержка",
+          "type": "KeyboardButtonUrl",
+          "row": 3,
+          "col": 0,
+          "url": "https://t.me/BitMafia_support"
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "be1949e87800c36bde4e4a44ce248601": {
+    "text": "Посмотреть или оставить отзывы о нашей работе Вы можете на одном из следующих форумов",
+    "text_html": "Посмотреть или оставить отзывы о нашей работе Вы можете на одном из следующих форумов",
+    "text_markdown": "Посмотреть или оставить отзывы о нашей работе Вы можете на одном из следующих форумов",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "Канал с отзывами",
+        "type": "KeyboardButtonUrl",
+        "row": 0,
+        "col": 0,
+        "url": "https://t.me/+Nq1-DPuYxl00MzMy"
+      },
+      {
+        "text": "Rutor",
+        "type": "KeyboardButtonUrl",
+        "row": 1,
+        "col": 0,
+        "url": "https://fit.rutor.fit/forums/bitmafia-io-qr-obmen-mixer.1569/"
+      },
+      {
+        "text": "WayAway",
+        "type": "KeyboardButtonUrl",
+        "row": 2,
+        "col": 0,
+        "url": "https://wayaway.at/forums/bitmafia-io-qr-obmen-mikser.12964/"
+      },
+      {
+        "text": "BigRC",
+        "type": "KeyboardButtonUrl",
+        "row": 3,
+        "col": 0,
+        "url": "https://bigrc.biz/forums/bitmafia-io-qr-chistka-btc-obnal.463/"
+      },
+      {
+        "text": "Назад",
+        "type": "KeyboardButtonCallback",
+        "row": 4,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Канал с отзывами",
+          "type": "KeyboardButtonUrl",
+          "row": 0,
+          "col": 0,
+          "url": "https://t.me/+Nq1-DPuYxl00MzMy"
+        }
+      ],
+      [
+        {
+          "text": "Rutor",
+          "type": "KeyboardButtonUrl",
+          "row": 1,
+          "col": 0,
+          "url": "https://fit.rutor.fit/forums/bitmafia-io-qr-obmen-mixer.1569/"
+        }
+      ],
+      [
+        {
+          "text": "WayAway",
+          "type": "KeyboardButtonUrl",
+          "row": 2,
+          "col": 0,
+          "url": "https://wayaway.at/forums/bitmafia-io-qr-obmen-mikser.12964/"
+        }
+      ],
+      [
+        {
+          "text": "BigRC",
+          "type": "KeyboardButtonUrl",
+          "row": 3,
+          "col": 0,
+          "url": "https://bigrc.biz/forums/bitmafia-io-qr-chistka-btc-obnal.463/"
+        }
+      ],
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 4,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "d09f391b05d3a634bb923cdf093dc2ed": {
+    "text": "BTC - Любая доступная монета\nтолько 2% и ничего более!",
+    "text_html": "BTC - Любая доступная монета\nтолько 2% и ничего более!",
+    "text_markdown": "BTC - Любая доступная монета\nтолько 2% и ничего более!",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [
+      {
+        "text": "Назад",
+        "type": "KeyboardButtonCallback",
+        "row": 0,
+        "col": 0
+      }
+    ],
+    "button_rows": [
+      [
+        {
+          "text": "Назад",
+          "type": "KeyboardButtonCallback",
+          "row": 0,
+          "col": 0
+        }
+      ]
+    ],
+    "media": null,
+    "text_links": []
+  },
+  "68f9f5412575078fc61099ba55bee131": {
+    "text": "Функция назад",
+    "text_html": "Функция назад",
+    "text_markdown": "Функция назад",
+    "entities": [],
+    "entity_types": [],
+    "entity_count": 0,
+    "has_formatting": false,
+    "has_rich_formatting": false,
+    "buttons": [],
+    "button_rows": [],
+    "media": null,
+    "text_links": []
+  }
+}
