@@ -1,15 +1,13 @@
 import os
-import logging
 import re
-import asyncio
 from aiogram import Router, F
-from aiogram.types import Message, CallbackQuery, FSInputFile, InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import Message, CallbackQuery, FSInputFile, InlineKeyboardButton
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
-from core.models import User, Order, FileCache, Setting, Rate
+from core.models import FileCache
 from core.config import Config
 
 router = Router()
@@ -119,7 +117,7 @@ async def process_mixer_address(message: Message, state: FSMContext):
 
 @router.callback_query(MixerSG.confirming, F.data == "mixer_confirm")
 async def mixer_final(callback: CallbackQuery, state: FSMContext, session: AsyncSession):
-    data = await state.get_data()
+    await state.get_data()
     # Тут можно добавить логику создания заказа в БД для миксера
     await callback.message.answer("🚀 <b>Заявка принята!</b>\n\nВ ближайшее время вам будут отправлены реквизиты для перевода монет в миксер.", parse_mode="HTML")
     await state.clear()

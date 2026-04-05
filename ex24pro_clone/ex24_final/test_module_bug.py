@@ -1,5 +1,4 @@
 from __future__ import annotations
-import sys
 import asyncio
 from bot import app_context as bot_ctx
 
@@ -7,7 +6,6 @@ async def test_module_instances():
     print(f"bot_ctx from __main__ (or imported bot): {id(bot_ctx)}")
     
     # Simulate what happens inside handlers
-    import handlers.menu
     # inside menu: from bot import app_context
     from bot import app_context as imported_bot_ctx
     

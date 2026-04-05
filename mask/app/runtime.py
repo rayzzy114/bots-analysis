@@ -1289,8 +1289,8 @@ class FlowRuntime:
             coin=coin,
             live_rates_rub=live_rates_rub,
         )
-        raw_rate = float(live_rates_rub.get(coin) or 0.0)
-        commission = max(float(self.app_context.settings.commission_percent), 0.0)
+        float(live_rates_rub.get(coin) or 0.0)
+        max(float(self.app_context.settings.commission_percent), 0.0)
         network = (session.selected_network or "").upper()
         plain_text, html_text, markdown_text = self._build_runtime_quote_texts(
             coin=coin,

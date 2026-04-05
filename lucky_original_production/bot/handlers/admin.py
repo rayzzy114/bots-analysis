@@ -1,4 +1,3 @@
-import asyncio
 
 from aiogram import Router, F, Bot
 

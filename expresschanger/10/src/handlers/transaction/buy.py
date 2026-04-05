@@ -135,7 +135,6 @@ async def process_entered_value(message: Message, state: FSMContext):
 
 @buy_router.message(BuyCryptoState.cosh, ~F.text.startswith("/"))
 async def process_entered_cosh(message: Message, state: FSMContext):
-    from src.handlers.user.promocodes import user_promo_codes
     data = await state.get_data()
     payment_method = data.get("payment_method")
     currency = data.get("currency")
@@ -221,7 +220,7 @@ async def process_entered_cosh(message: Message, state: FSMContext):
 
 @buy_router.callback_query(F.data.startswith('payment_method_'))
 async def callback_payment_method(callback: CallbackQuery, state: FSMContext) -> None:
-    from src.db.settings import get_payment_methods, get_requisites_mode, get_method_requisites, get_requisites, get_bank, get_commission
+    from src.db.settings import get_payment_methods, get_commission
     await callback.answer()
     method_index = int(callback.data.split("_")[2])
     data = await state.get_data()
@@ -230,7 +229,7 @@ async def callback_payment_method(callback: CallbackQuery, state: FSMContext) ->
     total_sum = data.get("total_sum")
     payment_method_type = data.get("payment_method")
     cosh = data.get("cosh")
-    priority = data.get("priority", "normal")
+    data.get("priority", "normal")
     if payment_method_type == "rub":
         rub_amount = float(value)
     else:
@@ -470,10 +469,9 @@ async def callback_requisites_paid(callback: CallbackQuery, state: FSMContext) -
 
 @buy_router.callback_query(F.data.startswith('order_cancel_'))
 async def callback_order_cancel(callback: CallbackQuery, state: FSMContext) -> None:
-    order_id = callback.data.replace("order_cancel_", "")
+    callback.data.replace("order_cancel_", "")
     await state.clear()
     await manager.delete_message(callback.message.chat.id)
-    from src.keyboards.user import home_button
     from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
     back_keyboard = InlineKeyboardMarkup(
         inline_keyboard=[

@@ -2,9 +2,7 @@ from aiogram import types, Router, F
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardMarkup
 from aiogram.types import Message, CallbackQuery
-from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import State, StatesGroup
 
 from utils.escape_html import escape_html
 from config import BOT_NAME, NEWS_LINK
@@ -19,8 +17,8 @@ async def send_start(message: Message, user_id):
     )
 
     msg2 = (
-        f"❗ Перед использованием ОБЯЗАТЕЛЬНО прочти раздел «FAQ»\n"
-        f"❗ Так же подпишитесь на наш новостной канал, чтобы быть в курсе анонсов и розыгрышей."
+        "❗ Перед использованием ОБЯЗАТЕЛЬНО прочти раздел «FAQ»\n"
+        "❗ Так же подпишитесь на наш новостной канал, чтобы быть в курсе анонсов и розыгрышей."
     )
     
 

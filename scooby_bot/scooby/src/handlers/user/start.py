@@ -3,7 +3,7 @@ from aiogram.exceptions import TelegramForbiddenError
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery, FSInputFile
-from src.keyboards.user import generate_random_fruit_keyboard, fruits, main_button, contact_button, other_button, coupons_button, promotions_button, activity_button, roulette_button, calculator_button, complaint_book_button
+from src.keyboards.user import generate_random_fruit_keyboard, main_button, contact_button, other_button, coupons_button, promotions_button, activity_button, roulette_button, calculator_button, complaint_book_button
 from src.keyboards.transaction import buy_button_operation, sale_button_operation
 from src.texts.user import UserTexts
 from src.states.transaction import CouponState, CalculatorState, BuyCryptoState, SaleCryptoState

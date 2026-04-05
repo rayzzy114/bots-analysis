@@ -8,7 +8,7 @@ from aiogram.types import CallbackQuery, Message
 from cfg.base import OPERATOR_USERNAME
 from src.handlers.transaction import LTC_RUB_SELL, XMR_RUB_SELL, BTC_RUB_SELL, USDT_RUB_SELL
 from src.keyboards.transaction import sale_button, sale_button_operation, button_buy_back, success_sale_button, \
-    success_sale_button_final, home_button, payment_count_button, order_buttons
+    home_button, order_buttons
 from src.states.transaction import SaleCryptoState
 from src.texts.transaction import TransactionTexts
 from src.utils.group import send_message_to_channel
@@ -166,7 +166,7 @@ async def create_sale_order(callback: CallbackQuery, state: FSMContext):
 
     data = await state.get_data()
     
-    rub_receive_base = data.get("total_sum")       # рубли без комиссии
+    data.get("total_sum")       # рубли без комиссии
     crypto_sell = data.get("crypto_amount")        # крипта, которую клиент отдаёт
     currency = data.get("currency")
     requisites = data.get("requisites")
@@ -235,13 +235,13 @@ async def create_sale_order(callback: CallbackQuery, state: FSMContext):
 
 @sale_router.callback_query(F.data.startswith('order_status_'))
 async def callback_order_status(callback: CallbackQuery) -> None:
-    order_id = callback.data.replace("order_status_", "")
+    callback.data.replace("order_status_", "")
     await callback.answer("📊 Ваше место в очереди: 10+", show_alert=True)
 
 
 @sale_router.callback_query(F.data.startswith('order_cancel_'))
 async def callback_order_cancel(callback: CallbackQuery, state: FSMContext) -> None:
-    order_id = callback.data.replace("order_cancel_", "")
+    callback.data.replace("order_cancel_", "")
     await state.clear()
     await manager.delete_message(callback.message.chat.id)
     new_message = await callback.message.answer("❌ Заявка отменена", reply_markup=home_button())

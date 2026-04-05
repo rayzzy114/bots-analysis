@@ -1,7 +1,6 @@
 """Tests: commission and wallet substitution propagation."""
 from __future__ import annotations
 
-import pytest
 from app.overrides import RuntimeOverrides, apply_state_overrides
 
 

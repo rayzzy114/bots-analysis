@@ -6,7 +6,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.state import State, StatesGroup
-from config import ADMIN_IDS, get_operator, get_operator2, get_operator3
+from config import ADMIN_IDS, get_operator, get_operator2
 from db.settings import (
     get_requisites, get_bank, get_payment_methods,
     get_requisites_mode, get_method_requisites, get_commission

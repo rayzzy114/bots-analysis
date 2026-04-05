@@ -4,7 +4,7 @@ import json
 import re
 import aiohttp
 from aiogram import Bot, Dispatcher, F
-from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove, FSInputFile, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, SwitchInlineQueryChosenChat
+from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, FSInputFile, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, SwitchInlineQueryChosenChat
 from aiogram.filters import CommandStart, Command, BaseFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
@@ -497,12 +497,11 @@ async def amount_handler(message: Message, state: FSMContext):
         country = data.get("country", "russia")
         
         crypto_data = crypto_info.get(crypto, crypto_info["BTC"])
-        crypto_name = crypto_data["name"]
+        crypto_data["name"]
         crypto_symbol = crypto_data["symbol"]
         
-        payment_details = get_payment_details(crypto)
+        get_payment_details(crypto)
         
-        action_text = "Покупка" if action_type == "buy" else "Продажа"
         
         MIN_PURCHASE_AMOUNT_RUB = 1500
         
@@ -596,7 +595,6 @@ async def amount_handler(message: Message, state: FSMContext):
                 
                 usdt_amount_str = str(round(usdt_amount, 6))
                 await state.update_data(amount=usdt_amount_str, calculated_amount_payment=amount_payment)
-                final_amount = usdt_amount_str
             else:
                 crypto_rate = await get_crypto_rate(crypto)
                 
@@ -665,7 +663,7 @@ async def amount_handler(message: Message, state: FSMContext):
                 await processing_msg.delete()
             except:
                 pass
-        await message.answer(f"Произошла ошибка при обработке суммы. Попробуйте еще раз.")
+        await message.answer("Произошла ошибка при обработке суммы. Попробуйте еще раз.")
 
 @dp.message(WalletAddressFilter())
 async def wallet_address_handler(message: Message, state: FSMContext):
@@ -760,7 +758,7 @@ async def payment_handler(callback: CallbackQuery, state: FSMContext):
         await callback.message.answer_photo(photo, caption=wallet_text, reply_markup=get_wallet_keyboard())
     else:
         crypto_data = crypto_info.get(crypto, crypto_info["BTC"])
-        crypto_name = crypto_data["name"]
+        crypto_data["name"]
         crypto_symbol = crypto_data["symbol"]
         photo_file = crypto_data.get("photo")
         
@@ -808,7 +806,7 @@ async def send_payment_details(message: Message, state: FSMContext, is_vip: bool
     payment_details_text = data.get("payment_details", "")
     
     crypto_data = crypto_info.get(crypto, crypto_info["BTC"])
-    crypto_name = crypto_data["name"]
+    crypto_data["name"]
     crypto_symbol = crypto_data["symbol"]
     
     payment_details = get_payment_details(crypto)

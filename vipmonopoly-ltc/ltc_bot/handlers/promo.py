@@ -1,7 +1,4 @@
 from aiogram import Router, types, F
-from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.fsm.context import FSMContext
-from aiogram.types import Message
 
 from config import get_operator, get_operator2, get_operator3
 
@@ -17,7 +14,7 @@ async def promo_crypto_handler(callback: types.CallbackQuery):
         f"""Если ты "новичок" и хочешь получить промокод на скидку? - пиши мне @{get_operator()} или @{get_operator2()} или @{get_operator3()}"""
     )
 
-    msg = await callback.message.answer(
+    await callback.message.answer(
         text
     )
     await callback.answer()

@@ -827,7 +827,6 @@ sell_country_kb = InlineKeyboardMarkup(
     ]
 )
 
-import asyncio
 #РБ ЛОГИКА ПОКА НЕ РАБОТАЕТ ЗАМЕНИТЬ 
 @dp.callback_query(lambda c: c.data == "buy_rb")
 async def process_buy_rb(callback: types.CallbackQuery):
@@ -1052,7 +1051,7 @@ async def process_buy_amount_rf(message: types.Message, state: FSMContext):
 async def bank_selected_rf(callback: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
     user_wallet = data.get("user_wallet")
-    rub_amount = data.get("rub_amount", 0)       # сумма в рублях
+    data.get("rub_amount", 0)       # сумма в рублях
     crypto_amount = data.get("crypto_amount", 0) # сумма в крипте
     crypto = data.get("crypto")
 
@@ -1235,7 +1234,7 @@ async def process_payment_document(message: types.Message, state: FSMContext):
     data = await state.get_data()
 
     # Проверяем формат
-    if not doc.mime_type in ["application/pdf", "image/png", "image/jpeg"]:
+    if doc.mime_type not in ["application/pdf", "image/png", "image/jpeg"]:
         return await message.answer("⚠️ Пришлите файл в формате PNG, JPG или PDF.")
 
     # Отправляем в админку

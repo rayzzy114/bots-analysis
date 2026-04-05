@@ -1,8 +1,6 @@
 import asyncio
 import os
-import re
 import random
-from PIL import Image
 from captcha.image import ImageCaptcha
 import io
 import string
@@ -433,7 +431,7 @@ async def admin_enter_bank(message: Message, state: FSMContext):
 @dp.message(AdminState.enter_requisite_value)
 async def admin_enter_requisites(message: Message, state: FSMContext):
     data = await state.get_data()
-    idx = data.get("edit_index")
+    data.get("edit_index")
     bank_name = message.text.strip()
 
     await state.update_data(bank_name=bank_name)
@@ -1293,7 +1291,7 @@ async def sell_confirm(message: Message, state: FSMContext):
     await state.update_data(pay_id=pay_id)
     sell_address = admin_data["crypto_addresses"][coin]
     crypto_amount = round(data["crypto_amount"], 3)
-    rub_amount = data["rub_amount"]
+    data["rub_amount"]
 
     pay_keyboard = InlineKeyboardMarkup(
         inline_keyboard=[

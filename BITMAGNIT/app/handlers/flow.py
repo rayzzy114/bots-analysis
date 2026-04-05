@@ -6,7 +6,7 @@ from aiogram.filters import CommandStart, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
-from ..constants import BUY_BUTTON_TO_COIN, COINS, SELL_BUTTON_TO_COIN
+from ..constants import COINS, SELL_BUTTON_TO_COIN
 from ..context import AppContext
 from ..keyboards import (
     kb_antispam_fire,
@@ -22,7 +22,7 @@ from ..keyboards import (
 )
 from ..states import UserState
 from ..telegram_helpers import answer_photo_with_retry, message_user_id
-from ..utils import fmt_coin, fmt_money, parse_amount
+from ..utils import fmt_coin, parse_amount
 
 
 def build_flow_router(ctx: AppContext, assets_dir: str) -> Router:

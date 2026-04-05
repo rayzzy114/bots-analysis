@@ -2,7 +2,6 @@
 Tests for rocket bot - commission and rate calculation fixes
 """
 import pytest
-from unittest.mock import patch, MagicMock
 
 
 class TestRocketRateCalculation:

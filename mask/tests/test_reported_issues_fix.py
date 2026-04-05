@@ -1227,7 +1227,6 @@ async def test_quote_agree_acknowledges_callback_before_waiting_for_requisites(r
 async def test_quote_agree_deletes_requisites_notice_after_order_sent(runtime_ctx, monkeypatch):
     runtime, _ = runtime_ctx
     quote_state_id = "d600074b23116f8c1024a7916d46d43e"
-    order_state_id = "c470c94e034f1631e0c841615c07c46b"
     session = UserSession(
         state_id=quote_state_id,
         history=[runtime.catalog.start_state_id, quote_state_id],

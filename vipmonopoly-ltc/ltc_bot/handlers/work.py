@@ -1,7 +1,5 @@
 from aiogram import Router, types, F
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.fsm.context import FSMContext
-from aiogram.types import Message
 from config import get_work_operator
 router = Router()
 

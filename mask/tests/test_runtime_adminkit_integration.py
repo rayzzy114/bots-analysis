@@ -10,7 +10,7 @@ from app.constants import DEFAULT_LINKS
 from app.context import AppContext
 from app.rates import RateService
 from app.runtime import FlowRuntime, UserSession
-from app.overrides import FAQ_FALLBACK_KEYS, RuntimeOverrides, apply_state_overrides
+from app.overrides import RuntimeOverrides, apply_state_overrides
 from app.storage import OrdersStore, SessionsStore, SettingsStore, UsersStore, MediaStore
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]

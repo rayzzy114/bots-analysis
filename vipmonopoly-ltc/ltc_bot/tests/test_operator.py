@@ -2,7 +2,6 @@
 Tests for vipmonopoly-ltc bot - dynamic operator getters
 """
 import pytest
-import os
 
 
 class TestOperatorGetters:

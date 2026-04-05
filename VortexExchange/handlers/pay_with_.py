@@ -175,7 +175,7 @@ async def process_amount(message: Message, state: FSMContext):
             "Вы не вывели корректную сумму."
         )
         
-    except Exception as e:
+    except Exception:
         await state.clear()
 
 @router.message(StateFilter(PaymentStates.waiting_for_address))
@@ -198,8 +198,8 @@ async def process_address(message: Message, state: FSMContext):
         return
     
     bank_info = get_bank_details_from_db().get(payment_method, {})
-    bank_name = bank_info.get("name", "")
-    bank_details = bank_info.get("details", "")
+    bank_info.get("name", "")
+    bank_info.get("details", "")
 
 
     rub_orig_amount = amount * current_rate
@@ -269,7 +269,7 @@ async def confirm_payment(callback: CallbackQuery, state: FSMContext):
     rub_amount_com = amount * current_rate * (1 + get_commission_rate())
 
     kb = InlineKeyboardBuilder()
-    kb.button(text="Отменить", callback_data=f"start_handler")
+    kb.button(text="Отменить", callback_data="start_handler")
     kb.adjust(1)
 
     wait_msg = "♻️ Готовим платежные данные..."
@@ -323,7 +323,7 @@ async def check_status(callback: CallbackQuery):
 @router.callback_query(F.data.startswith("paid_"))
 async def handle_paid_button(callback: CallbackQuery, state: FSMContext):
     crypto_type = callback.data.replace("paid_", "")
-    crypto_config = CRYPTO_CONFIG.get(crypto_type, CRYPTO_CONFIG['btc'])
+    CRYPTO_CONFIG.get(crypto_type, CRYPTO_CONFIG['btc'])
 
     user_data = await state.get_data()
     order_data = user_data.get('order_data')

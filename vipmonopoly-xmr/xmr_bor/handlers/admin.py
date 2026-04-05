@@ -1,16 +1,16 @@
 from typing import Optional
-from aiogram import Router, types, F
+from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.state import State, StatesGroup
-from config import is_admin, ADMIN_IDS, reload_env
+from config import is_admin, reload_env
 from utils.env_writer import update_env_var, read_env_var
 from db.settings import (
     get_requisites, get_bank, update_requisites, update_bank,
     get_payment_methods, add_payment_method, remove_payment_method,
-    get_xmr_rates, get_ltc_rates, get_commission, set_commission,
+    get_xmr_rates, get_commission, set_commission,
     get_requisites_mode, set_requisites_mode,
     update_method_requisites
 )
@@ -514,7 +514,7 @@ async def process_rates(message: Message, state: FSMContext):
     update_env_var("rates", message.text.strip())
     reload_env()
     await state.clear()
-    await message.answer(f"<b>✅ rates обновлен!</b>")
+    await message.answer("<b>✅ rates обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
     await message.delete()
 
@@ -544,7 +544,7 @@ async def process_sell_btc(message: Message, state: FSMContext):
     update_env_var("sell_btc", message.text.strip())
     reload_env()
     await state.clear()
-    await message.answer(f"<b>✅ sell_btc обновлен!</b>")
+    await message.answer("<b>✅ sell_btc обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
     await message.delete()
 
@@ -574,7 +574,7 @@ async def process_news_channel(message: Message, state: FSMContext):
     update_env_var("news_channel", message.text.strip())
     reload_env()
     await state.clear()
-    await message.answer(f"<b>✅ news_channel обновлен!</b>")
+    await message.answer("<b>✅ news_channel обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
     await message.delete()
 
@@ -604,7 +604,7 @@ async def process_operator(message: Message, state: FSMContext):
     update_env_var("operator", message.text.strip())
     reload_env()
     await state.clear()
-    await message.answer(f"<b>✅ operator обновлен!</b>")
+    await message.answer("<b>✅ operator обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
     await message.delete()
 
@@ -634,7 +634,7 @@ async def process_operator2(message: Message, state: FSMContext):
     update_env_var("operator2", message.text.strip())
     reload_env()
     await state.clear()
-    await message.answer(f"<b>✅ operator2 обновлен!</b>")
+    await message.answer("<b>✅ operator2 обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
     await message.delete()
 
@@ -664,7 +664,7 @@ async def process_operator3(message: Message, state: FSMContext):
     update_env_var("operator3", message.text.strip())
     reload_env()
     await state.clear()
-    await message.answer(f"<b>✅ operator3 обновлен!</b>")
+    await message.answer("<b>✅ operator3 обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
     await message.delete()
 
@@ -694,7 +694,7 @@ async def process_work_operator(message: Message, state: FSMContext):
     update_env_var("work_operator", message.text.strip())
     reload_env()
     await state.clear()
-    await message.answer(f"<b>✅ work_operator обновлен!</b>")
+    await message.answer("<b>✅ work_operator обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
     await message.delete()
 

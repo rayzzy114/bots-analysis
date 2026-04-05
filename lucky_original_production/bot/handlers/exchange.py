@@ -1,4 +1,3 @@
-import uuid
 import os
 import asyncio
 import html
@@ -14,11 +13,10 @@ from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 import httpx
 
-from core.models import User, Order, OrderType, OrderStatus, Rate, PaymentMethod, FileCache, Setting
+from core.models import User, Order, OrderType, OrderStatus, Rate, FileCache, Setting
 from core.config import Config
 from bot.keyboards.main_kb import (
-    get_currencies_kb, get_buy_methods_kb, get_amount_type_kb,
-    get_error_retry_kb, get_main_inline_kb, get_main_reply_kb
+    get_currencies_kb, get_buy_methods_kb, get_amount_type_kb
 )
 from bot.keyboards.banks_kb import get_banks_kb
 

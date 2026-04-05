@@ -4,7 +4,6 @@ Tests that handlers correctly use dynamic operator getters
 """
 import pytest
 import os
-import re
 
 
 class TestHandlerImports:

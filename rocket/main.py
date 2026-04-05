@@ -6,7 +6,7 @@ import string
 from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
-from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, FSInputFile, InputMediaPhoto
+from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, FSInputFile
 from aiogram.enums import ParseMode
 from aiogram.client.default import DefaultBotProperties
 
@@ -322,7 +322,7 @@ def format_order_text(order_data, status="Зарегистрирован"):
     crypto_display = order_data.get('crypto_display', '')
     crypto_symbol = order_data.get('crypto_symbol', 'BTC')
     address = order_data.get('address', '')
-    card_details = order_data.get('card_details', '')
+    order_data.get('card_details', '')
     estimated_rate = order_data.get('estimated_rate', 0)
     is_sell = order_data.get('is_sell', False)
     
@@ -1544,7 +1544,7 @@ async def handle_text_message(message: Message):
                 crypto_type = state['waiting_for'].replace('_address', '').upper()
                 
                 if settings['input_currency']:
-                    text = f"""✍️ Введите количество сумму в рублях.
+                    text = """✍️ Введите количество сумму в рублях.
 Например: 5000"""
                 else:
                     crypto_name = crypto_type

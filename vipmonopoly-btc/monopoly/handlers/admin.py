@@ -1,11 +1,11 @@
 from typing import Optional
-from aiogram import Router, types, F
+from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.state import State, StatesGroup
-from config import is_admin, ADMIN_IDS
+from config import is_admin
 from utils.env_writer import update_env_var, read_env_var
 from db.settings import (
     get_requisites, get_bank, update_requisites, update_bank,

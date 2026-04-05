@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import json
-import shutil
 from pathlib import Path
 
 import pytest
@@ -403,7 +402,7 @@ def test_no_onion_in_en_hrefs(client: TestClient):
 def test_no_onion_in_ru_hrefs(client: TestClient):
     resp = client.get("/ru/")
     import re
-    hrefs = re.findall(r'href="([^"]*)"', text := resp.text)
+    hrefs = re.findall(r'href="([^"]*)"', _text := resp.text)
     for href in hrefs:
         assert ".onion" not in href, f"Found .onion in href: {href}"
 

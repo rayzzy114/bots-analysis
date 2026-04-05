@@ -5,7 +5,7 @@ from aiogram.filters import CommandStart, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
-from ..constants import BUY_BUTTON_TO_COIN, COINS, SELL_BUTTON_TO_COIN
+from ..constants import COINS, SELL_BUTTON_TO_COIN
 from ..context import AppContext
 from ..keyboards import (
     kb_antispam_fire,

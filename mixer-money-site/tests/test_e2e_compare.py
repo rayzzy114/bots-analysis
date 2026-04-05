@@ -1,9 +1,8 @@
 """E2E Playwright tests: compare clone vs original mixer site."""
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass, field
-from playwright.sync_api import sync_playwright, Page, expect
+from playwright.sync_api import sync_playwright, Page
 
 ORIGINAL = "https://mixermoney.it.com"
 CLONE = "https://mixer-money.com"
@@ -107,12 +106,12 @@ def compare_snapshots(orig: PageSnapshot, clone: PageSnapshot, label: str):
     if clone.onion_in_hrefs:
         print(f"  ✗ Clone has .onion in hrefs: {clone.onion_in_hrefs[:5]}")
     else:
-        print(f"  ✓ No .onion in clone hrefs")
+        print("  ✓ No .onion in clone hrefs")
 
     if clone.broken_images:
         print(f"  ✗ Clone has broken images: {clone.broken_images}")
     else:
-        print(f"  ✓ No broken images in clone")
+        print("  ✓ No broken images in clone")
 
     # Show nav differences
     orig_nav = set(orig.nav_links)
@@ -127,7 +126,6 @@ def compare_snapshots(orig: PageSnapshot, clone: PageSnapshot, label: str):
 
 def test_homepage_en():
     """Compare EN homepages."""
-    issues = []
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
 
@@ -208,7 +206,7 @@ def test_language_switch_en_to_ru():
         assert snap.has_css, "RU page after switch missing CSS"
         assert not snap.broken_images, f"Broken images after lang switch: {snap.broken_images}"
 
-        print(f"  ✓ Language switch EN→RU works correctly")
+        print("  ✓ Language switch EN→RU works correctly")
         browser.close()
 
 
@@ -240,7 +238,7 @@ def test_language_switch_ru_to_en():
         snap = snapshot_page(page)
         assert snap.has_css, "EN page after switch missing CSS"
 
-        print(f"  ✓ Language switch RU→EN works correctly")
+        print("  ✓ Language switch RU→EN works correctly")
         browser.close()
 
 
@@ -290,7 +288,7 @@ def test_mixer_form_submit_en():
             print(f"  Result desc: {text[:100]}")
             assert TEST_BTC_ADDR in text, f"BTC address not shown in result: {text}"
 
-        print(f"  ✓ EN mixer form submit works correctly")
+        print("  ✓ EN mixer form submit works correctly")
         browser.close()
 
 
@@ -316,9 +314,9 @@ def test_mixer_form_submit_ru():
         if desc.count():
             text = desc.inner_text()
             print(f"  Result desc: {text[:100]}")
-            assert TEST_BTC_ADDR in text, f"BTC address not shown in RU result"
+            assert TEST_BTC_ADDR in text, "BTC address not shown in RU result"
 
-        print(f"  ✓ RU mixer form submit works correctly")
+        print("  ✓ RU mixer form submit works correctly")
         browser.close()
 
 
@@ -376,11 +374,11 @@ def test_static_assets_load():
             page.close()
 
         if failed_requests:
-            print(f"  ✗ Failed asset requests:")
+            print("  ✗ Failed asset requests:")
             for req in failed_requests:
                 print(f"    {req}")
         else:
-            print(f"  ✓ All assets loaded successfully")
+            print("  ✓ All assets loaded successfully")
 
         assert not failed_requests, f"Failed requests: {failed_requests}"
 
@@ -418,11 +416,11 @@ def test_all_internal_links_work():
                 broken.append(f"{resp.status} {href}")
 
         if broken:
-            print(f"  ✗ Broken internal links:")
+            print("  ✗ Broken internal links:")
             for b in broken:
                 print(f"    {b}")
         else:
-            print(f"  ✓ All internal links return 200")
+            print("  ✓ All internal links return 200")
 
         # We don't assert here — some links (faq, privacy, etc.) may not have pages
         # Just report

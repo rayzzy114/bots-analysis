@@ -8,7 +8,7 @@ from datetime import datetime, timedelta, timezone
 
 from aiogram import Bot, Dispatcher
 
-from sqlalchemy import select, update
+from sqlalchemy import select
 
 from sqlalchemy.orm import selectinload
 
@@ -16,7 +16,7 @@ from core.config import Config
 
 from core.database import init_db, async_session
 
-from core.models import Order, User, OrderStatus
+from core.models import Order, OrderStatus
 
 from bot.middlewares import DbSessionMiddleware
 

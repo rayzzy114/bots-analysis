@@ -1,8 +1,8 @@
 import random
-from aiogram import Router, F
-from aiogram.types import Message, CallbackQuery
+from aiogram import Router
+from aiogram.types import CallbackQuery
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from typing import Tuple, Dict, Any
+from typing import Dict, Any
 
 from utils.valute import (
     rate_manager

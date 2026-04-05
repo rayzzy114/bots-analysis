@@ -1,14 +1,8 @@
-import random
-from string import digits
 
-import pytz
-from aiocryptopay.exceptions import CodeErrorFactory
 from aiogram import types, executor
 from aiogram.dispatcher import FSMContext
-from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.utils.markdown import hlink
 from keybords import *
-from datetime import datetime
 from loader import dp, bot, db
 from func import *
 from config import *

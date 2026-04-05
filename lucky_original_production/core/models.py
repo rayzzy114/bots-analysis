@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 from typing import List, Optional
 
-from sqlalchemy import BigInteger, Column, DateTime, Float, ForeignKey, Integer, String, Boolean, Enum
+from sqlalchemy import BigInteger, DateTime, Float, ForeignKey, String, Boolean, Enum
 
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 

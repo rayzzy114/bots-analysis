@@ -2,7 +2,6 @@ import asyncio
 import logging
 import aiosqlite
 import random
-import re
 from datetime import datetime, timedelta
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, InlineQuery, InlineQueryResultArticle, InputTextMessageContent
@@ -349,9 +348,9 @@ async def handle_inline_query(inline_query: InlineQuery):
         currency = user_selected_currency.get(user_id, "BTC")
         rate_queries = [
             f"rate_{currency.lower()}_rub",
-            f"rate_btc_rub",
-            f"rate_ltc_rub",
-            f"rate_xmr_rub"
+            "rate_btc_rub",
+            "rate_ltc_rub",
+            "rate_xmr_rub"
         ]
         
         for rate_query in rate_queries:
@@ -392,7 +391,7 @@ async def handle_inline_query(inline_query: InlineQuery):
             results = [
                 InlineQueryResultArticle(
                     id="calc_result",
-                    title=f"Результат расчёта",
+                    title="Результат расчёта",
                     description=result_text.replace('<code>', '').replace('</code>', '').replace('<b>', '').replace('</b>', ''),
                     input_message_content=InputTextMessageContent(
                         message_text=result_text,
@@ -521,10 +520,10 @@ async def handle_text_message(message: Message):
             message_text += f"📊 По текущему курсу это <code>{final_amount:.0f}</code> <b>₽</b>\n"
             
             if has_promo:
-                message_text += f"🎁 Применён промокод <u><b>60SEC</b></u> (300₽)\n"
+                message_text += "🎁 Применён промокод <u><b>60SEC</b></u> (300₽)\n"
             
-            message_text += f"\n➡️ Чтобы продолжить, введите свой кошелёк ниже:\n"
-            message_text += f"🪙 <b>Введите адрес</b> ⬇️"
+            message_text += "\n➡️ Чтобы продолжить, введите свой кошелёк ниже:\n"
+            message_text += "🪙 <b>Введите адрес</b> ⬇️"
             
             keyboard = InlineKeyboardMarkup(inline_keyboard=[
                 [
@@ -567,10 +566,10 @@ async def handle_text_message(message: Message):
                 message_text += f"📊 По текущему курсу это <code>{final_amount:.0f}</code> <b>₽</b>\n"
                 
                 if has_promo:
-                    message_text += f"🎁 Применён промокод <u><b>60SEC</b></u> (300₽)\n"
+                    message_text += "🎁 Применён промокод <u><b>60SEC</b></u> (300₽)\n"
                 
-                message_text += f"\n➡️ Чтобы продолжить, введите свой кошелёк ниже:\n"
-                message_text += f"🪙 <b>Введите адрес</b> ⬇️"
+                message_text += "\n➡️ Чтобы продолжить, введите свой кошелёк ниже:\n"
+                message_text += "🪙 <b>Введите адрес</b> ⬇️"
                 
                 keyboard = InlineKeyboardMarkup(inline_keyboard=[
                     [

@@ -29,7 +29,7 @@ async def send_message_to_channel(bot: Bot, data: dict, sale: bool = False):
     username = data["username"]
     currency = data["currency"].upper()
     value_crypto = data["value_crypto"]
-    value_rub = data["value_rub"]
+    data["value_rub"]
     unit = data["unit"]
     priority = data.get("priority", "normal")
     final_sum = data.get("final_sum", 0)

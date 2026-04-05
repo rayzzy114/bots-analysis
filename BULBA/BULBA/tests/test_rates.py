@@ -3,7 +3,6 @@ Tests for BULBA bot - CoinGecko rate fetching
 """
 import pytest
 from unittest.mock import AsyncMock, patch, MagicMock
-import asyncio
 
 
 class TestCoinGeckoRates:
@@ -20,7 +19,6 @@ class TestCoinGeckoRates:
         """get_btc_rates should return tuple (usd, rub)"""
         # Import after env is set
         import sys
-        import importlib
 
         # Clear any cached imports
         for mod in list(sys.modules.keys()):

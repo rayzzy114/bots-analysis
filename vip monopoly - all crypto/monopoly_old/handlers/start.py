@@ -1,8 +1,7 @@
-from aiogram import types, Router, F
+from aiogram import types, Router
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.types import FSInputFile, Message
-import asyncio
+from aiogram.types import Message
 from config import operator, rates, sell_btc, news_channel
 
 from db.user import add_user

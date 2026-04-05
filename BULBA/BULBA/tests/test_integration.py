@@ -3,7 +3,6 @@ Integration tests for BULBA handlers
 Tests that handlers correctly use dynamic rates from CoinGecko
 """
 import pytest
-from unittest.mock import AsyncMock, patch, MagicMock
 
 
 class TestBuyHandlerWithDynamicRates:

@@ -2,7 +2,7 @@ import asyncio
 
 from core.database import async_session, init_db
 
-from core.models import Rate, PaymentMethod, Setting
+from core.models import Rate, Setting
 
 from sqlalchemy import select
 

@@ -2,9 +2,7 @@ import asyncio
 import random
 import os
 import sqlite3
-import json
 from datetime import datetime
-import random
 import aiohttp
 
 from dotenv import load_dotenv
@@ -22,7 +20,6 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from aiogram.filters import CommandStart
 from utils.env_writer import update_env_var, read_env_var
 
 load_dotenv()
@@ -409,8 +406,8 @@ start_keyboard = InlineKeyboardMarkup(inline_keyboard=[
     ],
 ])
 def get_bonus_keyboard(user_id: int) -> InlineKeyboardMarkup:
-    luck_text = "✅ Проверь удачу и получи скидку (150₽)" if has_luck_bonus(user_id) else "🎲 Проверь удачу и получи скидку (150₽)"
-    reserve_text = "✅ Подпишись на резерв (скидка 150₽)" if has_reserve_bonus(user_id) else "🧊 Подпишись на резерв (скидка 150₽)"
+    "✅ Проверь удачу и получи скидку (150₽)" if has_luck_bonus(user_id) else "🎲 Проверь удачу и получи скидку (150₽)"
+    "✅ Подпишись на резерв (скидка 150₽)" if has_reserve_bonus(user_id) else "🧊 Подпишись на резерв (скидка 150₽)"
 
 main_reply_keyboard = ReplyKeyboardMarkup(
     keyboard=[
@@ -815,7 +812,7 @@ async def create_order(callback: CallbackQuery, state: FSMContext):
      except Exception as e:
         print(f"Не удалось удалить стикер: {e}")
     # Отправляем реквизиты
-    requisites = get_payment_requisites()
+    get_payment_requisites()
 
     card, bank, country = get_payment_requisites()
 
@@ -837,7 +834,6 @@ async def create_order(callback: CallbackQuery, state: FSMContext):
 )
 
 
-    parse_mode=ParseMode.HTML
     try:
         await bot.send_message(user_id, payment_text, reply_markup=payment_keyboard, parse_mode=ParseMode.HTML)
         await state.update_data(requisites_sent=True)
@@ -867,7 +863,7 @@ async def receive_proof(message: Message, state: FSMContext):
     deal_id = data.get("deal_id")
     user_id = message.from_user.id
     coin = data.get("coin")
-    crypto_amount = data.get("crypto_amount")
+    data.get("crypto_amount")
     total_rub = data.get("total_rub")
     wallet = data.get("wallet")
     crypto_fmt = data.get("crypto_fmt")
@@ -1301,15 +1297,12 @@ async def receive_proof_sell(message: Message, state: FSMContext):
     if message.photo:
         file_id = message.photo[-1].file_id
         send_method = bot.send_photo
-        content_type = "фото"
     elif message.document:
         file_id = message.document.file_id
         send_method = bot.send_document
-        content_type = "документ"
     elif message.text:
         file_id = None
         send_method = None
-        content_type = "текст (TXID)"
         txid = message.text.strip()
     else:
         return
@@ -1401,7 +1394,7 @@ class AdminStates(StatesGroup):
 def _get_env(key: str, default: str = "") -> str:
     return read_env_var(key, default)
 def admin_main_menu():
-    commission = get_commission()
+    get_commission()
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="💳 Реквизиты оплаты (покупка)", callback_data="admin_requisites")],
         [InlineKeyboardButton(text="🪙 Адреса приёма крипты (продажа)", callback_data="admin_crypto_addresses")],
@@ -1734,7 +1727,6 @@ async def admin_broadcast_send(message: Message, state: FSMContext):
     if message.from_user.id not in ADMIN_IDS:
         return
 
-    text = message.text
     users = get_all_users()
     if not users:
         await message.answer("Нет пользователей для рассылки.")

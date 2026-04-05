@@ -2,7 +2,7 @@ from aiogram import types, Router, F
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.enums import ChatType
-from aiogram.types import FSInputFile, Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
@@ -187,7 +187,7 @@ async def process_bank_details_update(message: Message, state: FSMContext, bank_
     success = update_bank_detail(bank_type, new_details)
     
     if success:
-        await message.answer(f"✅ Реквизиты успешно обновлены!")
+        await message.answer("✅ Реквизиты успешно обновлены!")
         await state.clear()
         await send_admin(message)
     else:

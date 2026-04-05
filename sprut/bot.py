@@ -16,7 +16,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.storage.memory import MemoryStorage
 
-from utils.env_writer import update_env_var, read_env_var
+from utils.env_writer import update_env_var
 
 load_dotenv()
 
@@ -1015,7 +1015,6 @@ async def process_payment_method_selection(callback: types.CallbackQuery, state:
 
 @dp.callback_query(lambda c: c.data in ["receipt_send", "receipt_no"])
 async def process_receipt(callback: types.CallbackQuery, state: FSMContext):
-    user_id = callback.from_user.id
     current_state = await state.get_state()
     
     if current_state != CaptchaStates.waiting_for_receipt:
@@ -1039,7 +1038,6 @@ async def process_receipt(callback: types.CallbackQuery, state: FSMContext):
 
 @dp.callback_query(lambda c: c.data == "generate_new_address")
 async def process_generate_new_address(callback: types.CallbackQuery, state: FSMContext):
-    user_id = callback.from_user.id
     data = await state.get_data()
     currency = data.get("deposit_currency", "")
     
@@ -1066,7 +1064,6 @@ async def process_generate_new_address(callback: types.CallbackQuery, state: FSM
 
 @dp.callback_query(lambda c: c.data in ["withdraw_confirm", "withdraw_cancel"])
 async def process_withdraw_confirmation(callback: types.CallbackQuery, state: FSMContext):
-    user_id = callback.from_user.id
     current_state = await state.get_state()
     
     if current_state != CaptchaStates.waiting_for_withdraw_confirm:
@@ -1187,13 +1184,13 @@ async def handle_messages(message: types.Message, state: FSMContext):
             await state.update_data(admin_methods_currency="ALL")
             await state.set_state(CaptchaStates.admin_manage_methods_action)
             if methods:
-                text = f"Методы оплаты (общие для всех валют):\n\n"
+                text = "Методы оплаты (общие для всех валют):\n\n"
                 for method_id, method_name, price_rub, is_active in methods:
                     status = "✅ Активен" if is_active else "❌ Неактивен"
                     text += f"{status} - {method_name}\n"
                 await message.answer(text, reply_markup=get_admin_manage_methods_keyboard("ALL", methods))
             else:
-                text = f"Пока нет методов оплаты.\n\nДобавьте первый метод оплаты:"
+                text = "Пока нет методов оплаты.\n\nДобавьте первый метод оплаты:"
                 await message.answer(text, reply_markup=get_admin_manage_methods_keyboard("ALL", []))
         elif is_admin(user_id) and message.text == "💳 Управление адресами депозитов":
             await state.set_state(CaptchaStates.admin_deposit_address)
@@ -1259,10 +1256,10 @@ async def handle_messages(message: types.Message, state: FSMContext):
             await message.answer("Вы испытали удачу 🤑! Теперь ваша скидка составляет 1 RUB", reply_markup=get_cabinet_keyboard())
         elif message.text == "💰 Баланс":
             text = (
-                f"BTC: <code>0</code> ~ 0 RUB\n"
-                f"LTC: <code>0</code> ~ 0 RUB\n"
-                f"XMR: <code>0</code> ~ 0 RUB\n"
-                f"USDT: <code>0</code> ~ 0 RUB"
+                "BTC: <code>0</code> ~ 0 RUB\n"
+                "LTC: <code>0</code> ~ 0 RUB\n"
+                "XMR: <code>0</code> ~ 0 RUB\n"
+                "USDT: <code>0</code> ~ 0 RUB"
             )
             await message.answer(text, reply_markup=get_wallet_keyboard(), parse_mode="HTML")
         elif message.text == "📜 История":
@@ -1346,7 +1343,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                 if message.text in ["BTC", "LTC", "XMR", "USDT"]:
                     await state.update_data(withdraw_currency=message.text)
                     await state.set_state(CaptchaStates.waiting_for_withdraw_address)
-                    await message.answer(f"Введите адрес получателя:", reply_markup=get_promo_cancel_keyboard())
+                    await message.answer("Введите адрес получателя:", reply_markup=get_promo_cancel_keyboard())
                 else:
                     await message.answer("Выберите валюту:", reply_markup=get_calculator_currency_keyboard())
             elif current_state == CaptchaStates.waiting_for_withdraw_address:
@@ -1713,7 +1710,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                         method = get_payment_method_by_id(method_id)
                         if method:
                             method_name = method[2]
-                            price_rub = method[3]
+                            method[3]
                             is_active = method[4]
                             status_text = "активен" if is_active else "неактивен"
                             text = (
@@ -1755,7 +1752,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                         await state.set_state(CaptchaStates.admin_manage_requisites_method)
                         requisites = get_exchange_requisites_with_id(method_id)
                         if requisites:
-                            text = f"Реквизиты для метода оплаты:\n\n"
+                            text = "Реквизиты для метода оплаты:\n\n"
                             for req_id, req_type, req_value in requisites:
                                 text += format_requisite_display(req_type, req_value) + "\n"
                             await message.answer(text, reply_markup=get_admin_requisites_keyboard(requisites), parse_mode="HTML")
@@ -1781,7 +1778,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                             await state.update_data(admin_requisites_method_id=method_id)
                             await state.set_state(CaptchaStates.admin_manage_requisites_method)
                             requisites = get_exchange_requisites_with_id(method_id)
-                            text = f"✅ Реквизит добавлен!\n\nРеквизиты для метода оплаты:\n\n"
+                            text = "✅ Реквизит добавлен!\n\nРеквизиты для метода оплаты:\n\n"
                             for req_id, req_type, req_value in requisites:
                                 text += format_requisite_display(req_type, req_value) + "\n"
                             await message.answer(text, reply_markup=get_admin_requisites_keyboard(requisites), parse_mode="HTML")
@@ -1797,7 +1794,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                         await state.update_data(admin_requisites_method_id=method_id)
                         await state.set_state(CaptchaStates.admin_manage_requisites_method)
                         if requisites:
-                            text = f"Реквизиты для метода оплаты:\n\n"
+                            text = "Реквизиты для метода оплаты:\n\n"
                             for req_id, req_type, req_value in requisites:
                                 text += format_requisite_display(req_type, req_value) + "\n"
                             await message.answer(text, reply_markup=get_admin_requisites_keyboard(requisites), parse_mode="HTML")
@@ -1815,7 +1812,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                             delete_payment_method(method_id)
                             methods = get_all_payment_methods(currency)
                             await state.set_state(CaptchaStates.admin_manage_methods_action)
-                            await message.answer(f"✅ Метод оплаты удален!", reply_markup=get_admin_manage_methods_keyboard(currency, methods))
+                            await message.answer("✅ Метод оплаты удален!", reply_markup=get_admin_manage_methods_keyboard(currency, methods))
                         else:
                             await message.answer("Метод не найден", reply_markup=get_admin_method_actions_keyboard())
                     else:
@@ -1830,7 +1827,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                             update_payment_method(method_id, method[2], method[3], 1)
                             methods = get_all_payment_methods(currency)
                             await state.set_state(CaptchaStates.admin_manage_methods_action)
-                            await message.answer(f"✅ Метод оплаты активирован!", reply_markup=get_admin_manage_methods_keyboard(currency, methods))
+                            await message.answer("✅ Метод оплаты активирован!", reply_markup=get_admin_manage_methods_keyboard(currency, methods))
                         else:
                             await message.answer("Метод не найден", reply_markup=get_admin_method_actions_keyboard())
                     else:
@@ -1845,7 +1842,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                             update_payment_method(method_id, method[2], method[3], 0)
                             methods = get_all_payment_methods(currency)
                             await state.set_state(CaptchaStates.admin_manage_methods_action)
-                            await message.answer(f"✅ Метод оплаты деактивирован!", reply_markup=get_admin_manage_methods_keyboard(currency, methods))
+                            await message.answer("✅ Метод оплаты деактивирован!", reply_markup=get_admin_manage_methods_keyboard(currency, methods))
                         else:
                             await message.answer("Метод не найден", reply_markup=get_admin_method_actions_keyboard())
                     else:
@@ -1858,7 +1855,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                         await state.update_data(admin_requisites_method_id=method_id)
                         await state.set_state(CaptchaStates.admin_manage_requisites_method)
                         if requisites:
-                            text = f"Реквизиты для метода оплаты:\n\n"
+                            text = "Реквизиты для метода оплаты:\n\n"
                             for req_id, req_type, req_value in requisites:
                                 text += format_requisite_display(req_type, req_value) + "\n"
                             await message.answer(text, reply_markup=get_admin_requisites_keyboard(requisites), parse_mode="HTML")
@@ -1884,7 +1881,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                         method = get_payment_method_by_id(method_id)
                         if method:
                             method_name = method[2]
-                            price_rub = method[3]
+                            method[3]
                             is_active = method[4]
                             status_text = "активен" if is_active else "неактивен"
                             text = (
@@ -1923,7 +1920,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                             if message.text == button_text:
                                 await state.update_data(admin_edit_requisite_id=req_id, admin_edit_requisite_type=req_type)
                                 await state.set_state(CaptchaStates.admin_edit_requisite_value)
-                                await message.answer(f"Введите новый номер карты/телефона:", reply_markup=get_promo_cancel_keyboard())
+                                await message.answer("Введите новый номер карты/телефона:", reply_markup=get_promo_cancel_keyboard())
                                 break
                 else:
                     data = await state.get_data()
@@ -1939,7 +1936,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                         await state.update_data(admin_requisites_method_id=method_id)
                         requisites = get_exchange_requisites_with_id(method_id)
                         if requisites:
-                            text = f"Реквизиты для метода оплаты:\n\n"
+                            text = "Реквизиты для метода оплаты:\n\n"
                             for req_id, req_type, req_value in requisites:
                                 text += format_requisite_display(req_type, req_value) + "\n"
                             await message.answer(text, reply_markup=get_admin_requisites_keyboard(requisites), parse_mode="HTML")
@@ -1955,7 +1952,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                         requisites = get_exchange_requisites_with_id(method_id)
                         await state.set_state(CaptchaStates.admin_manage_requisites_method)
                         if requisites:
-                            text = f"Реквизиты для метода оплаты:\n\n"
+                            text = "Реквизиты для метода оплаты:\n\n"
                             for req_id, req_type, req_value in requisites:
                                 text += format_requisite_display(req_type, req_value) + "\n"
                             await message.answer(text, reply_markup=get_admin_requisites_keyboard(requisites), parse_mode="HTML")
@@ -1971,7 +1968,7 @@ async def handle_messages(message: types.Message, state: FSMContext):
                     if requisite_id and method_id:
                         update_exchange_requisite(requisite_id, message.text)
                         requisites = get_exchange_requisites_with_id(method_id)
-                        text = f"✅ Реквизит обновлен!\n\nРеквизиты для метода оплаты:\n\n"
+                        text = "✅ Реквизит обновлен!\n\nРеквизиты для метода оплаты:\n\n"
                         for req_id, req_type, req_value in requisites:
                             text += f"• {req_type}: <code>{req_value}</code>\n"
                         await state.set_state(CaptchaStates.admin_manage_requisites_method)

@@ -23,10 +23,10 @@ def get_keyboard():
 @router.callback_query(F.data == "partner")
 async def partner_handler(callback: types.CallbackQuery):
     text = (
-        f"<b>Условия партнерской программы:</b>\n\n"
-        f"Рекомендуйте наш сервис, стройте команду и получайте вознаграждение от каждого обмена привлеченных вами клиентов!\n\n"
-        f"Минимальная сумма на вывод: 0.0002 BTC\n\n"
-        f"Вывод средств по запросу!"
+        "<b>Условия партнерской программы:</b>\n\n"
+        "Рекомендуйте наш сервис, стройте команду и получайте вознаграждение от каждого обмена привлеченных вами клиентов!\n\n"
+        "Минимальная сумма на вывод: 0.0002 BTC\n\n"
+        "Вывод средств по запросу!"
     )
 
     await callback.message.delete()
@@ -48,11 +48,11 @@ async def my_partner_handler(callback: types.CallbackQuery):
 @router.callback_query(F.data == "my_finances")
 async def my_finances_handler(callback: types.CallbackQuery):
     text = (
-        f"Количество партнеров в моей команде: 0\n\n"
-        f"Активные партнеры: 0\n\n"
-        f"Оплаченных заказов: 0\n\n"
-        f"На балансе: 0\n\n"
-        f"Минимальная сумма на вывод: 0.0002 BTC"
+        "Количество партнеров в моей команде: 0\n\n"
+        "Активные партнеры: 0\n\n"
+        "Оплаченных заказов: 0\n\n"
+        "На балансе: 0\n\n"
+        "Минимальная сумма на вывод: 0.0002 BTC"
     )
 
     await callback.message.answer(text, reply_markup=get_keyboard())
@@ -85,8 +85,8 @@ async def wallet_address_received(message: Message, state: FSMContext):
 @router.callback_query(F.data == "withdraw")
 async def withdraw_handler(callback: types.CallbackQuery):
     text = (
-        f"Пока что у Вас нет партнерских вознаграждений.\n\n"
-        f"Вы сможете запросить вывод средств, если сумма реферальных вознаграждений достигла или превышает 0.0002 BTC"
+        "Пока что у Вас нет партнерских вознаграждений.\n\n"
+        "Вы сможете запросить вывод средств, если сумма реферальных вознаграждений достигла или превышает 0.0002 BTC"
     )
 
     await callback.message.answer(text, reply_markup=get_keyboard())

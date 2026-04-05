@@ -355,7 +355,7 @@ async def fetch_usdt_rub_from_coingecko(session, url: str) -> float:
                 if usdt_rub > 0:
                     return usdt_rub
             elif resp.status == 429:
-                print(f"CoinGecko rate limited (429)")
+                print("CoinGecko rate limited (429)")
             else:
                 print(f"CoinGecko API error: {resp.status}")
     except Exception as e:
@@ -1938,7 +1938,7 @@ async def process_new_qr_image(message: Message, state: FSMContext):
     config["payment_details"]["qr"]["image_file_id"] = file_id
     save_config(config)
     await message.answer(
-        f"✅ Изображение QR успешно обновлено! 🎉",
+        "✅ Изображение QR успешно обновлено! 🎉",
         reply_markup=kb_back_to_menu(),
         parse_mode=ParseMode.HTML
     )

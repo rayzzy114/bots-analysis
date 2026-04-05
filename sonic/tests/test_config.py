@@ -2,7 +2,6 @@
 Tests for sonic bot - config and commission fixes
 """
 import pytest
-import os
 
 
 class TestSonicConfig:
@@ -88,7 +87,7 @@ class TestSonicCommissionCalculation:
 
         # Test formula: price = amount * (1 + COMMISSION_PERCENT / 100)
         amount = 10000
-        expected_price = 10000 * (1 + 20 / 100)  # 12000
+        10000 * (1 + 20 / 100)  # 12000
 
         price = int(amount * (1 + config.COMMISSION_PERCENT / 100))
         assert price == 12000
@@ -108,7 +107,7 @@ class TestSonicCommissionCalculation:
 
         # Test formula: price = amount * (1 + COMMISSION_PERCENT_SELL / 100)
         amount = 10000
-        expected_price = 10000 * (1 + 19 / 100)  # 11900
+        10000 * (1 + 19 / 100)  # 11900
 
         price = int(amount * (1 + config.COMMISSION_PERCENT_SELL / 100))
         assert price == 11900

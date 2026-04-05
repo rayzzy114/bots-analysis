@@ -1,7 +1,6 @@
 from utils.database import get_commission, get_bank_details
 import requests
-import logging
-from typing import Optional, Tuple
+from typing import Optional
 import time
 import os
 

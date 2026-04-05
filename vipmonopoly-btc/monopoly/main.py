@@ -7,7 +7,6 @@ from db.init_db import init_db
 from db.settings import init_settings_db
 from config import BOT_TOKEN, PARSE_MODE
 from routers import get_routers
-from handlers import buy, admin
 
 async def main():
     await init_db()

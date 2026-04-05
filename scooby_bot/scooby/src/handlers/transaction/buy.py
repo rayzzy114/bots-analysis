@@ -324,13 +324,13 @@ async def callback_payment_method(callback: CallbackQuery, state: FSMContext) ->
 
 @buy_router.callback_query(F.data.startswith('order_status_'))
 async def callback_order_status(callback: CallbackQuery) -> None:
-    order_id = callback.data.replace("order_status_", "")
+    callback.data.replace("order_status_", "")
     await callback.answer("📊 Ваше место в очереди: 10+", show_alert=True)
 
 
 @buy_router.callback_query(F.data.startswith('order_cancel_'))
 async def callback_order_cancel(callback: CallbackQuery, state: FSMContext) -> None:
-    order_id = callback.data.replace("order_cancel_", "")
+    callback.data.replace("order_cancel_", "")
     await state.clear()
     await manager.delete_message(callback.message.chat.id)
     new_message = await callback.message.answer("❌ Заявка отменена", reply_markup=home_button())

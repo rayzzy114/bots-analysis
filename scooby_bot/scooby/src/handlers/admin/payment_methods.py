@@ -3,7 +3,7 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
-from src.utils.payment_methods import get_payment_methods, add_payment_method, remove_payment_method, save_payment_methods
+from src.utils.payment_methods import get_payment_methods, add_payment_method, remove_payment_method
 from src.utils.env_writer import update_env_var, read_env_var
 import os
 from dotenv import load_dotenv

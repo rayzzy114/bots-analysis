@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request
 
 from fastapi.responses import RedirectResponse
 
@@ -6,9 +6,8 @@ from sqladmin import Admin, ModelView
 
 from sqladmin.authentication import AuthenticationBackend
 
-from sqlalchemy import select
 
-from core.database import engine, async_session, init_db
+from core.database import engine, init_db
 
 from core.models import User, Order, Rate, PaymentMethod, FileCache, Setting
 

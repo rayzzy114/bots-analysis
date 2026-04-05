@@ -293,7 +293,7 @@ async def inline_calculator(inline_query: types.InlineQuery):
     
     if amount:
         rub_amount = amount * rate
-        crypto_amount = amount / rate
+        amount / rate
         
         result1_text = f"{amount} {currency_display} = {rub_amount:,.2f} ₽"
         result1 = InlineQueryResultArticle(

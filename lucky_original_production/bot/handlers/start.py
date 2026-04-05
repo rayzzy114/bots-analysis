@@ -111,7 +111,7 @@ async def cmd_start(message: Message, state: FSMContext, session: AsyncSession):
         )
     except Exception as e:
         if file_id:
-            logging.warning(f"Cached file_id for start_gif is invalid, retrying with file...")
+            logging.warning("Cached file_id for start_gif is invalid, retrying with file...")
             # Если упало на кэшированном id, пробуем отправить файл
             file_to_send = FSInputFile(video_path)
             sent_msg = await message.answer_animation(
@@ -159,7 +159,7 @@ async def show_profile(message: Message, session: AsyncSession):
         sent_msg = await message.answer_animation(animation=file_to_send, caption=text, reply_markup=get_profile_kb())
     except Exception as e:
         if file_id:
-            logging.warning(f"Cached file_id for profile_gif is invalid, retrying with file...")
+            logging.warning("Cached file_id for profile_gif is invalid, retrying with file...")
             file_to_send = FSInputFile(video_path)
             sent_msg = await message.answer_animation(animation=file_to_send, caption=text, reply_markup=get_profile_kb())
             await session.execute(update(FileCache).where(FileCache.key == "profile_gif").values(file_id=sent_msg.animation.file_id))

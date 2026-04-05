@@ -1,5 +1,5 @@
 from typing import Optional
-from aiogram import Router, types, F
+from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.fsm.context import FSMContext

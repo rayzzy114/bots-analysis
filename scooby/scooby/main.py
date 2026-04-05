@@ -1,6 +1,4 @@
 import asyncio
-import logging
-import sys
 from aiogram import Bot, Dispatcher, BaseMiddleware
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode

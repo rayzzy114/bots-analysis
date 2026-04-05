@@ -525,7 +525,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
         try:
             await callback.message.edit_text("⌛Получение реквизитов. Может занимать от 1 до 5 минут.")
         except:
-            loading_msg = await callback.message.answer("⌛Получение реквизитов. Может занимать от 1 до 5 минут.")
+            await callback.message.answer("⌛Получение реквизитов. Может занимать от 1 до 5 минут.")
         await asyncio.sleep(8)
      
         user_id = callback.from_user.id
@@ -1353,9 +1353,9 @@ async def handle_amount(message: types.Message, state: FSMContext):
                         text="⏳ Подбираем реквизиты..."
                     )
                 except:
-                    loading_msg = await message.answer("⏳ Подбираем реквизиты...")
+                    await message.answer("⏳ Подбираем реквизиты...")
             else:
-                loading_msg = await message.answer("⏳ Подбираем реквизиты...")
+                await message.answer("⏳ Подбираем реквизиты...")
             await asyncio.sleep(5)
          
             transaction = user_transaction_data[user_id]
@@ -1378,9 +1378,9 @@ async def handle_amount(message: types.Message, state: FSMContext):
             wallet_address = payment_details.get("wallet_address", "bc1qnv29qqq46vazssl4vlm4drp3scyay96qxnfakx")
          
             if payment_method == "payment_sbp_phone":
-                method_text = "💳 СБП—ПО НОМЕРУ ТЕЛЕФОНА реквизиты:"
+                pass
             else:
-                method_text = "💳 ПО НОМЕРУ КАРТЫ (+1.75%) реквизиты:"
+                pass
          
             if country == "belarus":
                 amount_display = round(rub_amount * 0.036)

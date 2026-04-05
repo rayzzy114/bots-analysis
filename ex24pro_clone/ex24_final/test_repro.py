@@ -2,14 +2,11 @@ from __future__ import annotations
 import asyncio
 from bot import app_context as bot_ctx
 from handlers.menu import _get_link_kwargs
-from handlers.livechat import _get_link
 
 async def test_link_update_consistency():
     print("Starting link update consistency test...")
     
     # 1. Check if we can get app_context from handlers
-    import handlers.menu
-    import handlers.livechat
     
     # We need to see what app_context they are using.
     # Since they import it inside functions, we'll check it there.

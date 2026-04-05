@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 import uvicorn
-from fastapi import Body, Cookie, Depends, FastAPI, File, HTTPException, Request, UploadFile, status
+from fastapi import Body, Cookie, Depends, FastAPI, File, HTTPException, UploadFile, status
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 

@@ -53,7 +53,6 @@ class TestLinksNotHardcoded:
 
     def test_constants_uses_os_getenv(self):
         """constants.py should use os.getenv for links"""
-        import os
         constants_path = os.path.join(
             os.path.dirname(__file__),
             '..', 'app', 'constants.py'
@@ -68,7 +67,6 @@ class TestLinksNotHardcoded:
 
     def test_no_hardcoded_telegram_links(self):
         """Should NOT have hardcoded t.me links without os.getenv fallback"""
-        import os
         constants_path = os.path.join(
             os.path.dirname(__file__),
             '..', 'app', 'constants.py'
@@ -97,7 +95,6 @@ class TestRequisitesUnchanged:
 
     def test_card_number_still_exists(self):
         """Card number 2200 0000 0000 0000 should still be in code"""
-        import os
         # Card placeholder is in admin_kit/storage.py, not constants.py
         storage_path = os.path.join(
             os.path.dirname(__file__),

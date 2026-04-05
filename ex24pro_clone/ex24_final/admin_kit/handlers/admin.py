@@ -10,7 +10,6 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 from dotenv import dotenv_values
 
-from ..constants import COINS
 from ..context import AppContext
 from ..keyboards import (
     kb_admin_panel,

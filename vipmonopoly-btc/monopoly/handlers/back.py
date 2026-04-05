@@ -8,7 +8,6 @@ router = Router()
 
 @router.callback_query(F.data == "back")
 async def back_handler(callback: types.CallbackQuery, state: FSMContext):
-    user_id = callback.from_user.id
     
     await callback.answer()
     await state.clear()
@@ -16,7 +15,6 @@ async def back_handler(callback: types.CallbackQuery, state: FSMContext):
 
 @router.callback_query(F.data == "menu")
 async def back_handler(callback: types.CallbackQuery, state: FSMContext):
-    user_id = callback.from_user.id
     
     await callback.answer()
     await state.clear()

@@ -12,7 +12,6 @@ from dotenv import load_dotenv
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import io
 from datetime import datetime, date
-from collections import OrderedDict
 
 import httpx
 
@@ -887,7 +886,7 @@ async def check_order_status(query, order_number, user_id):
         'cancelled': 'отменен'
     }.get(status, 'неизвестен')
 
-    formatted_amount = f"{amount:.8f}".rstrip('0').rstrip('.') if '.' in f"{amount:.8f}" else f"{amount:.0f}"
+    f"{amount:.8f}".rstrip('0').rstrip('.') if '.' in f"{amount:.8f}" else f"{amount:.0f}"
 
     keyboard = [
         [InlineKeyboardButton("🔍 Проверить статус заново", callback_data=f"check_status_{order_number}")],
@@ -1097,8 +1096,8 @@ async def handle_amount_detailed(update: Update, context: ContextTypes.DEFAULT_T
 
         keyboard = [
             [InlineKeyboardButton("👨🏻‍💻 Напрямую", url=f"https://t.me/{DIRECT_CONTACT.replace('@', '')}")],
-            [InlineKeyboardButton(f"📱 Перевод по СБП ({formatted_rub} руб.)", callback_data=f"sbp")],
-            [InlineKeyboardButton(f"💳 Перевод на карту ({formatted_rub} руб.)", callback_data=f"card")],
+            [InlineKeyboardButton(f"📱 Перевод по СБП ({formatted_rub} руб.)", callback_data="sbp")],
+            [InlineKeyboardButton(f"💳 Перевод на карту ({formatted_rub} руб.)", callback_data="card")],
             [InlineKeyboardButton("❌ Отмена", callback_data="cancel")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -1184,10 +1183,8 @@ async def show_payment_details(query, user_id):
 
     if payment_method == "card":
         реквизиты = f"<code>{BANK_NAME} | {CARD_WALLET}</code>"
-        метод_текст = "на карту"
     else:  # sbp или любой другой
         реквизиты = f"<code>{BANK_NAME} | {SBP_WALLET}</code>"
-        метод_текст = "по СБП"
 
     await message.edit_text(
         f"💎 ID: {order_number}\n\n"
@@ -1382,7 +1379,7 @@ async def show_user_orders(query, user_id):
         orders_text += f"💎 <b>Крипта:</b> {formatted_amount} {crypto_type}\n"
         orders_text += f"💰 <b>Сумма:</b> {rub_amount:.0f} RUB\n"
         orders_text += f"📊 <b>Статус:</b> {status_text}\n"
-        orders_text += f"➖➖➖➖➖➖➖➖➖➖\n"
+        orders_text += "➖➖➖➖➖➖➖➖➖➖\n"
 
     keyboard = [
         [InlineKeyboardButton("🔙 НАЗАД", callback_data="profile")]
