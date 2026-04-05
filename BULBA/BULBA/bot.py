@@ -994,8 +994,8 @@ async def admin_set_bank_name(message: types.Message, state: FSMContext):
         await message.answer(f"Введите номер карты для {country_text} (например: 2204 3206 0905 0531):", reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад", callback_data=UserPanelCallback(action="admin_back_to_country").pack())]]))
     try:
         await message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 @dp.message(AdminState.waiting_bank)
 async def admin_set_bank(message: types.Message, state: FSMContext):
     if not is_admin(message.from_user.id):
@@ -1026,8 +1026,8 @@ async def admin_set_bank(message: types.Message, state: FSMContext):
         await message.answer(f"Введите номер телефона для СБП {country_text} (например: +796538483254):", reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад", callback_data=UserPanelCallback(action="admin_back_to_sbp_phone").pack())]]))
     try:
         await message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 @dp.message(AdminState.waiting_sbp_phone)
 async def admin_set_sbp_phone(message: types.Message, state: FSMContext):
     if not is_admin(message.from_user.id):
@@ -1341,8 +1341,8 @@ async def handle_amount(message: types.Message, state: FSMContext):
          
             try:
                 await message.delete()
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
          
             last_message_id = user_transaction_data[user_id].get("last_message_id")
             if last_message_id:
@@ -1441,13 +1441,13 @@ async def handle_amount(message: types.Message, state: FSMContext):
             if wallet_request_msg_id:
                 try:
                     await bot.delete_message(chat_id=message.chat.id, message_id=wallet_request_msg_id)
-                except:
-                    pass
+                except Exception as e:
+                    print(f'Exception caught: {e}')
          
             try:
                 await message.delete()
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
          
             text = "Выберите способ доставки"
             keyboard = InlineKeyboardMarkup(inline_keyboard=[

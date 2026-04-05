@@ -309,8 +309,8 @@ async def confirm_payment(callback: CallbackQuery, state: FSMContext):
     
     try:
         await callback.message.edit_text(final_msg, reply_markup=kb.as_markup(), parse_mode="HTML")
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     
     await state.clear()
 

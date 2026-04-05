@@ -154,8 +154,8 @@ def build_buy_router(ctx: AppContext, assets_dir: str) -> Router:
                         photo=receipt_file_id,
                         caption=f"🧾 Чек по заказу #{order_id}",
                     )
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f'Exception caught: {e}')
             try:
                 await bot.send_message(
                     chat_id=admin_id,
@@ -474,8 +474,8 @@ def build_buy_router(ctx: AppContext, assets_dir: str) -> Router:
         if msg is not None:
             try:
                 await msg.edit_reply_markup(reply_markup=None)
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
             await msg.answer("❗ Пожалуйста, прикрепите чек в виде скриншота одним сообщением.")
 
     @router.message(UserState.waiting_buy_receipt, F.photo)

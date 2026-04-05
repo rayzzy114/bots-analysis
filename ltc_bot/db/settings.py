@@ -171,8 +171,8 @@ async def get_payment_methods() -> list:
                     if len(methods) > 0 and isinstance(methods[0], str):
                         return [{"name": m, "requisites": "", "bank": ""} for m in methods]
                     return methods
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
         return DEFAULT_PAYMENT_METHODS.copy()
 
 
@@ -188,8 +188,8 @@ async def add_payment_method(name: str):
                 loaded = json.loads(result[0])
                 if isinstance(loaded, list):
                     methods = loaded
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
 
         methods.append({"name": name, "requisites": "", "bank": ""})
 

@@ -465,8 +465,8 @@ class FlowRuntime:
             if isinstance(cb_chat_id, int) and isinstance(cb_msg_id, int):
                 try:
                     await cb_msg.bot.delete_message(chat_id=cb_chat_id, message_id=cb_msg_id)
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f'Exception caught: {e}')
             if self._is_mid_exchange(session):
                 await cb_msg.answer("⚠️ Ваш текущий обмен прерван. Возвращаем вас в главное меню.")
             await self._do_start(cb_msg, user_id)
@@ -482,8 +482,8 @@ class FlowRuntime:
             if isinstance(cb_chat_id, int) and isinstance(cb_msg_id, int):
                 try:
                     await cb_msg.bot.delete_message(chat_id=cb_chat_id, message_id=cb_msg_id)
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f'Exception caught: {e}')
             await self._send_history_page(cb_msg, user_id, 0)
             await cb.answer()
             return
@@ -610,8 +610,8 @@ class FlowRuntime:
                 if bot is not None:
                     try:
                         await bot.delete_message(chat_id=prev_chat, message_id=prev_msg_id)
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        print(f'Exception caught: {e}')
             if self._is_mid_exchange(session):
                 await msg.answer("⚠️ Ваш текущий обмен прерван. Возвращаем вас в главное меню.")
             await self._do_start(msg, user_id)
@@ -762,8 +762,8 @@ class FlowRuntime:
                 if bot is not None:
                     try:
                         await bot.delete_message(chat_id=edit_chat_id, message_id=edit_message_id)
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        print(f'Exception caught: {e}')
             sent_message = await send_state(
                 msg,
                 state,

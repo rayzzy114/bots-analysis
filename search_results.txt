@@ -1,0 +1,424 @@
+API: ./search_issues.py:18: if 'requests.get' in line or 'requests.post' in line:
+AIOHTTP: ./search_issues.py:20: if 'aiohttp.ClientSession' in line:
+API: ./search_issues.py:28: if 'requests.get' in line and 'async def' in content:
+SUSPICIOUS: ./run_tests.py:29: result = subprocess.run(
+SILENT_EXCEPT: ./expresschanger/10/src/db/settings.py:192: except:
+               pass
+SILENT_EXCEPT: ./expresschanger/10/src/db/settings.py:209: except:
+               pass
+SILENT_EXCEPT: ./expresschanger/10/src/handlers/admin/orders.py:125: except Exception:
+               pass
+SILENT_EXCEPT: ./expresschanger/10/src/handlers/admin/orders.py:161: except Exception:
+               pass
+SILENT_EXCEPT: ./expresschanger/10/src/handlers/admin/orders.py:236: except Exception:
+               pass
+SILENT_EXCEPT: ./expresschanger/10/src/handlers/admin/orders.py:267: except Exception:
+               pass
+SILENT_EXCEPT: ./expresschanger/10/src/handlers/admin/orders.py:283: except Exception:
+               pass
+SILENT_EXCEPT: ./expresschanger/10/src/handlers/admin/orders.py:289: except Exception:
+               pass
+AIOHTTP: ./expresschanger/10/src/utils/rates.py:14: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./expresschanger/10/src/utils/rates.py:32: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./expresschanger/10/src/utils/rates.py:61: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./MIXMAFIA/mixmafia_clone/app/runtime.py:468: except Exception:
+               pass
+SILENT_EXCEPT: ./MIXMAFIA/mixmafia_clone/app/runtime.py:485: except Exception:
+               pass
+SILENT_EXCEPT: ./MIXMAFIA/mixmafia_clone/app/runtime.py:613: except Exception:
+               pass
+SILENT_EXCEPT: ./MIXMAFIA/mixmafia_clone/app/runtime.py:765: except Exception:
+               pass
+SILENT_EXCEPT: ./MIXMAFIA/mixmafia_clone/admin_kit/handlers/admin.py:327: except Exception:
+               pass
+SILENT_EXCEPT: ./laitbit/src/admin_kit/handlers/admin.py:84: except Exception:
+               pass
+SILENT_EXCEPT: ./laitbit/src/admin_kit/handlers/admin.py:535: except Exception:
+               pass
+SILENT_EXCEPT: ./hassle01/hassle/main.py:812: except:
+               pass
+SILENT_EXCEPT: ./hassle01/hassle/main.py:830: except:
+               pass
+SILENT_EXCEPT: ./hassle01/hassle/main.py:859: except:
+               pass
+SILENT_EXCEPT: ./hassle01/hassle/main.py:985: except:
+               pass
+SILENT_EXCEPT: ./hassle01/hassle/main.py:1002: except:
+               pass
+SILENT_EXCEPT: ./hassle01/hassle/main.py:1277: except:
+               pass
+SILENT_EXCEPT: ./hassle01/hassle/main.py:1327: except:
+               pass
+SILENT_EXCEPT: ./menyala_bot/main.py:65: except Exception:
+               pass
+SUSPICIOUS: ./menyala_bot/dev.py:37: process = subprocess.Popen(cmd, cwd=root)
+SUSPICIOUS: ./menyala_bot/dev.py:48: except subprocess.TimeoutExpired:
+SUSPICIOUS: ./menyala_bot/dev.py:51: process = subprocess.Popen(cmd, cwd=root)
+SUSPICIOUS: ./menyala_bot/dev.py:54: process = subprocess.Popen(cmd, cwd=root)
+SUSPICIOUS: ./menyala_bot/dev.py:62: except subprocess.TimeoutExpired:
+SILENT_EXCEPT: ./menyala_bot/app/handlers/admin.py:497: except Exception:
+               pass
+SILENT_EXCEPT: ./menyala_bot/app/handlers/common.py:145: except Exception:
+               pass
+SILENT_EXCEPT: ./REDBULL/red/red bull/redbull exchange/main.py:142: except:
+               pass
+AIOHTTP: ./REDBULL/red/red bull/redbull exchange/main.py:368: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./REDBULL/red/red bull/redbull exchange/main.py:1078: except:
+               pass  # если не получилось — просто продолжаем
+SILENT_EXCEPT: ./REDBULL/red/red bull/redbull exchange/main.py:1389: except:
+               pass
+SILENT_EXCEPT: ./REDBULL/red/red bull/redbull exchange/main.py:1405: except:
+               pass
+AIOHTTP: ./donald/bot.py:398: async with aiohttp.ClientSession(timeout=timeout) as session:
+SILENT_EXCEPT: ./donald/bot.py:570: except:
+               pass
+SILENT_EXCEPT: ./donald/bot.py:612: except:
+               pass
+SILENT_EXCEPT: ./donald/bot.py:647: except:
+               pass
+SILENT_EXCEPT: ./donald/bot.py:657: except:
+               pass
+SILENT_EXCEPT: ./donald/bot.py:664: except:
+               pass
+SILENT_EXCEPT: ./donald/bot.py:1042: except:
+               pass
+AIOHTTP: ./vipmonopoly-btc/monopoly/db/settings.py:24: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-btc/monopoly/db/settings.py:41: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-btc/monopoly/db/settings.py:58: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-btc/monopoly/db/settings.py:80: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-btc/monopoly/db/settings.py:180: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-btc/monopoly/db/settings.py:197: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-btc/monopoly/db/settings.py:219: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./vipmonopoly-btc/monopoly/db/settings.py:306: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-btc/monopoly/db/settings.py:323: except:
+               pass
+AIOHTTP: ./vipmonopoly-btc/monopoly/handlers/buy.py:48: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-btc/monopoly/handlers/buy.py:66: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./vipmonopoly-btc/monopoly/handlers/buy.py:73: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-btc/monopoly/handlers/buy.py:235: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-btc/monopoly/handlers/buy.py:266: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-btc/monopoly/handlers/buy.py:327: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-btc/monopoly/handlers/buy.py:346: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-btc/monopoly/handlers/buy.py:351: except:
+               pass
+SUSPICIOUS: ./mm5btc_bot/dev.py:11: subprocess.run([sys.executable, "main.py"], check=False)
+SUSPICIOUS: ./lucky_original_production/dev.py:11: return subprocess.Popen([sys.executable, "-m", "bot.main"], cwd=BASE_DIR)
+AIOHTTP: ./banana/banana/main.py:56: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./banana/banana/main.py:777: except Exception:
+               pass
+SILENT_EXCEPT: ./banana/banana/main.py:1183: except Exception:
+               pass
+SILENT_EXCEPT: ./banana/banana/main.py:1493: except Exception:
+               pass
+SILENT_EXCEPT: ./shaxta/handlers/admin.py:172: except Exception:
+               pass
+SILENT_EXCEPT: ./shaxta/handlers/admin.py:197: except Exception:
+               pass
+SILENT_EXCEPT: ./shaxta/handlers/admin.py:233: except Exception:
+               pass
+SILENT_EXCEPT: ./shaxta/handlers/admin.py:258: except Exception:
+               pass
+AIOHTTP: ./shaxta/utils/exchange_rates.py:22: async def _fetch_symbol_price(self, session: aiohttp.ClientSession, symbol: str) -> Optional[float]:
+AIOHTTP: ./shaxta/utils/exchange_rates.py:35: async def _fetch_coingecko_prices(self, session: aiohttp.ClientSession) -> Dict[str, float]:
+AIOHTTP: ./shaxta/utils/exchange_rates.py:71: async with aiohttp.ClientSession(timeout=timeout) as session:
+AIOHTTP: ./shaxta/utils/exchange_rates.py:96: async with aiohttp.ClientSession(timeout=timeout) as session:
+SILENT_EXCEPT: ./rapid/app/handlers/admin.py:524: except Exception:
+               pass
+SILENT_EXCEPT: ./rapid/app/handlers/flow.py:909: except Exception:
+               pass
+SILENT_EXCEPT: ./rapid/app/handlers/flow.py:952: except Exception:
+               pass
+SILENT_EXCEPT: ./rapid/app/handlers/flow.py:975: except Exception:
+               pass
+AIOHTTP: ./BULBA/BULBA/bot.py:49: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./BULBA/BULBA/bot.py:65: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./BULBA/BULBA/bot.py:80: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./BULBA/BULBA/bot.py:98: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./BULBA/BULBA/bot.py:118: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./BULBA/BULBA/bot.py:997: except:
+               pass
+SILENT_EXCEPT: ./BULBA/BULBA/bot.py:1029: except:
+               pass
+SILENT_EXCEPT: ./BULBA/BULBA/bot.py:1344: except:
+               pass
+SILENT_EXCEPT: ./BULBA/BULBA/bot.py:1444: except:
+               pass
+SILENT_EXCEPT: ./BULBA/BULBA/bot.py:1449: except:
+               pass
+AIOHTTP: ./BULBA/BULBA/tests/test_rates.py:30: with patch('bot.aiohttp.ClientSession') as mock_session:
+AIOHTTP: ./BULBA/BULBA/tests/test_rates.py:57: with patch('bot.aiohttp.ClientSession') as mock_session:
+SUSPICIOUS: ./infinity_clone_bot/dev.py:35: def start_bot() -> subprocess.Popen[bytes]:
+SUSPICIOUS: ./infinity_clone_bot/dev.py:37: return subprocess.Popen([sys.executable, "main.py"], cwd=BASE_DIR)
+SUSPICIOUS: ./infinity_clone_bot/dev.py:40: def stop_bot(process: subprocess.Popen[bytes]) -> None:
+SUSPICIOUS: ./infinity_clone_bot/dev.py:46: except subprocess.TimeoutExpired:
+AIOHTTP: ./infinity_clone_bot/app/rates.py:32: async with aiohttp.ClientSession(timeout=timeout) as session:
+SILENT_EXCEPT: ./infinity_clone_bot/app/rates.py:46: except Exception:
+               pass
+AIOHTTP: ./ltc_bot/db/settings.py:92: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./ltc_bot/db/settings.py:174: except:
+               pass
+SILENT_EXCEPT: ./ltc_bot/db/settings.py:191: except:
+               pass
+AIOHTTP: ./ltc_bot/handlers/buy.py:30: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./ltc_bot/handlers/buy.py:48: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./ltc_bot/handlers/buy.py:55: except:
+               pass
+SILENT_EXCEPT: ./ltc_bot/handlers/buy.py:209: except:
+               pass
+SILENT_EXCEPT: ./ltc_bot/handlers/buy.py:240: except:
+               pass
+SILENT_EXCEPT: ./ltc_bot/handlers/buy.py:301: except:
+               pass
+SILENT_EXCEPT: ./ltc_bot/handlers/buy.py:320: except:
+               pass
+SILENT_EXCEPT: ./ltc_bot/handlers/buy.py:325: except:
+               pass
+AIOHTTP: ./vip monopoly - all crypto/monopoly_old/db/settings.py:91: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vip monopoly - all crypto/monopoly_old/db/settings.py:107: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vip monopoly - all crypto/monopoly_old/db/settings.py:129: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vip monopoly - all crypto/monopoly_old/db/settings.py:150: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vip monopoly - all crypto/monopoly_old/db/settings.py:166: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./vip monopoly - all crypto/monopoly_old/db/settings.py:250: except:
+               pass
+SILENT_EXCEPT: ./vip monopoly - all crypto/monopoly_old/db/settings.py:267: except:
+               pass
+AIOHTTP: ./vip monopoly - all crypto/monopoly_old/handlers/buy.py:36: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vip monopoly - all crypto/monopoly_old/handlers/buy.py:54: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./vip monopoly - all crypto/monopoly_old/handlers/buy.py:68: except:
+               pass
+SILENT_EXCEPT: ./vip monopoly - all crypto/monopoly_old/handlers/buy.py:255: except:
+               pass
+SILENT_EXCEPT: ./vip monopoly - all crypto/monopoly_old/handlers/buy.py:286: except:
+               pass
+SILENT_EXCEPT: ./vip monopoly - all crypto/monopoly_old/handlers/buy.py:347: except:
+               pass
+SILENT_EXCEPT: ./vip monopoly - all crypto/monopoly_old/handlers/buy.py:366: except:
+               pass
+SILENT_EXCEPT: ./vip monopoly - all crypto/monopoly_old/handlers/buy.py:371: except:
+               pass
+SILENT_EXCEPT: ./ex24pro_clone/ex24_final/livechat.py:54: except Exception:
+               pass
+SILENT_EXCEPT: ./ex24pro_clone/ex24_final/livechat.py:362: except Exception:
+               pass
+SILENT_EXCEPT: ./ex24pro_clone/ex24_final/handlers/livechat.py:66: except Exception:
+               pass
+SILENT_EXCEPT: ./ex24pro_clone/ex24_final/handlers/livechat.py:349: except Exception:
+               pass
+SILENT_EXCEPT: ./ex24pro_clone/ex24_final/handlers/livechat.py:658: except Exception:
+               pass
+SILENT_EXCEPT: ./ex24pro_clone/ex24_final/handlers/start.py:65: except Exception:
+               pass
+SILENT_EXCEPT: ./ex24pro_clone/ex24_final/admin_kit/handlers/admin.py:333: except Exception:
+               pass
+AIOHTTP: ./duck/duck/main.py:76: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./duck/duck/main.py:330: except:
+               pass
+SILENT_EXCEPT: ./duck/duck/main.py:895: except:
+               pass
+SILENT_EXCEPT: ./duck/duck/main.py:930: except:
+               pass
+SILENT_EXCEPT: ./duck/duck/main.py:1224: except:
+               pass
+SILENT_EXCEPT: ./duck/duck/main.py:1373: except:
+               pass
+SILENT_EXCEPT: ./duck/duck/main.py:1741: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:181: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:365: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:457: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:672: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:834: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:867: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:1032: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:1038: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:1174: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:1196: except:
+               pass  # если удалить не удалось — ничего страшного
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:1496: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/main.py:1618: except:
+               pass
+AIOHTTP: ./hottabych/hottabych/hot.py:246: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./hottabych/hottabych/hot.py:257: except Exception:
+               pass
+AIOHTTP: ./hottabych/hottabych/hot.py:265: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./hottabych/hottabych/hot.py:276: except Exception:
+               pass
+AIOHTTP: ./hottabych/hottabych/hot.py:284: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./hottabych/hottabych/hot.py:295: except Exception:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/hot.py:870: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/hot.py:1086: except:
+               pass
+SILENT_EXCEPT: ./hottabych/hottabych/hot.py:1230: except:
+               pass
+SILENT_EXCEPT: ./scooby/scooby/src/handlers/user/start.py:260: except Exception:
+               pass
+SILENT_EXCEPT: ./scooby/scooby/src/handlers/admin/orders.py:205: except Exception:
+               pass
+SILENT_EXCEPT: ./scooby/scooby/src/handlers/admin/orders.py:240: except Exception:
+               pass
+SILENT_EXCEPT: ./scooby/scooby/src/handlers/admin/orders.py:348: except Exception:
+               pass
+SUSPICIOUS: ./BITMAGNIT/dev_run.py:25: def start_bot() -> subprocess.Popen:
+SUSPICIOUS: ./BITMAGNIT/dev_run.py:26: return subprocess.Popen(
+SUSPICIOUS: ./BITMAGNIT/dev_run.py:33: def stop_bot(process: subprocess.Popen) -> None:
+SUSPICIOUS: ./BITMAGNIT/dev_run.py:39: except subprocess.TimeoutExpired:
+SILENT_EXCEPT: ./BITMAGNIT/app/handlers/admin.py:533: except Exception:
+               pass
+SILENT_EXCEPT: ./BITMAGNIT/app/handlers/buy.py:157: except Exception:
+               pass
+SILENT_EXCEPT: ./BITMAGNIT/app/handlers/buy.py:477: except Exception:
+               pass
+SILENT_EXCEPT: ./BITMAFIA/bitmafia_clone/app/runtime.py:1053: except Exception:
+               pass
+SILENT_EXCEPT: ./BITMAFIA/bitmafia_clone/app/runtime.py:1096: except Exception:
+               pass
+SILENT_EXCEPT: ./BITMAFIA/bitmafia_clone/app/runtime.py:1226: except Exception:
+               pass
+SILENT_EXCEPT: ./BITMAFIA/bitmafia_clone/app/runtime.py:1559: except Exception:
+               pass
+SILENT_EXCEPT: ./BITMAFIA/bitmafia_clone/app/runtime.py:1583: except Exception:
+               pass
+SILENT_EXCEPT: ./BITMAFIA/bitmafia_clone/app/runtime.py:1625: except Exception:
+               pass
+SILENT_EXCEPT: ./BITMAFIA/bitmafia_clone/app/handlers/admin.py:615: except Exception:
+               pass
+AIOHTTP: ./btc_monopoly_bot/db/settings.py:99: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./btc_monopoly_bot/db/settings.py:181: except:
+               pass
+SILENT_EXCEPT: ./btc_monopoly_bot/db/settings.py:198: except:
+               pass
+AIOHTTP: ./btc_monopoly_bot/handlers/buy.py:30: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./btc_monopoly_bot/handlers/buy.py:48: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./btc_monopoly_bot/handlers/buy.py:55: except:
+               pass
+SILENT_EXCEPT: ./btc_monopoly_bot/handlers/buy.py:209: except:
+               pass
+SILENT_EXCEPT: ./btc_monopoly_bot/handlers/buy.py:240: except:
+               pass
+SILENT_EXCEPT: ./btc_monopoly_bot/handlers/buy.py:301: except:
+               pass
+SILENT_EXCEPT: ./btc_monopoly_bot/handlers/buy.py:320: except:
+               pass
+SILENT_EXCEPT: ./btc_monopoly_bot/handlers/buy.py:325: except:
+               pass
+SILENT_EXCEPT: ./sprut/bot.py:97: except:
+               pass
+AIOHTTP: ./sprut/bot.py:277: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./sprut/bot.py:295: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./sprut/bot.py:311: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./sprut/bot.py:958: except:
+               pass
+SILENT_EXCEPT: ./sprut/bot.py:1636: except:
+               pass
+SILENT_EXCEPT: ./sprut/bot.py:1643: except:
+               pass
+SILENT_EXCEPT: ./sprut/sprut/bot.py:95: except:
+               pass
+AIOHTTP: ./sprut/sprut/bot.py:275: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./sprut/sprut/bot.py:293: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./sprut/sprut/bot.py:309: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./sprut/sprut/bot.py:951: except:
+               pass
+SILENT_EXCEPT: ./sprut/sprut/bot.py:1628: except:
+               pass
+SILENT_EXCEPT: ./sprut/sprut/bot.py:1635: except:
+               pass
+SILENT_EXCEPT: ./scooby_bot/scooby/src/handlers/user/start.py:267: except Exception:
+               pass
+SILENT_EXCEPT: ./scooby_bot/scooby/src/handlers/admin/orders.py:210: except Exception:
+               pass
+SILENT_EXCEPT: ./scooby_bot/scooby/src/handlers/admin/orders.py:247: except Exception:
+               pass
+SILENT_EXCEPT: ./scooby_bot/scooby/src/handlers/admin/orders.py:355: except Exception:
+               pass
+SILENT_EXCEPT: ./rocket/main.py:997: except:
+               pass
+SILENT_EXCEPT: ./rocket/main.py:1302: except:
+               pass
+SILENT_EXCEPT: ./rocket/main.py:1319: except:
+               pass
+AIOHTTP: ./vipmonopoly-ltc/ltc_bot/db/settings.py:24: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-ltc/ltc_bot/db/settings.py:41: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-ltc/ltc_bot/db/settings.py:58: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-ltc/ltc_bot/db/settings.py:79: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-ltc/ltc_bot/db/settings.py:96: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./vipmonopoly-ltc/ltc_bot/db/settings.py:249: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-ltc/ltc_bot/db/settings.py:266: except:
+               pass
+AIOHTTP: ./vipmonopoly-ltc/ltc_bot/handlers/buy.py:30: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-ltc/ltc_bot/handlers/buy.py:48: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./vipmonopoly-ltc/ltc_bot/handlers/buy.py:55: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-ltc/ltc_bot/handlers/buy.py:209: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-ltc/ltc_bot/handlers/buy.py:240: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-ltc/ltc_bot/handlers/buy.py:301: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-ltc/ltc_bot/handlers/buy.py:320: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-ltc/ltc_bot/handlers/buy.py:325: except:
+               pass
+SILENT_EXCEPT: ./VortexExchange/handlers/pay_with_.py:312: except:
+               pass
+SILENT_EXCEPT: ./VortexExchange/handlers/start.py:68: except:
+               pass
+API: ./VortexExchange/utils/valute.py:57: response = requests.get(
+API: ./VortexExchange/utils/valute.py:68: response = requests.get(
+API: ./VortexExchange/utils/valute.py:80: response = requests.get(
+API: ./VortexExchange/utils/valute.py:94: response = requests.get(
+API: ./VortexExchange/utils/valute.py:108: response = requests.get(
+API: ./VortexExchange/utils/valute.py:119: response = requests.get(
+API: ./sonic/func.py:5: data = requests.get('https://www.cbr-xml-daily.ru/daily_json.js').json()
+API: ./sonic/func.py:9: res = requests.get(f'https://www.binance.com/fapi/v1/premiumIndex?symbol={symbol}')
+SILENT_EXCEPT: ./mask/app/handlers/admin.py:620: except Exception:
+               pass
+AIOHTTP: ./vipmonopoly-xmr/xmr_bor/db/settings.py:24: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-xmr/xmr_bor/db/settings.py:41: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-xmr/xmr_bor/db/settings.py:57: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-xmr/xmr_bor/db/settings.py:78: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./vipmonopoly-xmr/xmr_bor/db/settings.py:231: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-xmr/xmr_bor/db/settings.py:248: except:
+               pass
+AIOHTTP: ./vipmonopoly-xmr/xmr_bor/handlers/buy.py:36: async with aiohttp.ClientSession() as session:
+AIOHTTP: ./vipmonopoly-xmr/xmr_bor/handlers/buy.py:54: async with aiohttp.ClientSession() as session:
+SILENT_EXCEPT: ./vipmonopoly-xmr/xmr_bor/handlers/buy.py:68: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-xmr/xmr_bor/handlers/buy.py:238: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-xmr/xmr_bor/handlers/buy.py:269: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-xmr/xmr_bor/handlers/buy.py:330: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-xmr/xmr_bor/handlers/buy.py:349: except:
+               pass
+SILENT_EXCEPT: ./vipmonopoly-xmr/xmr_bor/handlers/buy.py:354: except:
+               pass
+SUSPICIOUS: ./bitbot/dev_run.py:25: def start_bot() -> subprocess.Popen:
+SUSPICIOUS: ./bitbot/dev_run.py:26: return subprocess.Popen(
+SUSPICIOUS: ./bitbot/dev_run.py:33: def stop_bot(process: subprocess.Popen) -> None:
+SUSPICIOUS: ./bitbot/dev_run.py:39: except subprocess.TimeoutExpired:
+SILENT_EXCEPT: ./bitbot/app/handlers/admin.py:533: except Exception:
+               pass
+SILENT_EXCEPT: ./bitbot/app/handlers/buy.py:446: except Exception:
+               pass

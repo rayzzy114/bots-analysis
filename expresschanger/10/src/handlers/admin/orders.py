@@ -122,8 +122,8 @@ async def admin_accept_order(callback: CallbackQuery):
                 chat_id=user_chat_id,
                 text="Сообщение от оператора:\n\n✅ Ваша заявка принята!"
             )
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
     
     current_text = callback.message.text or callback.message.caption or ""
     new_text = current_text + "\n\n✅ Статус: Принято"
@@ -158,8 +158,8 @@ async def admin_reject_order(callback: CallbackQuery):
                 chat_id=user_chat_id,
                 text=f"Ваша заявка отменена, по дальнейшим вопросам обращайтесь к оператору {OPERATOR_USERNAME}"
             )
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
     
     current_text = callback.message.text or callback.message.caption or ""
     new_text = current_text + "\n\n❌ Статус: Отклонено"
@@ -233,8 +233,8 @@ async def handle_user_message(message: Message, state: FSMContext):
                     reply_markup=reply_button
                 )
                 sent_to_admins = True
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
     
     elif message.document:
         file_name = message.document.file_name or "Файл"
@@ -264,8 +264,8 @@ async def handle_user_message(message: Message, state: FSMContext):
                     reply_markup=reply_button
                 )
                 sent_to_admins = True
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
     
     elif message.text:
         text = f"""💬 Сообщение от клиента
@@ -280,12 +280,12 @@ async def handle_user_message(message: Message, state: FSMContext):
             try:
                 await message.bot.send_message(chat_id=admin_id, text=text, reply_markup=reply_button)
                 sent_to_admins = True
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
     
     if sent_to_admins:
         try:
             await message.answer("Ваше сообщение доставлено оператору, ожидайте ответ")
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 

@@ -86,7 +86,7 @@ async def fsm_input_amount(message:Message, state:FSMContext):
     data = await state.get_data()
     MONEY_USDT = await get_price(f'{data["money"]}USDT')
     RUBS = await RUB()
-    result = float(message.text) / (float(MONEY_USDT) * (float(RUBS)))
+    result = float(message.text.replace(",", ".").replace(" ", "")) / (float(MONEY_USDT) * (float(RUBS)))
     price = int(message.text) * (1 + COMMISSION_PERCENT / 100)
     await state.update_data(result_money=round(float(result), 7), price=round(float(price), 2))
     await message.answer(f'''Сумма к оплате составит: <b>{round(float(price), 2)} ₽</b> 💰
@@ -277,10 +277,10 @@ async def fsm_input_amount(message:Message, state:FSMContext):
     data = await state.get_data()
     MONEY_USDT = await get_price(f'{data["money"]}USDT')
     RUBS = await RUB()
-    result = float(message.text) / (float(MONEY_USDT) * (float(RUBS)))
+    result = float(message.text.replace(",", ".").replace(" ", "")) / (float(MONEY_USDT) * (float(RUBS)))
     price = int(message.text) * (1 + COMMISSION_PERCENT_SELL / 100)
     await state.update_data(result_money=round(float(result), 7), price=round(float(price), 2))
-    await message.answer(f'''Вы получите <b>{round(float(result), 7)} {data["money"]}</b> на {round(float(message.text), 1)} RUB.
+    await message.answer(f'''Вы получите <b>{round(float(result), 7)} {data["money"]}</b> на {round(float(message.text.replace(",", ".").replace(" ", "")), 1)} RUB.
 С учетом комисии сети сумма к оплате составит {round(float(price), 1)} RUB.
 ''')
     await state.finish()

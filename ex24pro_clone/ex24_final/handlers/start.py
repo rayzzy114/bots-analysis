@@ -62,8 +62,8 @@ async def cmd_start(message: Message, bot: Bot, state: FSMContext) -> None:
                     f"👩‍💻 Назначен менеджер: {manager}"
                 )
                 register_admin_message(sent.message_id, user_id)
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
 
         from runtime_state import app_context
         if app_context.users is not None:

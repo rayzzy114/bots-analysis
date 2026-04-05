@@ -207,8 +207,8 @@ async def admin_accept_order(callback: CallbackQuery):
             await callback.bot.send_message(chat_id=user_chat_id, text="Сообщение от оператора:\n\nВаша заявка принята!")
         except TelegramForbiddenError:
             pass
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     current_text = callback.message.text or ""
     new_text = current_text + "\n\nСтатус: Принято"
@@ -244,8 +244,8 @@ async def admin_reject_order(callback: CallbackQuery):
             )
         except TelegramForbiddenError:
             pass
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     current_text = callback.message.text or ""
     new_text = current_text + "\n\nСтатус: Отклонено"
@@ -352,5 +352,5 @@ async def handle_user_message(message: Message, state: FSMContext):
     if sent_to_admins:
         try:
             await message.answer("Ваше сообщение отправлено оператору. Ожидайте ответа.")
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')

@@ -169,8 +169,8 @@ async def process_requisites(message: Message, state: FSMContext):
                 chat_id=message.chat.id,
                 message_id=data["requisites_request_message_id"],
             )
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     await state.clear()
     await message.answer("<b>✅ Реквизиты обновлены!</b>")
@@ -194,8 +194,8 @@ async def process_bank(message: Message, state: FSMContext):
                 chat_id=message.chat.id,
                 message_id=data["bank_request_message_id"],
             )
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     await state.clear()
     await message.answer("<b>✅ Название банка обновлено!</b>")
@@ -230,8 +230,8 @@ async def process_commission(message: Message, state: FSMContext):
                 chat_id=message.chat.id,
                 message_id=data["commission_request_message_id"],
             )
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     await state.clear()
     await message.answer(f"<b>✅ Комиссия обновлена: {commission:.2f}%</b>")
@@ -255,8 +255,8 @@ async def process_operator(message: Message, state: FSMContext):
                 chat_id=message.chat.id,
                 message_id=data["operator_request_message_id"],
             )
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     await state.clear()
     await message.answer(f"<b>✅ Оператор обновлен: @{new_operator}</b>")

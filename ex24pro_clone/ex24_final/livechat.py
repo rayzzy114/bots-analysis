@@ -51,8 +51,8 @@ async def _send_source_aftercare_via_bot(bot: Bot, user_id: int, lang: str, is_a
     await asyncio.sleep(7)
     try:
         await temp_status.delete()
-    except Exception:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     await bot.send_message(
         user_id, connected,
         link_preview_options=LinkPreviewOptions(is_disabled=True),
@@ -359,8 +359,8 @@ async def client_source_choice(callback: CallbackQuery, bot: Bot, state: FSMCont
 
     try:
         await msg.delete()
-    except Exception:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     from handlers.start import user_source_selected
     user_source_selected.add(user_id)

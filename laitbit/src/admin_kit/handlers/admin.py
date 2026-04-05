@@ -81,8 +81,8 @@ def build_admin_router(ctx: AppContext) -> Router:
         try:
             rates = await ctx.rates.get_rates()
             btc_rate_text = f"{fmt_money(rates['btc'])} RUB"
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
         methods = ctx.settings.payment_methods()
         configured = methods_configured_map()
         methods_lines = (
@@ -532,7 +532,7 @@ def build_admin_router(ctx: AppContext) -> Router:
                     "Средства отправлены. Спасибо за обмен."
                 ),
             )
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     return router

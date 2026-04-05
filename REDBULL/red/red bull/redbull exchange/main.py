@@ -80,7 +80,7 @@ def get_support_chat_url() -> str:
 storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 def add_check_columns():
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     try:
         cursor.execute("ALTER TABLE orders ADD COLUMN check_file_id TEXT")
@@ -97,7 +97,7 @@ def add_check_columns():
 # Вызываем один раз при запуске
 add_check_columns()
 def init_database():
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS orders (
@@ -134,15 +134,15 @@ def init_database():
     conn.close()
 def add_user(user_id, first_name=None):
     try:
-        conn = sqlite3.connect(DATABASE_FILE)
+        conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
         cursor = conn.cursor()
         cursor.execute("INSERT OR IGNORE INTO users (user_id, first_name) VALUES (?, ?)", (user_id, first_name))
         conn.commit()
         conn.close()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 def get_user_first_name(user_id):
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute("SELECT first_name FROM users WHERE user_id = ?", (user_id,))
     result = cursor.fetchone()
@@ -165,7 +165,7 @@ def create_order(user_id, order_type, currency, crypto_amount, rub_amount, rate,
                  commission, payment_method, payment_details, wallet_address, promo_code=None):
     order_id = uuid.uuid4().hex[:8]
     expires_at = datetime.now() + timedelta(minutes=30)
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute("""
         INSERT INTO orders (order_id, user_id, order_type, currency, crypto_amount,
@@ -178,33 +178,33 @@ def create_order(user_id, order_type, currency, crypto_amount, rub_amount, rate,
     conn.close()
     return order_id
 def get_order_status(order_id):
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute("SELECT status FROM orders WHERE order_id = ?", (order_id,))
     result = cursor.fetchone()
     conn.close()
     return result[0] if result else None
 def update_order_status(order_id, status):
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute("UPDATE orders SET status = ? WHERE order_id = ?", (status, order_id))
     conn.commit()
     conn.close()
 def update_order_check(order_id, file_id, file_type):
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute("UPDATE orders SET check_file_id = ?, check_file_type = ? WHERE order_id = ?", (file_id, file_type, order_id))
     conn.commit()
     conn.close()
 def get_order_user_id(order_id):
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute("SELECT user_id FROM orders WHERE order_id = ?", (order_id,))
     result = cursor.fetchone()
     conn.close()
     return result[0] if result else None
 def get_user_active_orders(user_id):
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute("""
         SELECT order_id, order_type, currency, crypto_amount, rub_amount,
@@ -217,7 +217,7 @@ def get_user_active_orders(user_id):
     conn.close()
     return orders
 def get_order_details(order_id):
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute("""
         SELECT order_type, currency, crypto_amount, rub_amount, rate, commission,
@@ -1075,8 +1075,8 @@ async def process_paid_button(call: CallbackQuery, state: FSMContext):
     # Убираем клавиатуру, чтобы кнопка исчезла
     try:
         await call.message.edit_reply_markup(reply_markup=None)
-    except:
-        pass  # если не получилось — просто продолжаем
+    except Exception as e:
+        print(f'Exception caught: {e}')
     
     # Отвечаем пользователю
     await call.message.answer(
@@ -1386,8 +1386,8 @@ async def notify_admins_order_with_check(bot: Bot, order_id: str, file_id: str, 
                 await bot.send_photo(admin_id, file_id, caption="Чек оплаты", reply_markup=kb_order_approval(order_id))
             elif file_type == "document":
                 await bot.send_document(admin_id, file_id, caption="Чек оплаты", reply_markup=kb_order_approval(order_id))
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 async def notify_admins_order_cancelled(user_id, order_id, order_type):
     bot = Bot(token=BOT_TOKEN)
     first_name = get_user_first_name(user_id)
@@ -1402,8 +1402,8 @@ async def notify_admins_order_cancelled(user_id, order_id, order_type):
     for admin_id in config["admins"]:
         try:
             await bot.send_message(admin_id, text, parse_mode=ParseMode.HTML)
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
     await bot.session.close()
 @dp.callback_query(F.data.startswith("approve_order_"))
 async def approve_order_handler(call: CallbackQuery):
@@ -1605,7 +1605,7 @@ async def process_broadcast(message: Message, state: FSMContext):
         return
     broadcast_text = message.text
     bot = Bot(token=BOT_TOKEN)
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute("SELECT user_id FROM users")
     users = cursor.fetchall()
@@ -2114,7 +2114,7 @@ async def process_new_commission(message: Message, state: FSMContext):
         return
     global config
     try:
-        percent = float(message.text.strip())
+        percent = float(message.text.replace(",", ".").replace(" ", "").strip())
         if percent < 0 or percent > 100:
             raise ValueError
         config["commission_percent"] = percent / 100
@@ -2155,7 +2155,7 @@ async def admin_stats(call: CallbackQuery):
     if not is_admin(call.from_user.id):
         await call.answer("❌ Доступ запрещен", show_alert=True)
         return
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = sqlite3.connect(DATABASE_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     try:
         cursor.execute("SELECT COUNT(*) FROM users")

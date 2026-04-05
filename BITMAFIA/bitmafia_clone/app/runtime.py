@@ -1050,8 +1050,8 @@ class FlowRuntime:
                 if callback_message is not None:
                     try:
                         await callback_message.delete()
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        print(f'Exception caught: {e}')
                     await self._send_captcha(callback_message, user_id)
                 return
             self.captcha_passed.add(user_id)
@@ -1093,8 +1093,8 @@ class FlowRuntime:
             if callback_message is not None:
                 try:
                     await callback_message.delete()
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f'Exception caught: {e}')
                 await self._do_start(callback_message, user_id)
             return
 
@@ -1223,8 +1223,8 @@ class FlowRuntime:
                             f"Минимальная сумма обмена: {minimum_amount}",
                             parse_mode=ParseMode.HTML,
                         )
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        print(f'Exception caught: {e}')
                     return
                 if session.entered_amount != parsed_amount:
                     self._reset_quote(session)
@@ -1556,8 +1556,8 @@ class FlowRuntime:
                 if bot is not None:
                     try:
                         await bot.delete_message(chat_id=edit_chat_id, message_id=edit_message_id)
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        print(f'Exception caught: {e}')
             sent_message = await send_state(
                 msg,
                 state,
@@ -1580,8 +1580,8 @@ class FlowRuntime:
                 try:
                     await delete()
                     return
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f'Exception caught: {e}')
 
             bot = getattr(msg, "bot", None) or getattr(sent, "bot", None)
             sent_chat_id = getattr(getattr(sent, "chat", None), "id", None) or getattr(getattr(msg, "chat", None), "id", None)
@@ -1622,8 +1622,8 @@ class FlowRuntime:
             if bot is not None:
                 try:
                     await bot.delete_message(chat_id=previous_chat_id, message_id=previous_message_id)
-                except Exception:
-                    pass
+                except Exception as e:
+                    print(f'Exception caught: {e}')
 
         sent_chat = getattr(getattr(sent_message, "chat", None), "id", None)
         sent_message_id = getattr(sent_message, "message_id", None)

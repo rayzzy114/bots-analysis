@@ -994,8 +994,8 @@ async def handle_order_paid(callback: CallbackQuery):
                         text=admin_text,
                         reply_markup=get_admin_order_keyboard(order_id)
                     )
-                except:
-                    pass
+                except Exception as e:
+                    print(f'Exception caught: {e}')
             
             await callback.answer("Ожидаем подтверждения оплаты от исполнителя.")
         else:
@@ -1299,8 +1299,8 @@ async def handle_admin_action(callback: CallbackQuery):
                 caption=text,
                 reply_markup=get_order_waiting_keyboard()
             )
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
         
         await callback.message.edit_text(f"✅ Заказ {order_id} подтвержден.")
         await callback.answer("Оплата подтверждена.")
@@ -1316,8 +1316,8 @@ async def handle_admin_action(callback: CallbackQuery):
                 caption=text,
                 reply_markup=get_order_waiting_keyboard()
             )
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
         
         await callback.message.edit_text(f"❌ Заказ {order_id} отклонен.")
         await callback.answer("Оплата отклонена.")

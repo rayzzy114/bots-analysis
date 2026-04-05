@@ -612,7 +612,7 @@ def build_admin_router(ctx: AppContext) -> Router:
                     "Средства отправлены. Спасибо за обмен."
                 ),
             )
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     return router

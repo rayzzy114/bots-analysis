@@ -385,7 +385,7 @@ def generate_order_id():
     return ''.join(random.choices(string.digits, k=6))
 
 def init_database():
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
@@ -429,7 +429,7 @@ def init_database():
     banned_users = load_banned_users()
 
 def load_banned_users():
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('SELECT user_id FROM bans')
     users = {row[0] for row in cursor.fetchall()}
@@ -438,7 +438,7 @@ def load_banned_users():
 
 
 def ban_user(user_id: int, reason: str = "Админ забанил"):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('INSERT OR REPLACE INTO bans (user_id, reason) VALUES (?, ?)', (user_id, reason))
     conn.commit()
@@ -447,7 +447,7 @@ def ban_user(user_id: int, reason: str = "Админ забанил"):
 
 
 def unban_user(user_id: int):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('DELETE FROM bans WHERE user_id = ?', (user_id,))
     conn.commit()
@@ -459,7 +459,7 @@ def is_banned(user_id: int) -> bool:
     return user_id in banned_users
 
 def check_captcha_passed(user_id):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
 
     cursor.execute('PRAGMA table_info(users)')
@@ -476,7 +476,7 @@ def check_captcha_passed(user_id):
     return result and result[0]
 
 def set_captcha_passed(user_id):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
 
     cursor.execute('PRAGMA table_info(users)')
@@ -490,7 +490,7 @@ def set_captcha_passed(user_id):
     conn.close()
 
 def get_user_stats(user_id, username):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
 
     cursor.execute('''
@@ -523,7 +523,7 @@ def get_user_stats(user_id, username):
         }
 
 def update_user_balance(user_id, crypto_type, amount):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
 
     cursor.execute('SELECT btc_balance, xmr_balance, ltc_balance FROM users WHERE user_id = ?', (user_id,))
@@ -543,7 +543,7 @@ def update_user_balance(user_id, crypto_type, amount):
     conn.close()
 
 def create_order(user_id, crypto_type, amount, rub_amount, wallet_address, payment_method):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
 
     order_number = generate_order_id()
@@ -564,7 +564,7 @@ def create_order(user_id, crypto_type, amount, rub_amount, wallet_address, payme
     return order_id, order_number
 
 def update_order_status(order_id, status):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
 
     cursor.execute('UPDATE orders SET status = ? WHERE order_id = ?', (status, order_id))
@@ -573,7 +573,7 @@ def update_order_status(order_id, status):
     conn.close()
 
 def get_pending_orders():
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
 
     cursor.execute('''
@@ -588,7 +588,7 @@ def get_pending_orders():
     return orders
 
 def get_order_by_number(order_number):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
 
     cursor.execute('''
@@ -603,7 +603,7 @@ def get_order_by_number(order_number):
     return order
 
 def get_user_orders(user_id):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
 
     cursor.execute('''
@@ -809,8 +809,8 @@ async def ask_wallet_address_before_confirmation(query, user_id):
 
             try:
                 await query.message.delete()
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
 
             await query.message.reply_photo(
                 photo=photo,
@@ -827,8 +827,8 @@ async def ask_wallet_address_before_confirmation(query, user_id):
 
         try:
             await query.message.delete()
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
         await query.message.reply_text("<b>Введи адрес своего кошелька, куда нужно перевести криптовалюту:</b>", reply_markup=reply_markup, parse_mode='HTML')
 
@@ -856,8 +856,8 @@ async def ask_amount_detailed(query, user_id, crypto_type):
 
     try:
         await query.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     await query.message.reply_text(text, reply_markup=reply_markup, parse_mode='HTML')
 
@@ -982,8 +982,8 @@ async def show_crypto_selection(query):
 
     try:
         await query.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     await query.message.reply_text("<b>Выбирай какую крипту желаешь купить:</b>", reply_markup=reply_markup, parse_mode='HTML')
 
@@ -999,8 +999,8 @@ async def show_payment_methods(query):
 
     try:
         await query.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     await query.message.reply_text("<b>Выбирай, куда собираешься оплачивать:</b>", reply_markup=reply_markup, parse_mode='HTML')
 
@@ -1274,8 +1274,8 @@ async def show_promo_menu(query):
 
     try:
         await query.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     await query.message.reply_text("<b>В настоящее время ты не используешь промокод</b>\n\nОтправь боту промокод, чтобы активировать его❗️", reply_markup=reply_markup, parse_mode='HTML')
 
@@ -1324,8 +1324,8 @@ async def show_profile(query, user_id):
 
             try:
                 await query.message.delete()
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
 
             await query.message.reply_photo(photo=photo, caption=profile_text, reply_markup=reply_markup, parse_mode='HTML')
 
@@ -1697,7 +1697,7 @@ async def admin_text(update, context):
             return
     elif state == "wait_broadcast":
         # Рассылка всем пользователям (кто есть в базе)
-        conn = sqlite3.connect('users.db')
+        conn = sqlite3.connect('users.db', check_same_thread=False, isolation_level=None)
         cursor = conn.cursor()
         cursor.execute("SELECT user_id FROM users")
         users = [row[0] for row in cursor.fetchall()]

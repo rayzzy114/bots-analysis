@@ -257,8 +257,8 @@ async def calculator_options(callback: CallbackQuery, state: FSMContext) -> None
     else:
         try:
             await callback.message.edit_reply_markup(reply_markup=calculator_button(mode, currency, calc_type, from_transaction))
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
     
     await callback.answer()
 

@@ -65,8 +65,8 @@ async def start_callback(callback: CallbackQuery, state: FSMContext):
     await state.clear()
     try:
         await callback.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     
     user_id = callback.from_user.id
     await send_start(callback.message, user_id)

@@ -62,8 +62,8 @@ async def main() -> None:
     for admin_id in ctx.admin_ids:
         try:
             await bot.send_message(admin_id, "Бот запущен.")
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     await dp.start_polling(bot)
 

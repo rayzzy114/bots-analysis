@@ -133,7 +133,7 @@ dp = Dispatcher(storage=MemoryStorage())
 # ======================= БАЗА ДАННЫХ =======================
 
 def init_db():
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
 
     # Реквизиты для приёма RUB (ПОКУПКА — пользователь платит тебе)
@@ -217,7 +217,7 @@ def init_db():
 
 # ======================= РЕКВИЗИТЫ ДЛЯ ПОКУПКИ =======================
 def add_payment_requisites(card: str, bank: str, country: str):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute(
         "INSERT INTO payment_requisites (card, bank, country) VALUES (?, ?, ?)",
@@ -227,7 +227,7 @@ def add_payment_requisites(card: str, bank: str, country: str):
     conn.close()
 
 def update_payment_requisites(id: int, card: str, bank: str, country: str):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute(
         "UPDATE payment_requisites SET card=?, bank=?, country=? WHERE id=?",
@@ -237,14 +237,14 @@ def update_payment_requisites(id: int, card: str, bank: str, country: str):
     conn.close()
 
 def delete_payment_requisites(id: int):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("DELETE FROM payment_requisites WHERE id=?", (id,))
     conn.commit()
     conn.close()
 
 def get_payment_requisites() -> tuple[str, str, str]:
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT card, bank, country FROM payment_requisites ORDER BY id DESC LIMIT 1")
     row = c.fetchone()
@@ -254,7 +254,7 @@ def get_payment_requisites() -> tuple[str, str, str]:
 
 # ======================= АДРЕСА КРИПТЫ ДЛЯ ПРОДАЖИ =======================
 def get_crypto_address(coin: str) -> str:
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT address FROM crypto_addresses WHERE coin=?", (coin.upper(),))
     row = c.fetchone()
@@ -262,7 +262,7 @@ def get_crypto_address(coin: str) -> str:
     return row[0] if row else "не задан в админке!"
 
 def set_crypto_address(coin: str, address: str):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("INSERT OR REPLACE INTO crypto_addresses (coin, address) VALUES (?, ?)", (coin.upper(), address))
     conn.commit()
@@ -270,7 +270,7 @@ def set_crypto_address(coin: str, address: str):
 
 # ======================= КОМИССИЯ =======================
 def get_commission() -> int:
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT commission FROM settings WHERE id = 1")
     row = c.fetchone()
@@ -278,7 +278,7 @@ def get_commission() -> int:
     return row[0] if row and row[0] is not None else DEFAULT_COMMISSION
 
 def set_commission(commission: int):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("UPDATE settings SET commission = ? WHERE id = 1", (commission,))
     conn.commit()
@@ -286,7 +286,7 @@ def set_commission(commission: int):
 
 # ======================= ТЕКСТ ПОДДЕРЖКИ =======================
 def get_support_text() -> str:
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT text FROM support_text WHERE id=1")
     row = c.fetchone()
@@ -296,7 +296,7 @@ def get_support_text() -> str:
 
 
 def set_support_text(text: str):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("INSERT OR REPLACE INTO support_text (id, text) VALUES (1, ?)", (text,))
     conn.commit()
@@ -304,7 +304,7 @@ def set_support_text(text: str):
 
 # ======================= ЗАЯВКИ =======================
 def add_deal(user_id: int, deal_type: str, coin: str, crypto_amount: float, rub_amount: int, wallet: str) -> int:
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("""
         INSERT INTO deals (user_id, deal_type, coin, crypto_amount, rub_amount, wallet)
@@ -327,11 +327,11 @@ async def notify_admins(deal_id: int, user_id: int, coin: str, crypto_amount: fl
     for admin_id in ADMIN_IDS:
         try:
             await bot.send_message(admin_id, text, parse_mode=ParseMode.HTML)
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 # ======================= РАССЫЛКА =======================
 def get_all_users() -> list[int]:
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT DISTINCT user_id FROM deals")
     rows = c.fetchall()
@@ -341,7 +341,7 @@ def get_all_users() -> list[int]:
 
 # =======================игра в кости=======================
 def has_luck_bonus(user_id: int) -> bool:
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT 1 FROM luck_bonus WHERE user_id = ?", (user_id,))
     result = c.fetchone()
@@ -349,7 +349,7 @@ def has_luck_bonus(user_id: int) -> bool:
     return result is not None
 
 def grant_luck_bonus(user_id: int):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("INSERT OR IGNORE INTO luck_bonus (user_id) VALUES (?)", (user_id,))
     conn.commit()
@@ -507,7 +507,7 @@ def add_deal(user_id, deal_type, coin, crypto_amount, total_rub, wallet, deal_id
     if deal_id is None:
         deal_id = generate_deal_id()
 
-    conn = sqlite3.connect("deals.db")
+    conn = sqlite3.connect("deals.db", check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
 
     # создаём таблицу, если её нет
@@ -892,8 +892,8 @@ async def receive_proof(message: Message, state: FSMContext):
     for admin_id in ADMIN_IDS:
         try:
             await send_method(admin_id, file_id, caption=caption, parse_mode=ParseMode.HTML)
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     ## 1. Отправляем стикер ok.tgs
     ok_sticker_path = "media/ok.tgs"
@@ -927,8 +927,8 @@ async def cancel_order(callback: CallbackQuery, state: FSMContext):
         for admin_id in ADMIN_IDS:
             try:
                 await bot.send_message(admin_id, f"❌ Заявка #{deal_id} отменена пользователем {callback.from_user.id}")
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
 
     await callback.message.edit_text(
         "❌ Заявка отменена.\n\nВы вернулись в меню покупки.",
@@ -1221,8 +1221,8 @@ async def create_sell_order(callback: CallbackQuery, state: FSMContext):
     for admin_id in ADMIN_IDS:
         try:
             await bot.send_message(admin_id, notify_text, parse_mode=ParseMode.HTML)
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     await callback.answer()
 
@@ -1370,8 +1370,8 @@ async def cancel_order(callback: CallbackQuery, state: FSMContext):
                     f"❌ Заявка #{deal_id} ({direction_text}) отменена пользователем <code>{callback.from_user.id}</code>",
                     parse_mode=ParseMode.HTML
                 )
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
 
     await callback.message.edit_text(
         "❌ Заявка успешно отменена.\n\nВы вернулись в главное меню.",
@@ -1598,7 +1598,7 @@ async def process_commission(message: Message, state: FSMContext):
 # ======================= ПОСЛЕДНИЕ ЗАЯВКИ =======================
 @dp.callback_query(F.data == "admin_deals")
 async def admin_deals(callback: CallbackQuery):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("""
         SELECT id, user_id, deal_type, coin, rub_amount, wallet, status, created_at 
@@ -1738,8 +1738,8 @@ async def admin_broadcast_send(message: Message, state: FSMContext):
         try:
             await bot.copy_message(user_id, message.from_user.id, message.message_id)
             sent += 1
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     await message.answer(
         f"✅ Рассылка завершена!\nОтправлено: <b>{sent}</b> из {len(users)}",
@@ -1992,7 +1992,7 @@ async def profile(callback: CallbackQuery):
     user_id = callback.from_user.id
 
     # Получаем дату регистрации и рассчитываем дни
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT first_seen FROM users WHERE user_id = ?", (user_id,))
     row = c.fetchone()
@@ -2135,7 +2135,7 @@ async def is_subscribed_to_reserve(user_id: int) -> bool:
         return False
 
 def has_reserve_bonus(user_id: int) -> bool:
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT 1 FROM reserve_bonus WHERE user_id = ?", (user_id,))
     result = c.fetchone()
@@ -2143,7 +2143,7 @@ def has_reserve_bonus(user_id: int) -> bool:
     return result is not None
 
 def grant_reserve_bonus(user_id: int):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("INSERT OR IGNORE INTO reserve_bonus (user_id) VALUES (?)", (user_id,))
     conn.commit()

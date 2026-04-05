@@ -65,8 +65,8 @@ async def get_crypto_price_usd(crypto_type: str):
                     if response.status == 200:
                         data = await response.json()
                         return float(data.get("price", 0))
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     defaults = {"BTC": 68000.0, "XMR": 160.0, "LTC": 70.0}
     return defaults.get(crypto_type, 0)
@@ -235,8 +235,8 @@ async def process_wallet(message: Message, state: FSMContext):
     if 'wallet_request_message_id' in data:
         try:
             await message.bot.delete_message(chat_id=message.chat.id, message_id=data['wallet_request_message_id'])
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     text, deal_id = generate_deal_text(int(data['total_to_pay']), wallet)
     await state.update_data(deal_id=deal_id)
@@ -266,8 +266,8 @@ async def handle_write_balance(callback: CallbackQuery, state: FSMContext):
 
     try:
         await callback.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     new_message = await callback.message.answer(text, reply_markup=kb.as_markup())
     await state.update_data(wallet_request_message_id=new_message.message_id)
@@ -327,8 +327,8 @@ async def handle_confirm_paid(callback: CallbackQuery, state: FSMContext):
     except:
         try:
             await callback.message.edit_reply_markup(reply_markup=None)
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     await state.set_state(Form.waiting_for_receipt)
     await callback.message.answer(
@@ -346,13 +346,13 @@ async def handle_cancel_order(callback: CallbackQuery, state: FSMContext):
         if key in data:
             try:
                 await callback.bot.delete_message(chat_id=callback.message.chat.id, message_id=data[key])
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
 
     try:
         await callback.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     deal_id = data.get('deal_id', generate_deal_id())
     await state.clear()

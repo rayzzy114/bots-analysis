@@ -12,3 +12,5 @@ def _get_env(key: str, default: str = "") -> str:
 def reload_env():
     """Reload environment variables from .env file."""
     load_dotenv(ENV_PATH)
+
+COMMISSION_PERCENT = int(os.environ.get('COMMISSION_PERCENT', 30))

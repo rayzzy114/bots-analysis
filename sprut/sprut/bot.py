@@ -31,7 +31,7 @@ dp = Dispatcher(storage=storage)
 DB_FILE = "bot.db"
 
 def init_db():
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     
     cursor.execute('''
@@ -92,14 +92,14 @@ def init_db():
     
     try:
         cursor.execute('ALTER TABLE orders ADD COLUMN wallet_address TEXT')
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     
     conn.commit()
     conn.close()
 
 def is_user_verified(user_id):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('SELECT 1 FROM verified_users WHERE user_id = ?', (user_id,))
     result = cursor.fetchone() is not None
@@ -107,14 +107,14 @@ def is_user_verified(user_id):
     return result
 
 def add_verified_user(user_id):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('INSERT OR IGNORE INTO verified_users (user_id) VALUES (?)', (user_id,))
     conn.commit()
     conn.close()
 
 def get_luck_last_used(user_id):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('SELECT last_used FROM luck_last_used WHERE user_id = ?', (user_id,))
     result = cursor.fetchone()
@@ -124,7 +124,7 @@ def get_luck_last_used(user_id):
     return None
 
 def set_luck_last_used(user_id, last_used):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('''
         INSERT OR REPLACE INTO luck_last_used (user_id, last_used)
@@ -150,7 +150,7 @@ def is_admin(user_id):
     return False
 
 def get_exchange_payment_methods(currency):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('''
         SELECT id, method_name, price_rub 
@@ -163,7 +163,7 @@ def get_exchange_payment_methods(currency):
     return result
 
 def get_exchange_requisites(method_id):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('''
         SELECT requisite_type, requisite_value 
@@ -175,7 +175,7 @@ def get_exchange_requisites(method_id):
     return result
 
 def get_exchange_requisites_with_id(method_id):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('''
         SELECT id, requisite_type, requisite_value 
@@ -187,14 +187,14 @@ def get_exchange_requisites_with_id(method_id):
     return result
 
 def delete_exchange_requisite(requisite_id):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('DELETE FROM exchange_requisites WHERE id = ?', (requisite_id,))
     conn.commit()
     conn.close()
 
 def update_exchange_requisite(requisite_id, requisite_value):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('UPDATE exchange_requisites SET requisite_value = ? WHERE id = ?', (requisite_value, requisite_id))
     conn.commit()
@@ -208,7 +208,7 @@ def format_requisite_display(req_type, req_value):
         return f"• {req_type}: <code>{req_value}</code>"
 
 def add_payment_method(currency, method_name, price_rub):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO exchange_payment_methods (currency, method_name, price_rub)
@@ -220,7 +220,7 @@ def add_payment_method(currency, method_name, price_rub):
     return method_id
 
 def update_payment_method(method_id, method_name, price_rub, is_active):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('''
         UPDATE exchange_payment_methods 
@@ -231,14 +231,14 @@ def update_payment_method(method_id, method_name, price_rub, is_active):
     conn.close()
 
 def delete_payment_method(method_id):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('DELETE FROM exchange_payment_methods WHERE id = ?', (method_id,))
     conn.commit()
     conn.close()
 
 def get_all_payment_methods(currency):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('''
         SELECT id, method_name, price_rub, is_active
@@ -250,7 +250,7 @@ def get_all_payment_methods(currency):
     return result
 
 def get_payment_method_by_id(method_id):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM exchange_payment_methods WHERE id = ?', (method_id,))
     result = cursor.fetchone()
@@ -258,7 +258,7 @@ def get_payment_method_by_id(method_id):
     return result
 
 def add_requisite(method_id, requisite_type, requisite_value):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO exchange_requisites (method_id, requisite_type, requisite_value)
@@ -551,7 +551,7 @@ def get_deposit_info_keyboard():
     return keyboard
 
 def get_deposit_address(currency):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('SELECT address FROM deposit_addresses WHERE currency = ?', (currency,))
     result = cursor.fetchone()
@@ -561,7 +561,7 @@ def get_deposit_address(currency):
     return ""
 
 def set_deposit_address(currency, address):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('''
         INSERT OR REPLACE INTO deposit_addresses (currency, address)
@@ -756,7 +756,7 @@ def generate_order_id():
     return ''.join(random.choice(chars) for _ in range(20))
 
 def create_order(user_id, currency, amount_rub, crypto_amount, method_id, wallet_address=None):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     order_id = generate_order_id()
     created_at = datetime.now().isoformat()
@@ -769,7 +769,7 @@ def create_order(user_id, currency, amount_rub, crypto_amount, method_id, wallet
     return order_id
 
 def get_order_by_id(order_id):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM orders WHERE order_id = ?', (order_id,))
     result = cursor.fetchone()
@@ -777,7 +777,7 @@ def get_order_by_id(order_id):
     return result
 
 def update_order_status(order_id, status):
-    conn = sqlite3.connect(DB_FILE)
+    conn = sqlite3.connect(DB_FILE, check_same_thread=False, isolation_level=None)
     cursor = conn.cursor()
     cursor.execute('UPDATE orders SET status = ? WHERE order_id = ?', (status, order_id))
     conn.commit()
@@ -948,8 +948,8 @@ async def process_payment_confirmation(callback: types.CallbackQuery, state: FSM
                     )
                     try:
                         await bot.send_message(admin_id, admin_text, reply_markup=get_admin_order_keyboard(order_id))
-                    except:
-                        pass
+                    except Exception as e:
+                        print(f'Exception caught: {e}')
         else:
             await state.clear()
             await callback.answer("Ошибка создания заявки", show_alert=True)
@@ -1625,15 +1625,15 @@ async def handle_messages(message: types.Message, state: FSMContext):
                         
                         try:
                             await loading_msg.delete()
-                        except:
-                            pass
+                        except Exception as e:
+                            print(f'Exception caught: {e}')
                         
                         await message.answer(text, reply_markup=get_payment_confirmation_keyboard(), parse_mode="HTML")
                     else:
                         try:
                             await loading_msg.delete()
-                        except:
-                            pass
+                        except Exception as e:
+                            print(f'Exception caught: {e}')
                         await state.clear()
                         if from_buy:
                             await message.answer("Ошибка получения реквизитов", reply_markup=get_main_menu_keyboard())

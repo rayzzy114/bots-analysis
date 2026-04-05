@@ -443,8 +443,8 @@ def build_buy_router(ctx: AppContext) -> Router:
         if msg is not None:
             try:
                 await msg.edit_reply_markup(reply_markup=None)
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
             await msg.answer("❗ Подтвердите оплату текстовым сообщением одним сообщением.")
 
     @router.message(UserState.waiting_buy_receipt, F.text)

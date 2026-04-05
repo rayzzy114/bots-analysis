@@ -98,7 +98,7 @@ cancel_counts = {}      # user_id: (count, last_cancel_time)
 block_until = {}        # user_id: datetime
 
 # ================== БД ==================
-conn = sqlite3.connect("luck_game.db")
+conn = sqlite3.connect("luck_game.db", check_same_thread=False, isolation_level=None)
 cursor = conn.cursor()
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS luck_attempts (
@@ -254,8 +254,8 @@ async def get_cbr_usd_rate() -> float:
                     match = re.search(r'<CharCode>USD</CharCode>.*?<Value>([^<]+)</Value>', text)
                     if match:
                         return float(match.group(1).replace(",", "."))
-    except Exception:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     return 90.0  # hardcoded fallback
 
 
@@ -273,8 +273,8 @@ async def get_btc_rates() -> tuple:
                     if usd > 0:
                         rub = await get_cbr_usd_rate() * usd
                         return (usd, rub)
-    except Exception:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     return (BTC_RATE_USD, BTC_RATE_RUB)
 
 
@@ -292,8 +292,8 @@ async def get_ltc_rates() -> tuple:
                     if usd > 0:
                         rub = await get_cbr_usd_rate() * usd
                         return (usd, rub)
-    except Exception:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     return (LTC_RATE_USD, LTC_RATE_RUB)
 
 # ================== HANDLERS ==================
@@ -867,8 +867,8 @@ async def process_payment_choice(callback: CallbackQuery, state: FSMContext):
 
     try:
         await bot.delete_message(chat_id=callback.message.chat.id, message_id=callback.message.message_id)
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     await callback.message.answer(
         f"Получите: <b>{format_crypto(crypto_amount)}</b> <b>{coin}</b>\n"
@@ -1083,8 +1083,8 @@ async def countdown_task(msg: Message, user_id: int, pay_id: str,
             f"⛔️ Время оплаты истекло!\n\n"
             f"Заявка <code>{pay_id}</code> закрыта.",
         )
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     if user_id in active_orders:
         del active_orders[user_id]
@@ -1227,8 +1227,8 @@ async def payout_method_selected(callback: CallbackQuery, state: FSMContext):
     if sell_msg_id:
         try:
             await bot.delete_message(chat_id=callback.message.chat.id, message_id=sell_msg_id)
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     text = "⚙️ Введи реквизиты для получения выплаты за продажу\n\n"
     text += "💳 Номер карты:" if method == "card" else "Номер телефона для СБП:"

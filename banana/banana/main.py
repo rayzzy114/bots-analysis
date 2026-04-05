@@ -214,7 +214,7 @@ import sqlite3
 # ==================== Инициализация таблиц ====================
 
 def init_db():
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
 
     # Таблица ссылок (рулетка, контакты и т.д.)
@@ -280,7 +280,7 @@ def init_db():
 # ==================== LINKS ====================
 
 def get_links():
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT name, url FROM links")
     rows = c.fetchall()
@@ -288,7 +288,7 @@ def get_links():
     return rows
 
 def set_link(name: str, url: str):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("INSERT OR REPLACE INTO links (name, url) VALUES (?, ?)", (name, url))
     conn.commit()
@@ -297,7 +297,7 @@ def set_link(name: str, url: str):
 # ==================== BANKS ====================
 
 def get_banks():
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT method, requisites FROM banks")
     rows = c.fetchall()
@@ -305,7 +305,7 @@ def get_banks():
     return rows
 
 def get_bank(method: str):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT requisites FROM banks WHERE method=?", (method,))
     row = c.fetchone()
@@ -313,14 +313,14 @@ def get_bank(method: str):
     return row[0] if row else None
 
 def set_bank(method: str, requisites: str):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("INSERT OR REPLACE INTO banks (method, requisites) VALUES (?, ?)", (method, requisites))
     conn.commit()
     conn.close()
 
 def delete_bank(method: str):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("DELETE FROM banks WHERE method=?", (method,))
     conn.commit()
@@ -331,7 +331,7 @@ def delete_bank(method: str):
 # ==================== ADDRESSES ====================
 
 def get_addresses():
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT coin, address FROM addresses")
     rows = c.fetchall()
@@ -339,7 +339,7 @@ def get_addresses():
     return rows
 
 def get_address(coin: str):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT address FROM addresses WHERE coin=?", (coin.upper(),))
     row = c.fetchone()
@@ -347,14 +347,14 @@ def get_address(coin: str):
     return row[0] if row else None
 
 def set_address(coin: str, address: str):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("INSERT OR REPLACE INTO addresses (coin, address) VALUES (?, ?)", (coin.upper(), address))
     conn.commit()
     conn.close()
 
 def delete_address(coin: str):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("DELETE FROM addresses WHERE coin=?", (coin.upper(),))
     conn.commit()
@@ -364,7 +364,7 @@ def delete_address(coin: str):
 # ==================== SUPPORT TEXT ====================
 
 def get_support_text():
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT text FROM support_text WHERE id=1")
     row = c.fetchone()
@@ -372,7 +372,7 @@ def get_support_text():
     return row[0] if row else SUPPORT_TEXT
 
 def set_support_text(text: str):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("INSERT OR REPLACE INTO support_text (id, text) VALUES (1, ?)", (text,))
     conn.commit()
@@ -381,7 +381,7 @@ def set_support_text(text: str):
 # ==================== COMMISSION ====================
 
 def get_commission():
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT percent FROM commission WHERE id=1")
     row = c.fetchone()
@@ -389,7 +389,7 @@ def get_commission():
     return float(row[0]) if row else COMMISSION_PERCENT
 
 def set_commission(percent: float):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("INSERT OR REPLACE INTO commission (id, percent) VALUES (1, ?)", (percent,))
     conn.commit()
@@ -398,7 +398,7 @@ def set_commission(percent: float):
 # ==================== DEALS ====================
 
 def add_deal(user_id: int, deal_type: str, coin: str, amount: float, requisites: str):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("""
         INSERT INTO deals (user_id, deal_type, coin, amount, requisites)
@@ -408,7 +408,7 @@ def add_deal(user_id: int, deal_type: str, coin: str, amount: float, requisites:
     conn.close()
 
 def get_deals(limit: int = 20):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("SELECT id, user_id, deal_type, coin, amount, requisites, status, created_at FROM deals ORDER BY id DESC LIMIT ?", (limit,))
     rows = c.fetchall()
@@ -416,7 +416,7 @@ def get_deals(limit: int = 20):
     return rows
 
 def update_deal_status(deal_id: int, status: str):
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("UPDATE deals SET status=? WHERE id=?", (status, deal_id))
     conn.commit()
@@ -580,7 +580,7 @@ async def addr_change_start(callback: types.CallbackQuery, state: FSMContext):
 @dp.callback_query(lambda c: c.data.startswith("addr_delete_"))
 async def addr_delete(callback: types.CallbackQuery):
     coin = callback.data.split("_")[2]
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
     c = conn.cursor()
     c.execute("DELETE FROM addresses WHERE coin=?", (coin,))
     conn.commit()
@@ -774,8 +774,8 @@ async def notify_admins(deal_type: str, user_id: int, crypto: str, amount: float
     for admin_id in ADMIN_IDS:
         try:
             await bot.send_message(admin_id, text)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
 
 # Главное меню
@@ -1180,8 +1180,8 @@ async def process_cancel_order(callback: types.CallbackQuery, state: FSMContext)
 
     try:
         await callback.message.delete()
-    except Exception:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     await state.clear()
     await callback.message.answer("❌ Сделка отменена")
@@ -1490,8 +1490,8 @@ async def process_cancel_order(callback: types.CallbackQuery, state: FSMContext)
 
     try:
         await callback.message.delete()
-    except Exception:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     await state.clear()
     await callback.message.answer("❌ Сделка отменена")

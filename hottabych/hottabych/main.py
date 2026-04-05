@@ -98,7 +98,7 @@ block_until = {}        # user_id: datetime
 
 #=================== бдшка =================
 # Создаём БД при запуске бота (один раз)
-conn = sqlite3.connect("luck_game.db")
+conn = sqlite3.connect("luck_game.db", check_same_thread=False, isolation_level=None)
 cursor = conn.cursor()
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS luck_attempts (
@@ -178,8 +178,8 @@ async def sell_global_cancel(message: Message, state: FSMContext):
     # Опционально: удаляем последнее сообщение, чтобы было чище
     try:
         await message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     
     await message.answer(
         "❌ Операция отменена",
@@ -362,8 +362,8 @@ async def admin_inline_cancel_edit(callback: CallbackQuery, state: FSMContext):
         await callback.message.edit_text("❌ Изменение отменено")
         await asyncio.sleep(1.2)
         await callback.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     await callback.message.answer(
         "Вернулись в админ-меню",
@@ -454,8 +454,8 @@ async def admin_cancel_delete(callback: CallbackQuery, state: FSMContext):
         await callback.message.edit_text("❌ Удаление отменено")
         await asyncio.sleep(1)
         await callback.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
         
     await callback.message.answer(
         "Вернулись в админ-меню",
@@ -669,8 +669,8 @@ async def exchange_cancel(message: Message, state: FSMContext):
     # Удаляем сообщение с запросом суммы (чтобы чат был чистым)
     try:
         await message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     
     # Красивый возврат в главное меню
     photo = FSInputFile("media/start.jpg")
@@ -831,8 +831,8 @@ async def cancel_to_start_handler(callback: CallbackQuery, state: FSMContext):
     try:
         # Удаляем сообщение с кнопками
         await callback.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     
     # Отправляем стартовое сообщение с фото
     photo = FSInputFile("media/start.jpg")
@@ -864,8 +864,8 @@ async def process_payment_choice(callback: CallbackQuery, state: FSMContext):
     # удаляем предыдущее сообщение с кнопками
     try:
         await bot.delete_message(chat_id=callback.message.chat.id, message_id=callback.message.message_id)
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     # сообщение с расчётом + кнопка "Далее ➡️"
     await callback.message.answer(
@@ -1029,14 +1029,14 @@ async def buy_cancel(callback: CallbackQuery, state: FSMContext):
     # Удаляем callback message
     try:
         await callback.message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     # Если есть msg_id (для активной заявки), удаляем payment message
     if msg_id:
         try:
             await bot.delete_message(user_id, msg_id)
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
     # Отправляем start фото
     photo = FSInputFile("media/start.jpg")
     await callback.message.answer_photo(
@@ -1171,8 +1171,8 @@ async def countdown_task(msg: Message, user_id: int, pay_id: str,
             f"Заявка <code>{pay_id}</code> закрыта.",
             parse_mode="HTML"
         )
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
     if user_id in active_orders:
         del active_orders[user_id]
@@ -1193,8 +1193,8 @@ async def cancel_payment(callback: CallbackQuery, state: FSMContext):
     # Удаляем сообщение с реквизитами/кнопками (чтобы чат стал чистым)
     try:
         await callback.message.delete()
-    except:
-        pass  # если удалить не удалось — ничего страшного
+    except Exception as e:
+        print(f'Exception caught: {e}')
     
     # Жёстко кидаем в главное меню со стартовым фото и текстом
     photo = FSInputFile("media/start.jpg")
@@ -1493,8 +1493,8 @@ async def payout_method_selected(callback: CallbackQuery, state: FSMContext):
                 chat_id=callback.message.chat.id,
                 message_id=sell_msg_id
             )
-        except:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
 
     text = "⚙️ Введи реквизиты для получения выплаты за продажу\n\n"
     text += "💳 Номер карты:" if method == "card" else "Номер телефона для СБП:"
@@ -1615,8 +1615,8 @@ async def sell_cancel_confirm(message: Message, state: FSMContext):
     
     try:
         await message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
     
     photo = FSInputFile("media/start.jpg")
     await message.answer_photo(

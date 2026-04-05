@@ -567,8 +567,8 @@ async def amount_handler(message: Message, state: FSMContext):
                     if processing_msg:
                         try:
                             await processing_msg.delete()
-                        except:
-                            pass
+                        except Exception as e:
+                            print(f'Exception caught: {e}')
                     if country == "belarus":
                         min_amount = round(MIN_PURCHASE_AMOUNT_RUB * 0.036)
                         await message.answer(f"Минимальная сумма покупки составляет {min_amount} бел.рублей (эквивалент 1500₽).")
@@ -609,8 +609,8 @@ async def amount_handler(message: Message, state: FSMContext):
                     if processing_msg:
                         try:
                             await processing_msg.delete()
-                        except:
-                            pass
+                        except Exception as e:
+                            print(f'Exception caught: {e}')
                     if country == "belarus":
                         min_amount = round(MIN_PURCHASE_AMOUNT_RUB * 0.036)
                         await message.answer(f"Минимальная сумма покупки составляет {min_amount} бел.рублей (эквивалент 1500₽).")
@@ -644,8 +644,8 @@ async def amount_handler(message: Message, state: FSMContext):
         if processing_msg:
             try:
                 await processing_msg.delete()
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
         await message.answer(info_text)
         
         photo = FSInputFile("images/pay.png")
@@ -654,15 +654,15 @@ async def amount_handler(message: Message, state: FSMContext):
         if processing_msg:
             try:
                 await processing_msg.delete()
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
     except Exception as e:
         logger.error(f"Ошибка в amount_handler: {e}")
         if processing_msg:
             try:
                 await processing_msg.delete()
-            except:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
         await message.answer("Произошла ошибка при обработке суммы. Попробуйте еще раз.")
 
 @dp.message(WalletAddressFilter())
@@ -1039,8 +1039,8 @@ async def admin_set_bank(message: Message, state: FSMContext):
         await message.answer(f"Введите номер телефона для СБП {country_text} (например: +796538483254):", reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад", callback_data="admin_back_to_sbp_phone")]]))
     try:
         await message.delete()
-    except:
-        pass
+    except Exception as e:
+        print(f'Exception caught: {e}')
 
 @dp.message(AdminState.waiting_sbp_phone)
 async def admin_set_sbp_phone(message: Message, state: FSMContext):

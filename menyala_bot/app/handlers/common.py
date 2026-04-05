@@ -142,8 +142,8 @@ def build_common_router(ctx: AppContext) -> Router:
                 me = await bot.get_me()
                 if me.username:
                     bot_username = me.username
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
         referral_url = f"https://t.me/{bot_username}?start={user_id}"
         await message.answer(
             (

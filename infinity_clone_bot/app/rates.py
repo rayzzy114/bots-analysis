@@ -43,6 +43,6 @@ class RateService:
                     if updated:
                         self._rates.update(updated)
                         self._last_ts = now
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
         return self._rates

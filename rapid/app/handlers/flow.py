@@ -906,8 +906,8 @@ def build_flow_router(
                 return
             try:
                 await msg.edit_reply_markup(reply_markup=None)
-            except Exception:
-                pass
+            except Exception as e:
+                print(f'Exception caught: {e}')
             cancelled = ctx.orders.mark_cancelled(order_id)
             if cancelled:
                 await callback.answer("Заявка отменена")
@@ -949,8 +949,8 @@ def build_flow_router(
         await state.update_data(order_id=order_id)
         try:
             await msg.edit_reply_markup(reply_markup=None)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
         await callback.answer("Оплата отмечена")
         await msg.answer(
             "❗️ Пожалуйста, отправьте скриншот оплаты сюда в чат.\n"
@@ -972,8 +972,8 @@ def build_flow_router(
             return
         try:
             await msg.edit_reply_markup(reply_markup=None)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'Exception caught: {e}')
         cancelled = ctx.orders.mark_cancelled(order_id)
         if cancelled:
             await callback.answer("Заявка отменена")

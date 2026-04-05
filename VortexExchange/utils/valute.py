@@ -60,7 +60,7 @@ class ExchangeRateManager:
             )
             if response.status_code == 200:
                 data = response.json()
-                return float(data['price'])
+                return float(data.get('price', 0))
         except Exception as e:
             print(f"Binance BTC не доступен: {e}")
 
@@ -72,7 +72,7 @@ class ExchangeRateManager:
             )
             if response.status_code == 200:
                 data = response.json()
-                return float(data['data']['rates']['BTC'])
+                return float(data.get('data', {}).get('rates', {}).get('BTC', 0))
         except Exception as e:
             print(f"Coinbase BTC не доступен: {e}")
 
@@ -83,7 +83,7 @@ class ExchangeRateManager:
             )
             if response.status_code == 200:
                 data = response.json()
-                return data['bitcoin']['usd']
+                return data.get('bitcoin', {}).get('usd', 0)
         except Exception as e:
             print(f"CoinGecko BTC не доступен: {e}")
 
@@ -97,7 +97,7 @@ class ExchangeRateManager:
             )
             if response.status_code == 200:
                 data = response.json()
-                return data['monero']['usd']
+                return data.get('monero', {}).get('usd', 0)
         except Exception as e:
             print(f"CoinGecko XMR не доступен: {e}")
         
@@ -111,7 +111,7 @@ class ExchangeRateManager:
             )
             if response.status_code == 200:
                 data = response.json()
-                return data['Valute']['USD']['Value']
+                return data.get('Valute', {}).get('USD', {}).get('Value', 0)
         except Exception as e:
             print(f"ЦБ РФ не доступен: {e}")
         
@@ -122,7 +122,7 @@ class ExchangeRateManager:
             )
             if response.status_code == 200:
                 data = response.json()
-                return float(data['price'])
+                return float(data.get('price', 0))
         except Exception as e:
             print(f"Binance USDT/RUB не доступен: {e}")
         
