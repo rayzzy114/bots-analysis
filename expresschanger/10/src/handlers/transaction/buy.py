@@ -198,9 +198,9 @@ async def process_entered_cosh(message: Message, state: FSMContext):
     await state.update_data(cosh=cosh)
     await state.update_data(priority="normal")
     if payment_method == "rub":
-        rub_amount = float(value)
+        rub_amount = float(str(value).replace(",", ".").replace(" ", ""))
     else:
-        rub_amount = float(total_sum)
+        rub_amount = float(str(total_sum).replace(",", ".").replace(" ", ""))
     from src.db.settings import get_commission
     commission = await get_commission()
     final_sum = round(rub_amount * (1 + commission / 100))
@@ -231,9 +231,9 @@ async def callback_payment_method(callback: CallbackQuery, state: FSMContext) ->
     cosh = data.get("cosh")
     data.get("priority", "normal")
     if payment_method_type == "rub":
-        rub_amount = float(value)
+        rub_amount = float(str(value).replace(",", ".").replace(" ", ""))
     else:
-        rub_amount = float(total_sum)
+        rub_amount = float(str(total_sum).replace(",", ".").replace(" ", ""))
     commission = await get_commission()
     final_sum = round(rub_amount * (1 + commission / 100))
     await state.update_data(final_sum=final_sum)

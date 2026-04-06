@@ -112,7 +112,7 @@ async def process_amount(message: Message, state: FSMContext):
     amount = message.text.strip().replace(' ', '').replace(',', '.')
 
     try:
-        amount_float = float(amount)
+        amount_float = float(str(amount).replace(",", ".").replace(" ", ""))
     except ValueError:
         await message.answer("❌ Неверный формат суммы. Пожалуйста, укажите число.")
         return

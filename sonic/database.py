@@ -14,6 +14,7 @@ class DataBase:
 
 
 
+
     def get_karta(self):
         with self.connection:
             return self.cur.execute('SELECT KARTA from setting').fetchone()[0]
@@ -21,6 +22,7 @@ class DataBase:
     def update_karta(self, card):
         with self.connection:
             return self.cur.execute('UPDATE setting SET KARTA = ?', (card,))
+
 
     def get_sbp(self):
         with self.connection:

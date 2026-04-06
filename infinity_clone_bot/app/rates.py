@@ -39,7 +39,7 @@ class RateService:
                         value = payload.get(coin_id, {}).get(self.vs_currency)
                         if value is None:
                             continue
-                        updated[key] = float(value)
+                        updated[key] = float(str(value).replace(",", ".").replace(" ", ""))
                     if updated:
                         self._rates.update(updated)
                         self._last_ts = now

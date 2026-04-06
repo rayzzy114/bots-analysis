@@ -554,7 +554,7 @@ def _extract_quotes(states: dict[str, CompiledState]) -> list[QuoteRecord]:
                 operation=operation,
                 coin=_norm_coin(coin),
                 coin_amount=float(coin_amount),
-                rub_amount=float(rub_amount),
+                rub_amount=float(str(rub_amount).replace(",", ".").replace(" ", "")),
                 net_amount=float(net_amount) if net_amount is not None else None,
             )
         )

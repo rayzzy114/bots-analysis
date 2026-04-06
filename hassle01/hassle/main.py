@@ -699,7 +699,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         reply_markup=reply_markup,
                         parse_mode='HTML'
                     )
-                    await update.callback_query.message.delete()
+                    await callback_query.message.delete()
                 except:
                     await safe_edit_message(update.callback_query, start_text, reply_markup)
     except FileNotFoundError:

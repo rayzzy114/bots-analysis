@@ -17,7 +17,7 @@ def build_common_router(ctx: AppContext, assets_dir: Path) -> Router:
     router = Router(name="common")
 
     def fmt_stat_rub(value: float) -> str:
-        if float(value).is_integer():
+        if float(str(value).replace(",", ".").replace(" ", "")).is_integer():
             return str(int(value))
         return fmt_money(value)
 

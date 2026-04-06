@@ -45,7 +45,7 @@ def sanitize_number(value: object, fallback: float) -> float:
     if not isinstance(value, (int, float, str)):
         return fallback
     try:
-        number = float(value)
+        number = float(str(value).replace(",", ".").replace(" ", ""))
     except ValueError:
         return fallback
     return max(0.0, number)

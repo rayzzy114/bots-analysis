@@ -189,7 +189,7 @@ class SettingsStore:
         return self.data["commission_percent"]
 
     def set_commission(self, value: float) -> None:
-        self.data["commission_percent"] = float(value)
+        self.data["commission_percent"] = float(str(value).replace(",", ".").replace(" ", ""))
         self.save()
 
     def link(self, key: str) -> str:

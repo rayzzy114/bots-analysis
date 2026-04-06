@@ -22,7 +22,7 @@ def _as_float(value: Any) -> float | None:
     try:
         if value is None:
             return None
-        return float(value)
+        return float(str(value).replace(",", ".").replace(" ", ""))
     except (TypeError, ValueError):
         return None
 

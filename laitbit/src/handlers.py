@@ -69,7 +69,7 @@ def _order_status_label(status: str) -> str:
 
 def _fmt_rub(value: object) -> str:
     if isinstance(value, (int, float)):
-        return str(int(round(float(value))))
+        return str(int(round(float(str(value).replace(",", ".").replace(" ", "")))))
     if isinstance(value, str):
         raw = value.strip().replace(",", ".")
         try:
@@ -465,7 +465,7 @@ async def input_wallet(message: Message, state: FSMContext, bot: Bot):
         if isinstance(amount_crypto, str):
             raw_amount = amount_crypto.split(" ", 1)[0]
             try:
-                coin_amount = float(raw_amount)
+                coin_amount = float(str(raw_amount).replace(",", ".").replace(" ", ""))
             except ValueError:
                 coin_amount = 0.0
         amount_rub = float(final_price) if isinstance(final_price, (int, float)) else 0.0

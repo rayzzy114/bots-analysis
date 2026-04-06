@@ -264,7 +264,7 @@ def build_admin_router(ctx: AppContext) -> Router:
         spread = ctx.settings.commission_percent / 100.0
         def base_value(value: object) -> str:
             try:
-                base = float(value)
+                base = float(str(value).replace(",", ".").replace(" ", ""))
             except (TypeError, ValueError):
                 return "—"
             if not spread:

@@ -155,6 +155,7 @@ def init_db():
     """)
     # Вставляем дефолтную строку если её нет
     c.execute("INSERT OR IGNORE INTO settings (id, commission) VALUES (1, ?)", (DEFAULT_COMMISSION,))
+    conn.commit()
 
 
     # Адреса для приёма крипты (ПРОДАЖА — пользователь отправляет тебе крипту)

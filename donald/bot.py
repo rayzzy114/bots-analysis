@@ -493,7 +493,7 @@ async def amount_handler(message: Message, state: FSMContext):
         
         processing_msg = await message.answer("⏳ Обрабатываю...")
         
-        amount_float = float(amount)
+        amount_float = float(str(amount).replace(",", ".").replace(" ", ""))
         country = data.get("country", "russia")
         
         crypto_data = crypto_info.get(crypto, crypto_info["BTC"])
@@ -736,7 +736,7 @@ async def payment_handler(callback: CallbackQuery, state: FSMContext):
         if calculated_amount:
             amount_rub = calculated_amount
         else:
-            amount_float = float(amount)
+            amount_float = float(str(amount).replace(",", ".").replace(" ", ""))
             sell_rate = await get_sell_rate(crypto)
             amount_received_rub = amount_float * sell_rate
             if country == "belarus":
@@ -816,7 +816,7 @@ async def send_payment_details(message: Message, state: FSMContext, is_vip: bool
         if calculated_amount:
             amount_payment = calculated_amount
         else:
-            amount_float = float(amount)
+            amount_float = float(str(amount).replace(",", ".").replace(" ", ""))
             crypto_rate = await get_crypto_rate(crypto)
             amount_payment_rub = amount_float * crypto_rate
             if country == "belarus":
@@ -828,7 +828,7 @@ async def send_payment_details(message: Message, state: FSMContext, is_vip: bool
         if calculated_amount:
             amount_payment = calculated_amount
         else:
-            amount_float = float(amount)
+            amount_float = float(str(amount).replace(",", ".").replace(" ", ""))
             sell_rate = await get_sell_rate(crypto)
             amount_received_rub = amount_float * sell_rate
             if country == "belarus":

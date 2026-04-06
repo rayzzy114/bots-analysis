@@ -57,7 +57,7 @@ class ExchangeRates:
         for source_id, code in mapping.items():
             value = data.get(source_id, {}).get("rub")
             try:
-                price = float(value)
+                price = float(str(value).replace(",", ".").replace(" ", ""))
             except (TypeError, ValueError):
                 continue
             if price > 0:

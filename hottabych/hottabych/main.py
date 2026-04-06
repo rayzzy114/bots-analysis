@@ -1366,7 +1366,7 @@ def format_crypto(amount: float, precision: int = 8) -> str:
     Форматирует число с заданной точностью, убирая хвостовые нули и точку.
     """
     try:
-        return f"{float(amount):.{precision}f}".rstrip("0").rstrip(".")
+        return f"{float(str(amount).replace(",", ".").replace(" ", "")):.{precision}f}".rstrip("0").rstrip(".")
     except Exception:
         return str(amount)
 
@@ -2010,7 +2010,7 @@ async def calc_cancel_amount(message: Message, state: FSMContext):
     await message.answer("❌ Отмена", reply_markup=main_keyboard)
 
 def format_crypto(amount: float, precision: int = 8) -> str:
-    return f"{float(amount):.{precision}f}".rstrip("0").rstrip(".")
+    return f"{float(str(amount).replace(",", ".").replace(" ", "")):.{precision}f}".rstrip("0").rstrip(".")
 
 @dp.message(CalculatorState.enter_rub_amount)
 async def calc_process_amount(message: Message, state: FSMContext):

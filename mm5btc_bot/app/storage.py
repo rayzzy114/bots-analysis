@@ -69,7 +69,7 @@ class SettingsStore:
 
     def set_fee(self, value: float) -> None:
         data = self.store.read()
-        data["fee_percent"] = float(value)
+        data["fee_percent"] = float(str(value).replace(",", ".").replace(" ", ""))
         self.store.write(data)
 
     def set_deposit_address(self, wallet: str) -> None:
