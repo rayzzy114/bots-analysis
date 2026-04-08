@@ -1,5 +1,5 @@
-from aiogram import Router, F
-from aiogram.types import Message, CallbackQuery
+from aiogram import F, Router
+from aiogram.types import CallbackQuery, Message
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 router = Router()
@@ -23,7 +23,7 @@ async def cabinet(message: Message, edit: bool = False):
             "Выведено за все время: 0 руб.\n\n" \
             f"Реферальная ссылка: https://t.me/{bot_info.username}?start={message.from_user.id}\n" \
             "========================"
-    
+
     if edit:
         await message.edit_text(msg, reply_markup=kb.as_markup())
     else:

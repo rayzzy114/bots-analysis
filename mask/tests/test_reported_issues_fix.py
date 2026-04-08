@@ -1,16 +1,22 @@
-import pytest
-from unittest.mock import AsyncMock, MagicMock
 from pathlib import Path
-from aiogram.types import CallbackQuery, Message, User
-from aiogram.enums import ParseMode
+from unittest.mock import AsyncMock, MagicMock
 
-from app.runtime import FlowRuntime, UserSession
+import pytest
+from aiogram.enums import ParseMode
+from aiogram.types import CallbackQuery, Message, User
+
 from app.catalog import FlowCatalog
+from app.constants import DEFAULT_LINKS, PAYMENT_PROOF_PROMPT, PAYMENT_PROOF_SENT
 from app.context import AppContext
-from app.constants import PAYMENT_PROOF_PROMPT, PAYMENT_PROOF_SENT
-from app.storage import SettingsStore, UsersStore, OrdersStore, SessionsStore, MediaStore
 from app.rates import RateService
-from app.constants import DEFAULT_LINKS
+from app.runtime import FlowRuntime, UserSession
+from app.storage import (
+    MediaStore,
+    OrdersStore,
+    SessionsStore,
+    SettingsStore,
+    UsersStore,
+)
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 RAW_DIR = PROJECT_DIR / "data" / "raw"
@@ -32,26 +38,26 @@ def runtime_ctx(tmp_path):
 @pytest.mark.asyncio
 async def test_fix_back_button_after_global_jump(runtime_ctx):
     runtime, catalog = runtime_ctx
-    
+
     # State A -> State B
     state_a = "state_a"
     state_b = "state_b"
     session = UserSession(state_id=state_b, history=[catalog.start_state_id, state_a, state_b])
     runtime.sessions[999] = session
-    
+
     # Global jump
     global_text = next(iter(runtime.global_actions.keys()))
     global_target = runtime.global_actions[global_text]
-    
+
     msg = MagicMock(spec=Message)
     msg.from_user = User(id=999, is_bot=False, first_name="Tester")
     msg.text = global_text
     runtime._send_state_by_id = AsyncMock()
-    
+
     await runtime.on_message(msg)
     assert session.state_id == global_target
     assert state_b in session.history
-    
+
     # Back (reset anti-spam)
     session.last_action_ts = 0
     msg.text = "🔙 Назад"
@@ -77,45 +83,45 @@ async def test_start_forces_live_rate_refresh(runtime_ctx):
 @pytest.mark.asyncio
 async def test_fix_validation_for_invalid_amount(runtime_ctx):
     runtime, catalog = runtime_ctx
-    
+
     # Find a state that looks for amount
-    amount_state_id = "4638c2dc946f913813ff1d81427e5703" 
+    amount_state_id = "4638c2dc946f913813ff1d81427e5703"
     if amount_state_id not in catalog.states:
         pytest.skip("BTC amount state not found")
-        
+
     session = UserSession(state_id=amount_state_id, history=[catalog.start_state_id, amount_state_id])
     runtime.sessions[999] = session
-    
+
     msg = MagicMock(spec=Message)
     msg.from_user = User(id=999, is_bot=False, first_name="Tester")
     msg.text = "хуй"
     msg.answer = AsyncMock()
     runtime._send_state_by_id = AsyncMock()
-    
+
     await runtime.on_message(msg)
-    
+
     # Should stay in current state or go to error state, NOT move forward
     assert session.state_id == amount_state_id or "некорректный" in runtime._state_text(session.state_id).lower()
 
 @pytest.mark.asyncio
 async def test_fix_verification_flag_in_on_message(runtime_ctx):
     runtime, catalog = runtime_ctx
-    
+
     session = UserSession(state_id=catalog.start_state_id, history=[catalog.start_state_id])
     runtime.sessions[999] = session
-    
+
     msg = MagicMock(spec=Message)
     msg.from_user = User(id=999, is_bot=False, first_name="Tester")
     msg.text = "✅ Я оплатил"
     msg.answer = AsyncMock()
-    
+
     await runtime.on_message(msg)
     assert session.awaiting_payment_proof is True
 
 @pytest.mark.asyncio
 async def test_fix_usdt_trc20_address_validation(runtime_ctx):
     runtime, catalog = runtime_ctx
-    
+
     # State that mentions USDT and TRX/TRC20
     # Let's find one
     usdt_state_id = None
@@ -124,22 +130,22 @@ async def test_fix_usdt_trc20_address_validation(runtime_ctx):
         if "USDT" in t and ("TRX" in t or "TRC20" in t) and catalog.state_accepts_input(sid):
             usdt_state_id = sid
             break
-            
+
     if not usdt_state_id:
         pytest.skip("USDT TRC20 state not found")
-        
+
     session = UserSession(state_id=usdt_state_id, history=[catalog.start_state_id, usdt_state_id])
     runtime.sessions[999] = session
-    
+
     msg = MagicMock(spec=Message)
     msg.from_user = User(id=999, is_bot=False, first_name="Tester")
-    
+
     # Invalid address (too short)
     msg.text = "T123"
     runtime._send_state_by_id = AsyncMock()
     await runtime.on_message(msg)
     assert session.state_id == usdt_state_id or "некорректный" in runtime._state_text(session.state_id).lower()
-    
+
     # Valid TRX address
     msg.text = "TXSpvkp9idPHzoG9nd2CwSxc8Z5SskKZ8C"
     await runtime.on_message(msg)

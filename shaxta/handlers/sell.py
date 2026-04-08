@@ -161,6 +161,7 @@ async def process_payment_details(message: types.Message, state: FSMContext):
         crypto_amount = data["crypto_amount"]
         rub_amount = data["rub_amount"]
         rate = data["rate"]
+        commission = data.get("commission_snapshot", 0.0)
 
         await state.update_data(payment_details=payment_details)
 
@@ -171,6 +172,7 @@ async def process_payment_details(message: types.Message, state: FSMContext):
             f"💎 Вы продаете: <b>{crypto_amount:.8f} {currency}</b>\n"
             f"💵 Вы получите: <b>{rub_amount:,.2f} RUB</b>\n"
             f"📊 Курс: <b>1 {currency} = {rate:,.2f} RUB</b>\n"
+            f"📊 Комиссия: <b>{commission:.2f}%</b> (включена в курс)\n"
             f"🏦 Реквизиты: {payment_details}\n\n"
             "Для завершения обмена:\n\n"
             f"Переведите: <b>{crypto_amount:.8f} {currency}</b>\n"

@@ -153,11 +153,16 @@ def build_admin_router(ctx: AppContext) -> Router:
         if user_id is None or not ctx.is_admin(user_id):
             await message.answer("Доступ запрещен.")
             return
-        value = parse_amount(message.text or "")
-        if value is None or value < 0 or value > 50:
-            await message.answer("Введите корректную комиссию в диапазоне 0..50")
+        parsed = parse_amount(message.text or "")
+        if parsed is None or parsed.value < 0 or parsed.value > 50:
+            await message.answer("⚠️ Введите корректную комиссию в диапазоне 0..50 %")
             return
+
+        value = parsed.value
         await persist_env_value("DEFAULT_COMMISSION_PERCENT", str(value))
+        # Update current settings object too
+        ctx.settings.set_commission(value)
+
         data = await state.get_data()
         await state.clear()
         if data.get("admin_return_to") == "requisites":

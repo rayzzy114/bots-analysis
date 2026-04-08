@@ -1,17 +1,18 @@
 from __future__ import annotations
 
-from html import escape
 import re
+from html import escape
 from urllib.parse import urlsplit
 
 from aiogram import F, Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 
-from ..context import AppContext
-from ..keyboards import kb_admin_panel, kb_admin_links
-from ..states import AdminState
 from utils.env_writer import update_env_var
+
+from ..context import AppContext
+from ..keyboards import kb_admin_links, kb_admin_panel
+from ..states import AdminState
 from ..validation import is_valid_btc_address
 
 

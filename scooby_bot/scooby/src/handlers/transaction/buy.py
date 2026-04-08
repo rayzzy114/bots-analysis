@@ -1,17 +1,27 @@
-import uuid
 import asyncio
+import uuid
 from datetime import datetime, timedelta
-from aiogram import Router, F
+
+from aiogram import F, Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
-from src.handlers.transaction import LTC_RUB_BUY, BTC_RUB_BUY, XMR_RUB_BUY
-from src.keyboards.transaction import buy_button, buy_button_operation, button_buy_back, home_button, priority_button, vip_payment_button, order_buttons
+
+from cfg.base import COMMISSION_PERCENT
+from src.handlers.transaction import BTC_RUB_BUY, LTC_RUB_BUY, XMR_RUB_BUY
+from src.keyboards.transaction import (
+    button_buy_back,
+    buy_button,
+    buy_button_operation,
+    home_button,
+    order_buttons,
+    priority_button,
+    vip_payment_button,
+)
 from src.states.transaction import BuyCryptoState
 from src.texts.transaction import TransactionTexts
 from src.utils.group import send_message_to_channel
 from src.utils.manager import manager
 from src.utils.orders import create_order
-from cfg.base import COMMISSION_PERCENT
 
 buy_router = Router()
 texts = TransactionTexts()
@@ -121,7 +131,7 @@ async def process_entered_value(message: Message, state: FSMContext):
         await state.set_state(BuyCryptoState.cosh)
         await manager.set_message(message.chat.id, new_message)
 
-  
+
     except ValueError:
         error_text = texts.get("error_buy")
         if payment_method == "rub":
@@ -139,7 +149,7 @@ async def process_wallet(message: Message, state: FSMContext):
     data = await state.get_data()
 
     wallet = message.text.strip()
-    
+
     if not wallet:
         await message.answer("❌ Кошелёк не может быть пустым. Повторите ввод.")
         return
@@ -149,15 +159,15 @@ async def process_wallet(message: Message, state: FSMContext):
     rub_base = data.get("total_sum")  # рубли без VIP
     vip_fee = 300
     vip_sum = rub_base + vip_fee
-    
-    
+
+
     # Считаем реальные суммы к оплате (с комиссией 30%)
     normal_with_fee = int(rub_base * (1 + COMMISSION_PERCENT / 100))
     vip_with_fee = normal_with_fee + 300
 
     new_message = await message.answer(
-        texts.get("buy_success_upload_rub", 
-                 cosh=wallet, 
+        texts.get("buy_success_upload_rub",
+                 cosh=wallet,
                  total_sum=rub_base,
                  vip_sum=vip_sum,
                  vip_fee=vip_fee,
@@ -174,15 +184,15 @@ async def process_wallet(message: Message, state: FSMContext):
 async def callback_priority_vip(callback: CallbackQuery, state: FSMContext):
     await manager.delete_message(callback.message.chat.id)
     data = await state.get_data()
-    
+
     rub_base = data.get("total_sum")              # рубли без VIP и без комиссии
     crypto_amount = data.get("crypto_amount")
     wallet = data.get("cosh")
     currency = data.get("currency").upper()
-    
+
     # Сначала считаем обычную сумму с комиссией 30%
     normal_with_fee = int(rub_base * (1 + COMMISSION_PERCENT / 100))
-    
+
     # VIP: +300 рублей к уже посчитанной сумме с комиссией
     vip_price = normal_with_fee + 300
 
@@ -201,7 +211,7 @@ async def callback_priority_vip(callback: CallbackQuery, state: FSMContext):
 
     # Сохраняем в state реальную сумму, которую пользователь заплатит
     await state.update_data(priority="vip", final_payment=vip_price)
-    
+
     new_message = await callback.message.answer(vip_text, reply_markup=vip_payment_button())
     await manager.set_message(callback.message.chat.id, new_message)
 
@@ -209,15 +219,15 @@ async def callback_priority_vip(callback: CallbackQuery, state: FSMContext):
 async def callback_priority_normal(callback: CallbackQuery, state: FSMContext):
     await manager.delete_message(callback.message.chat.id)
     data = await state.get_data()
-    
+
     rub_base = data.get("total_sum")              # рубли без VIP
     crypto_amount = data.get("crypto_amount")     # правильное количество монет
     wallet = data.get("cosh")
     currency = data.get("currency").upper()
-    
+
     final_sum = rub_base  # без доплаты
     normal_with_fee = int(final_sum * (1 + COMMISSION_PERCENT / 100))
-    
+
     normal_text = f"""🍀 Обычный приоритет 🍀
 💵 Сумма сделки: {normal_with_fee} рублей
 🔘 Количество монет к покупки: {crypto_amount:.8f} {currency}
@@ -227,9 +237,9 @@ async def callback_priority_normal(callback: CallbackQuery, state: FSMContext):
 
 ⏳ Время отправки транзакции 15 минут
 🪄 Создайте заявку или примените скидки"""
-    
+
     await state.update_data(priority="normal", final_sum=final_sum)
-    
+
     new_message = await callback.message.answer(
         normal_text,
         reply_markup=vip_payment_button()
@@ -241,33 +251,33 @@ async def callback_priority_normal(callback: CallbackQuery, state: FSMContext):
 async def callback_payment_method(callback: CallbackQuery, state: FSMContext) -> None:
     await callback.answer()
     payment_method_callback = callback.data
-    
+
     loading_message = await callback.message.answer("⏳ Формируем заявку, это займет пару секунд...")
     await asyncio.sleep(3)
     await loading_message.delete()
-    
+
     data = await state.get_data()
-    
+
     rub_base = data.get("total_sum")            # всегда рубли без VIP (int)
     crypto_amount = data.get("crypto_amount")   # всегда количество крипты (float)
     currency = data.get("currency")
     payment_method_type = data.get("payment_method")  # "rub" или "crypto"
     cosh = data.get("cosh")
     priority = data.get("priority", "normal")
-    
+
     # Финальная сумма с VIP
     base_with_fee = int(rub_base * (1 + COMMISSION_PERCENT / 100))
     final_sum_with_fee = base_with_fee + 300 if priority == "vip" else base_with_fee
-    
-    
+
+
     # Определяем unit для отображения
     unit = "RUB" if payment_method_type == "rub" else currency.upper()
     currency_display = currency.upper()
-    
+
     order_id = str(uuid.uuid4())
     expires_at = datetime.now() + timedelta(minutes=60)
     expires_str = expires_at.strftime("%H:%M %d.%m")
-    
+
     order_text = f"""📜 Заявка {order_id}
 ⏰ Заявка действует до {expires_str} по МСК (60 мин)
 
@@ -278,11 +288,11 @@ async def callback_payment_method(callback: CallbackQuery, state: FSMContext) ->
 ⏳ В порядке очереди к вашей заявке будет назначен оператор
 ✉️ Как только это произойдет — вы получите сообщение от него прямо в боте.
 💬 При необходимости вы можете написать оператору прямо здесь, в боте."""
-    
+
     await manager.delete_message(callback.message.chat.id)
     new_message = await callback.message.answer(order_text, reply_markup=order_buttons(order_id))
     await manager.set_message(callback.message.chat.id, new_message)
-    
+
     # Сохраняем в ордер уже с комиссией
     create_order(order_id, callback.message.chat.id, {
         "currency": currency,
@@ -294,7 +304,7 @@ async def callback_payment_method(callback: CallbackQuery, state: FSMContext) ->
         "payment_method": payment_method_callback,
         "wallet": cosh
     })
-    
+
     await send_message_to_channel(
         bot=callback.bot,
         data={
@@ -304,17 +314,17 @@ async def callback_payment_method(callback: CallbackQuery, state: FSMContext) ->
             "value_crypto": crypto_amount,
             "value_rub": rub_base,
             "unit": unit,
-            "priority": priority,  
+            "priority": priority,
             "order_id": order_id,
             "payment_method": payment_method_callback,
             "wallet": cosh
         }
     )
-    
+
     await state.clear()
-    
+
     await asyncio.sleep(2)
-    
+
     await callback.message.answer(
         "Здравствуйте! 👋\n"
         "Мы уже подготавливаем реквизиты для вашей заявки.\n"

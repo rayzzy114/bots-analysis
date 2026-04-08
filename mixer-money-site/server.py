@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import secrets
 import threading
 import time
@@ -21,16 +22,19 @@ SRC_DIR = ROOT_DIR / "src"
 DATA_DIR = ROOT_DIR / "data"
 CONFIG_PATH = DATA_DIR / "site-config.json"
 
-ADMIN_USERNAME = "admin"
-ADMIN_PASSWORD = "admin"
+# --- Security Configuration ---
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "admin")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin")
 SESSION_COOKIE_NAME = "mm5_admin_session"
 SESSION_TTL_SECONDS = 12 * 60 * 60
+# Set to True in production with HTTPS
+SECURE_COOKIES = os.getenv("SECURE_COOKIES", "false").lower() == "true"
 
 DEFAULT_CONFIG = {
     "feePercent": 4.5,
     "feeFixedBtc": 0.0007,
     "depositAddress": "bc1qga6mx70jx0uvfuk39eqpyyfwh9fsxzme75ckt7",
-    "qrImageSrc": "./assets/payment_qr.png",
+    "qrImageSrc": "/assets/payment_qr.png",
     "telegramBotUrl": "https://tele.click/mm5btc_bot",
     "telegramChannelUrl": "https://t.me/kitchen_crypto",
     "onionDomain": "mixermo4pgkgep3k3qr4fz7dhijavxnh6lwgu7gf5qeltpy4unjed2yd.onion",
@@ -181,7 +185,7 @@ def create_app() -> FastAPI:
             value=token,
             httponly=True,
             samesite="lax",
-            secure=False,
+            secure=SECURE_COOKIES,
             max_age=SESSION_TTL_SECONDS,
             path="/",
         )
@@ -220,13 +224,13 @@ def create_app() -> FastAPI:
         return JSONResponse(updated)
 
     @application.post("/api/upload-qr")
-    async def upload_qr(
+    def upload_qr(
         file: UploadFile = File(...),
         _auth: None = Depends(require_admin),
     ) -> JSONResponse:
         if file.content_type not in ALLOWED_IMAGE_TYPES:
             raise HTTPException(400, detail="Only PNG, JPEG, and WebP images are allowed.")
-        data = await file.read()
+        data = file.file.read()
         if len(data) > MAX_QR_SIZE:
             raise HTTPException(400, detail="Image too large (max 2 MB).")
         uploads_dir = SRC_DIR / "assets" / "uploads"
@@ -264,17 +268,24 @@ def create_app() -> FastAPI:
     def _serve_lang_page(lang: str, page_slug: str):
         slug = page_slug.strip("/")
 
+        # Avoid recursion or soft-404 on assets
         if "." in slug.split("/")[-1]:
-            return RedirectResponse(url=f"/{slug}", status_code=301)
+            # If it looks like a file, it should be in StaticFiles mount
+            # but if it reached here, it's not found there.
+            raise HTTPException(status_code=404, detail="File Not Found")
 
-        html_file = PAGE_MAP.get(slug, "index.html")
+        # Check if the page is known
+        if slug not in PAGE_MAP:
+             raise HTTPException(status_code=404, detail="Page Not Found")
+
+        html_file = PAGE_MAP[slug]
 
         lang_path = SRC_DIR / lang / html_file
         root_path = SRC_DIR / html_file
 
         file_path = lang_path if lang_path.exists() else root_path
         if not file_path.exists():
-            raise HTTPException(status_code=404, detail="Not Found")
+            raise HTTPException(status_code=404, detail="HTML File Not Found")
 
         return FileResponse(file_path, media_type="text/html")
 

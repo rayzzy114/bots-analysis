@@ -1,6 +1,6 @@
 import re
 
-with open("app/overrides.py", "r", encoding="utf-8") as f:
+with open("app/overrides.py", encoding="utf-8") as f:
     content = f.read()
 
 new_parse_money = """def _parse_money_value(token: str) -> float | None:

@@ -1,7 +1,8 @@
-from aiogram import Router, types, F
+from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
 
 from handlers.start import send_start
+
 #from db.user import is_user_banned
 
 router = Router()
@@ -12,7 +13,7 @@ async def back_handler(callback: types.CallbackQuery, state: FSMContext):
     if not isinstance(message, types.Message):
         await callback.answer()
         return
-    
+
     await callback.answer()
     await state.clear()
     await send_start(message, edit=True)
@@ -23,7 +24,7 @@ async def menu_handler(callback: types.CallbackQuery, state: FSMContext):
     if not isinstance(message, types.Message):
         await callback.answer()
         return
-    
+
     await callback.answer()
     await state.clear()
     await send_start(message, edit=False)

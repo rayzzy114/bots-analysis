@@ -1,4 +1,4 @@
-with open("app/overrides.py", "r", encoding="utf-8") as f:
+with open("app/overrides.py", encoding="utf-8") as f:
     lines = f.readlines()
 
 new_lines = []

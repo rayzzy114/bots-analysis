@@ -1,5 +1,5 @@
 import re
-from typing import Iterable
+from collections.abc import Iterable
 
 
 def _parse_float(raw: str) -> float | None:

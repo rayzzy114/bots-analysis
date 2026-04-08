@@ -830,8 +830,8 @@ async def process_amount(message: Message, state: FSMContext):
             amount_str = user_input.replace("BTC", "").replace("LTC", "").strip()
             crypto_amount_net = float(amount_str)
 
-            # Сколько нужно отправить "грязными" (до вычета комиссии)
-            crypto_amount_gross = crypto_amount_net / (1 - commission_percent)
+            # Сколько нужно отправить "грязными" (с учетом комиссии)
+            crypto_amount_gross = crypto_amount_net * (1 + commission_percent)
 
             # Сумма к оплате (увеличенная)
             rub_amount = crypto_amount_gross * rate
@@ -843,7 +843,7 @@ async def process_amount(message: Message, state: FSMContext):
             rub_amount_net = float(user_input)
 
             # Сколько нужно заплатить с комиссией
-            rub_amount = rub_amount_net / (1 - commission_percent)
+            rub_amount = rub_amount_net * (1 + commission_percent)
 
             # Сколько крипты получится чистыми
             crypto_amount_net = rub_amount_net / rate
@@ -853,7 +853,7 @@ async def process_amount(message: Message, state: FSMContext):
         # Проверка минимальной суммы (по сумме к оплате)
         if rub_amount < 1500:
             min_rub = 1500
-            min_crypto_net = (min_rub * (1 - commission_percent)) / rate
+            min_crypto_net = min_rub / (rate * (1 + commission_percent))
             await message.answer(
                 f"❌ Минимальная сумма к оплате: {format_rub(min_rub)} ₽\n"
                 f"(Вы получите ~{format_crypto(min_crypto_net)} {currency})\n"

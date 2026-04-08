@@ -1,22 +1,17 @@
 import asyncio
-
 import logging
-
+import pathlib
 import sys
-
-from datetime import datetime, timedelta, timezone
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from datetime import datetime, timezone, timedelta
+UTC = timezone.utc
 
 from aiogram import Bot, Dispatcher
-
-from sqlalchemy import select
-
-from sqlalchemy.orm import selectinload
-
 from core.config import Config
-
-from core.database import init_db, async_session
-
+from core.database import async_session, init_db
 from core.models import Order, OrderStatus
+from sqlalchemy import select
+from sqlalchemy.orm import selectinload
 
 from bot.middlewares import DbSessionMiddleware
 
@@ -32,7 +27,7 @@ async def auto_cancel_orders(bot: Bot):
             async with async_session() as session:
 
 
-                timeout_threshold = datetime.now(timezone.utc) - timedelta(minutes=15)
+                timeout_threshold = datetime.now(UTC) - timedelta(minutes=15)
 
                 query = select(Order).options(selectinload(Order.user)).where(
 
@@ -99,7 +94,7 @@ async def auto_cancel_orders(bot: Bot):
             logging.error(f"Error in auto_cancel_orders: {e}")
 
 
-        await asyncio.sleep(60)                     
+        await asyncio.sleep(60)
 
 
 async def main():
@@ -135,7 +130,7 @@ async def main():
 
 
 
-    from bot.handlers import start, mixer, exchange, info, settings, admin, profile
+    from bot.handlers import admin, exchange, info, mixer, profile, settings, start
 
     dp.include_router(admin.router)
 

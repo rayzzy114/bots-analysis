@@ -1,5 +1,7 @@
 from aiogram import Router
-from handlers import back, start, buy, partner, promo, my_orders, rules, work, admin
+
+from handlers import admin, back, buy, my_orders, partner, promo, rules, start, work
+
 
 def get_routers() -> list[Router]:
     return [

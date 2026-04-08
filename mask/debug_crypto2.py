@@ -1,5 +1,7 @@
 import hashlib
+
 from app.utils import base58_decode
+
 
 def validate_base58_checksum(address: str) -> bool:
     try:

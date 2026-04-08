@@ -8,8 +8,8 @@ from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import FSInputFile, Message
 
-from config import ADMIN_CHAT_ID, MANAGER_NAMES, PROJECT_DIR
 from admin_kit.utils import sanitize_html_fragment
+from config import ADMIN_CHAT_ID, MANAGER_NAMES, PROJECT_DIR
 from keyboards import kb_source_choice, kb_welcome
 from states import ClientState
 from texts import get_text

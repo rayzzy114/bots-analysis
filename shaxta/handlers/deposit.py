@@ -1,8 +1,9 @@
-from aiogram import Router, types, F
-from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.fsm.context import FSMContext
 import random
 import string
+
+from aiogram import F, Router, types
+from aiogram.fsm.context import FSMContext
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 router = Router()
 
@@ -12,19 +13,19 @@ def generate_crypto_address(currency):
         "LTC": ["L", "M", "ltc1"],
         "USDT": ["T"]
     }
-    
+
     lengths = {
         "BTC": random.randint(26, 35),
         "LTC": random.randint(26, 34),
         "USDT": 34
     }
-    
+
     prefix = random.choice(prefixes.get(currency, ["1"]))
     address_length = lengths.get(currency, 34) - len(prefix)
-    
+
     chars = string.ascii_letters + string.digits
     random_part = ''.join(random.choice(chars) for _ in range(address_length))
-    
+
     return prefix + random_part
 
 @router.callback_query(F.data == "deposit")
@@ -45,7 +46,7 @@ async def deposit_handler(callback: types.CallbackQuery):
             text,
             reply_markup=kb.as_markup()
         )
-    
+
         await callback.answer()
     except Exception as e:
         await callback.answer()
@@ -60,7 +61,7 @@ async def specific_deposit_handler(callback: types.CallbackQuery, state: FSMCont
 
         min_amounts = {
             "BTC": "0.0005",
-            "LTC": "0.01", 
+            "LTC": "0.01",
             "USDT": "10"
         }
         min_amount = min_amounts.get(currency, "0.001")
@@ -84,7 +85,7 @@ async def specific_deposit_handler(callback: types.CallbackQuery, state: FSMCont
             text,
             reply_markup=kb.as_markup()
         )
-    
+
         await callback.answer()
     except Exception as e:
         await callback.answer()
@@ -94,13 +95,13 @@ async def specific_deposit_handler(callback: types.CallbackQuery, state: FSMCont
 async def generate_new_address_handler(callback: types.CallbackQuery, state: FSMContext):
     try:
         await callback.message.delete()
-        
+
         currency = callback.data.split("_")[-1].upper()
-        
+
         new_address = generate_crypto_address(currency)
-        
+
         await state.update_data(current_address=new_address, currency=currency)
-        
+
         min_amounts = {
             "BTC": "0.0005",
             "LTC": "0.01",
@@ -123,7 +124,7 @@ async def generate_new_address_handler(callback: types.CallbackQuery, state: FSM
             text,
             reply_markup=kb.as_markup()
         )
-    
+
         await callback.answer()
     except Exception as e:
         await callback.answer()

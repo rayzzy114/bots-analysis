@@ -1,3 +1,4 @@
+import re
 import json
 import random
 import time
@@ -60,6 +61,8 @@ class OrderData(TypedDict):
 
 
 class SettingsStore:
+    min_rub: int = 1000
+    max_rub: int = 150000
     def __init__(self, path: Path, default_commission: float, env_links: dict[str, str]):
         self.path = path
         self.data: SettingsData = {
@@ -201,6 +204,20 @@ class SettingsStore:
     def set_link(self, key: str, value: str) -> None:
         self.data["links"][key] = value
         self.save()
+
+    def link_username(self, key: str) -> str:
+        link = self.link(key)
+        if not link:
+            return ""
+        return link.lstrip("@").split("/").pop().strip()
+
+    def process_text(self, text: str) -> str:
+        return re.sub(r"{(\w+)}", lambda m: self.data["links"].get(m.group(1), "Администратор"), text)
+
+    def _old_process_text(self, text: str) -> str:
+        for key, value in self.data["links"].items():
+            text = text.replace(f"{{{key}}}", value)
+        return text
 
     @property
     def requisites_mode(self) -> Literal["single", "split"]:

@@ -8,7 +8,6 @@ logger = logging.getLogger(__name__)
 
 from .constants import FALLBACK_RATES
 
-
 FALLBACK_RATES_RUB: dict[str, float] = {
     "btc": 8_500_000.0,
     "eth": 300_000.0,
@@ -19,45 +18,53 @@ FALLBACK_RATES_RUB: dict[str, float] = {
 
 
 class RateService:
-    def __init__(self, ttl_seconds: int = 30):
+    def __init__(self, ttl_seconds: int = 30, client: httpx.AsyncClient | None = None):
         self.ttl_seconds = ttl_seconds
+        self._client = client
         self._cached_rates: dict[str, float] = dict(FALLBACK_RATES)
         self._cached_rates_rub: dict[str, float] = dict(FALLBACK_RATES_RUB)
         self._last_fetch_ts = 0.0
 
     async def _fetch_coingecko(self) -> tuple[dict[str, float], dict[str, float]] | None:
         timeout = httpx.Timeout(8.0, connect=4.0)
+        if self._client:
+            return await self._do_fetch(self._client)
+
         async with httpx.AsyncClient(timeout=timeout) as client:
+            return await self._do_fetch(client)
+
+    async def _do_fetch(self, client: httpx.AsyncClient) -> tuple[dict[str, float], dict[str, float]] | None:
+        try:
             response = await client.get(
                 "https://api.coingecko.com/api/v3/simple/price",
                 params={
                     "ids": "bitcoin,ethereum,litecoin,monero,tether",
                     "vs_currencies": "usd,rub",
                 },
+                timeout=httpx.Timeout(8.0, connect=4.0)
             )
             if response.status_code != 200:
                 return None
             payload: Any = response.json()
             if not isinstance(payload, dict):
                 return None
-            try:
-                usd = {
-                    "btc": float(payload["bitcoin"]["usd"]),
-                    "eth": float(payload["ethereum"]["usd"]),
-                    "ltc": float(payload["litecoin"]["usd"]),
-                    "xmr": float(payload["monero"]["usd"]),
-                    "usdt": float(payload["tether"]["usd"]),
-                }
-                rub = {
-                    "btc": float(payload["bitcoin"]["rub"]),
-                    "eth": float(payload["ethereum"]["rub"]),
-                    "ltc": float(payload["litecoin"]["rub"]),
-                    "xmr": float(payload["monero"]["rub"]),
-                    "usdt": float(payload["tether"]["rub"]),
-                }
-                return usd, rub
-            except Exception:
-                return None
+            usd = {
+                "btc": float(payload["bitcoin"]["usd"]),
+                "eth": float(payload["ethereum"]["usd"]),
+                "ltc": float(payload["litecoin"]["usd"]),
+                "xmr": float(payload["monero"]["usd"]),
+                "usdt": float(payload["tether"]["usd"]),
+            }
+            rub = {
+                "btc": float(payload["bitcoin"]["rub"]),
+                "eth": float(payload["ethereum"]["rub"]),
+                "ltc": float(payload["litecoin"]["rub"]),
+                "xmr": float(payload["monero"]["rub"]),
+                "usdt": float(payload["tether"]["rub"]),
+            }
+            return usd, rub
+        except Exception:
+            return None
 
     async def fetch_rates(self) -> dict[str, float]:
         result = await self._fetch_coingecko()

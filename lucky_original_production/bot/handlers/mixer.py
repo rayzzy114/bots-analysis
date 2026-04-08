@@ -76,10 +76,13 @@ async def process_mixer_give(callback: CallbackQuery, state: FSMContext):
 
 @router.message(MixerSG.entering_amount)
 async def process_mixer_amount(message: Message, state: FSMContext):
-    if not message.text: return
+    if not message.text:
+
+        return
     try:
         amount = float(message.text.replace(",", ".").replace(" ", ""))
-        if amount <= 0: raise ValueError
+        if amount <= 0:
+            raise ValueError
         await state.update_data(amount=amount)
         await message.answer(f"✅ Сумма <b>{amount}</b> принята.\n\nТеперь введите <b>адрес кошелька</b>, на который вы хотите получить чистые монеты:", parse_mode="HTML")
         await state.set_state(MixerSG.entering_address)
@@ -88,7 +91,9 @@ async def process_mixer_amount(message: Message, state: FSMContext):
 
 @router.message(MixerSG.entering_address)
 async def process_mixer_address(message: Message, state: FSMContext):
-    if not message.text: return
+    if not message.text:
+
+        return
     address = message.text.strip()
     
     # Базовая валидация адреса

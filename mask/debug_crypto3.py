@@ -1,5 +1,7 @@
 import hashlib
+
 from app.utils import base58_decode
+
 
 def is_valid_crypto_address(address: str, symbol: str) -> bool:
     """Enhanced address validation with checksums."""

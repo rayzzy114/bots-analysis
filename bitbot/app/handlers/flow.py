@@ -21,7 +21,7 @@ from ..keyboards import (
 )
 from ..states import UserState
 from ..telegram_helpers import answer_with_retry, message_user_id
-from ..utils import fmt_coin, parse_amount
+from ..utils import fmt_coin, fmt_money, parse_amount
 
 
 def build_flow_router(ctx: AppContext) -> Router:
@@ -144,18 +144,38 @@ def build_flow_router(ctx: AppContext) -> Router:
 
     @router.message(UserState.waiting_calc_amount)
     async def calc_amount(message: Message, state: FSMContext) -> None:
-        amount = parse_amount(message.text or "")
-        if amount is None:
-            await message.answer("Введите корректную сумму.")
+        parsed = parse_amount(message.text or "")
+        if parsed is None:
+            await message.answer("⚠️ Введите корректную сумму (например: 1000 или 0.01 btc).")
             return
+        amount = parsed.value
         data = await state.get_data()
         coin = str(data.get("calc_coin", "xmr"))
         rates = await ctx.rates.get_rates()
         rate = rates.get(coin, 1.0)
-        coin_amount = amount / max(rate, 0.0000001)
+
+        # If input was in coin, calculate RUB. If in RUB (or unknown), calculate coin.
+        is_coin_input = False
+        if parsed.currency == "RUB":
+            is_coin_input = False
+        elif parsed.currency in (coin.upper(), "BTC", "LTC", "ETH", "XMR", "TRX", "USDT"):
+            is_coin_input = True
+        else:
+            # Guess: if amount < 5, assume coin
+            is_coin_input = amount < 5
+
+        if is_coin_input:
+            rub_amount = amount * rate
+            coin_amount = amount
+        else:
+            rub_amount = amount
+            coin_amount = amount / max(rate, 0.0000001)
+
         await message.answer(
-            f"<b>{int(round(amount))}</b> рублей\n"
-            f"это по курсу <b>{fmt_coin(coin_amount)} {COINS[coin]['symbol']}</b>",
+            f"💰 <b>Результат расчета:</b>\n\n"
+            f"💵 <b>{fmt_money(rub_amount)} RUB</b>\n"
+            f"🪙 <b>{fmt_coin(coin_amount)} {COINS[coin]['symbol']}</b>\n\n"
+            f"📊 Курс: 1 {COINS[coin]['symbol']} = {fmt_money(rate)} RUB",
             reply_markup=kb_cabinet_menu(),
         )
         await state.clear()
@@ -214,9 +234,10 @@ def build_flow_router(ctx: AppContext) -> Router:
 
     @router.message(F.text == "📱 Контакты")
     async def contacts(message: Message) -> None:
+        text = ctx.settings.process_text("⬇ Наши контакты")
         await answer_with_retry(
             message=message,
-            text="⬇ Наши контакты",
+            text=text,
             reply_markup=kb_contacts(ctx.settings.all_links()),
         )
 
@@ -230,24 +251,52 @@ def build_flow_router(ctx: AppContext) -> Router:
 
     @router.message(UserState.waiting_sell_amount)
     async def sell_amount(message: Message, state: FSMContext) -> None:
-        amount = parse_amount(message.text or "")
-        if amount is None:
-            await message.answer("Введите корректную сумму.")
+        parsed = parse_amount(message.text or "")
+        if parsed is None:
+            await message.answer("⚠️ Введите корректную сумму (например: 0.01 btc).")
             return
+
+        amount = parsed.value
         data = await state.get_data()
         coin = str(data.get("sell_coin", "btc"))
         symbol = COINS[coin]["symbol"]
         rates = await ctx.rates.get_rates()
-        rub = amount * rates.get(coin, 1.0) * 0.97
-        rub_int = int(round(rub))
+        rate = rates.get(coin, 1.0)
+
+        # Detect if input is in RUB or Coin
+        is_coin_input = True
+        if parsed.currency == "RUB":
+            is_coin_input = False
+        elif parsed.currency in (coin.upper(), "BTC", "LTC", "ETH", "XMR", "TRX", "USDT"):
+            is_coin_input = True
+        else:
+            # For selling, if amount > 5 assume RUB, else coin
+            is_coin_input = amount < 5
+
+        if is_coin_input:
+            coin_amount = amount
+            base_rub = amount * rate
+        else:
+            base_rub = amount
+            coin_amount = amount / max(rate, 0.0000001)
+
+        commission_percent = ctx.settings.commission_percent
+        # For selling, usually we pay LESS rub than the market rate, so it's minus commission
+        rub_amount = base_rub * (1 - commission_percent / 100)
+        rub_int = int(round(rub_amount))
+
         await state.update_data(
-            sell_amount_coin=amount,
+            sell_amount_coin=coin_amount,
             sell_amount_rub=rub_int,
             sell_symbol=symbol,
             sell_method="Номер карты",
         )
         await state.set_state(UserState.waiting_sell_requisites)
-        await message.answer("⚙️ Введи реквизиты для получения выплаты за продажу\n\nНомер карты:")
+        await message.answer(
+            f"💰 <b>Вы продаете:</b> {fmt_coin(coin_amount)} {symbol}\n"
+            f"💵 <b>Вы получите:</b> {fmt_money(rub_int)} RUB\n\n"
+            f"💳 Введите номер карты для получения выплаты (16 цифр):"
+        )
 
     @router.message(UserState.waiting_sell_requisites)
     async def sell_requisites(message: Message, state: FSMContext) -> None:

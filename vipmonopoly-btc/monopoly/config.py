@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -33,9 +34,11 @@ ADMIN_IDS = [int(id.strip()) for id in _get_env("ADMIN_IDS", "").split(",") if i
 def reload_env():
     """Reload all env vars into module namespace."""
     from importlib import reload
+
     import config
     reload(config)
 
 
 def is_admin(user_id: int) -> bool:
-    return user_id in ADMIN_IDS
+    from runtime_state import get_runtime_state
+    return user_id in get_runtime_state().admin_ids

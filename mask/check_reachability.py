@@ -1,9 +1,10 @@
 import json
 
+
 def main():
-    with open("data/raw/flow.json", "r", encoding="utf-8") as f:
+    with open("data/raw/flow.json", encoding="utf-8") as f:
         flow = json.load(f)
-    with open("data/raw/edges.json", "r", encoding="utf-8") as f:
+    with open("data/raw/edges.json", encoding="utf-8") as f:
         edges = json.load(f)
 
     states = set(str(k) for k in flow.keys() if isinstance(flow[k], dict))

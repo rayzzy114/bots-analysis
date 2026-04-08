@@ -1,3 +1,4 @@
+import re
 import json
 import os
 import random
@@ -88,6 +89,8 @@ def _get_str(d: dict, key: str, default: str = "") -> str:
 
 
 class SettingsStore:
+    min_rub: int = 1000
+    max_rub: int = 150000
     def __init__(self, path: Path, default_commission: float, env_links: dict[str, str]):
         self.path = path
         self.data: SettingsData = {
@@ -209,6 +212,34 @@ class SettingsStore:
 
     def link(self, key: str) -> str:
         return self.data["links"].get(key, "")
+
+    def link_username(self, key: str) -> str:
+        url = self.link(key)
+        if "t.me/" in url:
+            return "@" + url.split("t.me/")[-1].split("?")[0].strip("/")
+        return ""
+
+    def process_text(self, text: str) -> str:
+        return re.sub(r"{(\w+)}", lambda m: self.data["links"].get(m.group(1), "Администратор"), text)
+
+    def _old_process_text(self, text: str) -> str:
+        if not text:
+            return text
+
+        # Replace placeholders like {operator}, {manager}, etc.
+        for key, value in self.data["links"].items():
+            placeholder = "{" + key + "}"
+            if placeholder in text:
+                text = text.replace(placeholder, value)
+
+            # Also handle @ placeholders if we can extract username
+            username = self.link_username(key)
+            if username:
+                # If we have an @username in text, and we know what it should be for this key
+                # This is a bit vague, but let's assume {operator_at} etc.
+                text = text.replace("{" + key + "_at}", username)
+
+        return text
 
     def all_links(self) -> dict[str, str]:
         return dict(self.data["links"])
@@ -578,7 +609,7 @@ class OrdersStore:
         for oid, val in raw.items():
             if not isinstance(val, dict):
                 continue
-            
+
             status = _get_str(val, "status")
             if status not in {"pending_payment", "paid", "confirmed", "cancelled"}:
                 status = "pending_payment"

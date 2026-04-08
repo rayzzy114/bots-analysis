@@ -2,9 +2,15 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from app.storage import SettingsStore
 from app.keyboards import kb_confirm, kb_main, kb_return_to_main
-from app.texts import address_accepted, clean_prompt, main_caption, order_text, qr_caption
+from app.storage import SettingsStore
+from app.texts import (
+    address_accepted,
+    clean_prompt,
+    main_caption,
+    order_text,
+    qr_caption,
+)
 from app.validation import is_valid_btc_address
 
 

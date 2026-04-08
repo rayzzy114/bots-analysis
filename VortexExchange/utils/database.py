@@ -24,11 +24,11 @@ def load_data():
         }
         save_data(default_data)
         return default_data
-    
+
     try:
-        with open(DB_FILE, 'r', encoding='utf-8') as f:
+        with open(DB_FILE, encoding='utf-8') as f:
             return json.load(f)
-    except:
+    except Exception:
         return {}
 
 def save_data(data):
@@ -59,7 +59,7 @@ def update_bank_detail(bank_type, new_details):
     data = load_data()
     if "BANK_DETAILS" not in data:
         data["BANK_DETAILS"] = {}
-    
+
     if bank_type in data["BANK_DETAILS"]:
         data["BANK_DETAILS"][bank_type]["details"] = new_details
         save_data(data)

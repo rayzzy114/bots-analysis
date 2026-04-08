@@ -1,6 +1,6 @@
 import re
 
-with open("app/catalog.py", "r", encoding="utf-8") as f:
+with open("app/catalog.py", encoding="utf-8") as f:
     content = f.read()
 
 new_hints = """OPERATOR_HINTS = (

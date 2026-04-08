@@ -76,7 +76,7 @@ class FlowCatalog:
     default_operator_url: str
 
     @classmethod
-    def from_directory(cls, raw_dir: Path, media_dir: Path) -> "FlowCatalog":
+    def from_directory(cls, raw_dir: Path, media_dir: Path) -> FlowCatalog:
         flow = _load_json(raw_dir / "flow.json")
         edges = _load_json(raw_dir / "edges.json")
         events = _load_json(raw_dir / "events.json")

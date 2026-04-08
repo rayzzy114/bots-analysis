@@ -2,6 +2,7 @@ from pathlib import Path
 
 from aiogram.types import FSInputFile, Message
 
+
 def asset_path(assets_dir: Path, name: str) -> Path:
     return assets_dir / name
 

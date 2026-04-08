@@ -84,7 +84,10 @@ async def cmd_admin(message: Message, state: FSMContext, session: AsyncSession):
 
 async def back_to_admin(callback: CallbackQuery, state: FSMContext, session: AsyncSession):
 
-    if not await is_admin(session, callback.from_user.id): return
+    if not await is_admin(session, callback.from_user.id):
+
+
+        return
 
     await state.clear()
 
@@ -241,7 +244,7 @@ async def admin_confirm_order(callback: CallbackQuery, session: AsyncSession, bo
 
             await bot.send_message(user.telegram_id, f"✅ <b>Ваша заявка #{order.id} выполнена!</b>\nСредства отправлены на ваши реквизиты.", parse_mode="HTML")
 
-        except:
+        except Exception:
 
             pass
 
@@ -282,7 +285,7 @@ async def admin_cancel_order(callback: CallbackQuery, session: AsyncSession, bot
 
             await bot.send_message(user.telegram_id, f"❌ <b>Ваша заявка #{order.id} отменена администратором.</b>", parse_mode="HTML")
 
-        except:
+        except Exception:
 
             pass
 

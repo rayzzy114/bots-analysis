@@ -2,9 +2,10 @@
 Tests for donald bot - CoinGecko integration and commission config
 CRITICAL: These tests verify that hardcoded values were replaced with dynamic config
 """
-import pytest
 import os
 import sys
+
+import pytest
 
 
 class TestCommissionConfig:
@@ -66,7 +67,7 @@ class TestRateFunctionsExist:
         import os
         bot_path = os.path.join(os.path.dirname(__file__), '..', 'bot.py')
 
-        with open(bot_path, 'r') as f:
+        with open(bot_path) as f:
             content = f.read()
 
         # Should have function that applies COMMISSION_BUY
@@ -78,7 +79,7 @@ class TestRateFunctionsExist:
         import os
         bot_path = os.path.join(os.path.dirname(__file__), '..', 'bot.py')
 
-        with open(bot_path, 'r') as f:
+        with open(bot_path) as f:
             content = f.read()
 
         assert 'get_sell_rate' in content, "get_sell_rate function should exist"
@@ -102,7 +103,7 @@ class TestCoinGeckoIntegration:
         import os
         bot_path = os.path.join(os.path.dirname(__file__), '..', 'bot.py')
 
-        with open(bot_path, 'r') as f:
+        with open(bot_path) as f:
             content = f.read()
 
         # Fallback rates should exist
@@ -118,7 +119,7 @@ class TestNoHardcodedCommissionMultipliers:
         import os
         bot_path = os.path.join(os.path.dirname(__file__), '..', 'bot.py')
 
-        with open(bot_path, 'r') as f:
+        with open(bot_path) as f:
             content = f.read()
 
         lines = content.split('\n')
@@ -142,7 +143,7 @@ class TestRequisitesUnchanged:
         import os
         bot_path = os.path.join(os.path.dirname(__file__), '..', 'bot.py')
 
-        with open(bot_path, 'r') as f:
+        with open(bot_path) as f:
             content = f.read()
 
         assert 'Ozon Банк' in content or '2204 3206 0905 0531' in content, \
@@ -153,7 +154,7 @@ class TestRequisitesUnchanged:
         import os
         bot_path = os.path.join(os.path.dirname(__file__), '..', 'bot.py')
 
-        with open(bot_path, 'r') as f:
+        with open(bot_path) as f:
             content = f.read()
 
         assert 'bc1q' in content, "BTC wallet should still exist"

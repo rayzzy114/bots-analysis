@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -32,9 +33,11 @@ BTC_RATE_RUB = float(_get_env("BTC_RATE_RUB", "4500000.0"))
 
 def reload_env():
     from importlib import reload
+
     import config
     reload(config)
 
 
 def is_admin(user_id: int) -> bool:
-    return user_id in ADMIN_IDS
+    from runtime_state import get_runtime_state
+    return user_id in get_runtime_state().admin_ids

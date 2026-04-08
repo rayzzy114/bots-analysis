@@ -1,5 +1,6 @@
 import json
 import random
+import re
 import string
 import time
 from pathlib import Path
@@ -63,6 +64,8 @@ class OrderData(TypedDict):
 
 
 class SettingsStore:
+    min_rub: int = 1000
+    max_rub: int = 150000
     def __init__(self, path: Path, default_commission: float, env_links: dict[str, str]):
         self.path = path
         self.data: SettingsData = {
@@ -204,6 +207,32 @@ class SettingsStore:
 
     def all_links(self) -> dict[str, str]:
         return dict(self.data["links"])
+
+    def link_username(self, key: str) -> str:
+        url = self.link(key)
+        if "t.me/" in url:
+            return "@" + url.split("t.me/")[-1].split("?")[0].strip("/")
+        return ""
+
+    def process_text(self, text: str) -> str:
+        return re.sub(r"{(\w+)}", lambda m: self.data["links"].get(m.group(1), "Администратор"), text)
+
+    def _old_process_text(self, text: str) -> str:
+        if not text:
+            return text
+
+        # Replace placeholders like {operator}, {manager}, etc.
+        for key, value in self.data["links"].items():
+            placeholder = "{" + key + "}"
+            if placeholder in text:
+                text = text.replace(placeholder, value)
+
+            # Also handle @ placeholders if we can extract username
+            username = self.link_username(key)
+            if username:
+                text = text.replace("{" + key + "_at}", username)
+
+        return text
 
     def set_link(self, key: str, value: str) -> None:
         self.data["links"][key] = value

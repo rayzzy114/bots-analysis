@@ -1,0 +1,21 @@
+{
+  "commission_percent": 20.0,
+  "links": {
+    "faq": "https://telegra.ph/Nachalo-raboty-06-18",
+    "channel": "https://t.me/infinity_ex_channel",
+    "chat": "https://t.me/+nzNlzzrwBUQ4YjRi",
+    "reviews": "https://t.me/infinity_ex_comment",
+    "review_form": "https://t.me/Infinity_exchange_bot?start=D9LmdsU0mc",
+    "manager": "https://t.me/operator_ihfinity",
+    "operator": "https://t.me/operator_ihfinity",
+    "terms": "https://telegra.ph/Polzovatelskoe-soglashenie-The-Infinity-Exchange-12-25"
+  },
+  "requisites": {
+    "mode": "single",
+    "value": "313131243234234",
+    "bank": "Сбер",
+    "payment_methods": [
+      "На карту РФ 🇷🇺"
+    ]
+  }
+}

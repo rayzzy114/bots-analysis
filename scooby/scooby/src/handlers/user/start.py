@@ -1,15 +1,41 @@
-from aiogram import Router, F
+def parse_amount(text: str) -> float | None:
+    try:
+        return float(text.replace(",", ".").replace(" ", ""))
+    except: return None
+from aiogram import F, Router
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery, FSInputFile
-from src.keyboards.user import generate_random_fruit_keyboard, main_button, contact_button, other_button, coupons_button, promotions_button, activity_button, roulette_button, calculator_button, complaint_book_button
-from src.keyboards.transaction import buy_button_operation, sale_button_operation
-from src.texts.user import UserTexts
-from src.states.transaction import CouponState, CalculatorState, BuyCryptoState, SaleCryptoState
+from aiogram.types import CallbackQuery, FSInputFile, Message
+
 from src.handlers.transaction import (
-    BTC_RUB_BUY, XMR_RUB_BUY, LTC_RUB_BUY,
-    BTC_RUB_SELL, XMR_RUB_SELL, LTC_RUB_SELL, USDT_RUB_SELL
+    BTC_RUB_BUY,
+    BTC_RUB_SELL,
+    LTC_RUB_BUY,
+    LTC_RUB_SELL,
+    USDT_RUB_SELL,
+    XMR_RUB_BUY,
+    XMR_RUB_SELL,
 )
+from src.keyboards.transaction import buy_button_operation, sale_button_operation
+from src.keyboards.user import (
+    activity_button,
+    calculator_button,
+    complaint_book_button,
+    contact_button,
+    coupons_button,
+    generate_random_fruit_keyboard,
+    main_button,
+    other_button,
+    promotions_button,
+    roulette_button,
+)
+from src.states.transaction import (
+    BuyCryptoState,
+    CalculatorState,
+    CouponState,
+    SaleCryptoState,
+)
+from src.texts.user import UserTexts
 from src.utils.manager import manager
 
 start_router = Router()
@@ -132,10 +158,10 @@ async def calculator(callback: CallbackQuery, state: FSMContext) -> None:
     await state.update_data(mode="buy", currency="btc", calc_type="crypto")
     await state.set_state(CalculatorState.value)
     await manager.delete_main_menu(callback.message.chat.id)
-    
+
     prompt_text = "✏️ Введите количество BTC для расчета:"
     calculator_text = texts.get("calculator") + f"\n\n{prompt_text}"
-    
+
     new_message = await callback.message.answer(calculator_text, reply_markup=calculator_button("buy", "btc", "crypto"))
     await manager.set_message(callback.message.chat.id, new_message)
 
@@ -145,10 +171,10 @@ async def calculator_from_buy(callback: CallbackQuery, state: FSMContext) -> Non
     currency = callback.data.replace("calc_from_buy_", "")
     await state.update_data(mode="buy", currency=currency, calc_type="crypto", from_transaction="buy")
     await state.set_state(CalculatorState.value)
-    
+
     prompt_text = f"✏️ Введите количество {currency.upper()} для расчета:"
     calculator_text = texts.get("calculator") + f"\n\n{prompt_text}"
-    
+
     try:
         await callback.message.edit_text(calculator_text, reply_markup=calculator_button("buy", currency, "crypto", from_transaction="buy"))
         await manager.set_message(callback.message.chat.id, callback.message)
@@ -162,10 +188,10 @@ async def calculator_from_sale(callback: CallbackQuery, state: FSMContext) -> No
     currency = callback.data.replace("calc_from_sale_", "")
     await state.update_data(mode="sale", currency=currency, calc_type="crypto", from_transaction="sale")
     await state.set_state(CalculatorState.value)
-    
+
     prompt_text = f"✏️ Введите количество {currency.upper()} для расчета:"
     calculator_text = texts.get("calculator") + f"\n\n{prompt_text}"
-    
+
     try:
         await callback.message.edit_text(calculator_text, reply_markup=calculator_button("sale", currency, "crypto", from_transaction="sale"))
         await manager.set_message(callback.message.chat.id, callback.message)
@@ -179,10 +205,10 @@ async def calculator_back(callback: CallbackQuery, state: FSMContext) -> None:
     parts = callback.data.replace("calc_back_", "").split("_")
     transaction_type = parts[0]
     currency = parts[1] if len(parts) > 1 else "btc"
-    
+
     await manager.delete_message(callback.message.chat.id)
     await state.clear()
-    
+
     if transaction_type == "buy":
         from src.texts.transaction import TransactionTexts
         transaction_texts = TransactionTexts()
@@ -204,7 +230,7 @@ async def calculator_back(callback: CallbackQuery, state: FSMContext) -> None:
         await manager.set_message(callback.message.chat.id, new_message)
         await state.update_data(currency=currency)
         await state.set_state(SaleCryptoState.value)
-    
+
     await callback.answer()
 
 
@@ -214,7 +240,7 @@ async def calculator_options(callback: CallbackQuery, state: FSMContext) -> None
     mode = data.get("mode", "buy")
     currency = data.get("currency", "btc")
     calc_type = data.get("calc_type", "crypto")
-    
+
     if callback.data == "calc_buy":
         mode = "buy"
     elif callback.data == "calc_sale":
@@ -231,10 +257,10 @@ async def calculator_options(callback: CallbackQuery, state: FSMContext) -> None
         calc_type = "crypto"
     elif callback.data == "calc_rub":
         calc_type = "rub"
-    
+
     await state.update_data(mode=mode, currency=currency, calc_type=calc_type)
     from_transaction = data.get("from_transaction")
-    
+
     # Если все опции выбраны, запрашиваем ввод значения
     if mode and currency and calc_type:
         await state.set_state(CalculatorState.value)
@@ -243,7 +269,7 @@ async def calculator_options(callback: CallbackQuery, state: FSMContext) -> None
             prompt_text = f"✏️ Введите количество {currency.upper()} для расчета:"
         else:
             prompt_text = "✏️ Введите сумму в рублях для расчета:"
-        
+
         try:
             await callback.message.edit_text(
                 texts.get("calculator") + f"\n\n{prompt_text}",
@@ -259,7 +285,7 @@ async def calculator_options(callback: CallbackQuery, state: FSMContext) -> None
             await callback.message.edit_reply_markup(reply_markup=calculator_button(mode, currency, calc_type, from_transaction))
         except Exception as e:
             print(f'Exception caught: {e}')
-    
+
     await callback.answer()
 
 
@@ -269,11 +295,11 @@ async def process_calculator_value(message: Message, state: FSMContext) -> None:
     mode = data.get("mode", "buy")
     currency = data.get("currency", "btc")
     calc_type = data.get("calc_type", "crypto")
-    
+
     try:
-        value = float(message.text.replace(",", "."))
+        value = parse_amount(message.text)
         await message.delete()
-        
+
         # Выбираем курс в зависимости от режима
         if mode == "buy":
             if currency == "btc":
@@ -295,7 +321,7 @@ async def process_calculator_value(message: Message, state: FSMContext) -> None:
                 rate = USDT_RUB_SELL
             else:
                 rate = BTC_RUB_SELL
-        
+
         # Рассчитываем результат
         if calc_type == "crypto":
             # Вводим крипту -> показываем рубли
@@ -305,7 +331,7 @@ async def process_calculator_value(message: Message, state: FSMContext) -> None:
             # Вводим рубли -> показываем крипту
             result = value / rate
             result_text = f"💰 {value:,.2f} ₽ = {result:.8f} {currency.upper()}"
-        
+
         from_transaction = data.get("from_transaction")
         await state.clear()
         new_message = await message.answer(
@@ -313,7 +339,7 @@ async def process_calculator_value(message: Message, state: FSMContext) -> None:
             reply_markup=calculator_button(mode, currency, calc_type, from_transaction)
         )
         await manager.set_message(message.chat.id, new_message)
-        
+
     except ValueError:
         await message.delete()
         prompt_text = ""
@@ -321,7 +347,7 @@ async def process_calculator_value(message: Message, state: FSMContext) -> None:
             prompt_text = f"✏️ Введите количество {currency.upper()} для расчета:"
         else:
             prompt_text = "✏️ Введите сумму в рублях для расчета:"
-        
+
         from_transaction = data.get("from_transaction")
         error_message = await message.answer(
             "❌ Неверный формат числа. Используйте только цифры и точку.\n\n" + prompt_text,

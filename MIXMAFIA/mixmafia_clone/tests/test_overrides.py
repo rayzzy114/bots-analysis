@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from app.overrides import RuntimeOverrides, apply_state_overrides
 
-
 _OVERRIDE_FIELDS = {"operator_url", "link_overrides", "sell_wallet_overrides", "commission_percent"}
 
 

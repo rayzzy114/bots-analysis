@@ -1,5 +1,6 @@
 import aiosqlite
 
+
 async def add_user(user_id: int, card: str = ""):
     async with aiosqlite.connect("users.db") as db:
         cursor = await db.execute("SELECT id FROM users WHERE id = ?", (user_id,))

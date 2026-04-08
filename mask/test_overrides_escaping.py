@@ -1,5 +1,6 @@
 from app.overrides import _replace_sell_wallets
 
+
 def test():
     # Simulate a sell wallet replacement in Markdown/HTML
     text = "Please send funds to: bc1q... [Wallet](bc1q...) or <b>bc1q...</b>"

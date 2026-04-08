@@ -1,5 +1,5 @@
 import re
-from typing import Iterable
+from collections.abc import Iterable
 
 AMOUNT_RE = re.compile(r"[+-]?\d[\d\s.,]*")
 
@@ -18,37 +18,19 @@ def parse_admin_ids(raw: str) -> set[int]:
 
 
 def parse_amount(raw: str) -> float | None:
-    text = (raw or "").strip()
-    if not text:
+    if not raw:
         return None
+    cleaned = re.sub(r'[^0-9,.]', '', raw)
 
-    normalized = (
-        text.replace("\u00A0", " ")
-        .replace("\u2212", "-")
-        .replace("\u2013", "-")
-        .replace("\u2014", "-")
-    )
-    if "-" in normalized:
-        return None
-    match = AMOUNT_RE.search(normalized)
-    if not match:
-        return None
-
-    cleaned = match.group(0).replace(" ", "")
-    if cleaned.startswith("-"):
-        return None
-    if cleaned.startswith("+"):
-        cleaned = cleaned[1:]
-
-    if "," in cleaned and "." in cleaned:
-        if cleaned.rfind(",") > cleaned.rfind("."):
-            cleaned = cleaned.replace(".", "").replace(",", ".")
+    if ',' in cleaned and '.' in cleaned:
+        if cleaned.rfind(',') > cleaned.rfind('.'):
+            cleaned = cleaned.replace('.', '').replace(',', '.')
         else:
-            cleaned = cleaned.replace(",", "")
-    elif "," in cleaned:
-        cleaned = cleaned.replace(",", ".")
+            cleaned = cleaned.replace(',', '')
+    elif ',' in cleaned:
+        cleaned = cleaned.replace(',', '.')
 
-    if cleaned.count(".") > 1 or not cleaned:
+    if cleaned.count('.') > 1 or not cleaned:
         return None
     try:
         value = float(cleaned)

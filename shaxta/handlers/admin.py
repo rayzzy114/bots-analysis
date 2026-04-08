@@ -1,4 +1,3 @@
-from typing import Optional
 
 from aiogram import F, Router
 from aiogram.filters import Command
@@ -18,6 +17,7 @@ from db.settings import (
     update_operator,
     update_requisites,
 )
+from utils.env_writer import read_env_var, update_env_var
 
 router = Router()
 
@@ -27,6 +27,11 @@ class AdminForm(StatesGroup):
     waiting_for_bank = State()
     waiting_for_commission = State()
     waiting_for_operator = State()
+    # Link states
+    waiting_for_support = State()
+    waiting_for_reviews = State()
+    waiting_for_otzivy = State()
+    waiting_for_news = State()
 
 
 def build_admin_keyboard() -> InlineKeyboardBuilder:
@@ -35,12 +40,13 @@ def build_admin_keyboard() -> InlineKeyboardBuilder:
     kb.button(text="✏️ Банк", callback_data="admin_change_bank")
     kb.button(text="✏️ Комиссия", callback_data="admin_change_commission")
     kb.button(text="✏️ Оператор", callback_data="admin_change_operator")
+    kb.button(text="🔗 Ссылки", callback_data="admin_links")
     kb.button(text="🏠 Главное меню", callback_data="back")
-    kb.adjust(2, 2, 1)
+    kb.adjust(2, 2, 1, 1)
     return kb
 
 
-def get_admin_panel_text(username: Optional[str], requisites: str, bank: str, commission: float, operator: str) -> str:
+def get_admin_panel_text(username: str | None, requisites: str, bank: str, commission: float, operator: str) -> str:
     username_display = f"@{username}" if username else "администратор"
     return (
         f"👋 Добро пожаловать, администратор {username_display}\n\n"
@@ -51,7 +57,7 @@ def get_admin_panel_text(username: Optional[str], requisites: str, bank: str, co
     )
 
 
-async def send_admin_panel(message: Message, username: Optional[str]):
+async def send_admin_panel(message: Message, username: str | None):
     requisites = await get_requisites()
     bank = await get_bank()
     commission = await get_commission()
@@ -277,3 +283,168 @@ async def admin_cancel(callback: CallbackQuery, state: FSMContext):
     text = get_admin_panel_text(username, requisites, bank, commission, operator)
     await callback.message.edit_text(text, reply_markup=build_admin_keyboard().as_markup())
     await callback.answer()
+
+
+# === LINKS MANAGEMENT ===
+def get_links_keyboard():
+    kb = InlineKeyboardBuilder()
+    kb.button(text=f"📢 OPERATOR: {read_env_var('OPERATOR', '—')}", callback_data="admin_change_link_operator")
+    kb.button(text=f"💬 SUPPORT: {read_env_var('SUPPORT', '—')}", callback_data="admin_change_link_support")
+    kb.button(text=f"⭐ REVIEWS: {read_env_var('REVIEWS', '—')}", callback_data="admin_change_link_reviews")
+    kb.button(text=f"📝 OTZIVY: {read_env_var('OTZIVY', '—')}", callback_data="admin_change_link_otzivy")
+    kb.button(text=f"📰 NEWS: {read_env_var('NEWS', '—')}", callback_data="admin_change_link_news")
+    kb.button(text="⬅️ Назад", callback_data="admin_cancel")
+    kb.adjust(1)
+    return kb.as_markup()
+
+
+@router.callback_query(F.data == "admin_links")
+async def admin_links(callback: CallbackQuery, state: FSMContext):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("❌ Доступ запрещен", show_alert=True)
+        return
+    await callback.message.edit_text("🔗 <b>Настройка ссылок</b>\n\nВыберите поле:", reply_markup=get_links_keyboard())
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin_change_link_operator")
+async def admin_change_link_operator(callback: CallbackQuery, state: FSMContext):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("❌ Доступ запрещен", show_alert=True)
+        return
+    await state.set_state(AdminForm.waiting_for_support)
+    kb = InlineKeyboardBuilder()
+    kb.button(text="⬅️ Назад", callback_data="admin_links")
+    await callback.message.edit_text(
+        f"Текущее значение OPERATOR: <code>{read_env_var('OPERATOR', '—')}</code>\n\nВведите новое значение (username без @):",
+        reply_markup=kb.as_markup()
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin_change_link_support")
+async def admin_change_link_support(callback: CallbackQuery, state: FSMContext):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("❌ Доступ запрещен", show_alert=True)
+        return
+    await state.set_state(AdminForm.waiting_for_support)
+    kb = InlineKeyboardBuilder()
+    kb.button(text="⬅️ Назад", callback_data="admin_links")
+    await callback.message.edit_text(
+        f"Текущее значение SUPPORT: <code>{read_env_var('SUPPORT', '—')}</code>\n\nВведите новое значение (username без @):",
+        reply_markup=kb.as_markup()
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin_change_link_reviews")
+async def admin_change_link_reviews(callback: CallbackQuery, state: FSMContext):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("❌ Доступ запрещен", show_alert=True)
+        return
+    await state.set_state(AdminForm.waiting_for_reviews)
+    kb = InlineKeyboardBuilder()
+    kb.button(text="⬅️ Назад", callback_data="admin_links")
+    await callback.message.edit_text(
+        f"Текущее значение REVIEWS: <code>{read_env_var('REVIEWS', '—')}</code>\n\nВведите новое значение (username без @):",
+        reply_markup=kb.as_markup()
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin_change_link_otzivy")
+async def admin_change_link_otzivy(callback: CallbackQuery, state: FSMContext):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("❌ Доступ запрещен", show_alert=True)
+        return
+    await state.set_state(AdminForm.waiting_for_otzivy)
+    kb = InlineKeyboardBuilder()
+    kb.button(text="⬅️ Назад", callback_data="admin_links")
+    await callback.message.edit_text(
+        f"Текущее значение OTZIVY: <code>{read_env_var('OTZIVY', '—')}</code>\n\nВведите новое значение (username без @):",
+        reply_markup=kb.as_markup()
+    )
+    await callback.answer()
+
+
+@router.callback_query(F.data == "admin_change_link_news")
+async def admin_change_link_news(callback: CallbackQuery, state: FSMContext):
+    if not is_admin(callback.from_user.id):
+        await callback.answer("❌ Доступ запрещен", show_alert=True)
+        return
+    await state.set_state(AdminForm.waiting_for_news)
+    kb = InlineKeyboardBuilder()
+    kb.button(text="⬅️ Назад", callback_data="admin_links")
+    await callback.message.edit_text(
+        f"Текущее значение NEWS: <code>{read_env_var('NEWS', '—')}</code>\n\nВведите новое значение (username без @):",
+        reply_markup=kb.as_markup()
+    )
+    await callback.answer()
+
+
+@router.message(AdminForm.waiting_for_support)
+async def process_support_link(message: Message, state: FSMContext):
+    if not is_admin(message.from_user.id):
+        return
+    value = message.text.strip().lstrip("@")
+    update_env_var("SUPPORT", value)
+
+    # Reload runtime state
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
+    await message.answer(f"✅ <b>SUPPORT</b> обновлено: <code>{value}</code>")
+    await state.clear()
+    await message.answer("🔗 <b>Настройка ссылок</b>\n\nВыберите поле:", reply_markup=get_links_keyboard())
+    await message.delete()
+
+
+@router.message(AdminForm.waiting_for_reviews)
+async def process_reviews_link(message: Message, state: FSMContext):
+    if not is_admin(message.from_user.id):
+        return
+    value = message.text.strip().lstrip("@")
+    update_env_var("REVIEWS", value)
+
+    # Reload runtime state
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
+    await message.answer(f"✅ <b>REVIEWS</b> обновлено: <code>{value}</code>")
+    await state.clear()
+    await message.answer("🔗 <b>Настройка ссылок</b>\n\nВыберите поле:", reply_markup=get_links_keyboard())
+    await message.delete()
+
+
+@router.message(AdminForm.waiting_for_otzivy)
+async def process_otzivy_link(message: Message, state: FSMContext):
+    if not is_admin(message.from_user.id):
+        return
+    value = message.text.strip().lstrip("@")
+    update_env_var("OTZIVY", value)
+
+    # Reload runtime state
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
+    await message.answer(f"✅ <b>OTZIVY</b> обновлено: <code>{value}</code>")
+    await state.clear()
+    await message.answer("🔗 <b>Настройка ссылок</b>\n\nВыберите поле:", reply_markup=get_links_keyboard())
+    await message.delete()
+
+
+@router.message(AdminForm.waiting_for_news)
+async def process_news_link(message: Message, state: FSMContext):
+    if not is_admin(message.from_user.id):
+        return
+    value = message.text.strip().lstrip("@")
+    update_env_var("NEWS", value)
+
+    # Reload runtime state
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
+    await message.answer(f"✅ <b>NEWS</b> обновлено: <code>{value}</code>")
+    await state.clear()
+    await message.answer("🔗 <b>Настройка ссылок</b>\n\nВыберите поле:", reply_markup=get_links_keyboard())
+    await message.delete()

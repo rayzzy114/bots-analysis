@@ -1,15 +1,16 @@
 import json
 from pathlib import Path
 
+
 def main():
     raw_dir = Path("data/raw")
     flow_file = raw_dir / "flow.json"
     edges_file = raw_dir / "edges.json"
 
-    with open(flow_file, "r", encoding="utf-8") as f:
+    with open(flow_file, encoding="utf-8") as f:
         flow = json.load(f)
 
-    with open(edges_file, "r", encoding="utf-8") as f:
+    with open(edges_file, encoding="utf-8") as f:
         edges = json.load(f)
 
     # 1. Analyze nodes and edges

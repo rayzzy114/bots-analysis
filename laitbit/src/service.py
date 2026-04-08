@@ -1,8 +1,8 @@
+import asyncio
 import json
 import logging
 import secrets
 import string
-import asyncio
 from pathlib import Path
 
 import httpx
@@ -20,7 +20,7 @@ def load_users():
     file_path = Path(USERS_FILE)
     if not file_path.exists() or file_path.stat().st_size == 0:
         return []
-    with open(file_path, "r", encoding="utf-8") as f:
+    with open(file_path, encoding="utf-8") as f:
         return json.load(f)
 
 

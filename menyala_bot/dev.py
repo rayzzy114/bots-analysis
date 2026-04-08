@@ -5,7 +5,6 @@ import sys
 import time
 from pathlib import Path
 
-
 WATCH_EXTENSIONS = {".py"}
 CHECK_INTERVAL_SECONDS = 0.7
 

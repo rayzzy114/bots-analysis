@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import hashlib
+from collections.abc import Callable
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
+from aiogram import Bot
 from aiogram.types import (
     FSInputFile,
     InlineKeyboardButton,
@@ -12,8 +14,6 @@ from aiogram.types import (
     Message,
     ReplyKeyboardMarkup,
 )
-from aiogram import Bot
-
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
 VIDEO_EXTENSIONS = {".mp4", ".mov", ".m4v"}

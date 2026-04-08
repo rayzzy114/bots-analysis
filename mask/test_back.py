@@ -1,5 +1,6 @@
 from app.sessions import UserSession
 
+
 def test_session_history():
     s = UserSession(state_id="start")
     print(s.history)  # Expect empty list initially due to default factory if not provided, but we pass state_id

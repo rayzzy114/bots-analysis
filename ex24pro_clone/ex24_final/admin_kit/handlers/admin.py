@@ -15,10 +15,21 @@ from ..keyboards import (
     kb_admin_panel,
     links_help_lines,
 )
-from ..runtime import CLEAR_MARKERS, normalize_input_value, persist_env_value, visible_env_keys
+from ..runtime import (
+    CLEAR_MARKERS,
+    normalize_input_value,
+    persist_env_value,
+    visible_env_keys,
+)
 from ..states import AdminState
 from ..telegram_helpers import callback_message, callback_user_id, message_user_id
-from ..utils import fmt_coin, is_safe_html_fragment, parse_amount, preferred_html_text, safe_username
+from ..utils import (
+    fmt_coin,
+    is_safe_html_fragment,
+    parse_amount,
+    preferred_html_text,
+    safe_username,
+)
 
 ADMIN_STATE_PREFIX = f"{AdminState.__name__}:"
 
@@ -46,7 +57,7 @@ def build_admin_router(ctx: AppContext) -> Router:
         ]
         if hidden_count:
             env_lines.append(f"<i>Скрыто ключей: {hidden_count}</i>")
-        
+
         text = (
             "<b>Админка</b>\n"
             f"Спред (наценка): <b>{ctx.settings.commission_percent:.2f}%</b>\n"
@@ -150,7 +161,7 @@ def build_admin_router(ctx: AppContext) -> Router:
         if user_id is None or not ctx.is_admin(user_id):
             await message.answer("Доступ запрещен.")
             return
-        
+
         if ctx.users is None:
             await message.answer("Ошибка: UsersStore не инициализирован.")
             await state.clear()
@@ -158,10 +169,10 @@ def build_admin_router(ctx: AppContext) -> Router:
 
         users = list(ctx.users.data.keys())
         await message.answer(f"🚀 Начинаю рассылку на {len(users)} пользователей...")
-        
+
         success = 0
         failed = 0
-        
+
         for uid_str in users:
             try:
                 target_id = int(uid_str)
@@ -172,7 +183,7 @@ def build_admin_router(ctx: AppContext) -> Router:
                 success += 1
             except Exception:
                 failed += 1
-            
+
             # Avoid flood limits for larger lists
             if (success + failed) % 20 == 0:
                 await asyncio.sleep(0.5)

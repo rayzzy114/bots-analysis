@@ -1,6 +1,6 @@
-from aiogram import Router, types, F
-from aiogram.utils.keyboard import InlineKeyboardBuilder
+from aiogram import F, Router, types
 from aiogram.types import FSInputFile, InputMediaPhoto
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from config import REFERRAL_REWARD_PERCENT
 
@@ -13,7 +13,7 @@ async def profile_handler(callback: types.CallbackQuery):
         kb.button(text="Отправить приглашение", switch_inline_query="invite")
         kb.button(text="Вывод", callback_data="withdraw")
         kb.button(text="Назад", callback_data="back")
-    
+
         kb.adjust(1)
 
         bot_username = (await callback.bot.get_me()).username

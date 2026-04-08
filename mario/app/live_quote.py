@@ -142,20 +142,23 @@ def build_live_quote(
         return None
 
     input_kind = input_kind_hint if input_kind_hint in {"coin", "rub"} else _choose_input_kind(template, amount)
-    net_ratio = max(0.0, 1.0 - (commission_percent / 100.0))
+    commission_multiplier = 1.0 + (commission_percent / 100.0)
     applies_commission = operation == "buy" and template.net_amount is not None
     if operation == "buy":
         if input_kind == "coin":
             coin_amount = amount
-            net_rub_amount = coin_amount * rate
+            base_rub_amount = coin_amount * rate
             if applies_commission:
-                rub_amount = net_rub_amount / net_ratio if net_ratio > 0 else net_rub_amount
+                rub_amount = base_rub_amount * commission_multiplier
             else:
-                rub_amount = net_rub_amount
+                rub_amount = base_rub_amount
         else:
             rub_amount = amount
-            coin_amount = (rub_amount / rate) * net_ratio if applies_commission else rub_amount / rate
-        net_amount = rub_amount if applies_commission else None
+            if applies_commission:
+                coin_amount = rub_amount / (rate * commission_multiplier)
+            else:
+                coin_amount = rub_amount / rate
+        net_amount = rub_amount / commission_multiplier if applies_commission else None
     else:
         if input_kind == "coin":
             coin_amount = amount
@@ -166,12 +169,20 @@ def build_live_quote(
 
         net_amount = None
         if template.net_amount is not None:
-            net_amount = rub_amount * net_ratio
+            net_amount = rub_amount * SELL_PAYOUT_RATIO
 
     # Promo gives 20% discount FROM commission (effective_commission = commission * 0.8).
-    promo_ratio = max(0.0, 1.0 - (commission_percent * 0.8) / 100.0)
+    # For BUY: user pays base_amount * (1 + commission%). With promo: base_amount * (1 + commission% * 0.8)
     promo_before = rub_amount
-    promo_after = promo_before * promo_ratio
+    if operation == "buy" and applies_commission:
+        # Calculate base amount without commission, then apply reduced commission
+        base_amount = rub_amount / commission_multiplier
+        reduced_commission = commission_percent * 0.8
+        promo_after = base_amount * (1.0 + reduced_commission / 100.0)
+    else:
+        # For operations without commission or SELL, apply discount to total
+        promo_ratio = max(0.0, 1.0 - (commission_percent * 0.8) / 100.0)
+        promo_after = promo_before * promo_ratio
 
     return LiveQuote(
         state_id=template.state_id,

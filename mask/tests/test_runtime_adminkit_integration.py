@@ -8,10 +8,16 @@ import pytest
 from app.catalog import FlowCatalog
 from app.constants import DEFAULT_LINKS
 from app.context import AppContext
+from app.overrides import RuntimeOverrides, apply_state_overrides
 from app.rates import RateService
 from app.runtime import FlowRuntime, UserSession
-from app.overrides import RuntimeOverrides, apply_state_overrides
-from app.storage import OrdersStore, SessionsStore, SettingsStore, UsersStore, MediaStore
+from app.storage import (
+    MediaStore,
+    OrdersStore,
+    SessionsStore,
+    SettingsStore,
+    UsersStore,
+)
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 RAW_DIR = PROJECT_DIR / "data" / "raw"

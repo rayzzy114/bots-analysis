@@ -1,4 +1,4 @@
 aiosqlite
 aiogram
 dotenv
-requests
+httpx

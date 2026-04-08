@@ -1,17 +1,24 @@
-import random
 import asyncio
-import aiohttp
-from aiogram import Router, types, F
-from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery
-from aiogram.fsm.state import State, StatesGroup
-from config import operator, operator2, ADMIN_IDS
-from db.settings import (
-    get_requisites, get_bank, get_payment_methods,
-    get_requisites_mode, get_method_requisites, get_commission
-)
+import random
 from datetime import datetime
+
+import aiohttp
+from aiogram import F, Router, types
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.types import CallbackQuery, Message
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+from config import operator, operator2
+from db.settings import (
+    get_bank,
+    get_commission,
+    get_method_requisites,
+    get_payment_methods,
+    get_requisites,
+    get_requisites_mode,
+)
+from runtime_state import get_runtime_state
 
 router = Router()
 
@@ -127,7 +134,7 @@ async def process_amount(message: Message, state: FSMContext):
             amount_rub = crypto_amount * rate_rub
 
             if crypto_amount < min_crypto:
-                fmt_min = "{:.6f}".format(min_crypto) if crypto_type == "BTC" else "{:.4f}".format(min_crypto)
+                fmt_min = f"{min_crypto:.6f}" if crypto_type == "BTC" else f"{min_crypto:.4f}"
                 await message.answer(
                     f"❌ Минимальная сумма обмена: {MINIMUM_EXCHANGE_AMOUNT_RUB} руб. ({fmt_min} {crypto_type})")
                 return
@@ -136,14 +143,14 @@ async def process_amount(message: Message, state: FSMContext):
             crypto_amount = amount_rub / rate_rub
 
             if amount_rub < MINIMUM_EXCHANGE_AMOUNT_RUB:
-                fmt_min = "{:.6f}".format(min_crypto) if crypto_type == "BTC" else "{:.4f}".format(min_crypto)
+                fmt_min = f"{min_crypto:.6f}" if crypto_type == "BTC" else f"{min_crypto:.4f}"
                 await message.answer(
                     f"❌ Минимальная сумма обмена: {MINIMUM_EXCHANGE_AMOUNT_RUB} руб. ({fmt_min} {crypto_type})")
                 return
 
         total_to_pay = round(amount_rub * (1 + commission / 100))
-        formatted_crypto = "{:.8f}".format(crypto_amount).rstrip('0').rstrip('.')
-        formatted_rub = "{:,.0f}".format(total_to_pay).replace(',', ' ')
+        formatted_crypto = f"{crypto_amount:.8f}".rstrip('0').rstrip('.')
+        formatted_rub = f"{total_to_pay:,.0f}".replace(',', ' ')
 
         await state.update_data(crypto_amount=formatted_crypto, total_to_pay=total_to_pay)
 
@@ -324,7 +331,7 @@ async def confirm_payment_handler(callback: types.CallbackQuery, state: FSMConte
 async def handle_confirm_paid(callback: CallbackQuery, state: FSMContext):
     try:
         await callback.message.delete()
-    except:
+    except Exception:
         try:
             await callback.message.edit_reply_markup(reply_markup=None)
         except Exception as e:
@@ -370,7 +377,7 @@ async def process_receipt(message: Message, state: FSMContext):
     deal_id = data.get("deal_id", generate_deal_id())
 
     if message.document:
-        for admin_id in ADMIN_IDS:
+        for admin_id in get_runtime_state().admin_ids:
             try:
                 await message.bot.send_document(
                     chat_id=admin_id,
@@ -392,7 +399,7 @@ async def process_receipt(message: Message, state: FSMContext):
 
     if message.photo:
         photo = message.photo[-1]
-        for admin_id in ADMIN_IDS:
+        for admin_id in get_runtime_state().admin_ids:
             try:
                 await message.bot.send_photo(
                     chat_id=admin_id,

@@ -1,6 +1,6 @@
 import aiosqlite
 
-from config import DEFAULT_COMMISSION, PAYMENT_BANK, payment_details, OPERATOR
+from config import DEFAULT_COMMISSION, OPERATOR, PAYMENT_BANK, payment_details
 
 
 async def init_db():

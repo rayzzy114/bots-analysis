@@ -42,7 +42,7 @@ def build_context(project_dir: Path) -> AppContext:
     settings = SettingsStore(path=data_dir / "settings.json", default_commission=default_commission, env_links=env_links)
     users = UsersStore(path=data_dir / "users.json")
     orders = OrdersStore(path=data_dir / "orders.json")
-    rates = RateService(ttl_seconds=45)
+    rates = RateService(ttl_seconds=3600)
 
     return AppContext(
         settings=settings,
@@ -86,6 +86,7 @@ async def amain() -> None:
         supports_inline_queries=supports_inline_queries,
     )
 
+    ctx.rates.start()
     await dp.start_polling(bot)
 
 

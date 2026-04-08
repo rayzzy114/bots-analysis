@@ -1,19 +1,33 @@
+def parse_amount(text: str) -> float | None:
+    try:
+        return float(text.replace(",", ".").replace(" ", ""))
+    except Exception:
+        return None
 import asyncio
-import os
-import time
 import json
 import logging
+import os
+import time
+
 import aiohttp
-from aiogram import Bot, Dispatcher, types, F
+from aiogram import Bot, Dispatcher, F, types
 from aiogram.exceptions import TelegramForbiddenError
 from aiogram.filters import Command
-from aiogram.types import FSInputFile, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.filters.callback_data import CallbackData
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
+from aiogram.types import (
+    FSInputFile,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    ReplyKeyboardMarkup,
+)
 from dotenv import load_dotenv
-from utils.env_writer import update_env_var, read_env_var
+
 from config import reload_env
+from utils.env_writer import read_env_var, update_env_var
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 load_dotenv()
@@ -43,89 +57,84 @@ ADMIN_ID_STR = os.getenv("ADMIN_ID", "")
 ADMIN_IDS = [int(admin_id.strip()) for admin_id in ADMIN_ID_STR.split(",") if admin_id.strip().isdigit()] if ADMIN_ID_STR else []
 
 
-async def get_cbr_usd_rate() -> float:
+async def get_cbr_usd_rate(session: aiohttp.ClientSession) -> float:
     """Fetch USD/RUB rate from Central Bank of Russia."""
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://www.cbr-xml-daily.ru/daily_json.js",
-                timeout=aiohttp.ClientTimeout(total=10)
-            ) as response:
-                if response.status == 200:
-                    data = json.loads(await response.text())
-                    return float(data["Valute"]["USD"]["Value"])
+        async with session.get(
+            "https://www.cbr-xml-daily.ru/daily_json.js",
+            timeout=aiohttp.ClientTimeout(total=10)
+        ) as response:
+            if response.status == 200:
+                data = json.loads(await response.text())
+                return float(data["Valute"]["USD"]["Value"])
     except Exception as e:
         logger.error(f"CBR error: {e}")
     return 90.0
 
 
-async def get_btc_rates() -> tuple:
+async def get_btc_rates(session: aiohttp.ClientSession) -> tuple:
     """Fetch BTC rates from Binance, fallback to CoinGecko, then to env defaults."""
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                    "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT",
-                    timeout=aiohttp.ClientTimeout(total=10)
-            ) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    usd = float(data.get("price", 0))
-                    if usd > 0:
-                        rub = await get_cbr_usd_rate() * usd
-                        return (usd, rub)
+        async with session.get(
+                "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT",
+                timeout=aiohttp.ClientTimeout(total=10)
+        ) as response:
+            if response.status == 200:
+                data = await response.json()
+                usd = float(data.get("price", 0))
+                if usd > 0:
+                    rub = await get_cbr_usd_rate(session) * usd
+                    return (usd, rub)
     except Exception as e:
         logger.error(f"Binance BTC error: {e}")
     # Fallback to CoinGecko
     try:
-        async with aiohttp.ClientSession() as session:
-            url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,rub"
-            async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    btc = data.get("bitcoin", {})
-                    usd = float(btc.get("usd", 0))
-                    rub = float(btc.get("rub", 0))
-                    if usd > 0 and rub > 0:
-                        return (usd, rub)
+        url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,rub"
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
+            if response.status == 200:
+                data = await response.json()
+                btc = data.get("bitcoin", {})
+                usd = float(btc.get("usd", 0))
+                rub = float(btc.get("rub", 0))
+                if usd > 0 and rub > 0:
+                    return (usd, rub)
     except Exception as e:
         logger.error(f"CoinGecko BTC error: {e}")
     return (BTC_RATE_USD, BTC_RATE_RUB)
 
 
-async def get_ltc_rate_coingecko() -> tuple:
+async def get_ltc_rate_coingecko(session: aiohttp.ClientSession) -> tuple:
     """Fetch LTC rates from CoinGecko API. Returns (usd_price, rub_price)."""
     try:
-        async with aiohttp.ClientSession() as session:
-            url = "https://api.coingecko.com/api/v3/simple/price?ids=litecoin&vs_currencies=usd,rub"
-            async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    ltc = data.get("litecoin", {})
-                    usd = float(ltc.get("usd", 0))
-                    rub = float(ltc.get("rub", 0))
-                    if usd > 0 and rub > 0:
-                        logger.info(f"CoinGecko LTC: ${usd}, ₽{rub:.0f}")
-                        return (usd, rub)
+        url = "https://api.coingecko.com/api/v3/simple/price?ids=litecoin&vs_currencies=usd,rub"
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
+            if response.status == 200:
+                data = await response.json()
+                ltc = data.get("litecoin", {})
+                usd = float(ltc.get("usd", 0))
+                rub = float(ltc.get("rub", 0))
+                if usd > 0 and rub > 0:
+                    logger.info(f"CoinGecko LTC: ${usd}, ₽{rub:.0f}")
+                    return (usd, rub)
     except Exception as e:
         logger.error(f"CoinGecko LTC error: {e}")
     # Fallback to .env values
     return (LTC_RATE, LTC_RATE * 90)
 
 
-async def get_xmr_rate_coingecko() -> tuple:
+async def get_xmr_rate_coingecko(session: aiohttp.ClientSession) -> tuple:
     """Fetch XMR rate from CoinGecko API. Returns (usd_price, rub_price)."""
     try:
-        async with aiohttp.ClientSession() as session:
-            url = "https://api.coingecko.com/api/v3/simple/price?ids=monero&vs_currencies=usd,rub"
-            async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    xmr = data.get("monero", {})
-                    usd = float(xmr.get("usd", 0))
-                    rub = float(xmr.get("rub", 0))
-                    if usd > 0 and rub > 0:
-                        logger.info(f"CoinGecko XMR: ${usd}, ₽{rub:.0f}")
-                        return (usd, rub)
+        url = "https://api.coingecko.com/api/v3/simple/price?ids=monero&vs_currencies=usd,rub"
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
+            if response.status == 200:
+                data = await response.json()
+                xmr = data.get("monero", {})
+                usd = float(xmr.get("usd", 0))
+                rub = float(xmr.get("rub", 0))
+                if usd > 0 and rub > 0:
+                    logger.info(f"CoinGecko XMR: ${usd}, ₽{rub:.0f}")
+                    return (usd, rub)
     except Exception as e:
         logger.error(f"CoinGecko XMR error: {e}")
     # Fallback to .env values
@@ -138,9 +147,9 @@ PAYMENT_DETAILS_FILE = "payment_details.json"
 def load_payment_details():
     if os.path.exists(PAYMENT_DETAILS_FILE):
         try:
-            with open(PAYMENT_DETAILS_FILE, 'r', encoding='utf-8') as f:
+            with open(PAYMENT_DETAILS_FILE, encoding='utf-8') as f:
                 return json.load(f)
-        except:
+        except Exception:
             return {}
     return {}
 def save_payment_details(data):
@@ -236,7 +245,7 @@ def get_admin_links_keyboard():
 async def admin_command(message: types.Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
- 
+
     await state.set_state(AdminState.waiting_crypto)
     sent_message = await message.answer("Выберите криптовалюту для настройки реквизитов:", reply_markup=get_admin_keyboard())
     await state.update_data(admin_message_id=sent_message.message_id)
@@ -277,27 +286,27 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
         await callback.answer()
     elif callback_data.action == "back":
         user_id = callback.from_user.id
-     
+
         if user_id in user_transaction_data:
             transaction = user_transaction_data[user_id]
             operation_type = transaction.get("operation_type", "")
             country = transaction.get("country", "")
             current_step = transaction.get("current_step", "")
-         
+
             if current_step == "payment_method_selected":
                 if "crypto_amount_str" in transaction and "rub_amount" in transaction:
                     currency = transaction["currency"]
                     crypto_amount_str = transaction.get("crypto_amount_str", "")
                     rub_amount = transaction["rub_amount"]
                     country = transaction.get("country", "russia")
-                 
+
                     if country == "belarus":
                         amount_display = round(rub_amount * 0.036)
                         currency_display = "бел.рублей"
                     else:
                         amount_display = rub_amount
                         currency_display = "₽"
-                 
+
                     if operation_type == "sell":
                         text = f"""- Вам будет зачислено: **{amount_display} {currency_display}**
 - Вам необходимо отправить: **{crypto_amount_str} {currency['symbol']}**
@@ -306,7 +315,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
                         text = f"""- Вам будет зачислено: **{crypto_amount_str} {currency['symbol']}**
 - Вам необходимо оплатить: **{amount_display} {currency_display}**
 🎫 У вас используется промокод: **NEWUSER30**, скидка в размере 25% !"""
-                 
+
                     keyboard = InlineKeyboardMarkup(inline_keyboard=[
                         [InlineKeyboardButton(text="Использовать промокод", callback_data=UserPanelCallback(action="payment_next").pack())],
                         [InlineKeyboardButton(text="Не использовать промокод", callback_data=UserPanelCallback(action="payment_next").pack())],
@@ -314,7 +323,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
                     ])
                     try:
                         await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="Markdown")
-                    except:
+                    except Exception:
                         await callback.message.answer(text, reply_markup=keyboard, parse_mode="Markdown")
                     transaction["current_step"] = "amount_entered"
                     await callback.answer()
@@ -340,12 +349,12 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
                     ])
                 try:
                     await callback.message.edit_text(text, reply_markup=keyboard)
-                except:
+                except Exception:
                     await callback.message.answer(text, reply_markup=keyboard)
                 transaction["current_step"] = "country_selected"
                 await callback.answer()
                 return
-     
+
         menu_text = """🚜Добро пожаловать в сервис BULBA_BTC_BOT
 После каждой операции у вас есть шанс получить бонус 🎁
 🔒 Сервис не поддерживает подозрительные или незаконные транзакции.
@@ -358,7 +367,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
         if user_id in user_transaction_data:
             transaction = user_transaction_data[user_id]
             operation_type = transaction.get("operation_type", "buy")
-         
+
             text = "Выберите свою страну."
             keyboard = InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(text="🇷🇺 Россия", callback_data=UserPanelCallback(action="buy_russia" if operation_type == "buy" else "sell_russia").pack())],
@@ -367,7 +376,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
             ])
             try:
                 await callback.message.edit_text(text, reply_markup=keyboard)
-            except:
+            except Exception:
                 await callback.message.answer(text, reply_markup=keyboard)
             await callback.answer()
     elif callback_data.action == "history":
@@ -415,7 +424,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
         ])
         try:
             await callback.message.edit_text(text, reply_markup=keyboard)
-        except:
+        except Exception:
             await callback.message.answer(text, reply_markup=keyboard)
         await callback.answer()
     elif callback_data.action == "sell_russia" or callback_data.action == "sell_belarus":
@@ -436,7 +445,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
         ])
         try:
             await callback.message.edit_text(text, reply_markup=keyboard)
-        except:
+        except Exception:
             await callback.message.answer(text, reply_markup=keyboard)
         await callback.answer()
     elif callback_data.action == "payment_next":
@@ -445,7 +454,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
             transaction = user_transaction_data[user_id]
             operation_type = transaction.get("operation_type", "buy")
             transaction["current_step"] = "payment_method_selected"
-         
+
             if operation_type == "sell":
                 payment_text = "Выберите способ получения средств."
                 payment_keyboard = InlineKeyboardMarkup(inline_keyboard=[
@@ -463,7 +472,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
                 ])
             try:
                 await callback.message.edit_text(payment_text, reply_markup=payment_keyboard)
-            except:
+            except Exception:
                 await callback.message.answer(payment_text, reply_markup=payment_keyboard)
         await callback.answer()
     elif callback_data.action in ["payment_card", "payment_sbp_transgran", "payment_sbp"]:
@@ -472,14 +481,14 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
             transaction = user_transaction_data[user_id]
             crypto_amount = transaction["crypto_amount"]
             currency_symbol = transaction["currency"]["symbol"].lower()
-         
+
             if crypto_amount < 0.01:
                 crypto_amount_str = f"{crypto_amount:.8f}".rstrip('0').rstrip('.')
             elif crypto_amount < 1:
                 crypto_amount_str = f"{crypto_amount:.6f}".rstrip('0').rstrip('.')
             else:
                 crypto_amount_str = f"{crypto_amount:.4f}".rstrip('0').rstrip('.')
-         
+
             text = f"🔫 **Отправьте боту кошелек, на который должны поступить {crypto_amount_str} {currency_symbol}**"
             keyboard = InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(text="Назад", callback_data=UserPanelCallback(action="back").pack())]
@@ -488,7 +497,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
             try:
                 await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="Markdown")
                 wallet_request_msg_id = callback.message.message_id
-            except:
+            except Exception:
                 sent_msg = await callback.message.answer(text, reply_markup=keyboard, parse_mode="Markdown")
                 wallet_request_msg_id = sent_msg.message_id
             user_transaction_data[user_id]["waiting_wallet"] = True
@@ -515,7 +524,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
             ])
             try:
                 await callback.message.edit_text(text, reply_markup=keyboard)
-            except:
+            except Exception:
                 await callback.message.answer(text, reply_markup=keyboard)
             user_transaction_data[user_id]["waiting_payment_details"] = True
             user_transaction_data[user_id]["payment_method"] = callback_data.action
@@ -524,37 +533,37 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
         await callback.answer()
         try:
             await callback.message.edit_text("⌛Получение реквизитов. Может занимать от 1 до 5 минут.")
-        except:
+        except Exception:
             await callback.message.answer("⌛Получение реквизитов. Может занимать от 1 до 5 минут.")
         await asyncio.sleep(8)
-     
+
         user_id = callback.from_user.id
         if user_id in user_transaction_data:
             transaction = user_transaction_data[user_id]
             crypto_amount = transaction["crypto_amount"]
             rub_amount = transaction["rub_amount"]
             currency = transaction["currency"]
-         
+
             order_id = f"{user_id}{int(time.time())}"
             country = transaction.get("country", "russia")
             payment_details = get_payment_details(currency['symbol'], country)
             wallet_address = transaction.get("wallet_address") or payment_details.get("wallet_address", "bc1qnv29qqq46vazssl4vlm4drp3scyay96qxnfakx")
             bank_info = payment_details.get("bank", "Альфа-Банк 2200 1536 1378 7010")
-         
+
             if crypto_amount < 0.01:
                 crypto_amount_str = f"{crypto_amount:.8f}".rstrip('0').rstrip('.')
             elif crypto_amount < 1:
                 crypto_amount_str = f"{crypto_amount:.6f}".rstrip('0').rstrip('.')
             else:
                 crypto_amount_str = f"{crypto_amount:.4f}".rstrip('0').rstrip('.')
-         
+
             if country == "belarus":
                 amount_display = round(rub_amount * 0.036)
                 currency_display = "бел.рублей"
             else:
                 amount_display = rub_amount
                 currency_display = "₽"
-         
+
             text = f"""☑️Заявка №<code>{order_id}</code> успешно создана!
 
 📎 Адрес зачисления:
@@ -570,16 +579,16 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
 <b>💳 Сумма к оплате:</b> <u><b>{amount_display} {currency_display}</b></u>
 
 ✅ На оплату 15 минут, после оплаты необходимо нажать на кнопку "ОПЛАТИЛ" """
-         
+
             keyboard = InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(text="Оплатил", callback_data=UserPanelCallback(action="payment_done").pack())],
                 [InlineKeyboardButton(text="Отменить заявку", callback_data=UserPanelCallback(action="cancel_order").pack())]
             ])
             try:
                 await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
-            except:
+            except Exception:
                 await callback.message.answer(text, reply_markup=keyboard, parse_mode="HTML")
-         
+
             user_order_data[user_id] = {
                 "order_id": order_id,
                 "crypto_amount": crypto_amount,
@@ -598,27 +607,27 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
             rub_amount = transaction["rub_amount"]
             currency = transaction["currency"]
             country = transaction.get("country", "russia")
-         
+
             order_id = f"{user_id}{int(time.time())}"
             country = transaction.get("country", "russia")
             payment_details = get_payment_details(currency["symbol"], country)
             wallet_address = payment_details.get("wallet_address", "bc1qnv29qqq46vazssl4vlm4drp3scyay96qxnfakx")
             bank_info = payment_details.get("bank", "Альфа-Банк 2200 1536 1378 7010")
-         
+
             if crypto_amount < 0.01:
                 crypto_amount_str = f"{crypto_amount:.8f}".rstrip('0').rstrip('.')
             elif crypto_amount < 1:
                 crypto_amount_str = f"{crypto_amount:.6f}".rstrip('0').rstrip('.')
             else:
                 crypto_amount_str = f"{crypto_amount:.4f}".rstrip('0').rstrip('.')
-         
+
             if country == "belarus":
                 amount_display = round(rub_amount * 0.036)
                 currency_display = "бел.рублей"
             else:
                 amount_display = rub_amount
                 currency_display = "₽"
-         
+
             text = f"""☑️Заявка №<code>{order_id}</code> успешно создана!
 
 📎 Адрес зачисления:
@@ -634,16 +643,16 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
 <b>💳 Сумма к оплате:</b> <u><b>{amount_display} {currency_display}</b></u>
 
 ✅ На оплату 15 минут, после оплаты необходимо нажать на кнопку "ОПЛАТИЛ" """
-         
+
             keyboard = InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(text="Оплатил", callback_data=UserPanelCallback(action="payment_done").pack())],
                 [InlineKeyboardButton(text="Отменить заявку", callback_data=UserPanelCallback(action="cancel_order").pack())]
             ])
             try:
                 await callback.message.edit_text(text, reply_markup=keyboard, parse_mode="HTML")
-            except:
+            except Exception:
                 await callback.message.answer(text, reply_markup=keyboard, parse_mode="HTML")
-         
+
             user_order_data[user_id] = {
                 "order_id": order_id,
                 "crypto_amount": crypto_amount,
@@ -669,7 +678,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
 ✅ Выберите нужную функцию в меню ниже, чтобы начать работу."""
         try:
             await callback.message.edit_text(menu_text, reply_markup=get_main_keyboard())
-        except:
+        except Exception:
             await callback.message.answer(menu_text, reply_markup=get_main_keyboard())
     elif callback_data.action == "cancel_order":
         await callback.answer("Заявка отменена")
@@ -814,7 +823,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
         ])
         try:
             await callback.message.edit_text(text, reply_markup=keyboard)
-        except:
+        except Exception:
             await callback.message.answer(text, reply_markup=keyboard)
         await callback.answer()
     elif callback_data.action in ["sell_btc", "sell_ltc", "sell_usdt", "sell_xmr"]:
@@ -837,7 +846,7 @@ async def user_panel_handler(callback: types.CallbackQuery, callback_data: UserP
         ])
         try:
             await callback.message.edit_text(text, reply_markup=keyboard)
-        except:
+        except Exception:
             await callback.message.answer(text, reply_markup=keyboard)
         await callback.answer()
 @dp.message(lambda message: message.text == "🚀 Купить")
@@ -864,7 +873,7 @@ async def handle_contacts(message: types.Message):
  
 ✅ СВЯЗЬ 24/7👋🏻"""
     keyboard_buttons = []
- 
+
     if CHANNEL_INFO_URL:
         keyboard_buttons.append([InlineKeyboardButton(text="🌿 Канал-Инфо 🔞", url=CHANNEL_INFO_URL)])
     if ADMIN_CHAT_URL:
@@ -879,7 +888,7 @@ async def handle_contacts(message: types.Message):
         keyboard_buttons.append([InlineKeyboardButton(text="👷 Оператор", url=OPERATOR_URL)])
     if PARTNERSHIP_URL:
         keyboard_buttons.append([InlineKeyboardButton(text="🤝 Обсудить партнёрство", url=PARTNERSHIP_URL)])
- 
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=keyboard_buttons)
     await message.answer(text, reply_markup=keyboard)
 @dp.message(lambda message: message.text == "🎲 Бонусы")
@@ -968,7 +977,7 @@ async def links_admin_handler(callback: types.CallbackQuery, callback_data: Link
 async def admin_set_bank_name(message: types.Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
- 
+
     bank_name = message.text
     await state.update_data(bank_name=bank_name)
     await state.set_state(AdminState.waiting_bank)
@@ -1000,7 +1009,7 @@ async def admin_set_bank_name(message: types.Message, state: FSMContext):
 async def admin_set_bank(message: types.Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
- 
+
     bank_card = message.text
     await state.update_data(bank_card=bank_card)
     await state.set_state(AdminState.waiting_sbp_phone)
@@ -1032,7 +1041,7 @@ async def admin_set_bank(message: types.Message, state: FSMContext):
 async def admin_set_sbp_phone(message: types.Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
- 
+
     try:
         sbp_phone = message.text
         data = await state.get_data()
@@ -1041,11 +1050,11 @@ async def admin_set_sbp_phone(message: types.Message, state: FSMContext):
         bank_name = data.get("bank_name", "")
         bank_card = data.get("bank_card", "")
         bank = f"{bank_name} | {bank_card}" if bank_name and bank_card else bank_card
-     
+
         payment_details = load_payment_details()
         if crypto not in payment_details:
             payment_details[crypto] = {}
-     
+
         if country == "belarus":
             payment_details[crypto]["bank_bel"] = bank
             payment_details[crypto]["sbp_phone_bel"] = sbp_phone
@@ -1054,9 +1063,9 @@ async def admin_set_sbp_phone(message: types.Message, state: FSMContext):
             payment_details[crypto]["bank"] = bank
             payment_details[crypto]["sbp_phone"] = sbp_phone
             country_name = "России"
-     
+
         save_payment_details(payment_details)
-     
+
         admin_message_id = data.get("admin_message_id")
         crypto_names = {"BTC": "Bitcoin", "LTC": "Litecoin", "USDT": "USDT", "XMR": "Monero"}
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
@@ -1070,7 +1079,7 @@ async def admin_set_sbp_phone(message: types.Message, state: FSMContext):
                     text=f"✅ Реквизиты для {country_name} ({crypto_names.get(crypto, crypto)}) успешно сохранены!\n\nБанк: {bank}\nНомер телефона СБП: {sbp_phone}",
                     reply_markup=keyboard
                 )
-            except:
+            except Exception:
                 await message.answer(f"✅ Реквизиты для {country_name} ({crypto_names.get(crypto, crypto)}) успешно сохранены!\n\nБанк: {bank}\nНомер телефона СБП: {sbp_phone}", reply_markup=keyboard)
         else:
             await message.answer(f"✅ Реквизиты для {country_name} ({crypto_names.get(crypto, crypto)}) успешно сохранены!\n\nБанк: {bank}\nНомер телефона СБП: {sbp_phone}", reply_markup=keyboard)
@@ -1085,20 +1094,20 @@ async def admin_set_sbp_phone(message: types.Message, state: FSMContext):
 async def admin_set_crypto_wallet(message: types.Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
- 
+
     try:
         wallet_address = message.text.strip()
         data = await state.get_data()
         crypto = data.get("crypto")
         crypto_names = {"BTC": "Bitcoin", "LTC": "Litecoin", "USDT": "USDT", "XMR": "Monero"}
         crypto_symbols = {"BTC": "BTC", "LTC": "LTC", "USDT": "USDT", "XMR": "XMR"}
-     
+
         payment_details = load_payment_details()
         if crypto not in payment_details:
             payment_details[crypto] = {}
         payment_details[crypto]["wallet_address"] = wallet_address
         save_payment_details(payment_details)
-     
+
         admin_message_id = data.get("admin_message_id")
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="Назад в меню", callback_data=UserPanelCallback(action="admin_back_to_crypto").pack())]
@@ -1111,7 +1120,7 @@ async def admin_set_crypto_wallet(message: types.Message, state: FSMContext):
                     text=f"✅ Адрес кошелька {crypto_symbols.get(crypto, crypto)} для {crypto_names.get(crypto, crypto)} успешно сохранен!\n\nАдрес: {wallet_address}",
                     reply_markup=keyboard
                 )
-            except:
+            except Exception:
                 await message.answer(f"✅ Адрес кошелька {crypto_symbols.get(crypto, crypto)} для {crypto_names.get(crypto, crypto)} успешно сохранен!\n\nАдрес: {wallet_address}", reply_markup=keyboard)
         else:
             await message.answer(f"✅ Адрес кошелька {crypto_symbols.get(crypto, crypto)} для {crypto_names.get(crypto, crypto)} успешно сохранен!\n\nАдрес: {wallet_address}", reply_markup=keyboard)
@@ -1212,7 +1221,7 @@ async def admin_set_commission(message: types.Message, state: FSMContext):
         env_path = os.path.join(os.path.dirname(__file__), ".env")
         load_dotenv(env_path)
         # Write updated value to .env
-        with open(env_path, 'r') as f:
+        with open(env_path) as f:
             lines = f.readlines()
         found = False
         new_lines = []
@@ -1239,7 +1248,7 @@ async def admin_set_commission(message: types.Message, state: FSMContext):
                     text=f"✅ Комиссия успешно изменена на {commission_value}%",
                     reply_markup=keyboard
                 )
-            except:
+            except Exception:
                 await message.answer(f"✅ Комиссия успешно изменена на {commission_value}%", reply_markup=keyboard)
         else:
             await message.answer(f"✅ Комиссия успешно изменена на {commission_value}%", reply_markup=keyboard)
@@ -1288,21 +1297,21 @@ async def document_handler(message: types.Message):
 async def handle_amount(message: types.Message, state: FSMContext):
     if message.text and message.text.startswith("/"):
         return
- 
+
     if not message.text:
         return
- 
+
     user_id = message.from_user.id
- 
+
     if user_id in user_order_data:
         return
- 
+
     current_state = await state.get_state()
     if current_state:
         state_str = str(current_state)
         if "AdminState" in state_str:
             return
- 
+
     if is_admin(user_id) and user_id in user_order_data:
         admin_data = user_order_data[user_id]
         if "order_id" not in admin_data and "admin_type" in admin_data:
@@ -1332,18 +1341,18 @@ async def handle_amount(message: types.Message, state: FSMContext):
                         await message.answer(f"✅ Адрес кошелька {crypto} успешно сохранен!\n\nАдрес: {wallet_address}")
                         del user_order_data[user_id]
                         return
- 
+
     if user_id in user_transaction_data:
         if user_transaction_data[user_id].get("waiting_payment_details"):
             payment_details_text = message.text
             user_transaction_data[user_id]["payment_details"] = payment_details_text
             del user_transaction_data[user_id]["waiting_payment_details"]
-         
+
             try:
                 await message.delete()
             except Exception as e:
                 print(f'Exception caught: {e}')
-         
+
             last_message_id = user_transaction_data[user_id].get("last_message_id")
             if last_message_id:
                 try:
@@ -1352,12 +1361,12 @@ async def handle_amount(message: types.Message, state: FSMContext):
                         message_id=last_message_id,
                         text="⏳ Подбираем реквизиты..."
                     )
-                except:
+                except Exception:
                     await message.answer("⏳ Подбираем реквизиты...")
             else:
                 await message.answer("⏳ Подбираем реквизиты...")
             await asyncio.sleep(5)
-         
+
             transaction = user_transaction_data[user_id]
             crypto_amount = transaction["crypto_amount"]
             crypto_amount_str = transaction.get("crypto_amount_str")
@@ -1373,22 +1382,22 @@ async def handle_amount(message: types.Message, state: FSMContext):
             payment_method = transaction.get("payment_method", "")
             country = transaction.get("country", "russia")
             order_id = f"{user_id}{int(time.time())}"
-         
+
             payment_details = get_payment_details(currency["symbol"], country)
             wallet_address = payment_details.get("wallet_address", "bc1qnv29qqq46vazssl4vlm4drp3scyay96qxnfakx")
-         
+
             if payment_method == "payment_sbp_phone":
                 pass
             else:
                 pass
-         
+
             if country == "belarus":
                 amount_display = round(rub_amount * 0.036)
                 currency_display = "бел.рублей"
             else:
                 amount_display = rub_amount
                 currency_display = "₽"
-         
+
             text = f"""☑️Заявка №<code>{order_id}</code> успешно создана!
 
 📎 Адрес зачисления:
@@ -1404,7 +1413,7 @@ async def handle_amount(message: types.Message, state: FSMContext):
 <b>💳 Сумма к оплате:</b> <u><b>{crypto_amount_str} {currency['symbol'].upper()}</b></u>
 
 ✅ На оплату 15 минут, после оплаты необходимо нажать на кнопку "ОПЛАТИЛ" """
-         
+
             keyboard = InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(text="Оплатил", callback_data=UserPanelCallback(action="payment_done").pack())],
                 [InlineKeyboardButton(text="Отменить заявку", callback_data=UserPanelCallback(action="cancel_order").pack())]
@@ -1418,11 +1427,11 @@ async def handle_amount(message: types.Message, state: FSMContext):
                         reply_markup=keyboard,
                         parse_mode="HTML"
                     )
-                except:
+                except Exception:
                     await message.answer(text, reply_markup=keyboard, parse_mode="HTML")
             else:
                 await message.answer(text, reply_markup=keyboard, parse_mode="HTML")
-         
+
             user_order_data[user_id] = {
                 "order_id": order_id,
                 "crypto_amount": crypto_amount,
@@ -1436,19 +1445,19 @@ async def handle_amount(message: types.Message, state: FSMContext):
         elif user_transaction_data[user_id].get("waiting_wallet"):
             wallet_address = message.text
             user_transaction_data[user_id]["wallet_address"] = wallet_address
-         
+
             wallet_request_msg_id = user_transaction_data[user_id].get("wallet_request_msg_id")
             if wallet_request_msg_id:
                 try:
                     await bot.delete_message(chat_id=message.chat.id, message_id=wallet_request_msg_id)
                 except Exception as e:
                     print(f'Exception caught: {e}')
-         
+
             try:
                 await message.delete()
             except Exception as e:
                 print(f'Exception caught: {e}')
-         
+
             text = "Выберите способ доставки"
             keyboard = InlineKeyboardMarkup(inline_keyboard=[
                 [InlineKeyboardButton(text="ВИП ⚡ 1-25 минут(+170₽)", callback_data=UserPanelCallback(action="delivery_vip").pack())],
@@ -1458,19 +1467,19 @@ async def handle_amount(message: types.Message, state: FSMContext):
             await message.answer(text, reply_markup=keyboard)
             del user_transaction_data[user_id]["waiting_wallet"]
             return
- 
+
     if user_id not in user_selected_currency:
         logger.info(f"User {user_id} not in user_selected_currency. Text: {message.text}, Keys: {list(user_selected_currency.keys())}")
         return
- 
+
     logger.info(f"Processing amount for user {user_id}, currency: {user_selected_currency[user_id]}, text: {message.text}")
- 
+
     try:
         amount = float(message.text.replace(',', '.'))
         if amount <= 0:
             await message.answer("Сумма должна быть больше нуля.")
             return
-     
+
         currency = user_selected_currency[user_id]
         operation_type = currency.get("type", "buy")
         symbol = currency["symbol"]
@@ -1489,9 +1498,9 @@ async def handle_amount(message: types.Message, state: FSMContext):
         country = "russia"
         if user_id in user_transaction_data:
             country = user_transaction_data[user_id].get("country", "russia")
-     
+
         MIN_AMOUNT_RUB = 1500
-     
+
         commission_multiplier = 1 + COMMISSION_PERCENT / 100
         if operation_type == "sell":
             # Для всей крипты в продаже: до 250 - крипта, иначе - рубли
@@ -1522,7 +1531,7 @@ async def handle_amount(message: types.Message, state: FSMContext):
                     # 250 < amount: treat as RUB
                     rub_amount = amount
                     crypto_amount = amount / (rate * commission_multiplier)
-     
+
         if country == "belarus":
             min_amount_bel = round(MIN_AMOUNT_RUB * 0.036)
             if rub_amount < MIN_AMOUNT_RUB:
@@ -1533,14 +1542,14 @@ async def handle_amount(message: types.Message, state: FSMContext):
             if rub_amount < MIN_AMOUNT_RUB:
                 await message.answer(f"Минимальная сумма покупки составляет {MIN_AMOUNT_RUB} ₽.")
                 return
-     
+
         if country == "belarus":
             amount_display = round(rub_amount * 0.036)
             currency_display = "бел.рублей"
         else:
             amount_display = int(rub_amount)
             currency_display = "₽"
-     
+
         if operation_type == "sell":
             if crypto_amount < 0.01:
                 crypto_amount_str = f"{crypto_amount:.8f}".rstrip('0').rstrip('.')
@@ -1561,14 +1570,14 @@ async def handle_amount(message: types.Message, state: FSMContext):
             text = f"""-Вам будет зачислено: **{crypto_amount_str} {symbol}**
 -Вам необходимо оплатить: **{amount_display} {currency_display}**
 🎫 У вас используется промокод: **NEWUSER30**, скидка в размере 25% !"""
-     
+
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="Использовать промокод", callback_data=UserPanelCallback(action="payment_next").pack())],
             [InlineKeyboardButton(text="Не использовать промокод", callback_data=UserPanelCallback(action="payment_next").pack())],
             [InlineKeyboardButton(text="Назад", callback_data=UserPanelCallback(action="back").pack())]
         ])
         sent_message = await message.answer(text, reply_markup=keyboard, parse_mode="Markdown")
-     
+
         if user_id not in user_transaction_data:
             user_transaction_data[user_id] = {}
         user_transaction_data[user_id].update({
@@ -1589,6 +1598,9 @@ async def handle_amount(message: types.Message, state: FSMContext):
         logger.error(f"Ошибка в handle_amount: {e}")
         await message.answer("Произошла ошибка при обработке суммы. Попробуйте еще раз.")
 async def main():
-    await dp.start_polling(bot)
+    async with aiohttp.ClientSession() as session:
+        dp["session"] = session
+        await dp.start_polling(bot)
+
 if __name__ == "__main__":
     asyncio.run(main())

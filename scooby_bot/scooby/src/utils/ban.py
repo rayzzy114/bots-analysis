@@ -7,7 +7,7 @@ BAN_FILE = os.path.normpath(BAN_FILE)
 
 def load_banned() -> set:
     try:
-        with open(BAN_FILE, "r") as f:
+        with open(BAN_FILE) as f:
             return set(json.load(f))
     except (FileNotFoundError, json.JSONDecodeError):
         return set()

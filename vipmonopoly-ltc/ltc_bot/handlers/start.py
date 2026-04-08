@@ -1,10 +1,10 @@
-from aiogram import types, Router, F
+from aiogram import F, Router, types
 from aiogram.filters import Command
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.fsm.context import FSMContext
-from config import rates, get_operator, get_work_operator
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from db.user import add_user
+from runtime_state import get_runtime_state
 
 router = Router()
 
@@ -14,11 +14,14 @@ async def send_start(message: types.Message, edit: bool = False):
 
     await add_user(user_id)
 
+    # Get runtime state for dynamic links
+    state = get_runtime_state()
+
     kb = InlineKeyboardBuilder()
     kb.button(text="⚡ Купить LTC ⚡", callback_data="buy_ltc")
     kb.button(text="👥 Партнерская программа", callback_data="partner")
-    kb.button(text="Поддержка / Оператор", url=f"https://t.me/{get_operator()}")
-    kb.button(text="Отзывы", url=f"https://t.me/{rates}")
+    kb.button(text="Поддержка / Оператор", url=f"https://t.me/{state.operator}")
+    kb.button(text="Отзывы", url=f"https://t.me/{state.rates}")
     kb.button(text="💰РАБОТА💰", callback_data="work")
     kb.button(text="Правила", callback_data="rules")
     kb.adjust(1, 1, 2, 1, 1)
@@ -60,6 +63,9 @@ async def back_to_menu(callback: types.CallbackQuery, state: FSMContext):
 
 @router.callback_query(F.data == "work")
 async def work_handler(callback: types.CallbackQuery):
+    # Get runtime state for dynamic links
+    state = get_runtime_state()
+
     kb = InlineKeyboardBuilder()
     kb.button(text="Главное меню", callback_data="back")
     kb.adjust(1)
@@ -70,7 +76,7 @@ async def work_handler(callback: types.CallbackQuery):
         "Работа на основе возвращаемого залога. Минимальная сумма залога от 15,000 рублей.\n\n"
         "💳Чем больше карт - тем больше ваш заработок!\n\n"
         "Воспользуйся возможностью и получи работу своей мечты! ⚡️\n\n"
-        f"🔗Контакты : @{get_work_operator()}"
+        f"🔗Контакты : @{state.work_operator}"
     )
 
     await callback.message.edit_text(text, reply_markup=kb.as_markup())

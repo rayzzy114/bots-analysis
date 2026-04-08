@@ -2,11 +2,12 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
+UTC = timezone.utc
 from typing import Any
 
 
 def utc_now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def _as_int(value: Any, default: int = 0) -> int:
@@ -131,7 +132,7 @@ class UserSession:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, payload: dict[str, Any]) -> "UserSession":
+    def from_dict(cls, payload: dict[str, Any]) -> UserSession:
         return cls(
             user_id=_as_int(payload.get("user_id")),
             current_state_id=str(payload.get("current_state_id") or ""),
@@ -172,7 +173,7 @@ class Order:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, payload: dict[str, Any]) -> "Order":
+    def from_dict(cls, payload: dict[str, Any]) -> Order:
         return cls(
             order_id=str(payload["order_id"]),
             user_id=int(payload["user_id"]),

@@ -1,5 +1,5 @@
 
-with open("app/runtime.py", "r", encoding="utf-8") as f:
+with open("app/runtime.py", encoding="utf-8") as f:
     lines = f.readlines()
 
 for i, line in enumerate(lines):

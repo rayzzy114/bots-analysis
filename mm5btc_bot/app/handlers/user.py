@@ -11,7 +11,6 @@ from ..context import AppContext
 from ..keyboards import kb_back, kb_confirm, kb_language, kb_main, kb_return_to_main
 from ..states import UserState
 from ..storage import build_wallet_qr_png_bytes
-from ..validation import is_valid_btc_address
 from ..texts import (
     address_accepted,
     clean_prompt,
@@ -25,6 +24,7 @@ from ..texts import (
     qr_failed_text,
     return_to_main_echo,
 )
+from ..validation import is_valid_btc_address
 
 logger = logging.getLogger(__name__)
 

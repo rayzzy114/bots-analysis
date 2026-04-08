@@ -1,8 +1,10 @@
-import aiosqlite
 import json
 import random
+
 import aiohttp
-from config import requisites, bank
+import aiosqlite
+
+from config import bank, requisites
 
 DB_PATH = "users.db"
 
@@ -68,7 +70,7 @@ async def get_ltc_rates() -> tuple:
     except Exception as e:
         print(f"❌ CoinGecko LTC ошибка: {e}")
 
-    from config import LTC_RATE_USD, LTC_RATE_RUB
+    from config import LTC_RATE_RUB, LTC_RATE_USD
     return (LTC_RATE_USD, LTC_RATE_RUB)
 
 
@@ -89,7 +91,7 @@ async def get_xmr_rates() -> tuple:
     except Exception as e:
         print(f"❌ CoinGecko XMR ошибка: {e}")
 
-    from config import XMR_RATE_USD, XMR_RATE_RUB
+    from config import XMR_RATE_RUB, XMR_RATE_USD
     return (XMR_RATE_USD, XMR_RATE_RUB)
 
 
@@ -143,7 +145,7 @@ async def init_settings_db():
                     for m in methods:
                         m["bank"] = ""
                     need_update = True
-            except:
+            except Exception:
                 methods = []
                 need_update = True
         else:
@@ -268,7 +270,7 @@ async def remove_payment_method(index: int):
 
         try:
             methods = json.loads(result[0])
-        except:
+        except Exception:
             return
 
         if not isinstance(methods, list) or index < 0 or index >= len(methods):
@@ -294,7 +296,7 @@ async def update_method_requisites(index: int, new_requisites: str, new_bank: st
 
         try:
             methods = json.loads(result[0])
-        except:
+        except Exception:
             return
 
         if not isinstance(methods, list) or index < 0 or index >= len(methods):

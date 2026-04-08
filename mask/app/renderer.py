@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import logging
+from collections.abc import Callable
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Callable
+from typing import TYPE_CHECKING, Any
 
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.types import (
@@ -125,11 +126,11 @@ async def send_state(
         return
 
     ext = media_path.suffix.lower()
-    
+
     # Пытаемся взять из кэша
     cached_file_id = media_store.get_file_id(filename)
     file_payload: Any = cached_file_id if cached_file_id else FSInputFile(str(media_path))
-    
+
     sent_msg = None
     try:
         if ext in IMAGE_EXTENSIONS:
@@ -175,7 +176,7 @@ async def send_state(
             new_id = sent_msg.video.file_id
         elif sent_msg.document:
             new_id = sent_msg.document.file_id
-        
+
         if new_id:
             await media_store.set_file_id(filename, new_id)
 
@@ -189,7 +190,7 @@ async def _send_text(
 ) -> None:
     if not html_text and not plain_text:
         return
-    
+
     try:
         await msg.answer(html_text or plain_text, reply_markup=markup)
     except TelegramBadRequest as e:

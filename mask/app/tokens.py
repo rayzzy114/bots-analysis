@@ -14,7 +14,7 @@ class TokenRegistry:
     def get_token(self, action_text: str) -> str:
         if action_text in self.action_to_token:
             return self.action_to_token[action_text]
-        
+
         token = action_token(action_text)
         self.action_to_token[action_text] = token
         self.token_to_action[token] = action_text

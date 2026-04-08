@@ -4,6 +4,7 @@ import json
 import re
 import time
 from datetime import datetime, timedelta, timezone
+UTC = timezone.utc
 from pathlib import Path
 
 from .models import Order, QuoteRecord
@@ -21,7 +22,7 @@ def _fmt_rub(value: float) -> str:
 
 
 def _utc_now() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 UNICODE_ESCAPE_RE = re.compile(r"(?:\\u[0-9A-Fa-f]{4})+")
@@ -126,7 +127,7 @@ class OrderEngine:
             coin=coin,
             input_amount=float(input_amount),
             output_amount=float(quote.coin_amount if operation == "buy" else quote.rub_amount),
-            pay_amount=float(input_amount if operation == "buy" else quote.coin_amount),
+            pay_amount=float(quote.rub_amount if operation == "buy" else quote.coin_amount),
             net_amount=float(quote.net_amount) if quote.net_amount is not None else None,
             payment_method=payment_method,
             wallet_or_requisites=wallet_or_requisites,

@@ -1,27 +1,41 @@
+def parse_amount(text: str) -> float | None:
+    try:
+        return float(text.replace(",", ".").replace(" ", ""))
+    except Exception:
+        return None
 import asyncio
+import io
 import os
 import random
-from captcha.image import ImageCaptcha
-import io
+import sqlite3
 import string
+import uuid
+from datetime import datetime, timedelta
+
 import aiohttp
 from aiogram import Bot, Dispatcher, F
-from aiogram.enums import ParseMode
-from aiogram.types import (
-    Message, FSInputFile, ReplyKeyboardMarkup, KeyboardButton, BotCommand,
-    InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ReplyKeyboardRemove
-)
-from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.client.default import DefaultBotProperties
-from aiogram.fsm.state import StatesGroup, State
+from aiogram.enums import ParseMode
 from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.types import (
+    BotCommand,
+    BufferedInputFile,
+    CallbackQuery,
+    FSInputFile,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    Message,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove,
+)
+from captcha.image import ImageCaptcha
 from dotenv import load_dotenv
-import sqlite3
-from datetime import datetime, timedelta
-from aiogram.types import BufferedInputFile
-import uuid
-from config import BTC_RATE_USD, BTC_RATE_RUB, LTC_RATE_USD, LTC_RATE_RUB
-from utils.env_writer import update_env_var, read_env_var
+
+from config import BTC_RATE_RUB, BTC_RATE_USD, LTC_RATE_RUB, LTC_RATE_USD
+from utils.env_writer import read_env_var, update_env_var
 
 # ================== ENV ==================
 load_dotenv()
@@ -316,7 +330,7 @@ async def start_handler(message: Message, state: FSMContext):
         return
 
     captcha_photo, captcha_text = generate_captcha()
-    
+
     await state.update_data(captcha_answer=captcha_text)
     await state.set_state(CaptchaState.waiting_captcha)
 
@@ -425,7 +439,7 @@ async def admin_enter_bank(message: Message, state: FSMContext):
             reply_markup=cancel_keyboard
         )
         await state.set_state(AdminState.enter_requisite_value)
-    except:
+    except Exception:
         await message.answer("❌ Введите корректный номер!")
 
 @dp.message(AdminState.enter_requisite_value)
@@ -442,7 +456,7 @@ async def admin_enter_requisites(message: Message, state: FSMContext):
     await state.set_state(AdminState.edit_value)
 
 @dp.message(AdminState.edit_value)
-async def admin_save_requisites(message: Message, state: FSMContext):
+async def admin_edit_requisites_value(message: Message, state: FSMContext):
     data = await state.get_data()
     idx = data.get("edit_index")
     bank_name = data.get("bank_name")
@@ -473,7 +487,7 @@ async def admin_delete_select(message: Message, state: FSMContext):
         removed = admin_data["payment_methods"].pop(idx)
         await message.answer(f"🗑 Удалено: {removed['bank_name']} — {removed['requisites']}", reply_markup=admin_main_keyboard)
         await state.clear()
-    except:
+    except Exception:
         await message.answer("Введите корректный номер!")
 
 @dp.message(F.text == "📜 Показать все реквизиты")
@@ -545,7 +559,7 @@ async def broadcast_send(message: Message, state: FSMContext):
                 await bot.send_photo(chat_id=uid, photo=photo_id, caption=message.caption or "")
             else:
                 await bot.send_message(chat_id=uid, text=message.text)
-        except:
+        except Exception:
             continue
 
     await message.answer("✅ Рассылка завершена", reply_markup=admin_main_keyboard)
@@ -1073,7 +1087,7 @@ async def countdown_task(msg: Message, user_id: int, pay_id: str,
                 get_text(minutes_left),
                 reply_markup=msg.reply_markup
             )
-        except:
+        except Exception:
             break
         await asyncio.sleep(60)
         minutes_left -= 1
@@ -1360,7 +1374,7 @@ async def sell_cancel_confirm(message: Message, state: FSMContext):
 @dp.message(F.text == "💻 Личный кабинет")
 async def profile_handler(message: Message):
     user_id = message.from_user.id
-    
+
     photo = FSInputFile("media/lk.jpg")
     await message.answer_photo(
         photo=photo,
@@ -1555,7 +1569,7 @@ async def calc_process_amount(message: Message, state: FSMContext):
 @dp.message(F.text == "⭐ Отзывы")
 async def reviews_handler(message: Message):
     url = REVIEWS_URL
-    
+
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="⭐ Отзывы", url=url)]
     ])

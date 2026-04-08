@@ -12,9 +12,15 @@ from aiogram.types import BufferedInputFile, CallbackQuery, Chat, Message, Updat
 from app.context import AppContext
 from app.handlers.admin import build_admin_router
 from app.handlers.user import build_user_router
-from app.storage import RuntimeStore, SettingsStore
-from app.storage import build_wallet_qr_png_bytes
-from app.texts import address_accepted, clean_prompt, confirm_prompt, order_text, qr_caption, qr_failed_text
+from app.storage import RuntimeStore, SettingsStore, build_wallet_qr_png_bytes
+from app.texts import (
+    address_accepted,
+    clean_prompt,
+    confirm_prompt,
+    order_text,
+    qr_caption,
+    qr_failed_text,
+)
 
 
 def _make_user(user_id: int) -> User:

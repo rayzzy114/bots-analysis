@@ -1,8 +1,15 @@
-import os
-import sys
+def main_menu_kb(): return None
+def crypto_kb(): return None
+def parse_amount(text: str) -> float | None:
+    try:
+        return float(text.replace(",", ".").replace(" ", ""))
+    except Exception:
+        return None
 import asyncio
 import logging
+import os
 import random
+import sys
 from pathlib import Path
 
 import aiohttp
@@ -10,22 +17,26 @@ import aiohttp
 # Fix: add parent directory to path so `utils` module can be found
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from aiogram import Bot, Dispatcher, types
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, FSInputFile , InlineKeyboardMarkup , InlineKeyboardButton
-from aiogram.filters import Command
-from aiogram.fsm.state import State, StatesGroup
-from aiogram.fsm.context import FSMContext
 from datetime import datetime
-from aiogram import F
 
-
+from aiogram import Bot, Dispatcher, F, types
+from aiogram.filters import Command
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.types import (
+    FSInputFile,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    ReplyKeyboardMarkup,
+)
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent
 ENV_PATH = BASE_DIR / ".env"
 load_dotenv(ENV_PATH, override=True)
 
-from utils.env_writer import update_env_var, read_env_var
+from utils.env_writer import read_env_var, update_env_var
 
 
 def _get_env(key, default=""):
@@ -449,7 +460,7 @@ async def cmd_admin(message: types.Message):
     )
 
 
-    
+
 
 def admin_main_menu():
     return InlineKeyboardMarkup(inline_keyboard=[
@@ -494,7 +505,7 @@ async def admin_banks_menu(callback: types.CallbackQuery):
     ])
 
     await callback.message.edit_text(text, reply_markup=kb)
-    
+
 
 
 
@@ -795,7 +806,7 @@ main_menu = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True,
     one_time_keyboard=False
-)    
+)
 
 #КУПИТЬ
 
@@ -806,7 +817,7 @@ class BuyStatesRF(StatesGroup):
 class BuyStatesRB(StatesGroup):
     waiting_for_amount = State()
     waiting_for_wallet = State()
-    
+
 
 
 
@@ -827,7 +838,7 @@ sell_country_kb = InlineKeyboardMarkup(
     ]
 )
 
-#РБ ЛОГИКА ПОКА НЕ РАБОТАЕТ ЗАМЕНИТЬ 
+#РБ ЛОГИКА ПОКА НЕ РАБОТАЕТ ЗАМЕНИТЬ
 @dp.callback_query(lambda c: c.data == "buy_rb")
 async def process_buy_rb(callback: types.CallbackQuery):
     # показываем только кнопку "Назад"
@@ -844,7 +855,7 @@ async def process_buy_rb(callback: types.CallbackQuery):
     # перекидываем в главное меню
     await callback.message.edit_text("Главное меню:", reply_markup=main_menu)
 
-#РБ ЛОГИКА ПОКА НЕ РАБОТАЕТ ЗАМЕНИТЬ 
+#РБ ЛОГИКА ПОКА НЕ РАБОТАЕТ ЗАМЕНИТЬ
 dp.callback_query(lambda c: c.data == "sell_rb")
 async def process_sell_rb(callback: types.CallbackQuery):
     # показываем только кнопку "Назад"
@@ -877,7 +888,7 @@ async def buy_handler(message: types.Message, state: FSMContext):
         caption="Выберите страну для покупки 👇",
         reply_markup=buy_country_kb
     )
-    
+
 
 buy_crypto_kb_rf = InlineKeyboardMarkup(
     inline_keyboard=[
@@ -1251,7 +1262,7 @@ async def process_payment_document(message: types.Message, state: FSMContext):
 
 
 
-# Продать 
+# Продать
 # ==== SELL (RF) — mirrored to BUY, address from DB ====
 
 # sell_rates is maintained in memory and refreshed from CoinGecko.
@@ -1483,7 +1494,7 @@ async def process_back(callback: types.CallbackQuery, state: FSMContext):
     await callback.answer()
 
 
-    
+
 @dp.callback_query(lambda c: c.data == "cancel_order")
 async def process_cancel_order(callback: types.CallbackQuery, state: FSMContext):
     await callback.answer()

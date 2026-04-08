@@ -1,5 +1,5 @@
 import re
-from typing import Iterable
+from collections.abc import Iterable
 
 
 def parse_admin_ids(raw: str) -> set[int]:

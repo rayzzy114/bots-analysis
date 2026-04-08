@@ -1,131 +1,169 @@
-from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    ReplyKeyboardMarkup,
+)
+
 from config import URL_INFO
 
 
 def kb_start():
-    keybord = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton('Правила и соглашение SoNic Ex', url=URL_INFO)],
-        [InlineKeyboardButton('Я согласен', callback_data='App|yes'),
-         InlineKeyboardButton('Не согласен', callback_data='App|no')]
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="Правила и соглашение SoNic Ex", url=URL_INFO)],
+        [
+            InlineKeyboardButton(text="Я согласен", callback_data="App|yes"),
+            InlineKeyboardButton(text="Не согласен", callback_data="App|no"),
+        ],
     ])
-    return keybord
+    return keyboard
 
 
 def kb_menu():
-    keybord = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb1 = KeyboardButton('Купить Bitcoin (BTC)')
-    kb2 = KeyboardButton('Купить Litecoin (LTC)')
-    kb3 = KeyboardButton('👤Мой кошелек👤')
-    kb4 = KeyboardButton('🔗ПАРТНЕРКА🔗')
-    kb5 = KeyboardButton('📉Продать криптовалюту📉 ')
-    kb6 = KeyboardButton('🧮Калькулятор🧮')
-    kb7 = KeyboardButton('📜Правила📜')
-    kb8 = KeyboardButton('🗃Отзывы🗃')
-    kb9 = KeyboardButton('👨‍💻Оператор👨‍💻')
-    return keybord.add(kb1, kb2).add(kb3).add(kb4, kb5).add(kb6).add(kb7, kb8).add(kb9)
-
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="Купить Bitcoin (BTC)"), KeyboardButton(text="Купить Litecoin (LTC)")],
+            [KeyboardButton(text="👤Мой кошелек👤")],
+            [KeyboardButton(text="🔗ПАРТНЕРКА🔗"), KeyboardButton(text="📉Продать криптовалюту📉 ")],
+            [KeyboardButton(text="🧮Калькулятор🧮")],
+            [KeyboardButton(text="📜Правила📜"), KeyboardButton(text="🗃Отзывы🗃")],
+            [KeyboardButton(text="👨‍💻Оператор👨‍💻")],
+        ],
+        resize_keyboard=True,
+    )
+    return keyboard
 
 
 def kb_no_app():
-    keybord = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb1 = KeyboardButton('Обновить')
-    return keybord.add(kb1)
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text="Обновить")]],
+        resize_keyboard=True,
+    )
+    return keyboard
+
 
 def kb_cancel_input():
-    keybord = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb1 = KeyboardButton('Отмена')
-    return keybord.add(kb1)
-
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text="Отмена")]],
+        resize_keyboard=True,
+    )
+    return keyboard
 
 
 def kb_pay_go():
-    keybord = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton('Перейти к сделке', callback_data='Go'),
-         InlineKeyboardButton('Отмена', callback_data='cancel')]
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [
+            InlineKeyboardButton(text="Перейти к сделке", callback_data="Go"),
+            InlineKeyboardButton(text="Отмена", callback_data="cancel"),
+        ],
     ])
-    return keybord
+    return keyboard
 
 
 def kb_adress_go():
-    keybord = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton('Подтвердить', callback_data='AdressGO'),
-         InlineKeyboardButton('Отмена', callback_data='cancel')]
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [
+            InlineKeyboardButton(text="Подтвердить", callback_data="AdressGO"),
+            InlineKeyboardButton(text="Отмена", callback_data="cancel"),
+        ],
     ])
-    return keybord
+    return keyboard
 
 
 def kb_promokod_go():
-    keybord = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton('ВВЕСТИ ПРОМО-КОД', callback_data='promo_null')],
-        [InlineKeyboardButton('Перейти к оплате', callback_data='payments'),
-         InlineKeyboardButton('Отмена', callback_data='cancel')]
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="ВВЕСТИ ПРОМО-КОД", callback_data="promo_null")],
+        [
+            InlineKeyboardButton(text="Перейти к оплате", callback_data="payments"),
+            InlineKeyboardButton(text="Отмена", callback_data="cancel"),
+        ],
     ])
-    return keybord
+    return keyboard
 
 
 def kb_payments_success():
-    keybord = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton('✅ Я оплатил(а)', callback_data='Finish_pay')],
-        [InlineKeyboardButton('❌ Отменить заявку', callback_data='cancel')]
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="✅ Я оплатил(а)", callback_data="Finish_pay")],
+        [InlineKeyboardButton(text="❌ Отменить заявку", callback_data="cancel")],
     ])
-    return keybord
+    return keyboard
 
 
 def kb_home_finish():
-    keybord = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton('На главную', callback_data='cancel')],
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="На главную", callback_data="cancel")],
     ])
-    return keybord
+    return keyboard
 
 
 def kb_my_wallet():
-    keybord = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb1 = KeyboardButton('📤Отправить📤')
-    kb2 = KeyboardButton('📥Пополнить📥')
-    kb3 = KeyboardButton('🏠В главное меню🏠')
-    return keybord.add(kb1, kb2).add(kb3)
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="📤Отправить📤"), KeyboardButton(text="📥Пополнить📥")],
+            [KeyboardButton(text="🏠В главное меню🏠")],
+        ],
+        resize_keyboard=True,
+    )
+    return keyboard
 
 
 def kb_pay_money_Wallet():
-    keybord = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb1 = KeyboardButton('Купить Bitcoin (BTC)')
-    kb2 = KeyboardButton('Купить Litecoin (LTC)')
-    kb3 = KeyboardButton('👤Мой кошелек👤')
-    kb4 = KeyboardButton('🏠В главное меню🏠')
-    return keybord.add(kb1, kb2).add(kb3).add(kb4)
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="Купить Bitcoin (BTC)"), KeyboardButton(text="Купить Litecoin (LTC)")],
+            [KeyboardButton(text="👤Мой кошелек👤")],
+            [KeyboardButton(text="🏠В главное меню🏠")],
+        ],
+        resize_keyboard=True,
+    )
+    return keyboard
 
 
 def kb_parthers():
-    keybord = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb1 = KeyboardButton('🤑 Вывод средств 🤑')
-    kb3 = KeyboardButton('🏠В главное меню🏠')
-    return keybord.add(kb1).add(kb3)
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="🤑 Вывод средств 🤑")],
+            [KeyboardButton(text="🏠В главное меню🏠")],
+        ],
+        resize_keyboard=True,
+    )
+    return keyboard
 
 
 def kb_one_menu():
-    keybord = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb1 = KeyboardButton('🏠В главное меню🏠')
-    return keybord.add(kb1)
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text="🏠В главное меню🏠")]],
+        resize_keyboard=True,
+    )
+    return keyboard
 
 
 def kb_calkulate():
-    keybord = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb1 = KeyboardButton('🧮BTC')
-    kb2 = KeyboardButton('🧮LTC')
-    kb3 = KeyboardButton('Отмена')
-    return keybord.add(kb1, kb2).add(kb3)
-
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="🧮BTC"), KeyboardButton(text="🧮LTC")],
+            [KeyboardButton(text="Отмена")],
+        ],
+        resize_keyboard=True,
+    )
+    return keyboard
 
 
 def ikb_menu_admin():
-    keybord = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb1 = KeyboardButton('Изменить VISA')
-    kb2 = KeyboardButton('Изменить СБП')
-    kb3 = KeyboardButton('Выход')
-    return keybord.add(kb1).add(kb2).add(kb3)
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="Изменить VISA")],
+            [KeyboardButton(text="Изменить СБП")],
+            [KeyboardButton(text="Выход")],
+        ],
+        resize_keyboard=True,
+    )
+    return keyboard
 
 
 def ikb_stop_admin():
-    keybord = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb = KeyboardButton('Выйти из режима ввода')
-    return keybord.add(kb)
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text="Выйти из режима ввода")]],
+        resize_keyboard=True,
+    )
+    return keyboard

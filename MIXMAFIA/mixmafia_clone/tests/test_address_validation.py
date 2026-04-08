@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import pytest
+
 from app.runtime import _is_valid_address_for_currency, _is_valid_crypto_address
 
 

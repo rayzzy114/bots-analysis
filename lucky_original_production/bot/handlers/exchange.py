@@ -131,7 +131,9 @@ async def cmd_sell_inline(callback: CallbackQuery, state: FSMContext, session: A
 
 @router.callback_query(ExchangeSG.choosing_currency, F.data.startswith(("buy_", "sell_")))
 async def process_currency(callback: CallbackQuery, state: FSMContext, session: AsyncSession):
-    if not callback.data: return
+    if not callback.data:
+
+        return
     data = callback.data.split("_")
     action, currency = data[0], data[1]
     await state.update_data(currency=currency)
@@ -152,7 +154,9 @@ async def process_currency(callback: CallbackQuery, state: FSMContext, session: 
 async def prompt_amount_input(message: Message, state: FSMContext, session: AsyncSession):
     data = await state.get_data()
     currency = data.get('currency')
-    if not currency: return
+    if not currency:
+
+        return
 
     if data.get('order_type') == "sell":
         await state.update_data(amt_type="token")
@@ -171,7 +175,9 @@ async def prompt_amount_input(message: Message, state: FSMContext, session: Asyn
 
 @router.callback_query(ExchangeSG.choosing_method, F.data.startswith("method_"))
 async def process_method_choice(callback: CallbackQuery, state: FSMContext, session: AsyncSession):
-    if not callback.data or not callback.message: return
+    if not callback.data or not callback.message:
+
+        return
     method = callback.data.split("_")[1]
     await state.update_data(method=method)
     if method == "SBP":
@@ -183,21 +189,27 @@ async def process_method_choice(callback: CallbackQuery, state: FSMContext, sess
 
 @router.callback_query(ExchangeSG.choosing_bank, F.data.startswith("banks_page_"))
 async def process_banks_pagination(callback: CallbackQuery, state: FSMContext):
-    if not callback.data or not callback.message: return
+    if not callback.data or not callback.message:
+
+        return
     page = int(callback.data.split("_")[2])
     await callback.message.edit_reply_markup(reply_markup=get_banks_kb(page))
     await callback.answer()
 
 @router.callback_query(ExchangeSG.choosing_bank, F.data.startswith("bank_"))
 async def process_bank_choice(callback: CallbackQuery, state: FSMContext, session: AsyncSession):
-    if not callback.data or not callback.message: return
+    if not callback.data or not callback.message:
+
+        return
     await state.update_data(bank_name=callback.data.replace("bank_", ""))
     await prompt_amount_input(callback.message, state, session)
     await callback.answer()
 
 @router.callback_query(ExchangeSG.choosing_amount_type, F.data.startswith("amt_"))
 async def process_amount_type(callback: CallbackQuery, state: FSMContext, session: AsyncSession):
-    if not callback.data or not callback.message: return
+    if not callback.data or not callback.message:
+
+        return
     amt_type = callback.data.split("_")[1]
     await state.update_data(amt_type=amt_type)
     data = await state.get_data()
@@ -219,7 +231,9 @@ async def process_amount_type(callback: CallbackQuery, state: FSMContext, sessio
 
 @router.message(ExchangeSG.entering_amount)
 async def process_exchange_amount(message: Message, state: FSMContext, session: AsyncSession):
-    if not message.text: return
+    if not message.text:
+
+        return
     try:
         amount = float(message.text.replace(",", ".").replace(" ", ""))
         data = await state.get_data()
@@ -246,7 +260,9 @@ async def process_exchange_amount(message: Message, state: FSMContext, session: 
 
 @router.message(ExchangeSG.entering_wallet)
 async def process_buy_wallet(message: Message, state: FSMContext):
-    if not message.text: return
+    if not message.text:
+
+        return
     wallet = html.escape(message.text.strip())
     if len(wallet) < 10 or not re.match(r"^[a-zA-Z0-9]+$", wallet):
         await message.answer("⚠️ Некорректный адрес кошелька. Введите корректный адрес:")
@@ -265,7 +281,9 @@ async def process_buy_wallet(message: Message, state: FSMContext):
 
 @router.message(ExchangeSG.entering_phone)
 async def process_sell_phone(message: Message, state: FSMContext):
-    if not message.text: return
+    if not message.text:
+
+        return
     phone = message.text.strip().replace("+", "").replace(" ", "")
     if not (phone.isdigit() and len(phone) == 11):
         await message.answer("❌ Введите 11 цифр телефона (например: 79001234567):")
@@ -276,7 +294,9 @@ async def process_sell_phone(message: Message, state: FSMContext):
 
 @router.message(ExchangeSG.entering_fio)
 async def process_sell_fio(message: Message, state: FSMContext):
-    if not message.text: return
+    if not message.text:
+
+        return
     fio = html.escape(message.text.strip())
     if len(fio) < 5:
         await message.answer("❌ Слишком короткое ФИО.")

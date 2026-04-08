@@ -11,7 +11,11 @@ from dotenv import dotenv_values, load_dotenv, set_key
 
 from ..constants import COINS, DEFAULT_LINKS, LINK_LABELS
 from ..context import AppContext
-from ..keyboards import kb_admin_delete_payment_method, kb_admin_panel, kb_admin_requisites
+from ..keyboards import (
+    kb_admin_delete_payment_method,
+    kb_admin_panel,
+    kb_admin_requisites,
+)
 from ..states import TradeState
 from ..telegram_helpers import callback_message, callback_user_id, message_user_id
 from ..utils import fmt_money, parse_admin_ids, parse_amount

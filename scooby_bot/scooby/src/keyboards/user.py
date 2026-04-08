@@ -1,7 +1,6 @@
 import random
 
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 fruits = {
     "🍎": "Яблоко",
@@ -109,7 +108,7 @@ def calculator_button(mode="buy", currency="btc", calc_type="crypto", from_trans
             callback_data="calc_xmr"
         )
     ]
-    
+
     # Добавляем USDT только для режима продажи
     if mode == "sale":
         currency_buttons.append(
@@ -118,7 +117,7 @@ def calculator_button(mode="buy", currency="btc", calc_type="crypto", from_trans
                 callback_data="calc_usdt"
             )
         )
-    
+
     buttons = [
         [
             InlineKeyboardButton(
@@ -142,10 +141,10 @@ def calculator_button(mode="buy", currency="btc", calc_type="crypto", from_trans
             )
         ],
     ]
-    
+
     if from_transaction:
         buttons.append([InlineKeyboardButton(text="🔙 Назад", callback_data=f"calc_back_{from_transaction}_{currency}")])
-    
+
     buttons.append([InlineKeyboardButton(text="📜 Главное меню", callback_data="home")])
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 

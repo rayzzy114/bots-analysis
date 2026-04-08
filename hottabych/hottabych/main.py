@@ -1,24 +1,37 @@
+def parse_amount(text: str) -> float | None:
+    try:
+        return float(text.replace(",", ".").replace(" ", ""))
+    except Exception:
+        return None
 import asyncio
+import io
 import os
 import random
-from captcha.image import ImageCaptcha
-import io
-import string
-from aiogram import Bot, Dispatcher, F
-from aiogram import types
-from aiogram.enums import ParseMode
-from aiogram.types import (
-    Message, FSInputFile, ReplyKeyboardMarkup, KeyboardButton, BotCommand,
-    InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ReplyKeyboardRemove
-)
-from aiogram.fsm.storage.memory import MemoryStorage
-from aiogram.client.default import DefaultBotProperties
-from aiogram.fsm.state import StatesGroup, State
-from aiogram.fsm.context import FSMContext
-from dotenv import load_dotenv
 import sqlite3
+import string
 from datetime import datetime, timedelta
-from aiogram.types import BufferedInputFile
+
+from aiogram import Bot, Dispatcher, F, types
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.types import (
+    BotCommand,
+    BufferedInputFile,
+    CallbackQuery,
+    FSInputFile,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    Message,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove,
+)
+from captcha.image import ImageCaptcha
+from dotenv import load_dotenv
+
 # ================== ENV ==================
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -71,14 +84,14 @@ class CalculatorState(StatesGroup):
 
 class CaptchaState(StatesGroup):
     waiting_captcha = State()
-    
+
 class AdminState(StatesGroup):
     choose_requisite_field = State()   # выбор, что менять (карта, СБП и т.д.)
     enter_requisite_value = State()    # ввод нового значения
     change_crypto_address = State()
     broadcast_waiting = State()
     enter_crypto_address = State() # <-- новое состояние
-    
+
     # новые состояния для CRUD реквизитов
     add_bank_name = State()
     add_requisites = State()
@@ -174,13 +187,13 @@ admin_main_keyboard = ReplyKeyboardMarkup(
 )
 async def sell_global_cancel(message: Message, state: FSMContext):
     await state.clear()
-    
+
     # Опционально: удаляем последнее сообщение, чтобы было чище
     try:
         await message.delete()
     except Exception as e:
         print(f'Exception caught: {e}')
-    
+
     await message.answer(
         "❌ Операция отменена",
         reply_markup=main_keyboard
@@ -202,7 +215,7 @@ async def admin_entry(message: Message, state: FSMContext):
 async def clear_fsm(message: Message, state: FSMContext):
     await state.clear()
     await message.answer("✅ Состояние сброшено")
-    
+
 # Inline-кнопка отмены — можно вынести в отдельную переменную для удобства
 cancel_inline = InlineKeyboardMarkup(
     inline_keyboard=[
@@ -224,7 +237,7 @@ async def admin_add_requisites(message: Message, state: FSMContext):
 async def admin_add_bank(message: Message, state: FSMContext):
     # Сохраняем название банка
     await state.update_data(bank_name=message.text.strip())
-    
+
     await message.answer(
         "Введите реквизиты:",
         reply_markup=cancel_inline  # снова показываем inline-отмену
@@ -254,7 +267,7 @@ async def admin_save_requisites(message: Message, state: FSMContext):
 @dp.callback_query(F.data == "admin_cancel_add_requisites")
 async def admin_cancel_add_requisites(callback: CallbackQuery, state: FSMContext):
     await state.clear()
-    
+
     try:
         # Редактируем текущее сообщение (где пользователь вводил)
         await callback.message.edit_text(
@@ -272,7 +285,7 @@ async def admin_cancel_add_requisites(callback: CallbackQuery, state: FSMContext
         "Вернулись в админ-меню",
         reply_markup=admin_main_keyboard
     )
-    
+
     await callback.answer("Отменено ✓")
 
 # 1. Кнопка в админ-меню запускает процесс
@@ -384,7 +397,7 @@ async def admin_enter_bank(message: Message, state: FSMContext):
             reply_markup=cancel_keyboard
         )
         await state.set_state(AdminState.enter_requisite_value)
-    except:
+    except Exception:
         await message.answer("❌ Введите корректный номер!")
 
 
@@ -430,7 +443,7 @@ async def admin_delete_requisites(message: Message, state: FSMContext):
     if not admin_data["payment_methods"]:
         await message.answer("❌ Список пуст", reply_markup=admin_main_keyboard)
         return
-        
+
     text = "\n".join([f"{i+1}. {m['bank_name']} — {m['requisites']}" for i, m in enumerate(admin_data["payment_methods"])])
 
     kb = InlineKeyboardMarkup(
@@ -443,7 +456,7 @@ async def admin_delete_requisites(message: Message, state: FSMContext):
         f"Выберите номер для удаления:\n\n{text}",
         reply_markup=kb
     )
-    
+
     await state.set_state(AdminState.delete_select)
 
 
@@ -456,7 +469,7 @@ async def admin_cancel_delete(callback: CallbackQuery, state: FSMContext):
         await callback.message.delete()
     except Exception as e:
         print(f'Exception caught: {e}')
-        
+
     await callback.message.answer(
         "Вернулись в админ-меню",
         reply_markup=admin_main_keyboard
@@ -470,7 +483,7 @@ async def admin_delete_select(message: Message, state: FSMContext):
         removed = admin_data["payment_methods"].pop(idx)
         await message.answer(f"🗑 Удалено: {removed['bank_name']} — {removed['requisites']}", reply_markup=admin_main_keyboard)
         await state.clear()
-    except:
+    except Exception:
         await message.answer("Введите корректный номер!")
 
 @dp.message(F.text == "📜 Показать все реквизиты")
@@ -559,7 +572,7 @@ async def broadcast_send(message: Message, state: FSMContext):
                 await bot.send_photo(chat_id=uid, photo=photo_id, caption=message.caption or "")
             else:
                 await bot.send_message(chat_id=uid, text=message.text)
-        except:
+        except Exception:
             continue
 
     await message.answer("✅ Рассылка завершена", reply_markup=admin_main_keyboard)
@@ -601,7 +614,7 @@ exchange_direction_keyboard = ReplyKeyboardMarkup(
         [KeyboardButton(text="⬅ Назад")],
     ],
     resize_keyboard=True,
-    
+
 )
 
 cancel_keyboard = ReplyKeyboardMarkup(
@@ -665,13 +678,13 @@ async def direction_selected(message: Message, state: FSMContext):
 @dp.message(ExchangeState.enter_amount, F.text == "❌ Отмена")
 async def exchange_cancel(message: Message, state: FSMContext):
     await state.clear()
-    
+
     # Удаляем сообщение с запросом суммы (чтобы чат был чистым)
     try:
         await message.delete()
     except Exception as e:
         print(f'Exception caught: {e}')
-    
+
     # Красивый возврат в главное меню
     photo = FSInputFile("media/start.jpg")
     await message.answer_photo(
@@ -827,13 +840,13 @@ async def buy_amount(message: Message, state: FSMContext):
 @dp.callback_query(F.data == "cancel")
 async def cancel_to_start_handler(callback: CallbackQuery, state: FSMContext):
     await state.clear()  # Очищаем состояние
-    
+
     try:
         # Удаляем сообщение с кнопками
         await callback.message.delete()
     except Exception as e:
         print(f'Exception caught: {e}')
-    
+
     # Отправляем стартовое сообщение с фото
     photo = FSInputFile("media/start.jpg")
     await callback.message.answer_photo(
@@ -898,8 +911,6 @@ async def process_next(callback: CallbackQuery, state: FSMContext):
 
 
 import uuid
-
-
 
 # Кнопки для покупки
 buy_pay_keyboard = InlineKeyboardMarkup(
@@ -1107,6 +1118,7 @@ async def buy_proof_received(message: Message, state: FSMContext):
         del active_orders[user_id]
 
 # запускаем таймер, используя сохранённый ID
+    payment_msg_id = data.get("payment_msg_id")
     if payment_msg_id:
         try:
             msg = await bot.edit_message_text(
@@ -1160,7 +1172,7 @@ async def countdown_task(msg: Message, user_id: int, pay_id: str,
                 parse_mode="HTML",
                 reply_markup=msg.reply_markup
             )
-        except:
+        except Exception:
             break
         await asyncio.sleep(60)
         minutes_left -= 1
@@ -1183,19 +1195,19 @@ async def countdown_task(msg: Message, user_id: int, pay_id: str,
 @dp.callback_query(F.data.startswith("cancel_"))
 async def cancel_payment(callback: CallbackQuery, state: FSMContext):
     user_id = callback.from_user.id
-    
+
     # Показываем короткое уведомление (чтобы пользователь понял, что клик сработал)
     await callback.answer("Заявка отменена", show_alert=False)
-    
+
     # Очищаем состояние FSM
     await state.clear()
-    
+
     # Удаляем сообщение с реквизитами/кнопками (чтобы чат стал чистым)
     try:
         await callback.message.delete()
     except Exception as e:
         print(f'Exception caught: {e}')
-    
+
     # Жёстко кидаем в главное меню со стартовым фото и текстом
     photo = FSInputFile("media/start.jpg")
     await callback.message.answer_photo(
@@ -1247,7 +1259,7 @@ async def cancel_payment(callback: CallbackQuery, state: FSMContext):
     )
 
 
-    await bot.send_message(chat_id=ADMIN_ID, text=admin_text, parse_mode="HTML")
+    await bot.send_message(chat_id=ADMIN_ID, text="Новая заявка", parse_mode="HTML")
 
     await state.clear()
     if user_id in active_orders:
@@ -1366,7 +1378,8 @@ def format_crypto(amount: float, precision: int = 8) -> str:
     Форматирует число с заданной точностью, убирая хвостовые нули и точку.
     """
     try:
-        return f"{float(str(amount).replace(",", ".").replace(" ", "")):.{precision}f}".rstrip("0").rstrip(".")
+        amount_str = str(amount).replace(",", ".").replace(" ", "")
+        return f"{float(amount_str):.{precision}f}".rstrip("0").rstrip(".")
     except Exception:
         return str(amount)
 
@@ -1612,12 +1625,12 @@ async def sell_confirm(message: Message, state: FSMContext):
 @dp.message(SellState.confirm_sell, F.text == "❌ Отменить")
 async def sell_cancel_confirm(message: Message, state: FSMContext):
     await state.clear()
-    
+
     try:
         await message.delete()
     except Exception as e:
         print(f'Exception caught: {e}')
-    
+
     photo = FSInputFile("media/start.jpg")
     await message.answer_photo(
         photo=photo,
@@ -1670,7 +1683,7 @@ async def sell_proof_received(message: Message, state: FSMContext):
 @dp.message(SellState.confirm_sell, F.text == "❌ Отменить заявку")
 async def sell_cancel(message: Message, state: FSMContext):
     await state.clear()
-    
+
     await message.answer(
         "❌ Заявка успешно отменена\n\n"
         "Вы вернулись в главное меню",
@@ -1682,7 +1695,7 @@ async def sell_cancel(message: Message, state: FSMContext):
 @dp.message(F.text == "💻 Личный кабинет")
 async def profile_handler(message: Message):
     user_id = message.from_user.id
-    
+
     photo = FSInputFile("media/lk.jpg")
     await message.answer_photo(
         photo=photo,
@@ -1814,7 +1827,7 @@ async def start_handler(message: Message, state: FSMContext):
         return
 
     captcha_photo, captcha_text = generate_captcha()
-    
+
     await state.update_data(captcha_answer=captcha_text)
     await state.set_state(CaptchaState.waiting_captcha)
 
@@ -2010,7 +2023,8 @@ async def calc_cancel_amount(message: Message, state: FSMContext):
     await message.answer("❌ Отмена", reply_markup=main_keyboard)
 
 def format_crypto(amount: float, precision: int = 8) -> str:
-    return f"{float(str(amount).replace(",", ".").replace(" ", "")):.{precision}f}".rstrip("0").rstrip(".")
+    amount_str = str(amount).replace(",", ".").replace(" ", "")
+    return f"{float(amount_str):.{precision}f}".rstrip("0").rstrip(".")
 
 @dp.message(CalculatorState.enter_rub_amount)
 async def calc_process_amount(message: Message, state: FSMContext):
@@ -2058,7 +2072,7 @@ async def calc_process_amount(message: Message, state: FSMContext):
 @dp.message(F.text == "⭐ Отзывы")
 async def reviews_handler(message: types.Message):
     url = os.getenv("REVIEWS_URL")
-    
+
     if not url:
         await message.answer("Отзывы пока не настроены 😔")
         return
@@ -2072,11 +2086,23 @@ async def reviews_handler(message: types.Message):
     await message.answer("Отзывы:", reply_markup=kb)
 
 
+def parse_amount(text: str) -> float | None:
+    """Безопасный парсинг суммы с учетом запятых и пробелов."""
+    try:
+        return float(text.replace(',', '.').replace(' ', ''))
+    except (ValueError, TypeError, AttributeError):
+        return None
+
+import aiohttp
+
+
 async def main():
-    await bot.set_my_commands([
-        BotCommand(command="start", description="Запустить бота"),
-    ])
-    await dp.start_polling(bot)
+    async with aiohttp.ClientSession() as session:
+        dp["session"] = session
+        await bot.set_my_commands([
+            BotCommand(command="start", description="Запустить бота"),
+        ])
+        await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())

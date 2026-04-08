@@ -1,12 +1,13 @@
 import os
-from aiogram import Router, F
-from aiogram.types import Message, CallbackQuery, FSInputFile, InlineKeyboardButton
+
+from aiogram import F, Router
+from aiogram.types import CallbackQuery, FSInputFile, InlineKeyboardButton, Message
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from sqlalchemy import select, update
-from sqlalchemy.ext.asyncio import AsyncSession
-from core.models import User, Order, FileCache, Setting
 from bot.utils.support import normalize_support
 from core.config import Config
+from core.models import FileCache, Order, Setting, User
+from sqlalchemy import select, update
+from sqlalchemy.ext.asyncio import AsyncSession
 
 router = Router()
 

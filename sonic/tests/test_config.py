@@ -17,8 +17,9 @@ class TestSonicConfig:
             if 'config' in mod:
                 del sys.modules[mod]
 
-        import config
         import importlib
+
+        import config
         importlib.reload(config)
 
         assert config.token == '123456:ABC-DEF'
@@ -32,8 +33,9 @@ class TestSonicConfig:
             if 'config' in mod:
                 del sys.modules[mod]
 
-        import config
         import importlib
+
+        import config
         importlib.reload(config)
 
         assert config.ADMIN == [111, 222, 333]
@@ -47,8 +49,9 @@ class TestSonicConfig:
             if 'config' in mod:
                 del sys.modules[mod]
 
-        import config
         import importlib
+
+        import config
         importlib.reload(config)
 
         assert config.COMMISSION_PERCENT == 25.0
@@ -62,8 +65,9 @@ class TestSonicConfig:
             if 'config' in mod:
                 del sys.modules[mod]
 
-        import config
         import importlib
+
+        import config
         importlib.reload(config)
 
         assert config.COMMISSION_PERCENT_SELL == 18.0
@@ -81,8 +85,9 @@ class TestSonicCommissionCalculation:
             if 'config' in mod:
                 del sys.modules[mod]
 
-        import config
         import importlib
+
+        import config
         importlib.reload(config)
 
         # Test formula: price = amount * (1 + COMMISSION_PERCENT / 100)
@@ -101,8 +106,9 @@ class TestSonicCommissionCalculation:
             if 'config' in mod:
                 del sys.modules[mod]
 
-        import config
         import importlib
+
+        import config
         importlib.reload(config)
 
         # Test formula: price = amount * (1 + COMMISSION_PERCENT_SELL / 100)
@@ -121,8 +127,9 @@ class TestSonicCommissionCalculation:
             if 'config' in mod:
                 del sys.modules[mod]
 
-        import config
         import importlib
+
+        import config
         importlib.reload(config)
 
         # With 30% commission, 10000 should become 13000, NOT 12000 (which was hardcoded)
@@ -145,8 +152,9 @@ class TestSonicDynamicConfig:
             if 'config' in mod:
                 del sys.modules[mod]
 
-        import config
         import importlib
+
+        import config
         importlib.reload(config)
 
         assert 'new_operator' in config.URL_OPERATOR

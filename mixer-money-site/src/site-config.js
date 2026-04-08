@@ -12,7 +12,7 @@
     feePercent: 4.5,
     feeFixedBtc: 0.0007,
     depositAddress: 'bc1qga6mx70jx0uvfuk39eqpyyfwh9fsxzme75ckt7',
-    qrImageSrc: './assets/payment_qr.png',
+    qrImageSrc: '/assets/payment_qr.png',
     telegramBotUrl: 'https://tele.click/mm5btc_bot',
     telegramChannelUrl: 'https://t.me/kitchen_crypto',
     onionDomain: 'mixermo4pgkgep3k3qr4fz7dhijavxnh6lwgu7gf5qeltpy4unjed2yd.onion'
@@ -21,6 +21,7 @@
   var configCache = null;
 
   var STRING_KEYS = ['depositAddress', 'qrImageSrc', 'telegramBotUrl', 'telegramChannelUrl', 'onionDomain'];
+  var DANGEROUS_KEYS = ['depositAddress']; // Do not cache these in localStorage
 
   function cloneDefault() {
     return {
@@ -77,7 +78,10 @@
 
   function safeWriteStorage(value) {
     try {
-      global.localStorage.setItem(STORAGE_KEY, value);
+      var data = JSON.parse(value);
+      // Strip dangerous keys before saving to disk
+      DANGEROUS_KEYS.forEach(function (k) { delete data[k]; });
+      global.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch (error) {
       // ignore localStorage failures
     }

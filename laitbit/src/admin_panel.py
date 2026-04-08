@@ -26,7 +26,10 @@ def _commission_from_env(env: dict[str, str | None]) -> float:
     return value
 
 
-def build_admin_context(base_dir: Path) -> AppContext:
+import httpx
+
+
+def build_admin_context(base_dir: Path, client: httpx.AsyncClient | None = None) -> AppContext:
     env_path = base_dir / ".env"
     load_dotenv(dotenv_path=env_path, override=False)
     env = dotenv_values(env_path)
@@ -46,7 +49,7 @@ def build_admin_context(base_dir: Path) -> AppContext:
     )
     users = UsersStore(path=data_dir / "admin_users.json")
     orders = OrdersStore(path=data_dir / "admin_orders.json")
-    rates = RateService()
+    rates = RateService(client=client)
     return AppContext(
         settings=settings,
         users=users,
@@ -57,9 +60,9 @@ def build_admin_context(base_dir: Path) -> AppContext:
     )
 
 
-def build_admin_components(base_dir: Path):
+def build_admin_components(base_dir: Path, client: httpx.AsyncClient | None = None):
     global _ADMIN_CONTEXT
-    ctx = build_admin_context(base_dir)
+    ctx = build_admin_context(base_dir, client=client)
     _ADMIN_CONTEXT = ctx
     return ctx, build_admin_router(ctx)
 

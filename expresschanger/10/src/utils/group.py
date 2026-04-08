@@ -1,8 +1,9 @@
 import logging
 import os
+
 from aiogram import Bot
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.exceptions import TelegramBadRequest
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -38,16 +39,16 @@ async def send_message_to_channel(bot: Bot, data: dict, sale: bool = False):
 💰 Сумма: {value_crypto:.8f} {currency} (~ {int(value_rub)} RUB)
 💳 Оплата указана в: {unit}
 """
-    
+
     if "priority" in data:
         priority_text = "VIP" if data["priority"] == "vip" else "Обычный"
         text += f"⭐ Приоритет: {priority_text}\n"
         if "final_sum" in data:
             text += f"💎 Итоговая сумма: {data['final_sum']} RUB\n"
-    
+
     if "order_id" in data:
         text += f"📜 ID заявки: {data['order_id']}\n"
-    
+
     if "payment_method_index" in data:
         from src.db.settings import get_payment_methods
         methods = await get_payment_methods()
@@ -59,13 +60,13 @@ async def send_message_to_channel(bot: Bot, data: dict, sale: bool = False):
         text += f"💳 Метод оплаты: {method_name}\n"
     elif "method_name" in data:
         text += f"💳 Метод оплаты: {data['method_name']}\n"
-    
+
     if "wallet" in data:
         text += f"💳 Кошелек: <code>{data['wallet']}</code>\n"
 
     order_id = data.get("order_id")
     keyboard = admin_order_buttons(order_id) if order_id else None
-    
+
     for admin_id in ADMIN_IDS:
         try:
             await bot.send_message(chat_id=admin_id, text=text, reply_markup=keyboard)
@@ -78,9 +79,9 @@ async def send_message_to_channel(bot: Bot, data: dict, sale: bool = False):
 async def send_receipt_to_admins(bot: Bot, order_id: str, order_data: dict, receipt_file_id: str, receipt_type: str):
     receipt_type_text = "Фото" if receipt_type == "photo" else "PDF"
     text = f"📜 ID заявки: {order_id}\n📸 {receipt_type_text}"
-    
+
     keyboard = admin_order_buttons(order_id) if order_id else None
-    
+
     for admin_id in ADMIN_IDS:
         try:
             if receipt_type == "photo":

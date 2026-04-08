@@ -1,4 +1,4 @@
-from aiogram import Router, F
+from aiogram import F, Router
 from aiogram.types import Message
 
 from config import OPERATOR_LINK
@@ -8,7 +8,7 @@ router = Router()
 async def support(message: Message, edit: bool = False):
 
     msg = f"Чтобы получить поддержку - напишите оператору: @{OPERATOR_LINK}"
-    
+
     if edit:
         await message.edit_text(msg)
     else:

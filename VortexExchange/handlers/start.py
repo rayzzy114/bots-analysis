@@ -1,11 +1,11 @@
-from aiogram import types, Router, F
+from aiogram import F, Router, types
 from aiogram.filters import Command
-from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardMarkup
-from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.context import FSMContext
+from aiogram.types import CallbackQuery, Message
+from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardMarkup
 
-from utils.escape_html import escape_html
 from config import BOT_NAME, NEWS_LINK
+from utils.escape_html import escape_html
 
 router = Router()
 
@@ -20,7 +20,7 @@ async def send_start(message: Message, user_id):
         "❗ Перед использованием ОБЯЗАТЕЛЬНО прочти раздел «FAQ»\n"
         "❗ Так же подпишитесь на наш новостной канал, чтобы быть в курсе анонсов и розыгрышей."
     )
-    
+
 
     kb1 = ReplyKeyboardMarkup(
         keyboard=[
@@ -67,7 +67,7 @@ async def start_callback(callback: CallbackQuery, state: FSMContext):
         await callback.message.delete()
     except Exception as e:
         print(f'Exception caught: {e}')
-    
+
     user_id = callback.from_user.id
     await send_start(callback.message, user_id)
     await callback.answer()

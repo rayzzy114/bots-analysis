@@ -2,8 +2,9 @@
 Integration tests for vipmonopoly-ltc handlers
 Tests that handlers correctly use dynamic operator getters
 """
-import pytest
 import os
+
+import pytest
 
 
 class TestHandlerImports:
@@ -16,7 +17,7 @@ class TestHandlerImports:
             '..', 'handlers', 'buy.py'
         )
 
-        with open(buy_path, 'r') as f:
+        with open(buy_path) as f:
             content = f.read()
 
         # Should import getter functions
@@ -38,7 +39,7 @@ class TestHandlerImports:
             '..', 'handlers', 'start.py'
         )
 
-        with open(start_path, 'r') as f:
+        with open(start_path) as f:
             content = f.read()
 
         assert 'get_operator' in content, \
@@ -54,7 +55,7 @@ class TestHandlerImports:
         )
 
         if os.path.exists(promo_path):
-            with open(promo_path, 'r') as f:
+            with open(promo_path) as f:
                 content = f.read()
 
             assert 'get_operator' in content, \
@@ -68,7 +69,7 @@ class TestHandlerImports:
         )
 
         if os.path.exists(work_path):
-            with open(work_path, 'r') as f:
+            with open(work_path) as f:
                 content = f.read()
 
             assert 'get_work_operator' in content, \
@@ -94,7 +95,7 @@ class TestOperatorInMessages:
         for handler_file in handler_files:
             path = os.path.join(base_path, handler_file)
             if os.path.exists(path):
-                with open(path, 'r') as f:
+                with open(path) as f:
                     content = f.read()
 
                 # If get_operator is used, it should be called as function

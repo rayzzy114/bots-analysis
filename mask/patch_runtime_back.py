@@ -1,6 +1,6 @@
 import re
 
-with open("app/runtime.py", "r", encoding="utf-8") as f:
+with open("app/runtime.py", encoding="utf-8") as f:
     content = f.read()
 
 # Modify _resolve_back_state to fallback to start_state

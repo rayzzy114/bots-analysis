@@ -1,14 +1,24 @@
 import asyncio
-import logging
 import json
+import logging
 import re
+
 import aiohttp
 from aiogram import Bot, Dispatcher, F
-from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton, FSInputFile, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, SwitchInlineQueryChosenChat
-from aiogram.filters import CommandStart, Command, BaseFilter
+from aiogram.filters import BaseFilter, Command, CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.types import (
+    CallbackQuery,
+    FSInputFile,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    Message,
+    ReplyKeyboardMarkup,
+    SwitchInlineQueryChosenChat,
+)
 
 storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
@@ -18,8 +28,9 @@ class OrderState(StatesGroup):
     amount = State()
     wallet_address = State()
     country = State()
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -75,9 +86,9 @@ PAYMENT_DETAILS_FILE = "payment_details.json"
 def load_payment_details():
     if os.path.exists(PAYMENT_DETAILS_FILE):
         try:
-            with open(PAYMENT_DETAILS_FILE, 'r', encoding='utf-8') as f:
+            with open(PAYMENT_DETAILS_FILE, encoding='utf-8') as f:
                 return json.load(f)
-        except:
+        except Exception:
             return {}
     return {}
 
@@ -122,7 +133,7 @@ def get_main_keyboard():
 async def admin_command(message: Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
-    
+
     await state.set_state(AdminState.waiting_crypto)
     sent_message = await message.answer("Выберите криптовалюту для настройки реквизитов:", reply_markup=get_admin_keyboard())
     await state.update_data(admin_message_id=sent_message.message_id)
@@ -136,10 +147,10 @@ async def cmd_start(message: Message):
         "🎯 Программа для постоянных пользователей\n"
         "🔐 Конфиденциальность и безопасность операций"
     )
-    
+
     photo = FSInputFile("images/start.png")
     await message.answer_photo(photo, caption=features_text)
-    
+
     full_text = (
         "<b>👋 Добро пожаловать в сервис DONALD_BTC_BOT — ваш помощник для удобного обмена цифровых активов!\n\n"
         "🎁 Для пользователей действует программа лояльности.\n"
@@ -151,7 +162,7 @@ async def cmd_start(message: Message):
         "2.Скрин заявки.\n"
         "3.Скрин интерфейса, где создавалась заявка.</b>"
     )
-    
+
     await message.answer(full_text, reply_markup=get_main_keyboard(), parse_mode="HTML")
 
 def get_country_keyboard(action: str):
@@ -181,7 +192,7 @@ def get_contacts_keyboard():
     reviews_url = os.getenv("CONTACT_REVIEWS", "https://t.me/reviews")
     admin_url = os.getenv("CONTACT_ADMIN", "https://t.me/admin")
     operator2_url = os.getenv("CONTACT_OPERATOR2", "https://t.me/operator2")
-    
+
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text="ОПЕРАТОР 😎", url=operator_url)],
@@ -334,13 +345,13 @@ def get_crypto_keyboard(action: str, country: str):
         [InlineKeyboardButton(text="USDT - TRC20", callback_data=f"{action}_{country}_USDT")],
         [InlineKeyboardButton(text="Monero - XMR", callback_data=f"{action}_{country}_XMR")]
     ]
-    
+
     if action == "buy":
         buttons.append([InlineKeyboardButton(text="Tron - TRX", callback_data=f"{action}_{country}_TRX")])
         buttons.append([InlineKeyboardButton(text="Ethereum - ETH", callback_data=f"{action}_{country}_ETH")])
-    
+
     buttons.append([InlineKeyboardButton(text="Назад", callback_data="back_to_main")])
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
     return keyboard
 
@@ -349,22 +360,22 @@ async def country_handler(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
     action_type = callback.data.split("_")[0]
     country = callback.data.split("_")[1]
-    
+
     await state.clear()
     await state.update_data(country=country, action_type=action_type)
-    
+
     if action_type == "buy":
         caption = "✨ Какую криптовалюту хотите приобрести?"
     else:
         caption = "✨ Какую криптовалюту хотите продать?"
-    
+
     if country == "russia":
         photo_path = "images/RU.png"
     elif country == "belarus":
         photo_path = "images/BY.png" if os.path.exists("images/BY.png") else "images/RU.png"
     else:
         photo_path = "images/RU.png"
-    
+
     if os.path.exists(photo_path):
         photo = FSInputFile(photo_path)
         await callback.message.answer_photo(photo, caption=caption, reply_markup=get_crypto_keyboard(action_type, country))
@@ -393,7 +404,7 @@ async def get_official_rate(crypto: str) -> float:
     try:
         crypto_data = crypto_info.get(crypto, crypto_info["BTC"])
         coingecko_id = crypto_data.get("coingecko_id", "bitcoin")
-        
+
         timeout = aiohttp.ClientTimeout(total=5)
         async with aiohttp.ClientSession(timeout=timeout) as session:
             async with session.get(f"https://api.coingecko.com/api/v3/simple/price?ids={coingecko_id}&vs_currencies=rub") as response:
@@ -406,7 +417,7 @@ async def get_official_rate(crypto: str) -> float:
         logger.warning(f"Таймаут при получении курса {crypto}, используем fallback")
     except Exception as e:
         logger.error(f"Ошибка получения курса {crypto}: {e}")
-    
+
     fallback_rates = {
         "BTC": 6900000,
         "LTC": 8500,
@@ -430,13 +441,13 @@ async def crypto_handler(callback: CallbackQuery, state: FSMContext):
     current_state = await state.get_state()
     if current_state and current_state.startswith("AdminState"):
         return
-    
+
     await callback.answer()
     parts = callback.data.split("_")
     crypto = parts[2]
     country = parts[1]
     action_type = parts[0]
-    
+
     data = await state.get_data()
     data.pop("payment_method", None)
     data.pop("payment_details", None)
@@ -447,7 +458,7 @@ async def crypto_handler(callback: CallbackQuery, state: FSMContext):
     data.pop("calculated_amount_payment", None)
     await state.update_data(**data)
     await state.update_data(crypto=crypto, country=country, action_type=action_type)
-    
+
     if action_type == "sell":
         amount_text = (
             "🎯ВВЕДИТЕ СУММУ ДЛЯ РАСЧЁТА:\n\n"
@@ -480,31 +491,31 @@ async def amount_handler(message: Message, state: FSMContext):
     action_type = data.get("action_type")
     if not action_type:
         return
-    
+
     amount = message.text.replace(',', '.')
-    
+
     processing_msg = None
     try:
-        
+
         crypto = data.get("crypto")
         action_type = data.get("action_type")
         if not crypto or not action_type:
             return
-        
+
         processing_msg = await message.answer("⏳ Обрабатываю...")
-        
+
         amount_float = float(str(amount).replace(",", ".").replace(" ", ""))
         country = data.get("country", "russia")
-        
+
         crypto_data = crypto_info.get(crypto, crypto_info["BTC"])
         crypto_data["name"]
         crypto_symbol = crypto_data["symbol"]
-        
+
         get_payment_details(crypto)
-        
-        
+
+
         MIN_PURCHASE_AMOUNT_RUB = 1500
-        
+
         if action_type == "sell":
             if crypto == "USDT":
                 crypto_amount = amount_float
@@ -519,7 +530,7 @@ async def amount_handler(message: Message, state: FSMContext):
                     crypto_amount = amount_float
             else:
                 crypto_amount = amount_float
-            
+
             try:
                 sell_rate = await get_sell_rate(crypto)
             except Exception as e:
@@ -533,9 +544,9 @@ async def amount_handler(message: Message, state: FSMContext):
                     "ETH": 280000 * (1 - COMMISSION_SELL / 100)
                 }
                 sell_rate = fallback_rates.get(crypto, 6900000 * (1 - COMMISSION_SELL / 100))
-            
+
             amount_received_rub = crypto_amount * sell_rate
-            
+
             if country == "belarus":
                 amount_received = round(amount_received_rub * 0.036)
                 currency = "бел.рублей"
@@ -544,25 +555,25 @@ async def amount_handler(message: Message, state: FSMContext):
                 amount_received = round(amount_received_rub)
                 currency = "₽"
                 currency_short = "в рублях"
-            
+
             if crypto_amount < 0.01:
                 crypto_amount_str = f"{crypto_amount:.8f}".rstrip('0').rstrip('.')
             elif crypto_amount < 1:
                 crypto_amount_str = f"{crypto_amount:.6f}".rstrip('0').rstrip('.')
             else:
                 crypto_amount_str = f"{crypto_amount:.4f}".rstrip('0').rstrip('.')
-            
+
             info_text = (
                 f"Вам будет зачислено: {amount_received} {currency}\n"
                 f"Вам необходимо отправить: {crypto_amount_str} {crypto_symbol}\n"
                 f"Итоговая сумма зачисления {currency_short}: {amount_received} {currency}"
             )
-            
+
             await state.update_data(amount=crypto_amount_str, calculated_amount_payment=amount_received)
         else:
             if crypto == "USDT":
                 amount_payment_rub = amount_float
-                
+
                 if amount_payment_rub < MIN_PURCHASE_AMOUNT_RUB:
                     if processing_msg:
                         try:
@@ -575,10 +586,10 @@ async def amount_handler(message: Message, state: FSMContext):
                     else:
                         await message.answer(f"Минимальная сумма покупки составляет {MIN_PURCHASE_AMOUNT_RUB}₽.")
                     return
-                
+
                 usdt_rate = await get_crypto_rate("USDT")
                 usdt_amount = amount_payment_rub / usdt_rate
-                
+
                 if country == "belarus":
                     amount_payment = round(amount_payment_rub * 0.036)
                     currency = "бел.рублей"
@@ -587,24 +598,24 @@ async def amount_handler(message: Message, state: FSMContext):
                     amount_payment = round(amount_payment_rub)
                     currency = "₽"
                     currency_short = "в рублях"
-                
+
                 info_text = (
                     f"Вам будет зачислено: {round(usdt_amount, 6)} {crypto_symbol}\n"
                     f"Вам необходимо оплатить: {amount_payment} {currency_short}"
                 )
-                
+
                 usdt_amount_str = str(round(usdt_amount, 6))
                 await state.update_data(amount=usdt_amount_str, calculated_amount_payment=amount_payment)
             else:
                 crypto_rate = await get_crypto_rate(crypto)
-                
+
                 if amount_float >= 1000:
                     amount_payment_rub = amount_float
                     crypto_amount = amount_payment_rub / crypto_rate
                 else:
                     crypto_amount = amount_float
                     amount_payment_rub = crypto_amount * crypto_rate
-                
+
                 if amount_payment_rub < MIN_PURCHASE_AMOUNT_RUB:
                     if processing_msg:
                         try:
@@ -617,7 +628,7 @@ async def amount_handler(message: Message, state: FSMContext):
                     else:
                         await message.answer(f"Минимальная сумма покупки составляет {MIN_PURCHASE_AMOUNT_RUB}₽.")
                     return
-                
+
                 if country == "belarus":
                     amount_payment = round(amount_payment_rub * 0.036)
                     currency = "бел.рублей"
@@ -626,28 +637,28 @@ async def amount_handler(message: Message, state: FSMContext):
                     amount_payment = round(amount_payment_rub)
                     currency = "₽"
                     currency_short = "в рублях"
-                
+
                 if crypto_amount < 0.01:
                     crypto_amount_str = f"{crypto_amount:.8f}".rstrip('0').rstrip('.')
                 elif crypto_amount < 1:
                     crypto_amount_str = f"{crypto_amount:.6f}".rstrip('0').rstrip('.')
                 else:
                     crypto_amount_str = f"{crypto_amount:.4f}".rstrip('0').rstrip('.')
-                
+
                 info_text = (
                     f"Вам будет зачислено: {crypto_amount_str} {crypto_symbol}\n"
                     f"Вам необходимо оплатить: {amount_payment} {currency_short}"
                 )
-                
+
                 await state.update_data(amount=crypto_amount_str, calculated_amount_payment=amount_payment)
-        
+
         if processing_msg:
             try:
                 await processing_msg.delete()
             except Exception as e:
                 print(f'Exception caught: {e}')
         await message.answer(info_text)
-        
+
         photo = FSInputFile("images/pay.png")
         await message.answer_photo(photo, caption="Выберите банк, на который удобно сделать оплату.", reply_markup=get_payment_keyboard(action_type))
     except ValueError:
@@ -667,19 +678,19 @@ async def amount_handler(message: Message, state: FSMContext):
 
 @dp.message(WalletAddressFilter())
 async def wallet_address_handler(message: Message, state: FSMContext):
-    
+
     text = message.text.strip()
     data = await state.get_data()
     action_type = data.get("action_type")
     crypto = data.get("crypto")
     payment_method = data.get("payment_method")
-    
+
     if not crypto or not action_type:
         return
-    
+
     if not payment_method:
         return
-    
+
     if action_type == "sell":
         await state.update_data(payment_details=text)
         await message.answer("⏳ Подбираем реквизиты...")
@@ -728,9 +739,9 @@ async def payment_handler(callback: CallbackQuery, state: FSMContext):
     amount = data.get("amount", "0.002")
     action_type = data.get("action_type", "buy")
     country = data.get("country", "russia")
-    
+
     await state.update_data(payment_method=callback.data)
-    
+
     if action_type == "sell":
         calculated_amount = data.get("calculated_amount_payment")
         if calculated_amount:
@@ -743,17 +754,17 @@ async def payment_handler(callback: CallbackQuery, state: FSMContext):
                 amount_rub = round(amount_received_rub * 0.036)
             else:
                 amount_rub = round(amount_received_rub)
-        
+
         if country == "belarus":
             currency = "бел.рублей"
         else:
             currency = "₽"
-        
+
         if callback.data == "payment_sbp_phone":
             wallet_text = f"Введите 💳 СБП—ПО НОМЕРУ ТЕЛЕФОНА реквизиты, куда вы хотите получить {amount_rub} {currency}."
         else:
             wallet_text = f"Введите 💳 ПО НОМЕРУ КАРТЫ (+1.75%) реквизиты, куда вы хотите получить {amount_rub} {currency}."
-        
+
         photo = FSInputFile("images/walletrub.png")
         await callback.message.answer_photo(photo, caption=wallet_text, reply_markup=get_wallet_keyboard())
     else:
@@ -761,9 +772,9 @@ async def payment_handler(callback: CallbackQuery, state: FSMContext):
         crypto_data["name"]
         crypto_symbol = crypto_data["symbol"]
         photo_file = crypto_data.get("photo")
-        
+
         wallet_text = f"Введите {crypto_symbol}-адрес кошелька, куда вы хотите отправить {amount} {crypto_symbol.lower()}."
-        
+
         if photo_file and os.path.exists(photo_file):
             photo = FSInputFile(photo_file)
             await callback.message.answer_photo(photo, caption=wallet_text, reply_markup=get_wallet_keyboard())
@@ -775,7 +786,7 @@ def get_delivery_keyboard(country: str = "russia"):
         vip_text = "ВИП ⚡ 1-25 минут (+7бел.рублей)"
     else:
         vip_text = "ВИП ⚡ 1-25 минут (+160₽)"
-    
+
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text=vip_text, callback_data="delivery_vip")],
@@ -804,13 +815,13 @@ async def send_payment_details(message: Message, state: FSMContext, is_vip: bool
     country = data.get("country", "russia")
     payment_method = data.get("payment_method", "")
     payment_details_text = data.get("payment_details", "")
-    
+
     crypto_data = crypto_info.get(crypto, crypto_info["BTC"])
     crypto_data["name"]
     crypto_symbol = crypto_data["symbol"]
-    
+
     payment_details = get_payment_details(crypto)
-    
+
     if action_type == "buy":
         calculated_amount = data.get("calculated_amount_payment")
         if calculated_amount:
@@ -835,14 +846,14 @@ async def send_payment_details(message: Message, state: FSMContext, is_vip: bool
                 amount_payment = round(amount_received_rub * 0.036)
             else:
                 amount_payment = round(amount_received_rub)
-    
+
     if country == "belarus":
         currency = "бел.рублей"
     else:
         currency = "₽"
-    
+
     order_number = "1764893443112"
-    
+
     if action_type == "sell":
         btc_address = payment_details.get("wallet_address", "bc1qtssazvfvm8hzksmjfa0eta9qf3kctyk0zsyr8u")
         btc_address_formatted = f"`{btc_address}`"
@@ -850,13 +861,13 @@ async def send_payment_details(message: Message, state: FSMContext, is_vip: bool
             method_text = "💳 СБП—ПО НОМЕРУ ТЕЛЕФОНА реквизиты:"
         else:
             method_text = "💳 ПО НОМЕРУ КАРТЫ (+1.75%) реквизиты:"
-        
+
         payment_details_formatted = re_module.sub(r'(\d{4}\s+\d{4}\s+\d{4}\s+\d{4})', r'`\1`', payment_details_text)
         if payment_details_formatted == payment_details_text:
             payment_details_formatted = re_module.sub(r'(\d{16})', r'`\1`', payment_details_text)
         if payment_details_formatted == payment_details_text:
             payment_details_formatted = re_module.sub(r'(\d{9,12})', r'`\1`', payment_details_text)
-        
+
         payment_text = (
             f"✅ Заявка №{order_number} успешно создана.\n\n"
             f"Вы получаете: {amount_payment} {currency}\n"
@@ -870,7 +881,7 @@ async def send_payment_details(message: Message, state: FSMContext, is_vip: bool
     else:
         wallet_address = data.get("wallet_address", "")
         wallet_address_formatted = f"`{wallet_address}`"
-        
+
         if payment_method in ["payment_sbp", "payment_sbp_phone", "payment_sbp_cross"]:
             if country == "belarus":
                 bank_details = payment_details.get("sbp_phone_bel", "")
@@ -886,13 +897,13 @@ async def send_payment_details(message: Message, state: FSMContext, is_vip: bool
                 bank_details = payment_details.get("bank_bel", "ЕРИП ПЛАТЕЖИ\nБАНКОВСКИЕ ФИНАНСОВЫЕ УСЛУГИ\nБАНКИ НКΦΟ\nАЛЬФА БАНК\nПОПОЛНЕНИЕ СЧЕТА\n375257298681")
             else:
                 bank_details = payment_details.get("bank", "Ozon Банк 2204 3206 0905 0531")
-        
+
         bank_details_formatted = re_module.sub(r'(\d{4}\s+\d{4}\s+\d{4}\s+\d{4})', r'`\1`', bank_details)
         if bank_details_formatted == bank_details:
             bank_details_formatted = re_module.sub(r'(\d{16})', r'`\1`', bank_details)
         if bank_details_formatted == bank_details:
             bank_details_formatted = re_module.sub(r'(\d{9,12})', r'`\1`', bank_details)
-        
+
         payment_text = (
             f"✅ Заявка №{order_number} успешно создана.\n\n"
             f"Вы получаете: {amount} {crypto_symbol.lower()}\n"
@@ -904,7 +915,7 @@ async def send_payment_details(message: Message, state: FSMContext, is_vip: bool
             f"⏰ Заявка действительна: 15 минут\n\n"
             f"✅ После оплаты необходимо нажать на кнопку 'ОПЛАТА СОВЕРШЕНА'"
         )
-    
+
     sent_message = await message.answer(payment_text, reply_markup=get_payment_details_keyboard(), parse_mode="Markdown")
     await state.update_data(order_message_id=sent_message.message_id, order_number=order_number)
 
@@ -944,7 +955,7 @@ async def photo_handler(message: Message, state: FSMContext):
                 await bot.send_photo(admin_id, message.photo[-1].file_id, caption=user_info)
         except Exception as e:
             logger.error(f"Ошибка отправки фото админу: {e}")
-    
+
     processing_text = "Заявка обрабатывается.. Ожидайте."
     await message.answer(processing_text, reply_markup=get_main_keyboard())
 
@@ -959,7 +970,7 @@ async def document_handler(message: Message, state: FSMContext):
                 await bot.send_document(admin_id, message.document.file_id, caption=user_info)
         except Exception as e:
             logger.error(f"Ошибка отправки документа админу: {e}")
-    
+
     processing_text = "Заявка обрабатывается.. Ожидайте."
     await message.answer(processing_text, reply_markup=get_main_keyboard())
 
@@ -984,7 +995,7 @@ async def confirm_cancel_handler(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
     data = await state.get_data()
     order_message_id = data.get("order_message_id")
-    
+
     if order_message_id:
         await bot.send_message(
             callback.message.chat.id,
@@ -993,7 +1004,7 @@ async def confirm_cancel_handler(callback: CallbackQuery, state: FSMContext):
         )
     else:
         await callback.message.answer("❌ Заявка была отменена.")
-    
+
     await callback.message.delete()
 
 @dp.callback_query(F.data == "cancel_cancel")
@@ -1013,7 +1024,7 @@ class AdminState(StatesGroup):
 async def admin_set_bank(message: Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
-    
+
     bank = message.text
     await state.update_data(bank=bank)
     await state.set_state(AdminState.waiting_sbp_phone)
@@ -1046,18 +1057,18 @@ async def admin_set_bank(message: Message, state: FSMContext):
 async def admin_set_sbp_phone(message: Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
-    
+
     try:
         sbp_phone = message.text
         data = await state.get_data()
         crypto = data.get("crypto")
         country = data.get("country", "russia")
         bank = data.get("bank")
-        
+
         payment_details = load_payment_details()
         if crypto not in payment_details:
             payment_details[crypto] = {}
-        
+
         if country == "belarus":
             payment_details[crypto]["bank_bel"] = bank
             payment_details[crypto]["sbp_phone_bel"] = sbp_phone
@@ -1066,9 +1077,9 @@ async def admin_set_sbp_phone(message: Message, state: FSMContext):
             payment_details[crypto]["bank"] = bank
             payment_details[crypto]["sbp_phone"] = sbp_phone
             country_name = "России"
-        
+
         save_payment_details(payment_details)
-        
+
         admin_message_id = data.get("admin_message_id")
         crypto_name = crypto_info.get(crypto, {}).get('name', crypto)
         keyboard = InlineKeyboardMarkup(
@@ -1084,7 +1095,7 @@ async def admin_set_sbp_phone(message: Message, state: FSMContext):
                     text=f"✅ Реквизиты для {country_name} ({crypto_name}) успешно сохранены!\n\nНомер карты: {bank}\nНомер телефона СБП: {sbp_phone}",
                     reply_markup=keyboard
                 )
-            except:
+            except Exception:
                 await message.answer(f"✅ Реквизиты для {country_name} ({crypto_name}) успешно сохранены!\n\nНомер карты: {bank}\nНомер телефона СБП: {sbp_phone}", reply_markup=keyboard)
         else:
             await message.answer(f"✅ Реквизиты для {country_name} ({crypto_name}) успешно сохранены!\n\nНомер карты: {bank}\nНомер телефона СБП: {sbp_phone}", reply_markup=keyboard)
@@ -1101,20 +1112,20 @@ async def admin_set_sbp_phone(message: Message, state: FSMContext):
 async def admin_set_crypto_wallet(message: Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
-    
+
     try:
         wallet_address = message.text.strip()
         data = await state.get_data()
         crypto = data.get("crypto")
         crypto_name = crypto_info.get(crypto, {}).get('name', crypto)
         crypto_symbol = crypto_info.get(crypto, {}).get('symbol', crypto)
-        
+
         payment_details = load_payment_details()
         if crypto not in payment_details:
             payment_details[crypto] = {}
         payment_details[crypto]["wallet_address"] = wallet_address
         save_payment_details(payment_details)
-        
+
         admin_message_id = data.get("admin_message_id")
         keyboard = InlineKeyboardMarkup(
             inline_keyboard=[
@@ -1129,7 +1140,7 @@ async def admin_set_crypto_wallet(message: Message, state: FSMContext):
                     text=f"✅ Адрес кошелька {crypto_symbol} для {crypto_name} успешно сохранен!\n\nАдрес: {wallet_address}",
                     reply_markup=keyboard
                 )
-            except:
+            except Exception:
                 await message.answer(f"✅ Адрес кошелька {crypto_symbol} для {crypto_name} успешно сохранен!\n\nАдрес: {wallet_address}", reply_markup=keyboard)
         else:
             await message.answer(f"✅ Адрес кошелька {crypto_symbol} для {crypto_name} успешно сохранен!\n\nАдрес: {wallet_address}", reply_markup=keyboard)
@@ -1178,7 +1189,7 @@ async def admin_set_crypto(callback: CallbackQuery, state: FSMContext):
     if not is_admin(callback.from_user.id):
         await callback.answer("Доступ запрещен", show_alert=True)
         return
-    
+
     await callback.answer()
     crypto = callback.data.split("_")[2]
     await state.update_data(crypto=crypto, admin_message_id=callback.message.message_id)
@@ -1194,7 +1205,7 @@ async def admin_type_card_handler(callback: CallbackQuery, state: FSMContext):
     if not is_admin(callback.from_user.id):
         await callback.answer("Доступ запрещен", show_alert=True)
         return
-    
+
     await callback.answer()
     data = await state.get_data()
     crypto = data.get("crypto")
@@ -1211,7 +1222,7 @@ async def admin_country_russia_handler(callback: CallbackQuery, state: FSMContex
     if not is_admin(callback.from_user.id):
         await callback.answer("Доступ запрещен", show_alert=True)
         return
-    
+
     await callback.answer()
     await state.update_data(country="russia", admin_message_id=callback.message.message_id)
     await state.set_state(AdminState.waiting_bank)
@@ -1225,7 +1236,7 @@ async def admin_country_belarus_handler(callback: CallbackQuery, state: FSMConte
     if not is_admin(callback.from_user.id):
         await callback.answer("Доступ запрещен", show_alert=True)
         return
-    
+
     await callback.answer()
     await state.update_data(country="belarus", admin_message_id=callback.message.message_id)
     await state.set_state(AdminState.waiting_bank)
@@ -1239,7 +1250,7 @@ async def admin_back_to_country_handler(callback: CallbackQuery, state: FSMConte
     if not is_admin(callback.from_user.id):
         await callback.answer("Доступ запрещен", show_alert=True)
         return
-    
+
     await callback.answer()
     data = await state.get_data()
     crypto = data.get("crypto")
@@ -1255,7 +1266,7 @@ async def admin_type_crypto_handler(callback: CallbackQuery, state: FSMContext):
     if not is_admin(callback.from_user.id):
         await callback.answer("Доступ запрещен", show_alert=True)
         return
-    
+
     await callback.answer()
     data = await state.get_data()
     crypto = data.get("crypto")
@@ -1273,7 +1284,7 @@ async def admin_back_to_type_handler(callback: CallbackQuery, state: FSMContext)
     if not is_admin(callback.from_user.id):
         await callback.answer("Доступ запрещен", show_alert=True)
         return
-    
+
     await callback.answer()
     data = await state.get_data()
     crypto = data.get("crypto")
@@ -1289,7 +1300,7 @@ async def admin_back_to_crypto_handler(callback: CallbackQuery, state: FSMContex
     if not is_admin(callback.from_user.id):
         await callback.answer("Доступ запрещен", show_alert=True)
         return
-    
+
     await callback.answer()
     await state.set_state(AdminState.waiting_crypto)
     await callback.message.edit_text(
@@ -1302,7 +1313,7 @@ async def admin_back_handler(callback: CallbackQuery, state: FSMContext):
     if not is_admin(callback.from_user.id):
         await callback.answer("Доступ запрещен", show_alert=True)
         return
-    
+
     await callback.answer()
     await state.clear()
     await callback.message.delete()
@@ -1312,7 +1323,7 @@ async def admin_back_to_bank_handler(callback: CallbackQuery, state: FSMContext)
     if not is_admin(callback.from_user.id):
         await callback.answer("Доступ запрещен", show_alert=True)
         return
-    
+
     await callback.answer()
     data = await state.get_data()
     country = data.get("country", "russia")
@@ -1328,8 +1339,17 @@ async def admin_back_to_bank_handler(callback: CallbackQuery, state: FSMContext)
             reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад", callback_data="admin_back_to_country")]])
         )
 
+def parse_amount(text: str) -> float | None:
+    """Безопасный парсинг суммы с учетом запятых и пробелов."""
+    try:
+        return float(text.replace(',', '.').replace(' ', ''))
+    except (ValueError, TypeError, AttributeError):
+        return None
+
 async def main():
-    await dp.start_polling(bot)
+    async with aiohttp.ClientSession() as session:
+        dp["session"] = session
+        await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())

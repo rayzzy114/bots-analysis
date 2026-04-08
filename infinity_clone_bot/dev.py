@@ -3,7 +3,6 @@ import sys
 import time
 from pathlib import Path
 
-
 BASE_DIR = Path(__file__).resolve().parent
 WATCH_SUFFIXES = {".py"}
 WATCH_NAMES = {".env"}

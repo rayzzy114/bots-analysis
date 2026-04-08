@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import os
 
 # Output currencies (what users receive after mixing dirty BTC)

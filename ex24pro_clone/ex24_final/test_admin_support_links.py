@@ -3,8 +3,8 @@ from __future__ import annotations
 from admin_kit import AdminKitConfig, LinkDefinition, build_admin_context
 from admin_kit.runtime import persist_env_value
 from admin_kit.utils import preferred_html_text, sanitize_html_fragment
-from texts import get_text
 from rates import _compute_cross_rates
+from texts import get_text
 
 
 def test_support_link_can_store_html_block(tmp_path) -> None:

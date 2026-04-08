@@ -555,16 +555,16 @@ async def start_close_flow(user_id: int, bot: Bot) -> bool:
 async def cmd_close(message: Message, bot: Bot) -> None:
     text = message.text or ""
     m = _CLOSE_RE.match(text)
-    
+
     user_id: int | None = None
-    
+
     # 1. Check if argument provided
     if m:
         user_id = int(m.group(1))
     # 2. Check if it's a reply
     elif message.reply_to_message:
         user_id = message_to_user.get(message.reply_to_message.message_id)
-    
+
     if user_id:
         success = await start_close_flow(user_id, bot)
         if success:
@@ -582,17 +582,17 @@ async def cmd_close(message: Message, bot: Bot) -> None:
             seen.add(uid)
         if len(recent_users) >= 10:
             break
-    
+
     if not recent_users:
         await message.reply("Не найдено недавних активных пользователей для завершения.")
         return
-    
+
     user_list = []
     from handlers.start import user_manager
     for uid in recent_users:
         mgr = user_manager.get(uid, "—")
         user_list.append((uid, f"Клиент #{uid} (Менеджер: {mgr})"))
-    
+
     await message.reply(
         "Выберите пользователя для завершения диалога:",
         reply_markup=kb_close_select(user_list)
@@ -603,7 +603,7 @@ async def cmd_close(message: Message, bot: Bot) -> None:
 async def on_admin_close_select(cb: CallbackQuery, bot: Bot) -> None:
     data = cb.data or ""
     user_id = int(data.split(":")[-1])
-    
+
     success = await start_close_flow(user_id, bot)
     if success:
         await cb.message.edit_text(f"✅ Диалог с пользователем {user_id} завершен.")

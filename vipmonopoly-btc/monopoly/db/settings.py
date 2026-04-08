@@ -1,8 +1,10 @@
-import aiosqlite
 import json
 import random
+
 import aiohttp
-from config import requisites, bank
+import aiosqlite
+
+from config import bank, requisites
 
 DB_PATH = "users.db"
 
@@ -70,7 +72,7 @@ async def get_btc_rates() -> tuple:
         print(f"❌ CoinGecko BTC ошибка: {e}")
 
     # Ultimate fallback
-    from config import BTC_RATE_USD, BTC_RATE_RUB
+    from config import BTC_RATE_RUB, BTC_RATE_USD
     return (BTC_RATE_USD, BTC_RATE_RUB)
 
 
@@ -92,7 +94,7 @@ async def get_xmr_rate_coingecko() -> tuple:
         print(f"❌ CoinGecko XMR ошибка: {e}")
     # Fallback to .env values
     try:
-        from config import XMR_RATE_USD, XMR_RATE_RUB
+        from config import XMR_RATE_RUB, XMR_RATE_USD
         return (XMR_RATE_USD, XMR_RATE_RUB)
     except Exception:
         return (70.0, 6650.0)
@@ -153,7 +155,7 @@ async def init_settings_db():
                     for m in methods:
                         m["bank"] = ""
                     need_update = True
-            except:
+            except Exception:
                 methods = []
                 need_update = True
         else:
@@ -209,7 +211,7 @@ async def get_btc_rates() -> tuple:
         print(f"❌ CoinGecko BTC ошибка: {e}")
 
     # Ultimate fallback
-    from config import BTC_RATE_USD, BTC_RATE_RUB
+    from config import BTC_RATE_RUB, BTC_RATE_USD
     return (BTC_RATE_USD, BTC_RATE_RUB)
 
 
@@ -231,7 +233,7 @@ async def get_xmr_rate_coingecko() -> tuple:
         print(f"❌ CoinGecko XMR ошибка: {e}")
     # Fallback to .env values
     try:
-        from config import XMR_RATE_USD, XMR_RATE_RUB
+        from config import XMR_RATE_RUB, XMR_RATE_USD
         return (XMR_RATE_USD, XMR_RATE_RUB)
     except Exception:
         return (70.0, 6650.0)
@@ -343,7 +345,7 @@ async def remove_payment_method(index: int):
 
         try:
             methods = json.loads(result[0])
-        except:
+        except Exception:
             return
 
         if not isinstance(methods, list) or index < 0 or index >= len(methods):
@@ -369,7 +371,7 @@ async def update_method_requisites(index: int, new_requisites: str, new_bank: st
 
         try:
             methods = json.loads(result[0])
-        except:
+        except Exception:
             return
 
         if not isinstance(methods, list) or index < 0 or index >= len(methods):

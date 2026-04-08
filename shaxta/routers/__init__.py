@@ -1,23 +1,25 @@
 from aiogram import Router
+
 from handlers import (
+    about,
     admin,
     back,
+    buy,
+    calculator,
+    deposit,
+    exchange,
+    exchange_wallet,
+    how_to_exchange,
+    invite,
+    profile,
+    rates,
+    review,
+    sell,
     start,
     wallet,
-    deposit,
-    rates,
-    how_to_exchange,
-    about,
-    review,
-    profile,
-    invite,
     withdraw,
-    exchange,
-    buy,
-    sell,
-    exchange_wallet,
-    calculator
 )
+
 
 def get_routers() -> list[Router]:
     return [

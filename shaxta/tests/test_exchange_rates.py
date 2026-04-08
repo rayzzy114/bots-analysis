@@ -1,5 +1,5 @@
-from datetime import datetime, timezone
 import unittest
+from datetime import datetime, timezone
 from unittest.mock import AsyncMock, patch
 
 from utils.exchange_rates import ExchangeRates

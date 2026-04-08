@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import asyncio
-from collections.abc import Callable, Mapping
-from html import escape
 import logging
 import random
 import re
+from collections.abc import Callable, Mapping
+from html import escape
 from pathlib import Path
 
 from aiogram import Bot, F, Router
@@ -13,8 +13,8 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import (
     CallbackQuery,
-    FSInputFile,
     ForceReply,
+    FSInputFile,
     InlineKeyboardButton,
     InlineKeyboardMarkup,
     Message,
@@ -24,8 +24,8 @@ from ..constants import COINS, FALLBACK_RATES, LINK_RESOLUTION_RULES
 from ..context import AppContext
 from ..flow_catalog import CapturedFlow
 from ..keyboards import kb_admin_order_confirm
-from ..storage import OrderData
 from ..states import UserState
+from ..storage import OrderData
 from ..telegram_helpers import callback_message, callback_user_id, message_user_id
 from ..utils import fmt_coin, fmt_money, parse_amount, safe_username
 

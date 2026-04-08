@@ -1,19 +1,26 @@
-import os
-import sqlite3
-import logging
 import asyncio
+import io
+import logging
+import os
 import random
 import re
+import sqlite3
 import string
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
-from telegram.error import BadRequest, Forbidden
-from dotenv import load_dotenv
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
-import io
-from datetime import datetime, date
+from datetime import date, datetime
 
 import httpx
+from dotenv import load_dotenv
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.error import BadRequest, Forbidden
+from telegram.ext import (
+    Application,
+    CallbackQueryHandler,
+    CommandHandler,
+    ContextTypes,
+    MessageHandler,
+    filters,
+)
 
 load_dotenv()
 
@@ -159,8 +166,8 @@ admin_state = {}
 #          Настройки — сохранение и загрузка
 # ────────────────────────────────────────────────
 
-import os
 import json
+import os
 
 SETTINGS_FILE = "settings.json"
 
@@ -195,7 +202,7 @@ def load_settings():
         print("[SETTINGS] Файл найден, пытаемся прочитать...")
 
     try:
-        with open(SETTINGS_FILE, "r", encoding="utf-8") as f:
+        with open(SETTINGS_FILE, encoding="utf-8") as f:
             data = json.load(f)
         print("[SETTINGS] Успешно загружено из JSON:", data)
 
@@ -677,10 +684,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     start_text = (
         "♻️ HUSTLE TRADE — это обменник электронных валют.\n\n"
-        "⚡️ Если впервые пользуешься нашим сервисом, советуем ознакомиться с <a href='{}'>пользовательским соглашением</a>.\n\n"
+        f"⚡️ Если впервые пользуешься нашим сервисом, советуем ознакомиться с <a href='{RULES_LINK}'>пользовательским соглашением</a>.\n\n"
         "🔰 Хочешь обменять крипту? Предлагаем актуальнейшие курсы на обмен — жми кнопку: «КУПИТЬ».\n\n"
         "♻️ Мы — лучшие на рынке крипто-обмена."
-    ).format(RULES_LINK)
+    )
 
     try:
         with open('photo1.jpg', 'rb') as photo:
@@ -693,20 +700,20 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 )
             else:
                 try:
-                    await update.callback_query.message.reply_photo(
+                    await update.callback.message.reply_photo(
                         photo=photo,
                         caption=start_text,
                         reply_markup=reply_markup,
                         parse_mode='HTML'
                     )
-                    await callback_query.message.delete()
-                except:
-                    await safe_edit_message(update.callback_query, start_text, reply_markup)
+                    await update.callback.message.delete()
+                except Exception:
+                    await safe_edit_message(update.callback, start_text, reply_markup)
     except FileNotFoundError:
         if update.message:
             await update.message.reply_text(start_text, reply_markup=reply_markup, parse_mode='HTML', disable_web_page_preview=True)
         else:
-            await safe_edit_message(update.callback_query, start_text, reply_markup)
+            await safe_edit_message(update.callback, start_text, reply_markup)
 
 async def send_captcha(update: Update, context: ContextTypes.DEFAULT_TYPE, user_id: int):
     captcha_text, captcha_image = generate_captcha()
@@ -952,10 +959,10 @@ async def main_menu(query):
 
     start_text = (
         "♻️ HUSTLE TRADE — это обменник электронных валют.\n\n"
-        "⚡️ Если впервые пользуешься нашим сервисом, советуем ознакомиться с <a href='{}'>пользовательским соглашением</a>.\n\n"
+        f"⚡️ Если впервые пользуешься нашим сервисом, советуем ознакомиться с <a href='{RULES_LINK}'>пользовательским соглашением</a>.\n\n"
         "🔰 Хочешь обменять крипту? Предлагаем актуальнейшие курсы на обмен — жми кнопку: «КУПИТЬ».\n\n"
         "♻️ Мы — лучшие на рынке крипто-обмена."
-    ).format(RULES_LINK)
+    )
 
     try:
         with open('photo1.jpg', 'rb') as photo:
@@ -967,7 +974,7 @@ async def main_menu(query):
                     parse_mode='HTML'
                 )
                 await query.message.delete()
-            except:
+            except Exception:
                 await safe_edit_message(query, start_text, reply_markup)
     except FileNotFoundError:
         await safe_edit_message(query, start_text, reply_markup)
@@ -1080,8 +1087,8 @@ async def handle_amount_detailed(update: Update, context: ContextTypes.DEFAULT_T
 
         total_to_pay = round(amount_rub * (1 + COMMISSION_PERCENT / 100))
 
-        formatted_crypto = "{:.8f}".format(crypto_amount).rstrip('0').rstrip('.')
-        formatted_rub = "{:,.0f}".format(total_to_pay).replace(',', ' ')
+        formatted_crypto = f"{crypto_amount:.8f}".rstrip('0').rstrip('.')
+        formatted_rub = f"{total_to_pay:,.0f}".replace(',', ' ')
 
         user_data[user_id]['amount'] = crypto_amount
         user_data[user_id]['rub_amount'] = total_to_pay
@@ -1131,8 +1138,8 @@ async def handle_wallet_address(update: Update, context: ContextTypes.DEFAULT_TY
     amount = user_info['amount']
     rub_amount = user_info['rub_amount']
 
-    formatted_crypto_amount = "{:.8f}".format(amount).rstrip('0').rstrip('.')
-    formatted_rub_amount = "{:,.0f}".format(rub_amount).replace(',', ' ')
+    formatted_crypto_amount = f"{amount:.8f}".rstrip('0').rstrip('.')
+    formatted_rub_amount = f"{rub_amount:,.0f}".replace(',', ' ')
 
     keyboard = [
         [InlineKeyboardButton("✅ СОГЛАСЕН", callback_data="agree")],
@@ -1473,7 +1480,7 @@ async def admin_cb_handler(update, context):
     if data == "admin_close":
         try:
             await query.message.delete()
-        except:
+        except Exception:
             await query.message.edit_text("Закрыто.")
         return
 
@@ -1648,7 +1655,7 @@ async def admin_text(update, context):
             COMMISSION_PERCENT = int(text)
             msg = f"Комиссия → {COMMISSION_PERCENT}%"
             save_settings()
-        except:
+        except Exception:
             await update.message.reply_text("Ожидалось целое число")
             return
     elif state == "wait_min_rub":
@@ -1656,7 +1663,7 @@ async def admin_text(update, context):
             MINIMUM_EXCHANGE_AMOUNT_RUB = float(text)
             msg = f"Мин. сумма → {MINIMUM_EXCHANGE_AMOUNT_RUB} ₽"
             save_settings()
-        except:
+        except Exception:
             await update.message.reply_text("Ожидалось число")
             return
     elif state == "wait_ban_id":
@@ -1664,7 +1671,7 @@ async def admin_text(update, context):
             target = int(text)
             ban_user(target)
             msg = f"Пользователь {target} забанен"
-        except:
+        except Exception:
             await update.message.reply_text("Неверный ID")
             return
     elif state == "wait_unban_id":
@@ -1672,7 +1679,7 @@ async def admin_text(update, context):
             target = int(text)
             unban_user(target)
             msg = f"Пользователь {target} разбанен"
-        except:
+        except Exception:
             await update.message.reply_text("Неверный ID")
             return
     elif state.startswith("wait_rate_"):
@@ -1692,7 +1699,7 @@ async def admin_text(update, context):
             save_settings()
 
             msg = f"Курс {crypto} изменён: {old_rate:,.0f} → {new_rate:,.0f} ₽"
-        except:
+        except Exception:
             await update.message.reply_text("❌ Введите корректное положительное число")
             return
     elif state == "wait_broadcast":

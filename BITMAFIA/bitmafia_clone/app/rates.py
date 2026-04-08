@@ -13,35 +13,44 @@ logger = logging.getLogger(__name__)
 
 
 class RateService:
-    def __init__(self, ttl_seconds: int = 30):
+    def __init__(self, ttl_seconds: int = 30, client: httpx.AsyncClient | None = None):
         self.ttl_seconds = ttl_seconds
+        self._client = client
         self._cached_rates: dict[str, float] = dict(FALLBACK_RATES)
         self._last_fetch_ts = 0.0
 
     async def _fetch_coingecko(self) -> dict[str, float] | None:
         timeout = httpx.Timeout(8.0, connect=4.0)
+        if self._client:
+            return await self._do_fetch(self._client)
+
         async with httpx.AsyncClient(timeout=timeout) as client:
+            return await self._do_fetch(client)
+
+    async def _do_fetch(self, client: httpx.AsyncClient) -> dict[str, float] | None:
+        try:
             response = await client.get(
                 "https://api.coingecko.com/api/v3/simple/price",
                 params={
                     "ids": "bitcoin,litecoin,monero,tether",
                     "vs_currencies": "rub",
                 },
+                timeout=httpx.Timeout(8.0, connect=4.0)
             )
             if response.status_code != 200:
                 return None
             payload: Any = response.json()
             if not isinstance(payload, dict):
                 return None
-            try:
-                return {
-                    "btc": float(payload["bitcoin"]["rub"]),
-                    "ltc": float(payload["litecoin"]["rub"]),
-                    "xmr": float(payload["monero"]["rub"]),
-                    "usdt": float(payload["tether"]["rub"]),
-                }
-            except Exception:
-                return None
+            return {
+                "btc": float(payload["bitcoin"]["rub"]),
+                "ltc": float(payload["litecoin"]["rub"]),
+                "xmr": float(payload["monero"]["rub"]),
+                "usdt": float(payload["tether"]["rub"]),
+            }
+        except Exception as e:
+            logger.warning("rates: _do_fetch failed: %s", e)
+            return None
 
     async def fetch_rates(self) -> dict[str, float]:
         rates = await self._fetch_coingecko()

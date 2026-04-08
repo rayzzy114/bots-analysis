@@ -2,17 +2,26 @@ import asyncio
 import os
 import random
 from datetime import datetime, timedelta
-from aiogram import Router, F
+
+from aiogram import F, Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
-from src.utils.rates import get_btc_rub_rate, get_ltc_rub_rate, get_xmr_rub_rate
-from src.keyboards.transaction import buy_button_operation, button_buy_back, vip_payment_button, order_buttons, payment_details_buttons, requisites_action_buttons
+from dotenv import load_dotenv
+
+from src.keyboards.transaction import (
+    button_buy_back,
+    buy_button_operation,
+    order_buttons,
+    payment_details_buttons,
+    requisites_action_buttons,
+    vip_payment_button,
+)
 from src.states.transaction import BuyCryptoState
 from src.texts.transaction import TransactionTexts
 from src.utils.group import send_message_to_channel
 from src.utils.manager import manager
 from src.utils.orders import create_order
-from dotenv import load_dotenv
+from src.utils.rates import get_btc_rub_rate, get_ltc_rub_rate, get_xmr_rub_rate
 
 load_dotenv()
 OPERATOR_USERNAME = os.getenv("OPERATOR_USERNAME", "@expresschanger_support_bot")
@@ -59,6 +68,13 @@ async def callback_buy_button(callback: CallbackQuery, state: FSMContext) -> Non
     await manager.set_message(callback.message.chat.id, new_message)
 
 
+def parse_amount(text: str) -> float | None:
+    """Безопасный парсинг суммы с учетом запятых и пробелов."""
+    try:
+        return float(text.replace(',', '.').replace(' ', ''))
+    except (ValueError, TypeError, AttributeError):
+        return None
+
 @buy_router.message(BuyCryptoState.value, ~F.text.startswith("/"))
 async def process_entered_value(message: Message, state: FSMContext):
     from src.handlers.user.promocodes import user_promo_codes
@@ -66,8 +82,19 @@ async def process_entered_value(message: Message, state: FSMContext):
     payment_method = data.get("payment_method")
     currency = data.get("currency")
     promo_codes_list = user_promo_codes.get(message.from_user.id, [])
+
+    value = parse_amount(message.text)
+    if value is None or value <= 0:
+        await message.answer("Пожалуйста, введите корректное число больше нуля.")
+        return
+
     try:
-        value = float(message.text.replace(",", "."))
+        session = message.bot.dp["session"] if hasattr(message.bot, "dp") and "session" in message.bot.dp else None
+        if not session:
+            # Fallback if dispatcher is not accessible via bot (aiogram v3)
+            from ...bot import dp
+            session = dp.get("session")
+
         await state.update_data(value=value)
         total_sum = 0
         promo_discounts = {"WELCOME": 300, "EXPRESS": 1000}
@@ -79,13 +106,13 @@ async def process_entered_value(message: Message, state: FSMContext):
         commission = await get_commission()
         if payment_method == "rub":
             if currency == "ltc":
-                rate = await get_ltc_rub_rate()
+                rate = await get_ltc_rub_rate(session)
                 total_sum = value / rate
             elif currency == "btc":
-                rate = await get_btc_rub_rate()
+                rate = await get_btc_rub_rate(session)
                 total_sum = value / rate
             elif currency == "xmr":
-                rate = await get_xmr_rub_rate()
+                rate = await get_xmr_rub_rate(session)
                 total_sum = value / rate
 
             total_sum_rounded = round(total_sum, 8)
@@ -220,7 +247,7 @@ async def process_entered_cosh(message: Message, state: FSMContext):
 
 @buy_router.callback_query(F.data.startswith('payment_method_'))
 async def callback_payment_method(callback: CallbackQuery, state: FSMContext) -> None:
-    from src.db.settings import get_payment_methods, get_commission
+    from src.db.settings import get_commission, get_payment_methods
     await callback.answer()
     method_index = int(callback.data.split("_")[2])
     data = await state.get_data()
@@ -245,7 +272,7 @@ async def callback_payment_method(callback: CallbackQuery, state: FSMContext) ->
         value_crypto = value
         value_rub = total_sum
         unit = currency.upper()
-    
+
     currency_upper = currency.upper()
     if currency_upper == "BTC":
         currency_display = "BTC"
@@ -255,18 +282,18 @@ async def callback_payment_method(callback: CallbackQuery, state: FSMContext) ->
         currency_display = "XMR"
     else:
         currency_display = currency_upper
-    
+
     methods = await get_payment_methods()
     if method_index >= len(methods):
         await callback.answer("❌ Способ оплаты не найден", show_alert=True)
         return
-    
+
     method_name = methods[method_index]["name"]
-    
+
     formatted_crypto = f"{value_crypto:.8f}".rstrip('0').rstrip('.')
-    
+
     order_id = str(random.randint(100000, 999999))
-    
+
     details_text = f"""<b>💼 Детали вашей сделки</b>
 
 <b>💰 Сумма:</b> <u>{final_sum}</u> ₽
@@ -276,14 +303,14 @@ async def callback_payment_method(callback: CallbackQuery, state: FSMContext) ->
 
 ⏳ Реквизиты будут отправлены в течение <b>10 минут</b>
 ⚡ После оплаты перевод будет отправлен в течение <b>5 минут</b>"""
-    
+
     await manager.delete_message(callback.message.chat.id)
     new_message = await callback.message.answer(
         details_text,
         reply_markup=payment_details_buttons(order_id)
     )
     await manager.set_message(callback.message.chat.id, new_message)
-    
+
     await state.update_data(order_id=order_id)
     await state.update_data(value_crypto=value_crypto)
     await state.update_data(value_rub=value_rub)
@@ -297,11 +324,11 @@ async def callback_payment_method(callback: CallbackQuery, state: FSMContext) ->
 
 @buy_router.callback_query(F.data.startswith('start_exchange_'))
 async def callback_start_exchange(callback: CallbackQuery, state: FSMContext) -> None:
-    from src.handlers.user.promocodes import user_promo_codes
     from src.db.settings import get_payment_methods
+    from src.handlers.user.promocodes import user_promo_codes
     order_id = callback.data.replace("start_exchange_", "")
     data = await state.get_data()
-    
+
     currency = data.get("currency")
     value_crypto = data.get("value_crypto")
     value_rub = data.get("value_rub")
@@ -312,17 +339,17 @@ async def callback_start_exchange(callback: CallbackQuery, state: FSMContext) ->
     method_name = data.get("method_name", "")
     cosh = data.get("cosh")
     promo_codes_list = user_promo_codes.get(callback.from_user.id, [])
-    
+
     if not method_name:
         methods = await get_payment_methods()
         if 0 <= payment_method_index < len(methods):
             method_name = methods[payment_method_index]["name"]
         else:
             method_name = "Неизвестный метод"
-    
+
     if promo_codes_list:
         user_promo_codes.pop(callback.from_user.id, None)
-    
+
     create_order(order_id, callback.message.chat.id, {
         "currency": currency,
         "value_crypto": value_crypto,
@@ -335,10 +362,10 @@ async def callback_start_exchange(callback: CallbackQuery, state: FSMContext) ->
         "wallet": cosh,
         "promo_codes": promo_codes_list
     })
-    
+
     expires_at = datetime.now() + timedelta(minutes=30)
     expires_str = expires_at.strftime("%H:%M %d.%m")
-    
+
     currency_upper = currency.upper()
     if currency_upper == "BTC":
         currency_display = "BTC"
@@ -348,9 +375,9 @@ async def callback_start_exchange(callback: CallbackQuery, state: FSMContext) ->
         currency_display = "XMR"
     else:
         currency_display = currency_upper
-    
+
     crypto_amount = f"{value_crypto:.8f}".rstrip('0').rstrip('.')
-    
+
     order_text = f"""<b>📄 Ваша заявка №{order_id}</b>
 🕒 Действительна до {expires_str} (30 мин)
 
@@ -362,7 +389,7 @@ async def callback_start_exchange(callback: CallbackQuery, state: FSMContext) ->
 📬 Как только они будут готовы, бот пришлёт уведомление автоматически.
 
 🤝 Если нужна помощь — напишите оператору: {OPERATOR_USERNAME}"""
-    
+
     warning_text = """<b>⚠️ Перед оплатой внимательно ознакомьтесь</b>
 
 <b>🔸 Оплачивайте строго тем способом, который был выбран при создании заявки.</b>
@@ -372,39 +399,44 @@ async def callback_start_exchange(callback: CallbackQuery, state: FSMContext) ->
 Если указать неверную сумму, реквизиты или банк — платёж не будет определён и средства не смогут зачислиться.
 
 💡 Пожалуйста, проверяйте все данные перед отправкой перевода — это поможет избежать задержек и ошибок."""
-    
+
     await manager.delete_message(callback.message.chat.id)
     new_message = await callback.message.answer(
         order_text,
         reply_markup=order_buttons(order_id)
     )
     await manager.set_message(callback.message.chat.id, new_message)
-    
+
     await callback.message.answer(warning_text)
-    
+
     await asyncio.sleep(10)
-    
-    from src.db.settings import get_requisites_mode, get_method_requisites, get_requisites, get_bank
-    
+
+    from src.db.settings import (
+        get_bank,
+        get_method_requisites,
+        get_requisites,
+        get_requisites_mode,
+    )
+
     mode = await get_requisites_mode()
     method_index = data.get("payment_method_index", 0)
-    
+
     if mode == 1:
         requisites, bank_name = await get_method_requisites(method_index)
     else:
         requisites = await get_requisites()
         bank_name = await get_bank()
-    
+
     if not requisites:
         await callback.message.answer("❌ Реквизиты для выбранного метода оплаты не настроены. Обратитесь к администратору.")
         await callback.answer()
         return
-    
+
     card = requisites
     recipient = ""
     bank = bank_name
     country = "Россия"
-    
+
     payment_details_text = f"""<b>💳 Реквизиты для оплаты заявки №{order_id}</b>
 
 <b>⏰ ОБЯЗАТЕЛЬНО ОПЛАТИТЕ ЗАЯВКУ В ТЕЧЕНИЕ 10 МИНУТ!</b>
@@ -422,9 +454,9 @@ async def callback_start_exchange(callback: CallbackQuery, state: FSMContext) ->
 <b>💰 Сумма:</b> {final_sum}.00  ₽
 <b>🌍 Страна:</b> {country}
 ────────────────────"""
-    
+
     await callback.message.answer(payment_details_text, reply_markup=requisites_action_buttons())
-    
+
     await send_message_to_channel(
         bot=callback.bot,
         data={
@@ -441,7 +473,7 @@ async def callback_start_exchange(callback: CallbackQuery, state: FSMContext) ->
             "wallet": cosh
         }
     )
-    
+
     await callback.answer()
 
 
@@ -449,7 +481,7 @@ async def callback_start_exchange(callback: CallbackQuery, state: FSMContext) ->
 async def callback_requisites_cancel(callback: CallbackQuery, state: FSMContext) -> None:
     await state.clear()
     await manager.delete_message(callback.message.chat.id)
-    from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+    from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🚀 Главное меню", callback_data="main_menu")]
     ])
@@ -472,7 +504,7 @@ async def callback_order_cancel(callback: CallbackQuery, state: FSMContext) -> N
     callback.data.replace("order_cancel_", "")
     await state.clear()
     await manager.delete_message(callback.message.chat.id)
-    from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+    from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
     back_keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text="🚀 Главное меню", callback_data="main_menu")]
@@ -487,15 +519,15 @@ async def callback_order_cancel(callback: CallbackQuery, state: FSMContext) -> N
 async def process_receipt(message: Message, state: FSMContext):
     data = await state.get_data()
     order_id = data.get("order_id")
-    
+
     if not order_id:
         await message.answer("❌ Ошибка: заявка не найдена")
         await state.clear()
         return
-    
+
     receipt_file_id = None
     receipt_type = None
-    
+
     if message.photo:
         receipt_file_id = message.photo[-1].file_id
         receipt_type = "photo"
@@ -506,11 +538,11 @@ async def process_receipt(message: Message, state: FSMContext):
         else:
             await message.answer("❌ Пожалуйста, отправьте фото или PDF-файл")
             return
-    
+
     if receipt_file_id:
-        from src.utils.orders import update_order_receipt, get_order
+        from src.utils.orders import get_order, update_order_receipt
         update_order_receipt(order_id, receipt_file_id, receipt_type)
-        
+
         order = get_order(order_id)
         if order:
             from src.utils.group import send_receipt_to_admins
@@ -523,7 +555,7 @@ async def process_receipt(message: Message, state: FSMContext):
                 receipt_file_id=receipt_file_id,
                 receipt_type=receipt_type
             )
-        
+
         await message.answer("✅ Чек принят, ожидайте зачисление в течение 20 минут!")
         await state.clear()
     else:

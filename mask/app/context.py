@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import httpx
+
 from .rates import RateService
 from .storage import MediaStore, OrdersStore, SessionsStore, SettingsStore, UsersStore
 

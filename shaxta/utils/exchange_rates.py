@@ -1,25 +1,30 @@
 ﻿import asyncio
 from datetime import datetime, timezone
-from typing import Dict, Optional
 
 import aiohttp
 
-from config import DEFAULT_BTC_RATE, DEFAULT_LTC_RATE, DEFAULT_ETH_RATE, DEFAULT_USDT_RATE, DEFAULT_XMR_RATE
+from config import (
+    DEFAULT_BTC_RATE,
+    DEFAULT_ETH_RATE,
+    DEFAULT_LTC_RATE,
+    DEFAULT_USDT_RATE,
+    DEFAULT_XMR_RATE,
+)
 
 
 class ExchangeRates:
     def __init__(self):
-        self.market_rates: Dict[str, float] = {
+        self.market_rates: dict[str, float] = {
             "BTC": DEFAULT_BTC_RATE,
             "LTC": DEFAULT_LTC_RATE,
             "USDT": DEFAULT_USDT_RATE,
             "ETH": DEFAULT_ETH_RATE,
             "XMR": DEFAULT_XMR_RATE,
         }
-        self.last_update: Optional[datetime] = None
+        self.last_update: datetime | None = None
         self._lock = asyncio.Lock()
 
-    async def _fetch_symbol_price(self, session: aiohttp.ClientSession, symbol: str) -> Optional[float]:
+    async def _fetch_symbol_price(self, session: aiohttp.ClientSession, symbol: str) -> float | None:
         url = f"https://api.binance.com/api/v3/ticker/price?symbol={symbol}"
         try:
             async with session.get(url) as response:
@@ -32,7 +37,7 @@ class ExchangeRates:
             print(f"Binance fetch error for {symbol}: {error}")
             return None
 
-    async def _fetch_coingecko_prices(self, session: aiohttp.ClientSession) -> Dict[str, float]:
+    async def _fetch_coingecko_prices(self, session: aiohttp.ClientSession) -> dict[str, float]:
         url = (
             "https://api.coingecko.com/api/v3/simple/price"
             "?ids=bitcoin,litecoin,ethereum,tether,monero&vs_currencies=rub"
@@ -53,7 +58,7 @@ class ExchangeRates:
             "tether": "USDT",
             "monero": "XMR",
         }
-        resolved: Dict[str, float] = {}
+        resolved: dict[str, float] = {}
         for source_id, code in mapping.items():
             value = data.get(source_id, {}).get("rub")
             try:
@@ -64,7 +69,7 @@ class ExchangeRates:
                 resolved[code] = price
         return resolved
 
-    async def update_rates(self) -> Dict[str, float]:
+    async def update_rates(self) -> dict[str, float]:
         async with self._lock:
             timeout = aiohttp.ClientTimeout(total=10)
 
@@ -108,7 +113,7 @@ class ExchangeRates:
                     if direct_rub and cross_usdt and cross_usdt > 0:
                         usdt_rub = direct_rub / cross_usdt
                         break
-            resolved: Dict[str, float] = {}
+            resolved: dict[str, float] = {}
 
             if usdt_rub:
                 resolved["USDT"] = usdt_rub
@@ -136,7 +141,7 @@ class ExchangeRates:
                 self.last_update = datetime.now(timezone.utc)
             return self.market_rates.copy()
 
-    async def ensure_fresh(self, max_age_seconds: int = 120) -> Dict[str, float]:
+    async def ensure_fresh(self, max_age_seconds: int = 120) -> dict[str, float]:
         if not self.last_update:
             return await self.update_rates()
 
@@ -145,7 +150,7 @@ class ExchangeRates:
             return await self.update_rates()
         return self.market_rates.copy()
 
-    def build_trade_rates(self, commission_percent: float) -> Dict[str, Dict[str, float]]:
+    def build_trade_rates(self, commission_percent: float) -> dict[str, dict[str, float]]:
         try:
             commission = max(0.0, float(commission_percent))
         except (TypeError, ValueError):
@@ -154,7 +159,7 @@ class ExchangeRates:
         markup = commission / 100
         sell_multiplier = max(0.0, 1 - markup)
 
-        rates: Dict[str, Dict[str, float]] = {}
+        rates: dict[str, dict[str, float]] = {}
         for currency, market_price in self.market_rates.items():
             rates[currency] = {
                 "buy": round(market_price * (1 + markup), 2),
@@ -168,7 +173,7 @@ class ExchangeRates:
         *,
         force_update: bool = False,
         max_age_seconds: int = 120,
-    ) -> Dict[str, Dict[str, float]]:
+    ) -> dict[str, dict[str, float]]:
         if force_update:
             await self.update_rates()
         else:

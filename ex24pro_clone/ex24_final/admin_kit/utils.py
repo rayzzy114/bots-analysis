@@ -1,6 +1,6 @@
-from html import escape, unescape
 import re
-from typing import Iterable
+from collections.abc import Iterable
+from html import escape, unescape
 
 _SAFE_SUPPORT_FRAGMENT_RE = re.compile(
     r'(?is)^(?:[^<]*(?:<br\s*/?>|<a\s+href="[^"]+">[^<]*</a>))*[^<]*$'

@@ -19,9 +19,13 @@ from ..keyboards import (
     kb_main_menu,
 )
 from ..states import UserState
-from ..telegram_helpers import answer_with_retry, callback_message, callback_user_id, message_user_id
+from ..telegram_helpers import (
+    answer_with_retry,
+    callback_message,
+    callback_user_id,
+    message_user_id,
+)
 from ..utils import fmt_coin, fmt_money, parse_amount, safe_username
-
 
 DONATION_TEXT = (
     "У тебя всегда есть выбор! Хочешь пожертвовать 💔 свою скидку\n"
@@ -68,8 +72,8 @@ def build_buy_router(ctx: AppContext) -> Router:
             return True
         rub_if_coin = amount_value * rate
         rub_if_rub = amount_value
-        coin_in_range = 1000 <= rub_if_coin <= 150000
-        rub_in_range = 1000 <= rub_if_rub <= 150000
+        coin_in_range = ctx.settings.min_rub <= rub_if_coin <= ctx.settings.max_rub
+        rub_in_range = ctx.settings.min_rub <= rub_if_rub <= ctx.settings.max_rub
         if coin_in_range and not rub_in_range:
             return True
         if rub_in_range and not coin_in_range:
@@ -88,12 +92,12 @@ def build_buy_router(ctx: AppContext) -> Router:
         if coin_key == "ltc":
             return (
                 f"💰 Введи нужную сумму в <b>{symbol}</b> или в <b>RUB</b>:",
-                "Например: <b>0.18</b> или <b>1000</b>",
+                "Например: <b>0.18</b> или <b>ctx.settings.min_rub</b>",
                 "Введите корректную сумму, например: <b>0.18</b> или <b>2400</b>",
             )
         return (
             f"💰 Введи нужную сумму в <b>{symbol}</b> или в <b>RUB</b>:",
-            "Например: <b>0.00041</b> или <b>1000</b>",
+            "Например: <b>0.00041</b> или <b>ctx.settings.min_rub</b>",
             "Введите корректную сумму, например: <b>0.00041</b> или <b>2400</b>",
         )
 
@@ -183,39 +187,63 @@ def build_buy_router(ctx: AppContext) -> Router:
 
     @router.message(UserState.waiting_buy_amount)
     async def buy_input_amount(message: Message, state: FSMContext) -> None:
-        raw_text = (message.text or "").strip().replace(",", ".")
-        amount_value = parse_amount(raw_text)
+        raw_text = (message.text or "").strip()
+        parsed = parse_amount(raw_text)
         data = await state.get_data()
-        if amount_value is None:
-            invalid_hint = str(data.get("buy_invalid_amount_hint", "Введите корректную сумму."))
+        if parsed is None:
+            invalid_hint = "❌ Некорректный формат суммы. Попробуйте еще раз (например: ctx.settings.min_rub или 0.01 btc)."
             await message.answer(invalid_hint)
             return
 
+        amount_value = parsed.value
         coin_key = data.get("buy_coin", "btc")
         rates = await ctx.rates.get_rates()
         rate = rates.get(coin_key, 1.0)
 
-        input_mode = str(data.get("buy_input_mode", "coin_or_rub"))
-        is_coin_input = True if input_mode == "coin_only" else detect_coin_input(raw_text, amount_value, rate)
+        # Detect if input is in RUB or Coin
+        # If currency is specified in input (e.g. "ctx.settings.min_rub rub"), use it.
+        # Otherwise try to guess.
+        is_coin_input = False
+        if parsed.currency == "RUB":
+            is_coin_input = False
+        elif parsed.currency in (coin_key.upper(), "BTC", "LTC", "ETH", "XMR", "TRX", "USDT"):
+            is_coin_input = True
+        else:
+            # Guess based on value and rate
+            input_mode = str(data.get("buy_input_mode", "coin_or_rub"))
+            if input_mode == "coin_only":
+                is_coin_input = True
+            else:
+                # If amount > 100 and it's not a tiny fraction, it's probably RUB
+                # (except maybe for some coins, but we check rate)
+                if amount_value > 500:
+                    is_coin_input = False
+                elif amount_value < 1.0:
+                    is_coin_input = True
+                else:
+                    # Ambiguous, assume RUB if value * rate is huge, or coin if value * rate is small
+                    # Actually let's use a simpler heuristic: if amount < 5 it's probably coin
+                    is_coin_input = amount_value < 5
+
         symbol = COINS[coin_key]["symbol"]
         min_coin_map: dict[str, float] = {
             "btc": 0.00041,
             "ltc": 0.18,
             "usdt": 10.0,
         }
-        max_coin_value = 150000 / max(rate, 0.0000001)
+        max_coin_value = ctx.settings.max_rub / max(rate, 0.0000001)
         if is_coin_input:
-            min_coin_value = min_coin_map.get(coin_key, 1000 / max(rate, 0.0000001))
+            min_coin_value = min_coin_map.get(coin_key, ctx.settings.min_rub / max(rate, 0.0000001))
             if amount_value < min_coin_value or amount_value > max_coin_value:
                 await message.answer(
-                    f"Сумма должна быть в диапазоне <b>{fmt_coin(min_coin_value)}..{fmt_coin(max_coin_value)} {symbol}</b>"
+                    f"⚠️ Сумма должна быть в диапазоне <b>{fmt_coin(min_coin_value)}..{fmt_coin(max_coin_value)} {symbol}</b>"
                 )
                 return
             base_rub = amount_value * rate
         else:
             base_rub = amount_value
-            if base_rub < 1000 or base_rub > 150000:
-                await message.answer("Сумма должна быть в диапазоне <b>1000..150000 RUB</b>")
+            if base_rub < ctx.settings.min_rub or base_rub > ctx.settings.max_rub:
+                await message.answer("⚠️ Сумма должна быть в диапазоне <b>ctx.settings.min_rub..ctx.settings.max_rub RUB</b>")
                 return
 
         commission_percent = ctx.settings.commission_percent

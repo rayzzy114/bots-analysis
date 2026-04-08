@@ -1,3 +1,4 @@
+import re
 import json
 import time
 from pathlib import Path
@@ -35,6 +36,8 @@ class UserProfile(TypedDict):
 
 
 class SettingsStore:
+    min_rub: int = 1000
+    max_rub: int = 150000
     def __init__(self, path: Path, default_commission: float, env_links: dict[str, str]):
         self.path = path
         default_methods = ["На карту РФ 🇷🇺"]
@@ -103,6 +106,23 @@ class SettingsStore:
 
     def link(self, key: str) -> str:
         return self.data["links"].get(key, "")
+
+    def link_username(self, key: str) -> str:
+        val = self.data["links"].get(key, "")
+        if val.startswith("https://t.me/"):
+            return f"@{val.split('/')[-1]}"
+        return val
+
+    def process_text(self, text: str) -> str:
+        return re.sub(r"{(\w+)}", lambda m: self.data["links"].get(m.group(1), "Администратор"), text)
+
+    def _old_process_text(self, text: str) -> str:
+        for k in self.data["links"]:
+            if f"{{{k}}}" in text:
+                text = text.replace(f"{{{k}}}", self.data["links"][k])
+            if f"{{{k}_u}}" in text:
+                text = text.replace(f"{{{k}_u}}", self.link_username(k))
+        return text
 
     def set_link(self, key: str, value: str) -> None:
         self.data["links"][key] = value

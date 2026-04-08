@@ -1,9 +1,9 @@
-from aiogram import types, Router, F
+from aiogram import F, Router, types
 from aiogram.filters import Command
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.fsm.context import FSMContext
-from config import operator, rates, work_operator
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
+from config import operator, rates, work_operator
 from db.user import add_user
 
 router = Router()

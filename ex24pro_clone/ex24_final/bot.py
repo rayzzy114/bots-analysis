@@ -4,12 +4,10 @@ import asyncio
 import logging
 import sys
 
-from aiogram import Bot, Dispatcher
+from aiogram import BaseMiddleware, Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
-
-from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject, Update
 
 from config import BOT_TOKEN, banned_users
@@ -54,9 +52,9 @@ async def main() -> None:
         dp.include_router(admin_router)
 
     # Application routers
-    from handlers.start import router as start_router
-    from handlers.menu import router as menu_router
     from handlers.livechat import router as livechat_router
+    from handlers.menu import router as menu_router
+    from handlers.start import router as start_router
 
     dp.include_router(start_router)
     dp.include_router(menu_router)

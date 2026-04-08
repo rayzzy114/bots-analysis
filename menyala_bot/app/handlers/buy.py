@@ -1,4 +1,4 @@
-﻿from aiogram import F, Router
+from aiogram import F, Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 
@@ -24,6 +24,8 @@ def build_buy_router(ctx: AppContext) -> Router:
         "🔄 Купить LTC": "ltc",
         "🔄 Купить XMR": "xmr",
         "🔄 Купить USDT-TRC20": "usdt",
+        "🔄 Купить TRX": "trx",
+        "🔄 Купить ETH": "eth",
     }
 
     async def send_admin_new_order(message: Message, order_id: str) -> None:
@@ -66,11 +68,11 @@ def build_buy_router(ctx: AppContext) -> Router:
         symbol = COINS[coin_key]["symbol"]
         await message.answer(
             f"💰 Введи нужную сумму в {symbol} или в <b>RUB</b>:\n\n"
-            "<b>Мин. сумма: 1000 руб.</b>\n"
-            "<b>Макс. сумма: 150000 руб.</b>",
+            "<b>Мин. сумма: ctx.settings.min_rub руб.</b>\n"
+            "<b>Макс. сумма: ctx.settings.max_rub руб.</b>",
             reply_markup=kb_cancel(),
         )
-        await message.answer("Например: <b>0.00041</b> или <b>1000</b>", reply_markup=kb_cancel())
+        await message.answer("Например: <b>0.00041</b> или <b>ctx.settings.min_rub</b>", reply_markup=kb_cancel())
 
     @router.callback_query(F.data == "buy:flow:cancel")
     async def buy_cancel_flow(callback: CallbackQuery, state: FSMContext) -> None:
@@ -82,9 +84,8 @@ def build_buy_router(ctx: AppContext) -> Router:
 
     @router.message(UserState.waiting_buy_amount)
     async def buy_input_amount(message: Message, state: FSMContext) -> None:
-        raw_text = (message.text or "").strip().replace(",", ".")
-        amount_value = parse_amount(raw_text)
-        if amount_value is None:
+        parsed = parse_amount(message.text or "")
+        if parsed is None:
             await message.answer("Введите корректную сумму, например: 0.00041 или 2400")
             return
 
@@ -93,31 +94,34 @@ def build_buy_router(ctx: AppContext) -> Router:
         rates = await ctx.rates.get_rates()
         rate = rates.get(coin_key, 1.0)
 
-        is_coin_input = amount_value < 1
-        base_rub = amount_value * rate if is_coin_input else amount_value
-        if base_rub < 1000 or base_rub > 150000:
-            await message.answer("Сумма должна быть в диапазоне 1000..150000 RUB")
+        is_coin_input = parsed.currency is not None and parsed.currency != "RUB"
+        base_rub = parsed.value * rate if is_coin_input else parsed.value
+        if base_rub < ctx.settings.min_rub or base_rub > ctx.settings.max_rub:
+            await message.answer("Сумма должна быть в диапазоне ctx.settings.min_rub..ctx.settings.max_rub RUB")
             return
 
         commission_percent = ctx.settings.commission_percent
         commission_rub = base_rub * commission_percent / 100
         amount_to_pay_rub = base_rub + commission_rub
-        amount_coin = amount_value if is_coin_input else base_rub / max(rate, 0.0000001)
-        amount_coin = max(amount_coin, 0.0)
-        symbol = COINS[coin_key]["symbol"]
+        amount_coin = parsed.value if is_coin_input else base_rub / max(rate, 0.0000001)
+
+        # Emoji warnings
+        warning = ""
+        if base_rub < 2000:
+            warning = "⚠️ При сумме до 2000р перевод может идти дольше."
 
         await state.update_data(
             buy_amount_rub=amount_to_pay_rub,
             buy_base_rub=base_rub,
             buy_commission_rub=commission_rub,
             buy_amount_coin=amount_coin,
-            buy_symbol=symbol,
+            buy_symbol=COINS[coin_key]["symbol"],
         )
 
         pay_rub = int(round(amount_to_pay_rub))
         text = (
-            "До бонусного обмена осталось 7 обм.\n\n"
-            f"Получите: <b>{fmt_coin(amount_coin)} {symbol}</b>\n"
+            f"{warning}\n\n"
+            f"Получите: <b>{fmt_coin(amount_coin)} {COINS[coin_key]['symbol']}</b>\n"
             f"К оплате: <b>{pay_rub} ₽</b>\n\n"
             "<u>Выберите способ оплаты</u>⬇️"
         )

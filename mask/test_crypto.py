@@ -1,5 +1,6 @@
 from app.utils import is_valid_crypto_address
 
+
 def main():
     print("TRX TRC20 valid:", is_valid_crypto_address("TGE2wN657wEEDwUoB2w1y7g9x7xX4fD8gK", "TRX"))
     print("TRX TRC20 invalid:", is_valid_crypto_address("TGE2wN657wEEDwUoB2w1y7g9x7xX4fD8gA", "TRX")) # Wrong checksum

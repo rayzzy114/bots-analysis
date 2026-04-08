@@ -1,4 +1,5 @@
 import asyncio
+
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.fsm.storage.memory import MemoryStorage
@@ -6,6 +7,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 """ from db.init_db import init_db """
 from config import BOT_TOKEN, PARSE_MODE
 from routers import get_routers
+
 
 async def run_bot():
     """ await init_db() """

@@ -1,8 +1,10 @@
-import aiosqlite
 import json
 import random
+
 import aiohttp
-from config import requisites, bank
+import aiosqlite
+
+from config import bank, requisites
 
 DB_PATH = "users.db"
 
@@ -68,7 +70,7 @@ async def init_settings_db():
                     for m in methods:
                         m["bank"] = ""
                     need_update = True
-            except:
+            except Exception:
                 methods = []
                 need_update = True
         else:
@@ -87,21 +89,29 @@ async def init_settings_db():
         await db.commit()
 
 
-async def get_ltc_rates() -> tuple:
+async def get_ltc_rates(session: aiohttp.ClientSession | None = None) -> tuple:
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                    "https://api.binance.com/api/v3/ticker/price?symbol=LTCUSDT",
-                    timeout=aiohttp.ClientTimeout(total=10)
-            ) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    usd = float(data.get("price", 0))
-                    if usd > 0:
-                        rub = usd * 85
-                        return (usd, rub)
+        if session:
+            return await _do_fetch_ltc(session)
+
+        async with aiohttp.ClientSession() as s:
+            return await _do_fetch_ltc(s)
     except Exception as e:
         print(f"Binance LTC ошибка: {e}")
+    return (85.0, 7225.0)
+
+async def _do_fetch_ltc(session: aiohttp.ClientSession) -> tuple:
+    async with session.get(
+            "https://api.binance.com/api/v3/ticker/price?symbol=LTCUSDT",
+            timeout=aiohttp.ClientTimeout(total=10)
+    ) as response:
+        if response.status == 200:
+            data = await response.json()
+            usd = float(data.get("price", 0))
+            if usd > 0:
+                # В будущем можно получать реальный курс рубля, пока захардкожено 85 как в оригинале
+                rub = usd * 85
+                return (usd, rub)
     return (85.0, 7225.0)
 
 
@@ -211,7 +221,7 @@ async def remove_payment_method(index: int):
 
         try:
             methods = json.loads(result[0])
-        except:
+        except Exception:
             return
 
         if not isinstance(methods, list) or index < 0 or index >= len(methods):
@@ -237,7 +247,7 @@ async def update_method_requisites(index: int, new_requisites: str, new_bank: st
 
         try:
             methods = json.loads(result[0])
-        except:
+        except Exception:
             return
 
         if not isinstance(methods, list) or index < 0 or index >= len(methods):

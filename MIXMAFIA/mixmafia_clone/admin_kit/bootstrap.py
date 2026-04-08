@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import httpx
 from dotenv import dotenv_values, load_dotenv
 
 from .config import AdminKitConfig
@@ -12,7 +13,7 @@ from .runtime import apply_runtime_from_env
 from .storage import OrdersStore, SettingsStore, UsersStore
 
 
-def build_admin_context(config: AdminKitConfig, *, rates: RateService | None = None) -> AppContext:
+def build_admin_context(config: AdminKitConfig, *, rates: RateService | None = None, client: httpx.AsyncClient | None = None) -> AppContext:
     env_path = Path(config.env_path)
     load_dotenv(dotenv_path=env_path, override=False)
     env = dotenv_values(env_path)
@@ -29,7 +30,7 @@ def build_admin_context(config: AdminKitConfig, *, rates: RateService | None = N
         settings=settings,
         users=users,
         orders=orders,
-        rates=rates or RateService(),
+        rates=rates or RateService(client=client),
         admin_ids=set(config.admin_ids),
         env_path=env_path,
         link_definitions=tuple(config.link_definitions),
@@ -39,6 +40,6 @@ def build_admin_context(config: AdminKitConfig, *, rates: RateService | None = N
     return ctx
 
 
-def build_admin_components(config: AdminKitConfig, *, rates: RateService | None = None):
-    ctx = build_admin_context(config, rates=rates)
+def build_admin_components(config: AdminKitConfig, *, rates: RateService | None = None, client: httpx.AsyncClient | None = None):
+    ctx = build_admin_context(config, rates=rates, client=client)
     return ctx, build_admin_router(ctx)

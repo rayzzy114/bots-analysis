@@ -1,5 +1,6 @@
 from app.utils import _parse_float
 
+
 def main():
     test_cases = [
         "100.5",

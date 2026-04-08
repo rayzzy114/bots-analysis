@@ -1,5 +1,20 @@
 from aiogram import Router
-from handlers import start, buy_btc, pay_with_, buy_xmr, buy_base, admin, sell_btc_xmr, cabinet, daily_bonus, support, faq, none
+
+from handlers import (
+    admin,
+    buy_base,
+    buy_btc,
+    buy_xmr,
+    cabinet,
+    daily_bonus,
+    faq,
+    none,
+    pay_with_,
+    sell_btc_xmr,
+    start,
+    support,
+)
+
 
 def get_routers() -> list[Router]:
     return [

@@ -1,16 +1,17 @@
 import asyncio
-from aiogram import Bot, Dispatcher, BaseMiddleware
+
+from aiogram import BaseMiddleware, Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import TelegramObject, Update
 
 from cfg.base import TOKEN
-from src.handlers.user.start import start_router
+from src.handlers.admin.orders import admin_orders_router
+from src.handlers.admin.payment_methods import admin_router
 from src.handlers.transaction.buy import buy_router
 from src.handlers.transaction.sale import sale_router
-from src.handlers.admin.payment_methods import admin_router
-from src.handlers.admin.orders import admin_orders_router
+from src.handlers.user.start import start_router
 from src.utils.ban import banned_users
 
 dp = Dispatcher(storage=MemoryStorage())

@@ -4,13 +4,19 @@ import json
 from pathlib import Path
 from unittest.mock import MagicMock
 
+from app.catalog import FlowCatalog
 from app.constants import DEFAULT_LINKS
 from app.context import AppContext
-from app.catalog import FlowCatalog
 from app.handlers.admin import build_admin_router
 from app.rates import RateService
 from app.runtime import outgoing_text_from_state
-from app.storage import OrdersStore, SessionsStore, SettingsStore, UsersStore, MediaStore
+from app.storage import (
+    MediaStore,
+    OrdersStore,
+    SessionsStore,
+    SettingsStore,
+    UsersStore,
+)
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 RAW_DIR = PROJECT_DIR / "data" / "raw"

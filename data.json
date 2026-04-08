@@ -1,0 +1,17 @@
+{
+  "COMMISION": 0.05,
+  "BANK_DETAILS": {
+    "card": {
+      "name": "Банковская карта",
+      "details": " "
+    },
+    "sbp": {
+      "name": "СБП",
+      "details": " "
+    },
+    "sim": {
+      "name": "SIM (Мобильная связь)",
+      "details": " "
+    }
+  }
+}

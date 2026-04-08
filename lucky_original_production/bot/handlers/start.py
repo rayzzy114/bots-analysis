@@ -1,28 +1,17 @@
+import html
+import logging
+import os
 import random
-
 import string
 
-import os
-
-import html
-
-from aiogram import Router, F
-
+from aiogram import F, Router
 from aiogram.filters import CommandStart
-
-from aiogram.types import Message, CallbackQuery, FSInputFile
-
 from aiogram.fsm.context import FSMContext
-
-import logging
+from aiogram.types import CallbackQuery, FSInputFile, Message
+from bot.keyboards.main_kb import get_main_inline_kb, get_main_reply_kb, get_profile_kb
+from core.models import FileCache, Setting, User
 from sqlalchemy import select, update
-
 from sqlalchemy.ext.asyncio import AsyncSession
-
-from core.models import User, FileCache, Setting
-
-from bot.keyboards.main_kb import get_main_reply_kb, get_main_inline_kb, get_profile_kb
-
 
 router = Router()
 

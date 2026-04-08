@@ -3,6 +3,7 @@ import logging
 import os
 from pathlib import Path
 
+import httpx
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
@@ -28,7 +29,7 @@ def configure_logging() -> None:
     )
 
 
-def build_context(project_dir: Path) -> AppContext:
+def build_context(project_dir: Path, client: httpx.AsyncClient) -> AppContext:
     data_dir = project_dir / "data"
     data_dir.mkdir(parents=True, exist_ok=True)
     env_path = project_dir / ".env"
@@ -46,7 +47,7 @@ def build_context(project_dir: Path) -> AppContext:
         settings.set_sell_btc_address(sell_btc_address)
     users = UsersStore(path=data_dir / "users.json")
     orders = OrdersStore(path=data_dir / "orders.json")
-    rates = RateService(ttl_seconds=45)
+    rates = RateService(ttl_seconds=3600, client=client)
 
     return AppContext(
         settings=settings,
@@ -62,29 +63,32 @@ async def amain() -> None:
     configure_logging()
     logger = logging.getLogger(__name__)
     project_dir = Path(__file__).resolve().parent
-    ctx = build_context(project_dir)
 
-    bot_token = os.getenv("BOT_TOKEN", "").strip()
-    if not bot_token:
-        raise RuntimeError("BOT_TOKEN is empty in .env")
+    async with httpx.AsyncClient(timeout=httpx.Timeout(10.0)) as client:
+        ctx = build_context(project_dir, client)
+        ctx.rates.start()
 
-    bot = Bot(
-        token=bot_token,
-        default=DefaultBotProperties(parse_mode=ParseMode.HTML),
-    )
-    dp = Dispatcher(storage=MemoryStorage())
-    log_middleware = ConsoleLoggingMiddleware()
-    dp.message.middleware(log_middleware)
-    dp.callback_query.middleware(log_middleware)
+        bot_token = os.getenv("BOT_TOKEN", "").strip()
+        if not bot_token:
+            raise RuntimeError("BOT_TOKEN is empty in .env")
 
-    assets_dir = str(project_dir / "assets")
-    dp.include_router(build_admin_router(ctx))
-    dp.include_router(build_buy_router(ctx, assets_dir=assets_dir))
-    dp.include_router(build_sell_router(ctx))
-    dp.include_router(build_flow_router(ctx, assets_dir=assets_dir))
+        bot = Bot(
+            token=bot_token,
+            default=DefaultBotProperties(parse_mode=ParseMode.HTML),
+        )
+        dp = Dispatcher(storage=MemoryStorage())
+        log_middleware = ConsoleLoggingMiddleware()
+        dp.message.middleware(log_middleware)
+        dp.callback_query.middleware(log_middleware)
 
-    logger.info("bot_start_polling")
-    await dp.start_polling(bot)
+        assets_dir = str(project_dir / "assets")
+        dp.include_router(build_admin_router(ctx))
+        dp.include_router(build_buy_router(ctx, assets_dir=assets_dir))
+        dp.include_router(build_sell_router(ctx))
+        dp.include_router(build_flow_router(ctx, assets_dir=assets_dir))
+
+        logger.info("bot_start_polling")
+        await dp.start_polling(bot)
 
 
 if __name__ == "__main__":

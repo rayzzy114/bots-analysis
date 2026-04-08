@@ -18,7 +18,13 @@ from ..keyboards import (
 )
 from ..states import AdminState
 from ..telegram_helpers import callback_message, callback_user_id, message_user_id
-from ..utils import fmt_coin, fmt_money, parse_admin_ids, parse_amount, safe_username
+from ..utils import (
+    fmt_coin,
+    fmt_money,
+    parse_admin_ids,
+    parse_amount,
+    safe_username,
+)
 
 
 def build_admin_router(ctx: AppContext) -> Router:
@@ -39,8 +45,8 @@ def build_admin_router(ctx: AppContext) -> Router:
         ctx.admin_ids = parse_admin_ids((env.get("ADMIN_IDS") or "").strip())
 
         commission = parse_amount(str(env.get("DEFAULT_COMMISSION_PERCENT") or ""))
-        if commission is not None and 0 <= commission <= 50:
-            ctx.settings.set_commission(commission)
+        if commission is not None and 0 <= commission.value <= 50:
+            ctx.settings.set_commission(commission.value)
 
         for link_key in DEFAULT_LINKS:
             env_key = f"{link_key.upper()}_LINK"
@@ -148,11 +154,11 @@ def build_admin_router(ctx: AppContext) -> Router:
         if user_id is None or not ctx.is_admin(user_id):
             await message.answer("Доступ запрещен.")
             return
-        value = parse_amount(message.text or "")
-        if value is None or value < 0 or value > 50:
+        parsed = parse_amount(message.text or "")
+        if parsed is None or parsed.value < 0 or parsed.value > 50:
             await message.answer("Введите корректную комиссию в диапазоне 0..50")
             return
-        await persist_env_value("DEFAULT_COMMISSION_PERCENT", str(value))
+        await persist_env_value("DEFAULT_COMMISSION_PERCENT", str(parsed.value))
         data = await state.get_data()
         await state.clear()
         if data.get("admin_return_to") == "requisites":
@@ -452,6 +458,8 @@ def build_admin_router(ctx: AppContext) -> Router:
             f"{COINS['ltc']['symbol']}: {fmt_money(rates['ltc'])} RUB",
             f"{COINS['xmr']['symbol']}: {fmt_money(rates['xmr'])} RUB",
             f"{COINS['usdt']['symbol']}: {fmt_money(rates['usdt'])} RUB",
+            f"{COINS['trx']['symbol']}: {fmt_money(rates['trx'])} RUB",
+            f"{COINS['eth']['symbol']}: {fmt_money(rates['eth'])} RUB",
         ]
         await callback.answer("Курсы обновлены")
         await msg.answer("🔄 Курсы обновлены:\n" + "\n".join(lines))

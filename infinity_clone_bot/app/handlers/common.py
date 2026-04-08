@@ -7,7 +7,14 @@ from aiogram.types import CallbackQuery, Message
 
 from ..constants import COINS
 from ..context import AppContext
-from ..keyboards import kb_back_module, kb_cancel, kb_captcha_fruits, kb_contacts, kb_main, kb_module
+from ..keyboards import (
+    kb_back_module,
+    kb_cancel,
+    kb_captcha_fruits,
+    kb_contacts,
+    kb_main,
+    kb_module,
+)
 from ..media import send_screen
 from ..telegram_helpers import callback_message, callback_user_id, message_user_id
 from ..utils import fmt_coin, fmt_money

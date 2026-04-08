@@ -6,9 +6,9 @@ import hashlib
 import json
 import logging
 import os
-from pathlib import Path
 import re
 import sys
+from pathlib import Path
 from typing import Any
 
 from aiogram import Bot, Dispatcher, F
@@ -26,11 +26,17 @@ from app.adminkit.rates import RateService
 from app.adminkit.storage import SettingsStore
 from app.config import Settings, load_settings
 from app.flow_compiler import ensure_compiled
-from app.live_quote import COIN_LABELS, build_live_quote, fmt_coin, fmt_rub, parse_amount
+from app.live_quote import (
+    COIN_LABELS,
+    build_live_quote,
+    fmt_coin,
+    fmt_rub,
+    parse_amount,
+)
 from app.models import QuoteRecord
 from app.order_engine import OrderEngine
-from app.replay_calc import ReplayCalculator
 from app.renderer import StateRenderer
+from app.replay_calc import ReplayCalculator
 from app.session_store import SessionStore
 from app.transition_engine import TransitionEngine
 

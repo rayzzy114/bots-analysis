@@ -1,8 +1,8 @@
 from __future__ import annotations
+
 import logging
 
 from admin_kit import AdminKitConfig, LinkDefinition, build_admin_components
-
 from config import ADMIN_IDS, ENV_PATH, PROJECT_DIR, RATE_SPREAD_PERCENT
 from rates import ExchangeRateService
 

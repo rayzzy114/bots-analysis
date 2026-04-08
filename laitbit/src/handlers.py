@@ -2,21 +2,36 @@ import json
 import logging
 import os
 
-from aiogram import Router, F, Bot
+from aiogram import Bot, F, Router
 from aiogram.dispatcher.event.bases import UNHANDLED
 from aiogram.exceptions import TelegramBadRequest, TelegramNetworkError
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, FSInputFile, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, \
-    InlineKeyboardMarkup, CallbackQuery, ErrorEvent
+from aiogram.types import (
+    CallbackQuery,
+    ErrorEvent,
+    FSInputFile,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    Message,
+    ReplyKeyboardMarkup,
+)
 
 from src.admin_kit.keyboards import kb_admin_order_confirm
 from src.admin_panel import get_admin_context
-from src.cfg import ADMIN_CHAT_IDS, CRYPTO_COSH, PAYMENT_DETAILS, CONTACT_FILE
-from src.keyboard import home_btn,  calc_btn, buy_btn, buy_btn_finish, sale_btn, sale_btn_finish, \
-    buy_card_btn
-from src.service import load_users, save_user, fetch_crypto, generate_request_id
-from src.state import CaptchaStates, CalcStates, ExchangeStates, SaleStates
+from src.cfg import ADMIN_CHAT_IDS, CONTACT_FILE, CRYPTO_COSH, PAYMENT_DETAILS
+from src.keyboard import (
+    buy_btn,
+    buy_btn_finish,
+    buy_card_btn,
+    calc_btn,
+    home_btn,
+    sale_btn,
+    sale_btn_finish,
+)
+from src.service import fetch_crypto, generate_request_id, load_users, save_user
+from src.state import CalcStates, CaptchaStates, ExchangeStates, SaleStates
 
 router = Router()
 logger = logging.getLogger(__name__)
@@ -98,7 +113,7 @@ def load_json(path: str, default=None):
         with open(path, "w", encoding="utf-8") as f:
             json.dump(default, f, ensure_ascii=False, indent=4)
         return default
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 

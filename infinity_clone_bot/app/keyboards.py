@@ -221,3 +221,20 @@ def kb_captcha_fruits() -> InlineKeyboardMarkup:
             ],
         ]
     )
+
+
+def kb_buy_payment_methods() -> InlineKeyboardMarkup:
+    from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="СБП", callback_data="pay_sbp")],
+        [InlineKeyboardButton(text="Карта", callback_data="pay_card")],
+        [InlineKeyboardButton(text="Отмена", callback_data="cancel")],
+    ])
+
+
+def kb_main_menu() -> InlineKeyboardMarkup:
+    from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="Купить", callback_data="buy")],
+        [InlineKeyboardButton(text="Продать", callback_data="sell")],
+    ])

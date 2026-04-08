@@ -5,7 +5,6 @@ from typing import Any
 from aiogram import BaseMiddleware
 from aiogram.types import CallbackQuery, Message, TelegramObject
 
-
 logger = logging.getLogger("bot.console")
 
 

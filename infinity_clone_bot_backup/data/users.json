@@ -1,0 +1,113 @@
+{
+  "6131246501": {
+    "trades_total": 0,
+    "turnover_rub": 0.0,
+    "invited": 0,
+    "bonus_balance": 0.0,
+    "history": [],
+    "captcha_passed": false
+  },
+  "8174646481": {
+    "trades_total": 0,
+    "turnover_rub": 0.0,
+    "invited": 0,
+    "bonus_balance": 0.0,
+    "history": [],
+    "captcha_passed": false
+  },
+  "8078345148": {
+    "trades_total": 10,
+    "turnover_rub": 36000.0,
+    "invited": 0,
+    "bonus_balance": 360.0,
+    "history": [
+      {
+        "ts": 1770424928,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.00055966,
+        "amount_rub": 3600.0
+      },
+      {
+        "ts": 1770425008,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.00055963,
+        "amount_rub": 3600.0
+      },
+      {
+        "ts": 1770425156,
+        "side": "buy",
+        "coin": "LTC",
+        "amount_coin": 0.71919853,
+        "amount_rub": 3600.0
+      },
+      {
+        "ts": 1770425442,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.00055924,
+        "amount_rub": 3600.0
+      },
+      {
+        "ts": 1770426023,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.00055857,
+        "amount_rub": 3600.0
+      },
+      {
+        "ts": 1770426072,
+        "side": "buy",
+        "coin": "LTC",
+        "amount_coin": 0.71564373,
+        "amount_rub": 3600.0
+      },
+      {
+        "ts": 1770426111,
+        "side": "buy",
+        "coin": "USDT",
+        "amount_coin": 39.07776475,
+        "amount_rub": 3600.0
+      },
+      {
+        "ts": 1770426356,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.00055835,
+        "amount_rub": 3600.0
+      },
+      {
+        "ts": 1770426408,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.00055835,
+        "amount_rub": 3600.0
+      },
+      {
+        "ts": 1770426480,
+        "side": "buy",
+        "coin": "BTC",
+        "amount_coin": 0.00055803,
+        "amount_rub": 3600.0
+      }
+    ],
+    "captcha_passed": false
+  },
+  "7509880292": {
+    "trades_total": 0,
+    "turnover_rub": 0.0,
+    "invited": 0,
+    "bonus_balance": 0.0,
+    "history": [],
+    "captcha_passed": false
+  },
+  "8584904538": {
+    "trades_total": 0,
+    "turnover_rub": 0.0,
+    "invited": 0,
+    "bonus_balance": 0.0,
+    "history": [],
+    "captcha_passed": false
+  }
+}

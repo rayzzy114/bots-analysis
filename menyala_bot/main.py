@@ -58,6 +58,7 @@ async def main() -> None:
     dp.include_router(build_common_router(ctx))
 
     await set_default_commands(bot)
+    ctx.rates.start()
 
     for admin_id in ctx.admin_ids:
         try:

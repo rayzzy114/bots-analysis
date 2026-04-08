@@ -1,19 +1,28 @@
-from typing import Optional
-from aiogram import Router, F
+
+from aiogram import F, Router
 from aiogram.filters import Command
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.state import State, StatesGroup
+from aiogram.types import CallbackQuery, Message
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
 from config import is_admin
-from utils.env_writer import update_env_var, read_env_var
 from db.settings import (
-    get_requisites, get_bank, update_requisites, update_bank,
-    get_payment_methods, add_payment_method, remove_payment_method,
-    get_btc_rates, get_commission, set_commission,
-    get_requisites_mode, set_requisites_mode,
-    update_method_requisites
+    add_payment_method,
+    get_bank,
+    get_btc_rates,
+    get_commission,
+    get_payment_methods,
+    get_requisites,
+    get_requisites_mode,
+    remove_payment_method,
+    set_commission,
+    set_requisites_mode,
+    update_bank,
+    update_method_requisites,
+    update_requisites,
 )
+from utils.env_writer import read_env_var, update_env_var
 
 router = Router()
 
@@ -36,7 +45,7 @@ class AdminForm(StatesGroup):
     waiting_for_bot_user_xmr = State()
 
 
-async def get_admin_panel_text(username: Optional[str]) -> str:
+async def get_admin_panel_text(username: str | None) -> str:
     requisites = await get_requisites()
     bank_name = await get_bank()
     methods = await get_payment_methods()
@@ -337,10 +346,9 @@ async def process_env_input(message: Message, state: FSMContext, key: str, state
     update_env_var(key, value)
     await message.answer(f"✅ <b>{key}</b> обновлено: <code>{value}</code>")
 
-    # Reload config
-    import importlib
-    import config
-    importlib.reload(config)
+    # Reload runtime state
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
 
     await state.clear()
     mode = await get_requisites_mode()
@@ -357,9 +365,9 @@ async def process_env_input_back(message: Message, state: FSMContext, key: str, 
     update_env_var(key, value)
     await message.answer(f"✅ <b>{key}</b> обновлено: <code>{value}</code>")
 
-    import importlib
-    import config
-    importlib.reload(config)
+    # Reload runtime state
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
 
     await state.clear()
     await message.answer("🔗 <b>Настройка ссылок</b>\n\nВыберите поле:", reply_markup=get_links_keyboard())

@@ -1,8 +1,9 @@
-from aiogram import Router, F
-from aiogram.types import Message, CallbackQuery
-from aiogram.utils.keyboard import InlineKeyboardBuilder
-from handlers.buy_base import show_payment_methods
+from aiogram import F, Router
 from aiogram.fsm.context import FSMContext
+from aiogram.types import CallbackQuery, Message
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+from handlers.buy_base import show_payment_methods
 
 router = Router()
 
@@ -13,7 +14,7 @@ async def buy_btc(message: Message, edit: bool = False):
     kb.button(text="✈️ Обычный BTC", callback_data="buy_btc_standard")
     kb.button(text="🤖 BTC на bigmafiabot", callback_data="none")
     kb.adjust(1)
-    
+
     if edit:
         await message.edit_text(msg, reply_markup=kb.as_markup())
     else:

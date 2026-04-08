@@ -1,5 +1,6 @@
-from app.utils import _parse_float
 from app.overrides import _parse_money_value
+from app.utils import _parse_float
+
 
 def test_parse_float():
     assert _parse_float("1 000.5") == 1000.5

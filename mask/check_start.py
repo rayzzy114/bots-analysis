@@ -1,9 +1,10 @@
 import json
 from collections import Counter
 
+
 def main():
     events_file = "data/raw/events.json"
-    with open(events_file, "r", encoding="utf-8") as f:
+    with open(events_file, encoding="utf-8") as f:
         events = json.load(f)
 
     start_hits = Counter()

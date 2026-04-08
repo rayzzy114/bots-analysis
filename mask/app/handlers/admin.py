@@ -568,7 +568,7 @@ def build_admin_router(ctx: AppContext) -> Router:
             val = rates.get(symbol.lower())
             if val:
                 lines.append(f"{COINS[symbol]['symbol']}: {fmt_money(val)} RUB")
-        
+
         await callback.answer("Курсы обновлены")
         await msg.answer("🔄 Курсы обновлены:\n" + "\n".join(lines))
 

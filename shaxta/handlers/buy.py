@@ -8,7 +8,7 @@ from aiogram.types import FSInputFile, InputMediaPhoto
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from config import BOT_NAME, MIN_BUY_AMOUNT
-from db.settings import get_bank, get_commission, get_requisites, get_operator
+from db.settings import get_bank, get_commission, get_operator, get_requisites
 from utils.amount_input import parse_amount_value
 from utils.exchange_rates import exchange_rates
 
@@ -112,8 +112,9 @@ async def payment_method_handler(callback: types.CallbackQuery, state: FSMContex
         kb.adjust(1)
 
         caption = (
-            f"📈 Текущий курс 1 {currency} = {current_rate:.1f} RUB\n\n"
-            f"Минимальный обмен: от {MIN_AMOUNT} RUB (от 500 при наличии купона,комиссия сервиса включена в сумму вашего обмена)\n\n"
+            f"📈 Текущий курс 1 {currency} = {current_rate:.1f} RUB\n"
+            f"📊 Комиссия сервиса: {commission:.2f}%\n\n"
+            f"Минимальный обмен: от {MIN_AMOUNT} RUB (от 500 при наличии купона)\n\n"
             f"👉 Укажите сумму в {currency}: 0.001 или 0,001\n"
             f"Или в RUB: {MIN_AMOUNT} или большее значение"
         )
@@ -197,6 +198,7 @@ async def process_address(message: types.Message, state: FSMContext):
         crypto_amount = data["crypto_amount"]
         rub_amount = data["rub_amount"]
         rate = data["rate"]
+        commission = data.get("commission_snapshot", 0.0)
 
         await state.update_data(address=address)
 
@@ -212,6 +214,7 @@ async def process_address(message: types.Message, state: FSMContext):
             f"💵 Сумма к оплате: <b>{rub_amount:,.2f} RUB</b>\n"
             f"💎 К получению: <b>{crypto_amount:.8f} {currency}</b>\n"
             f"📊 Курс: <b>1 {currency} = {rate:,.2f} RUB</b>\n"
+            f"📊 Комиссия: <b>{commission:.2f}%</b> (включена в курс)\n"
             f"📍 Адрес получения: <code>{address}</code>\n\n"
             "⚠️ <b>Внимание:</b> Нажимая кнопку \"Получить реквизиты\", вы обязуетесь оплатить заявку в течение 15 минут. "
             "Вы не сможете отменить текущую заявку или создать новую до истечения времени оплаты.\n\n"

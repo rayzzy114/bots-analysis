@@ -90,6 +90,7 @@ class TestOperatorGetters:
 
         # Need to reload to pick up new env
         import importlib
+
         import config
         importlib.reload(config)
         from config import get_operator as get_operator_reloaded

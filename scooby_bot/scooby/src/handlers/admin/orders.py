@@ -1,14 +1,26 @@
-from aiogram import Router, F
+import re
+
+from aiogram import F, Router
 from aiogram.exceptions import TelegramForbiddenError
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
-from aiogram.fsm.state import StatesGroup, State
-from src.utils.orders import get_order, update_order_status, get_user_chat_id, load_orders
-from src.utils.group import ADMIN_IDS
-from src.utils.ban import banned_users, save_banned
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+)
+
 from cfg.base import OPERATOR_USERNAME
-import re
+from src.utils.ban import banned_users, save_banned
+from src.utils.group import ADMIN_IDS
+from src.utils.orders import (
+    get_order,
+    get_user_chat_id,
+    load_orders,
+    update_order_status,
+)
 
 admin_orders_router = Router()
 

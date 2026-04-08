@@ -1,6 +1,11 @@
-from aiogram import Router, types, F
-from aiogram.utils.keyboard import InlineKeyboardBuilder
+def parse_amount(text: str) -> float | None:
+    try:
+        return float(text.replace(",", ".").replace(" ", ""))
+    except Exception:
+        return None
+from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from config import EXCHANGE_LIMIT_BTC, EXCHANGE_LIMIT_LTC, EXCHANGE_LIMIT_USDT
 
@@ -24,7 +29,7 @@ async def exchange_wallet_handler(callback: types.CallbackQuery):
             text,
             reply_markup=kb.as_markup()
         )
-    
+
         await callback.answer()
     except Exception as e:
         await callback.answer()
@@ -56,7 +61,7 @@ async def specific_exchange_handler(callback: types.CallbackQuery, state: FSMCon
             text,
             reply_markup=kb.as_markup()
         )
-    
+
         await callback.answer()
     except Exception as e:
         await callback.answer()
@@ -89,7 +94,7 @@ async def final_exchange_handler(callback: types.CallbackQuery, state: FSMContex
         await state.update_data(target_currency=target_currency)
 
         await callback.message.answer(text, reply_markup=kb.as_markup())
-    
+
         await callback.answer()
     except Exception as e:
         await callback.answer()
@@ -100,27 +105,27 @@ async def handle_amount_input(message: types.Message, state: FSMContext):
     try:
         data = await state.get_data()
         target_currency = data.get('target_currency')
-        
+
         if not target_currency:
             return
-            
+
         try:
             float(message.text.replace(',', '.'))
         except ValueError:
             await message.answer("Пожалуйста, введите корректное число.")
             return
-        
+
         kb = InlineKeyboardBuilder()
         kb.button(text="Главная меню", callback_data="back")
-        
+
         await message.answer(
             "Недостаточно средств на балансе, для обмена!\n\n"
             f"Баланс: <code>0</code> <b>{target_currency}</b>\n",
             reply_markup=kb.as_markup()
         )
-        
+
         await state.clear()
-        
+
     except Exception as e:
         print(f"Ошибка в [handle_amount_input]: {e}")
         await message.answer("Произошла ошибка при обработке запроса.")

@@ -1,4 +1,5 @@
-from app.utils import base58_decode, validate_base58_checksum, B58_ALPHABET
+from app.utils import B58_ALPHABET, base58_decode, validate_base58_checksum
+
 
 def debug():
     addr = "TGE2wN657wEEDwUoB2w1y7g9x7xX4fD8gK"

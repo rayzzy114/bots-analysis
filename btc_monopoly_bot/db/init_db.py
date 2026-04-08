@@ -1,10 +1,12 @@
 import aiosqlite
-from config import requisites, bank
+
+from config import bank, requisites
+
 
 async def init_db():
     default_requisites = requisites or ""
     default_bank = bank or ""
-    
+
     async with aiosqlite.connect("users.db") as db:
         await db.execute("""
             CREATE TABLE IF NOT EXISTS users (

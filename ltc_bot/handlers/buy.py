@@ -1,17 +1,23 @@
-import random
 import asyncio
-import aiohttp
-from aiogram import Router, types, F
-from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery
-from aiogram.fsm.state import State, StatesGroup
-from config import operator, operator2, ADMIN_IDS
-from db.settings import (
-    get_requisites, get_bank, get_payment_methods,
-    get_requisites_mode, get_method_requisites, get_commission
-)
+import random
 from datetime import datetime
+
+import aiohttp
+from aiogram import F, Router, types
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.types import CallbackQuery, Message
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+from config import ADMIN_IDS, operator, operator2
+from db.settings import (
+    get_bank,
+    get_commission,
+    get_method_requisites,
+    get_payment_methods,
+    get_requisites,
+    get_requisites_mode,
+)
 
 router = Router()
 
@@ -119,8 +125,8 @@ async def process_amount(message: Message, state: FSMContext):
                 return
 
         total_to_pay = round(amount_rub * (1 + commission / 100))
-        formatted_crypto = "{:.8f}".format(crypto_amount).rstrip('0').rstrip('.')
-        formatted_rub = "{:,.0f}".format(total_to_pay).replace(',', ' ')
+        formatted_crypto = f"{crypto_amount:.8f}".rstrip('0').rstrip('.')
+        formatted_rub = f"{total_to_pay:,.0f}".replace(',', ' ')
 
         await state.update_data(crypto_amount=formatted_crypto, total_to_pay=total_to_pay)
 
@@ -295,7 +301,7 @@ async def confirm_payment_handler(callback: types.CallbackQuery, state: FSMConte
 async def handle_confirm_paid(callback: CallbackQuery, state: FSMContext):
     try:
         await callback.message.delete()
-    except:
+    except Exception:
         try:
             await callback.message.edit_reply_markup(reply_markup=None)
         except Exception as e:

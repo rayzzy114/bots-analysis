@@ -1,4 +1,5 @@
 from __future__ import annotations
+import httpx
 
 import asyncio
 import logging
@@ -582,7 +583,7 @@ class FlowRuntime:
                 order = self._create_order_for_session(msg=msg, session=session, wallet=text)
                 if order is not None:
                     session.current_order_id = str(order["order_id"])
-                
+
                 # New message for next step after wallet input
                 session.state_id = next_state
                 session.history.append(next_state)
@@ -1012,40 +1013,41 @@ async def amain() -> None:
         enable_orders=True,
     )
 
-    admin_ctx, admin_router = build_admin_components(config)
+    async with httpx.AsyncClient(timeout=httpx.Timeout(10.0)) as client:
+        admin_ctx, admin_router = build_admin_components(config, client=client)
 
-    runtime = FlowRuntime(
-        project_dir=project_dir,
-        catalog=catalog,
-        app_context=admin_ctx,
-    )
+        runtime = FlowRuntime(
+            project_dir=project_dir,
+            catalog=catalog,
+            app_context=admin_ctx,
+        )
 
-    dp = Dispatcher(storage=MemoryStorage())
-    dp.include_router(admin_router)
+        dp = Dispatcher(storage=MemoryStorage())
+        dp.include_router(admin_router)
 
-    @dp.message(CommandStart())
-    async def _start(message: Message) -> None:
-        await runtime.start(message)
+        @dp.message(CommandStart())
+        async def _start(message: Message) -> None:
+            await runtime.start(message)
 
-    @dp.callback_query(F.data.startswith("captcha:"))
-    async def _captcha_callback(cb: CallbackQuery) -> None:
-        await runtime.on_callback(cb)
+        @dp.callback_query(F.data.startswith("captcha:"))
+        async def _captcha_callback(cb: CallbackQuery) -> None:
+            await runtime.on_callback(cb)
 
-    @dp.callback_query(F.data.startswith("a:"))
-    async def _callback(cb: CallbackQuery) -> None:
-        await runtime.on_callback(cb)
+        @dp.callback_query(F.data.startswith("a:"))
+        async def _callback(cb: CallbackQuery) -> None:
+            await runtime.on_callback(cb)
 
-    @dp.callback_query(F.data.startswith("history:"))
-    async def _history_callback(cb: CallbackQuery) -> None:
-        await runtime.on_callback(cb)
+        @dp.callback_query(F.data.startswith("history:"))
+        async def _history_callback(cb: CallbackQuery) -> None:
+            await runtime.on_callback(cb)
 
-    @dp.message(StateFilter(None), should_handle_runtime_message)
-    async def _message(message: Message) -> None:
-        await runtime.on_message(message)
+        @dp.message(StateFilter(None), should_handle_runtime_message)
+        async def _message(message: Message) -> None:
+            await runtime.on_message(message)
 
-    bot = Bot(token=bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-    logger.info("Bot started")
-    await dp.start_polling(bot)
+        bot = Bot(token=bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+        logger.info("Bot started")
+        await dp.start_polling(bot)
 
 
 def run() -> None:

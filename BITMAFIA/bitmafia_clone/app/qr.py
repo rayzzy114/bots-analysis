@@ -4,7 +4,6 @@ from pathlib import Path
 
 import qrcode
 
-
 CRYPTO_QR_KEYS = {"btc", "ltc", "usdt_trc20", "usdt_bsc", "eth", "trx", "xmr", "ton"}
 
 

@@ -1,19 +1,28 @@
-from typing import Optional
-from aiogram import Router, F
+
+from aiogram import F, Router
 from aiogram.filters import Command
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.state import State, StatesGroup
-from config import is_admin, reload_env
-from utils.env_writer import update_env_var, read_env_var
+from aiogram.types import CallbackQuery, Message
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+from config import is_admin
 from db.settings import (
-    get_requisites, get_bank, update_requisites, update_bank,
-    get_payment_methods, add_payment_method, remove_payment_method,
-    get_xmr_rates, get_commission, set_commission,
-    get_requisites_mode, set_requisites_mode,
-    update_method_requisites
+    add_payment_method,
+    get_bank,
+    get_commission,
+    get_payment_methods,
+    get_requisites,
+    get_requisites_mode,
+    get_xmr_rates,
+    remove_payment_method,
+    set_commission,
+    set_requisites_mode,
+    update_bank,
+    update_method_requisites,
+    update_requisites,
 )
+from utils.env_writer import read_env_var, update_env_var
 
 router = Router()
 
@@ -34,7 +43,7 @@ class AdminForm(StatesGroup):
     waiting_for_work_operator = State()
 
 
-async def get_admin_panel_text(username: Optional[str]) -> str:
+async def get_admin_panel_text(username: str | None) -> str:
     requisites = await get_requisites()
     bank_name = await get_bank()
     methods = await get_payment_methods()
@@ -512,7 +521,10 @@ async def process_rates(message: Message, state: FSMContext):
         return
 
     update_env_var("rates", message.text.strip())
-    reload_env()
+
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
     await state.clear()
     await message.answer("<b>✅ rates обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
@@ -542,7 +554,10 @@ async def process_sell_btc(message: Message, state: FSMContext):
         return
 
     update_env_var("sell_btc", message.text.strip())
-    reload_env()
+
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
     await state.clear()
     await message.answer("<b>✅ sell_btc обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
@@ -572,7 +587,10 @@ async def process_news_channel(message: Message, state: FSMContext):
         return
 
     update_env_var("news_channel", message.text.strip())
-    reload_env()
+
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
     await state.clear()
     await message.answer("<b>✅ news_channel обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
@@ -602,7 +620,10 @@ async def process_operator(message: Message, state: FSMContext):
         return
 
     update_env_var("operator", message.text.strip())
-    reload_env()
+
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
     await state.clear()
     await message.answer("<b>✅ operator обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
@@ -632,7 +653,10 @@ async def process_operator2(message: Message, state: FSMContext):
         return
 
     update_env_var("operator2", message.text.strip())
-    reload_env()
+
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
     await state.clear()
     await message.answer("<b>✅ operator2 обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
@@ -662,7 +686,10 @@ async def process_operator3(message: Message, state: FSMContext):
         return
 
     update_env_var("operator3", message.text.strip())
-    reload_env()
+
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
     await state.clear()
     await message.answer("<b>✅ operator3 обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())
@@ -692,7 +719,10 @@ async def process_work_operator(message: Message, state: FSMContext):
         return
 
     update_env_var("work_operator", message.text.strip())
-    reload_env()
+
+    from runtime_state import get_runtime_state
+    get_runtime_state().reload()
+
     await state.clear()
     await message.answer("<b>✅ work_operator обновлен!</b>")
     await message.answer("🔗 <b>Ссылки</b>", reply_markup=get_links_keyboard())

@@ -8,7 +8,12 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup
+from aiogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    ReplyKeyboardMarkup,
+)
 
 logger = logging.getLogger(__name__)
 

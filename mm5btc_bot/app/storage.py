@@ -9,7 +9,6 @@ from typing import Any
 import qrcode
 from PIL import Image
 
-
 QR_TARGET_SIZE = 250
 
 

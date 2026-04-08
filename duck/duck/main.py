@@ -1,26 +1,29 @@
 import asyncio
-import random
 import os
+import random
 import sqlite3
 from datetime import datetime
-import aiohttp
 
+import aiohttp
+from aiogram import Bot, Dispatcher, F
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
+from aiogram.filters import Command
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.types import (
+    CallbackQuery,
+    FSInputFile,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    KeyboardButton,
+    Message,
+    ReplyKeyboardMarkup,
+)
 from dotenv import load_dotenv
 
-from aiogram import Bot, Dispatcher, F
-from aiogram.enums import ParseMode
-from aiogram.types import (
-    Message, CallbackQuery,
-    InlineKeyboardMarkup, InlineKeyboardButton,
-    FSInputFile,
-)
-from aiogram.client.default import DefaultBotProperties
-from aiogram.fsm.storage.memory import MemoryStorage
-from aiogram.fsm.state import State, StatesGroup
-from aiogram.fsm.context import FSMContext
-from aiogram.filters import Command
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from utils.env_writer import update_env_var, read_env_var
+from utils.env_writer import read_env_var, update_env_var
 
 load_dotenv()
 
@@ -70,25 +73,24 @@ COINGECKO_COINS = {
     "USDT": "tether",
 }
 
-async def fetch_crypto_rates_coingecko() -> dict[str, dict[str, float]] | None:
+async def fetch_crypto_rates_coingecko(session: aiohttp.ClientSession) -> dict[str, dict[str, float]] | None:
     """Fetch crypto rates from CoinGecko API. Returns {coin: {"usd": x, "rub": y}} or None on failure."""
     try:
-        async with aiohttp.ClientSession() as session:
-            ids = ",".join(COINGECKO_COINS.values())
-            url = f"{COINGECKO_URL}?ids={ids}&vs_currencies=usd,rub"
-            async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    result = {}
-                    for coin, cg_id in COINGECKO_COINS.items():
-                        if cg_id in data:
-                            result[coin] = {
-                                "usd": float(data[cg_id].get("usd", 0)),
-                                "rub": float(data[cg_id].get("rub", 0)),
-                            }
-                    if result:
-                        print(f"✅ CoinGecko rates fetched: {list(result.keys())}")
-                        return result
+        ids = ",".join(COINGECKO_COINS.values())
+        url = f"{COINGECKO_URL}?ids={ids}&vs_currencies=usd,rub"
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
+            if response.status == 200:
+                data = await response.json()
+                result = {}
+                for coin, cg_id in COINGECKO_COINS.items():
+                    if cg_id in data:
+                        result[coin] = {
+                            "usd": float(data[cg_id].get("usd", 0)),
+                            "rub": float(data[cg_id].get("rub", 0)),
+                        }
+                if result:
+                    print(f"✅ CoinGecko rates fetched: {list(result.keys())}")
+                    return result
     except Exception as e:
         print(f"❌ CoinGecko fetch error: {e}")
     return None
@@ -105,10 +107,10 @@ def update_rates_from_coingecko(rates: dict[str, dict[str, float]]):
                 sell_rates[coin] = int(rub_price)
             print(f"📈 {coin} rate updated from CoinGecko: {rub_price} RUB")
 
-async def refresh_rates_task():
+async def refresh_rates_task(session: aiohttp.ClientSession):
     """Background task to refresh rates from CoinGecko periodically."""
     while True:
-        rates = await fetch_crypto_rates_coingecko()
+        rates = await fetch_crypto_rates_coingecko(session)
         if rates:
             update_rates_from_coingecko(rates)
         await asyncio.sleep(300)  # обновляем каждые 5 минут
@@ -195,7 +197,7 @@ def init_db():
             received_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     """)
-    
+
     c.execute("""
     CREATE TABLE IF NOT EXISTS reserve_bonus (
         user_id INTEGER PRIMARY KEY,
@@ -365,13 +367,13 @@ class AdminRequisitesStates(StatesGroup):
     waiting_for_card = State()
     waiting_for_bank = State()
     waiting_for_country = State()
-    
+
 class AdminStates(StatesGroup):
     requisites = State()
 
 class ExchangeStates(StatesGroup):
     waiting_for_amount = State()
-    waiting_for_wallet = State()     
+    waiting_for_wallet = State()
     waiting_for_proof = State()
 
 class SellStates(StatesGroup):
@@ -388,7 +390,7 @@ start_keyboard = InlineKeyboardMarkup(inline_keyboard=[
         InlineKeyboardButton(text="🤑 Купить", callback_data="buy"),
         InlineKeyboardButton(text="📈 Продать", callback_data="sell_menu")
     ],
-    
+
     [  # вторая строка — одна кнопка
         InlineKeyboardButton(text="🎲 Проверь удачу и получи скидку (150₽)", callback_data="luck_discount")
     ],
@@ -535,7 +537,7 @@ def add_deal(user_id, deal_type, coin, crypto_amount, total_rub, wallet, deal_id
     conn.commit()
     conn.close()
 
-    return deal_id 
+    return deal_id
 # ======================= МЕНЮ =======================
 @dp.callback_query(F.data == "main_menu")
 async def back_to_main(callback: CallbackQuery):
@@ -568,8 +570,8 @@ async def process_buy_currency(callback: CallbackQuery, state: FSMContext):
     warning = ""
     if not rate or rate <= 0:
         warning = "\n\n⚠️ Курс временно недоступен. Обмен может быть невозможен."
-    
-    
+
+
 
     await callback.message.edit_text(
     f"<b>🦆 Уточка готова к обмену!</b>\n\n"
@@ -613,11 +615,12 @@ async def process_amount(message: Message, state: FSMContext):
         rub_amount = round(amount)
         # Комиссия добавляется к сумме
         total_to_pay = round(rub_amount * (1 + commission / 100))
-        crypto_amount = round(total_to_pay / rate, 8)
+        crypto_amount = round(rub_amount / rate, 8)
     else:
         # Продажа: сумма в крипте
         crypto_amount = round(amount, 8)
         base_rub = round(crypto_amount * rate)
+        rub_amount = base_rub
         total_to_pay = round(base_rub * (1 + commission / 100))
 
     # Проверка минималки в рублях
@@ -681,7 +684,7 @@ async def process_amount(message: Message, state: FSMContext):
 
     await message.answer(text, reply_markup=back_keyboard, parse_mode=ParseMode.HTML)
     await state.set_state(ExchangeStates.waiting_for_wallet)
- 
+
 
 # ======================= ВВОД АДРЕСА =======================
 @dp.message(ExchangeStates.waiting_for_wallet)
@@ -805,7 +808,7 @@ async def create_order(callback: CallbackQuery, state: FSMContext):
     current_data = await state.get_data()
     if current_data.get("deal_id") != deal_id or current_data.get("requisites_sent"):
         return
-   
+
     # удаляем стикер, если он был
     if sticker_msg:
      try:
@@ -1381,7 +1384,7 @@ async def cancel_order(callback: CallbackQuery, state: FSMContext):
     )
     await callback.answer()
     await state.clear()
-    
+
 # ======================= АДМИНКА =======================
 
 class AdminStates(StatesGroup):
@@ -1751,6 +1754,14 @@ async def admin_broadcast_send(message: Message, state: FSMContext):
 # ======================= ВСПОМОГАТЕЛЬНАЯ КНОПКА "НАЗАД" =======================
 def back_to_admin(section: str):
     return InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="🔙 Назад", callback_data=section)]])
+
+
+async def admin_banks(callback):
+    await callback.message.edit_text("🏦 Управление банками", reply_markup=back_to_admin("admin_enter"))
+
+
+async def admin_crypto_addresses(callback):
+    await callback.message.edit_text("🔑 Управление крипто-адресами", reply_markup=back_to_admin("admin_enter"))
 
 @dp.callback_query(F.data.in_(["admin_banks", "admin_crypto_addresses", "admin_enter"]))
 async def back_from_admin(callback: CallbackQuery):
@@ -2150,23 +2161,32 @@ def grant_reserve_bonus(user_id: int):
     conn.commit()
     conn.close()
 
+def parse_amount(text: str) -> float | None:
+    """Безопасный парсинг суммы с учетом запятых и пробелов."""
+    try:
+        return float(text.replace(',', '.').replace(' ', ''))
+    except (ValueError, TypeError, AttributeError):
+        return None
+
 # ======================= ЗАПУСК =======================
 async def main():
-    init_db()
-    print("🦆 Уточка Обмен успешно запущена!")
+    async with aiohttp.ClientSession() as session:
+        dp["session"] = session
+        init_db()
+        print("🦆 Уточка Обмен успешно запущена!")
 
-    # Пытаемся получить курсы с CoinGecko при запуске
-    try:
-        rates = await fetch_crypto_rates_coingecko()
-        if rates:
-            update_rates_from_coingecko(rates)
-    except Exception as e:
-        print(f"⚠️ Не удалось получить курсы с CoinGecko: {e}")
+        # Пытаемся получить курсы с CoinGecko при запуске
+        try:
+            rates = await fetch_crypto_rates_coingecko(session)
+            if rates:
+                update_rates_from_coingecko(rates)
+        except Exception as e:
+            print(f"⚠️ Не удалось получить курсы с CoinGecko: {e}")
 
-    # Запускаем фоновую задачу обновления курсов
-    asyncio.create_task(refresh_rates_task())
+        # Запускаем фоновую задачу обновления курсов
+        asyncio.create_task(refresh_rates_task(session))
 
-    await dp.start_polling(bot)
+        await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())

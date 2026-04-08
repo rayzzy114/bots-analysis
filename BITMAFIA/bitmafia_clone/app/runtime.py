@@ -1,4 +1,5 @@
 from __future__ import annotations
+import httpx
 
 import asyncio
 import json
@@ -18,8 +19,8 @@ from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart, StateFilter
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import (
-    FSInputFile,
     CallbackQuery,
+    FSInputFile,
     InlineKeyboardButton,
     InlineKeyboardMarkup,
     Message,
@@ -28,7 +29,7 @@ from aiogram.types import (
 from dotenv import dotenv_values, load_dotenv
 
 from .catalog import FlowCatalog
-from .constants import DEFAULT_LINKS
+from .constants import DEFAULT_LINKS, FALLBACK_RATES
 from .context import AppContext
 from .handlers.admin import build_admin_router
 from .keyboards import kb_admin_order_confirm
@@ -1995,44 +1996,46 @@ async def amain() -> None:
     )
     users_store = UsersStore(project_dir / "data" / "admin" / "users.json")
     orders_store = OrdersStore(project_dir / "data" / "admin" / "orders.json")
-    rate_service = RateService(ttl_seconds=30)
 
-    app_context = AppContext(
-        settings=settings_store,
-        users=users_store,
-        orders=orders_store,
-        rates=rate_service,
-        admin_ids=admin_ids,
-        env_path=env_path,
-    )
+    async with httpx.AsyncClient(timeout=httpx.Timeout(10.0)) as client:
+        rate_service = RateService(ttl_seconds=30, client=client)
 
-    runtime = FlowRuntime(
-        project_dir=project_dir,
-        catalog=catalog,
-        app_context=app_context,
-    )
+        app_context = AppContext(
+            settings=settings_store,
+            users=users_store,
+            orders=orders_store,
+            rates=rate_service,
+            admin_ids=admin_ids,
+            env_path=env_path,
+        )
 
-    dp = Dispatcher(storage=MemoryStorage())
-    dp.include_router(build_admin_router(app_context))
+        runtime = FlowRuntime(
+            project_dir=project_dir,
+            catalog=catalog,
+            app_context=app_context,
+        )
 
-    @dp.message(CommandStart())
-    async def _start(message: Message) -> None:
-        await runtime.start(message)
+        dp = Dispatcher(storage=MemoryStorage())
+        dp.include_router(build_admin_router(app_context))
 
-    @dp.callback_query(F.data.startswith("captcha:"))
-    async def _captcha_callback(cb: CallbackQuery) -> None:
-        await runtime.on_callback(cb)
+        @dp.message(CommandStart())
+        async def _start(message: Message) -> None:
+            await runtime.start(message)
 
-    @dp.callback_query(F.data.startswith("a:"))
-    async def _callback(cb: CallbackQuery) -> None:
-        await runtime.on_callback(cb)
+        @dp.callback_query(F.data.startswith("captcha:"))
+        async def _captcha_callback(cb: CallbackQuery) -> None:
+            await runtime.on_callback(cb)
 
-    @dp.message(StateFilter(None), should_handle_runtime_message)
-    async def _message(message: Message) -> None:
-        await runtime.on_message(message)
+        @dp.callback_query(F.data.startswith("a:"))
+        async def _callback(cb: CallbackQuery) -> None:
+            await runtime.on_callback(cb)
 
-    bot = Bot(token=bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-    await dp.start_polling(bot)
+        @dp.message(StateFilter(None), should_handle_runtime_message)
+        async def _message(message: Message) -> None:
+            await runtime.on_message(message)
+
+        bot = Bot(token=bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+        await dp.start_polling(bot)
 
 
 def run() -> None:

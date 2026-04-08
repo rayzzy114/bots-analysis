@@ -1,7 +1,8 @@
-from aiogram import Router, types, F
-from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.types import FSInputFile, InputMediaPhoto
 import asyncio
+
+from aiogram import F, Router, types
+from aiogram.types import FSInputFile, InputMediaPhoto
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 router = Router()
 
@@ -10,7 +11,7 @@ async def how_to_exchange_handler(callback: types.CallbackQuery):
     try:
         kb = InlineKeyboardBuilder()
         kb.button(text="Назад", callback_data="back")
-    
+
         kb.adjust(1)
 
         caption = (

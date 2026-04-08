@@ -2,9 +2,10 @@
 Tests for MIXMAFIA - operator links are now dynamic
 CRITICAL: Verify os.getenv is used for operator links
 """
-import pytest
 import os
 import sys
+
+import pytest
 
 
 class TestOperatorLinksDynamic:
@@ -58,7 +59,7 @@ class TestLinksNotHardcoded:
             '..', 'app', 'constants.py'
         )
 
-        with open(constants_path, 'r') as f:
+        with open(constants_path) as f:
             content = f.read()
 
         # Should have os.getenv
@@ -72,7 +73,7 @@ class TestLinksNotHardcoded:
             '..', 'app', 'constants.py'
         )
 
-        with open(constants_path, 'r') as f:
+        with open(constants_path) as f:
             content = f.read()
 
         lines = content.split('\n')
@@ -102,7 +103,7 @@ class TestRequisitesUnchanged:
         )
 
         if os.path.exists(storage_path):
-            with open(storage_path, 'r') as f:
+            with open(storage_path) as f:
                 content = f.read()
 
             # Card pattern should still exist (as placeholder)

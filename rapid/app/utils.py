@@ -1,48 +1,61 @@
 import re
-from typing import Iterable
+from collections.abc import Iterable
+from typing import NamedTuple
 
 
-def parse_admin_ids(raw: str) -> set[int]:
-    result: set[int] = set()
-    for chunk in raw.split(","):
-        chunk = chunk.strip()
-        if not chunk:
-            continue
-        try:
-            result.add(int(chunk))
-        except ValueError:
-            continue
-    return result
+class ParsedAmount(NamedTuple):
+    value: float
+    currency: str | None
 
 
-def parse_amount(raw: str, *, allow_zero: bool = False) -> float | None:
-    cleaned = raw.strip().replace(" ", "").replace(",", ".").replace("−", "-")
-    if not cleaned:
-        return None
-    if cleaned.count("-") > 1 or cleaned.count("+") > 1:
-        return None
-    if "-" in cleaned[1:] or "+" in cleaned[1:]:
-        return None
-    sign = 1.0
-    if cleaned[0] in {"+", "-"}:
-        if cleaned[0] == "-":
-            sign = -1.0
-        cleaned = cleaned[1:]
-    cleaned = re.sub(r"[^0-9.]", "", cleaned)
-    if not cleaned or cleaned == ".":
-        return None
-    if cleaned.count(".") > 1:
-        return None
-    try:
-        value = sign * float(cleaned)
-    except ValueError:
-        return None
-    if allow_zero:
-        if value < 0:
+class CurrencyParser:
+    def __init__(self, supported_currencies: Iterable[str] | None = None):
+        self.supported = supported_currencies or ["RUB", "BTC", "LTC", "ETH", "USDT", "TRX", "XMR"]
+
+    def parse(self, raw: str) -> ParsedAmount | None:
+        text = raw.strip().lower().replace(" ", "")
+        if not text:
             return None
-    elif value <= 0:
-        return None
-    return value
+        text = text.replace(",", ".")
+        match = re.match(r"^([+-]?\d*(?:\.\d+)?)(.*)$", text)
+        if not match:
+            return None
+
+        num_str, suffix = match.groups()
+        if not num_str or num_str == ".":
+            match = re.search(r"(\d+(?:\.\d+)?)", text)
+            if match:
+                num_str = match.group(1)
+                suffix = text.replace(num_str, "")
+            else:
+                return None
+
+        try:
+            value = float(num_str)
+        except ValueError:
+            return None
+
+        if value <= 0:
+            return None
+
+        currency = suffix.strip().upper() if suffix else None
+        if currency:
+            if currency in ("Р", "РУБ", "RUBLE", "RUBLES", "РУБЛЕЙ", "РУБЛЯ"):
+                currency = "RUB"
+            elif currency in ("БТЦ", "BITCOIN"):
+                currency = "BTC"
+            elif currency in ("ЛТЦ", "LITECOIN"):
+                currency = "LTC"
+            elif currency in ("ЭФИР", "ETH"):
+                currency = "ETH"
+            elif currency in ("ЮСДТ", "TETHER"):
+                currency = "USDT"
+            elif currency in ("ТРОН", "TRX"):
+                currency = "TRX"
+            elif currency in ("МОНЕРО", "XMR"):
+                currency = "XMR"
+
+        return ParsedAmount(value=value, currency=currency)
 
 
 def fmt_money(value: float) -> str:
@@ -59,7 +72,22 @@ def safe_username(username: str | None) -> str:
     return "@N/A"
 
 
-def first_or_none(values: Iterable[str]) -> str | None:
-    for item in values:
-        return item
-    return None
+def parse_admin_ids(raw: str) -> set[int]:
+    result: set[int] = set()
+    for chunk in raw.split(","):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        try:
+            result.add(int(chunk))
+        except ValueError:
+            continue
+    return result
+
+
+def parse_amount(raw: str) -> float | None:
+    try:
+        clean = raw.replace(",", ".").replace(" ", "")
+        return float(clean)
+    except (ValueError, AttributeError):
+        return None

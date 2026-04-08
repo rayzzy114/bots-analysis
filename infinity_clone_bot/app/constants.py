@@ -44,3 +44,12 @@ LINK_LABELS = {
 }
 
 FALLBACK_RATES = {"btc": 5_400_000.0, "ltc": 9_000.0, "usdt": 100.0}
+
+
+BUY_BUTTON_TO_COIN = {
+    "Купить BTC": "btc",
+    "Купить LTC": "ltc",
+    "Купить XMR": "xmr",
+}
+
+COINS = ["btc", "ltc", "xmr"]

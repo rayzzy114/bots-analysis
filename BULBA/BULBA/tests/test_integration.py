@@ -25,7 +25,7 @@ class TestBuyHandlerWithDynamicRates:
             '..', 'bot.py'
         )
 
-        with open(bot_path, 'r') as f:
+        with open(bot_path) as f:
             content = f.read()
 
         # Verify that get_btc_rates is called in handle_amount
@@ -49,7 +49,7 @@ class TestAdminRatesPanel:
         )
 
         if os.path.exists(admin_path):
-            with open(admin_path, 'r') as f:
+            with open(admin_path) as f:
                 content = f.read()
 
             # Should mention CoinGecko

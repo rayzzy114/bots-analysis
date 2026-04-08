@@ -1,16 +1,16 @@
-from aiogram import types, Router
+from aiogram import Router, types
 from aiogram.filters import Command
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.types import Message
-from config import operator, rates, sell_btc, news_channel, BOT_USER_LTC, BOT_USER_XMR
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
+from config import BOT_USER_LTC, BOT_USER_XMR, news_channel, operator, rates, sell_btc
 from db.user import add_user
 
 router = Router()
 
 async def send_start(message: types.Message, edit: bool = False):
     user_id = message.from_user.id
-    
+
     await add_user(user_id)
 
     kb = InlineKeyboardBuilder()

@@ -18,7 +18,13 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.fsm.storage.memory import MemoryStorage
-from aiogram.types import CallbackQuery, FSInputFile, InlineKeyboardButton, InlineKeyboardMarkup, Message
+from aiogram.types import (
+    CallbackQuery,
+    FSInputFile,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+)
 from dotenv import dotenv_values, load_dotenv
 
 from .catalog import (
@@ -39,7 +45,14 @@ from .payment import OrderExtractor, PaymentHandler
 from .rates import RateService
 from .renderer import send_state
 from .sessions import UserSession
-from .storage import MediaStore, OrdersStore, SessionData, SessionsStore, SettingsStore, UsersStore
+from .storage import (
+    MediaStore,
+    OrdersStore,
+    SessionData,
+    SessionsStore,
+    SettingsStore,
+    UsersStore,
+)
 from .tokens import TokenRegistry
 from .utils import (
     is_valid_crypto_address,
@@ -104,7 +117,7 @@ class FlowRuntime:
         self.media_dir = project_dir / "data" / "media"
         self.catalog = catalog
         self.app_context = app_context
-        
+
         self.sessions: dict[int, UserSession] = {}
         self.tokens = TokenRegistry()
         self.payment = PaymentHandler(app_context, project_dir)
@@ -112,7 +125,7 @@ class FlowRuntime:
         self._background_tasks: set[asyncio.Task] = set()
         self.exchange_entry_state_id: str | None = None
         self.exchange_picker_state_id: str | None = None
-        
+
         self._warmup_tokens()
         self._discover_global_actions()
         self._load_persisted_sessions()
@@ -138,7 +151,7 @@ class FlowRuntime:
                 self.app_context.sessions.update_session(uid, session_data)
                 session.clear_dirty()
                 dirty_count += 1
-        
+
         if dirty_count > 0:
             logger.info(f"Saving {dirty_count} changed sessions...")
             await self.app_context.sessions.save()
@@ -159,10 +172,10 @@ class FlowRuntime:
         tasks = list(self._background_tasks)
         for task in tasks:
             task.cancel()
-        
+
         if tasks:
             await asyncio.gather(*tasks, return_exceptions=True)
-        
+
         await self.save_sessions()
         # Также синхронно сохраняем медиа кэш и настройки на всякий случай
         self.app_context.media.save_sync()
@@ -188,7 +201,7 @@ class FlowRuntime:
                 to_delete = [uid for uid, sess in self.sessions.items() if now - sess.updated_at > max_age]
                 for uid in to_delete:
                     del self.sessions[uid]
-                
+
                 deleted_count = await self.app_context.sessions.cleanup(max_age)
                 if to_delete or deleted_count:
                     logger.info(f"Cleaned up {len(to_delete)} in-memory and {deleted_count} on-disk sessions.")
@@ -217,7 +230,7 @@ class FlowRuntime:
         start_state = self.catalog.states.get(self.catalog.start_state_id)
         if not start_state:
             return
-        
+
         # We look at buttons in the start state
         rows = state_button_rows(start_state)
         for row in rows:
@@ -249,7 +262,7 @@ class FlowRuntime:
         clean = re.sub(r"[^\w\s]", "", text).strip()
         if clean and clean != text:
             self.global_actions[clean] = target
-        
+
         # Variant: just the text without trailing/leading non-alphanumeric
         trimmed = text.strip(" 🔙🔄👤⚙️📈🆘✅❌")
         if trimmed and trimmed != text and trimmed != clean:
@@ -274,7 +287,7 @@ class FlowRuntime:
 
         user_id = int(user.id)
         session = self.sessions.get(user_id)
-        
+
         # Anti-Spam
         now = time.time()
         if session and now - session.last_action_ts < 0.4:
@@ -385,7 +398,7 @@ class FlowRuntime:
         # Handle photos if awaiting payment proof
         user_id = int(user.id)
         session = self.sessions.get(user_id)
-        
+
         # Anti-Spam
         now = time.time()
         if session and now - session.last_action_ts < 0.4:
@@ -415,7 +428,7 @@ class FlowRuntime:
             if text:
                 await msg.answer(self._input_error_message(session.state_id, session=session))
                 return
-        
+
         session.last_input = text
         session.mark_dirty()
 
@@ -481,7 +494,7 @@ class FlowRuntime:
             next_state = self.catalog.resolve_action(session.state_id, text)
         if not next_state:
             next_state = self._resolve_missing_action_transition(session.state_id, text)
-        
+
         # If no explicit action, but state accepts input, we validate and use <manual-input>/<input>
         if next_state is None and self.catalog.state_accepts_input(session.state_id):
             if not text and not photos:
@@ -497,7 +510,7 @@ class FlowRuntime:
                 if photos and not session.awaiting_payment_proof:
                     # Forward non-payment photo to admins as 'general input'
                     await self._forward_general_photo(msg, session)
-                
+
                 next_state = self.catalog.resolve_action(session.state_id, text, is_text_input=True)
 
         if (
@@ -509,7 +522,7 @@ class FlowRuntime:
             next_state = self._resolve_system_next_for_session(session.state_id, session)
 
         if not next_state:
-            # If no transition found, check if this text might be a known button in start state 
+            # If no transition found, check if this text might be a known button in start state
             # (sometimes users type buttons that are not in current state but are 'global' in their mind)
             return
 
@@ -694,7 +707,7 @@ class FlowRuntime:
         if explicit:
             session.push_state(explicit)
             return explicit
-        
+
         # Pop from history
         prev_state = session.pop_state()
         if prev_state is None:
@@ -810,16 +823,16 @@ class FlowRuntime:
     def _find_error_state(self, state_id: str, text: str) -> str | None:
         """Try to find a state in edges that looks like an error state for this input."""
         action_map = self.catalog.transition_index.get(state_id) or {}
-        
+
         # 1. Look for explicit error actions like '<invalid-input>' if they exist (rare in capture)
-        # 2. Look for edges from this state that lead to 
+        # 2. Look for edges from this state that lead to
         # states containing "некорректный", "ошибка", "попробуйте снова", "введите верно"
-        
+
         # We check all possible next states from here
         all_targets: set[str] = set()
         for targets in action_map.values():
             all_targets.update(targets)
-            
+
         for target in all_targets:
             target_text = self._state_text(target).lower()
             if any(hint in target_text for hint in ("некорректный", "ошибка", "попробуйте снова", "введите верно", "неверный")):
@@ -831,7 +844,7 @@ class FlowRuntime:
                     return target
                 # If no coin-specific error, return the first error found
                 return target
-                
+
         return None
 
     async def _forward_general_photo(self, msg: Message, session: UserSession) -> None:
@@ -842,7 +855,7 @@ class FlowRuntime:
         user = msg.from_user
         if not user:
             return
-        
+
         photo_file_id = photos[-1].file_id
         caption = self.payment.build_admin_caption(
             order_id="INPUT_PHOTO",
@@ -850,7 +863,7 @@ class FlowRuntime:
             username=(user.username or ""),
             order_context=f"Пользователь отправил фото в состоянии: {session.state_id}\nТекст состояния: {self._state_text(session.state_id)[:500]}"
         )
-        
+
         await self.payment.forward_to_admins(
             bot=msg.bot,
             photo_file_id=photo_file_id,
@@ -869,7 +882,7 @@ class FlowRuntime:
                 # Переотправляем текущее состояние, чтобы юзер видел кнопки
                 await self._send_state_by_id(msg, session.state_id, session=session)
                 return
-            
+
             await msg.answer(PAYMENT_PROOF_NEED_PHOTO)
             return
 
@@ -2086,9 +2099,10 @@ async def amain() -> None:
     orders_store = OrdersStore(project_dir / "data" / "admin" / "orders.json")
     sessions_store = SessionsStore(project_dir / "data" / "admin" / "sessions.json")
     media_store = MediaStore(project_dir / "data" / "admin" / "media_cache.json")
-    
+
     async with httpx.AsyncClient() as http_client:
-        rate_service = RateService(http_client=http_client, ttl_seconds=45)
+        rate_service = RateService(ttl_seconds=3600)
+        rate_service.start()
 
         app_context = AppContext(
             settings=settings_store,
@@ -2110,7 +2124,7 @@ async def amain() -> None:
         await runtime.run_loops()
 
         dp = Dispatcher(storage=MemoryStorage())
-        
+
         # Admin router must be included first or the catch-all @dp.message() will intercept its commands
         dp.include_router(build_admin_router(app_context))
 
@@ -2134,7 +2148,7 @@ async def amain() -> None:
         dp.include_router(main_router)
 
         bot = Bot(token=bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-        
+
         logger.info("Bot is starting...")
         try:
             await dp.start_polling(bot)

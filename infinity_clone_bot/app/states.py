@@ -12,3 +12,7 @@ class TradeState(StatesGroup):
     waiting_admin_requisites_value = State()
     waiting_admin_requisites_bank = State()
     waiting_admin_payment_method_add = State()
+
+
+# Alias for backward compatibility
+UserState = TradeState

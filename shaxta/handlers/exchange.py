@@ -1,4 +1,4 @@
-from aiogram import Router, types, F
+from aiogram import F, Router, types
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from db.settings import get_operator

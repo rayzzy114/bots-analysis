@@ -1,14 +1,30 @@
+def parse_amount(text: str) -> float | None:
+    try:
+        return float(text.replace(",", ".").replace(" ", ""))
+    except: return None
 import asyncio
 import uuid
 from datetime import datetime, timedelta
-from aiogram import Router, F
+
+from aiogram import F, Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 
 from cfg.base import OPERATOR_USERNAME
-from src.handlers.transaction import LTC_RUB_SELL, XMR_RUB_SELL, BTC_RUB_SELL, USDT_RUB_SELL
-from src.keyboards.transaction import sale_button, sale_button_operation, button_buy_back, success_sale_button, \
-    home_button, order_buttons
+from src.handlers.transaction import (
+    BTC_RUB_SELL,
+    LTC_RUB_SELL,
+    USDT_RUB_SELL,
+    XMR_RUB_SELL,
+)
+from src.keyboards.transaction import (
+    button_buy_back,
+    home_button,
+    order_buttons,
+    sale_button,
+    sale_button_operation,
+    success_sale_button,
+)
 from src.states.transaction import SaleCryptoState
 from src.texts.transaction import TransactionTexts
 from src.utils.group import send_message_to_channel
@@ -131,7 +147,7 @@ async def process_amount(message: Message, state: FSMContext):
 
     except ValueError:
         await message.answer("❌ Неверная сумма. Попробуйте ещё раз.")
-        
+
 
 @sale_router.message(SaleCryptoState.cosh)
 async def process_requisites(message: Message, state: FSMContext):
@@ -159,13 +175,13 @@ async def process_requisites(message: Message, state: FSMContext):
 @sale_router.callback_query(F.data == 'success_sale')
 async def create_sale_order(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
-    
+
     loading = await callback.message.answer("⏳ Создаём заявку...")
     await asyncio.sleep(3)
     await loading.delete()
 
     data = await state.get_data()
-    
+
     data.get("total_sum")       # рубли без комиссии
     crypto_sell = data.get("crypto_amount")        # крипта, которую клиент отдаёт
     currency = data.get("currency")
@@ -192,7 +208,7 @@ async def create_sale_order(callback: CallbackQuery, state: FSMContext):
 💸 Получаете: {rub_receive_final} RUB
 
 ⏳ Оператор скоро свяжется с вами."""
-    
+
     await manager.delete_message(callback.message.chat.id)
     new_message = await callback.message.answer(order_text, reply_markup=order_buttons(order_id))
     await manager.set_message(callback.message.chat.id, new_message)
@@ -231,7 +247,7 @@ async def create_sale_order(callback: CallbackQuery, state: FSMContext):
         f"В случае вопросов пишите {OPERATOR_USERNAME}"
     )
 
-    
+
 
 @sale_router.callback_query(F.data.startswith('order_status_'))
 async def callback_order_status(callback: CallbackQuery) -> None:

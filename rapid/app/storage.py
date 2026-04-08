@@ -1,3 +1,4 @@
+import re
 import json
 import random
 import time
@@ -62,6 +63,8 @@ class OrderData(TypedDict):
 
 
 class SettingsStore:
+    min_rub: int = 1000
+    max_rub: int = 150000
     def __init__(self, path: Path, default_commission: float, env_links: dict[str, str]):
         self.path = path
         self.data: SettingsData = {
@@ -139,7 +142,6 @@ class SettingsStore:
                 if parsed_split:
                     self.data["requisites"]["split_by_method"] = parsed_split
 
-            # Migration from legacy split schema.
             split_raw = req.get("split")
             if isinstance(split_raw, dict) and not self.data["requisites"]["split_by_method"]:
                 split_obj = cast(dict[str, object], split_raw)
@@ -196,6 +198,28 @@ class SettingsStore:
 
     def link(self, key: str) -> str:
         return self.data["links"].get(key, "")
+
+    def link_username(self, key: str) -> str:
+        url = self.link(key)
+        if "t.me/" in url:
+            return "@" + url.split("t.me/")[-1].split("?")[0].strip("/")
+        return ""
+
+    def process_text(self, text: str) -> str:
+        return re.sub(r"{(\w+)}", lambda m: self.data["links"].get(m.group(1), "Администратор"), text)
+
+    def _old_process_text(self, text: str) -> str:
+        if not text:
+            return text
+
+        for key, value in self.data["links"].items():
+            placeholder = "{" + key + "}"
+            if placeholder in text:
+                text = text.replace(placeholder, value)
+            username = self.link_username(key)
+            if username:
+                text = text.replace("{" + key + "_at}", username)
+        return text
 
     def all_links(self) -> dict[str, str]:
         return dict(self.data["links"])

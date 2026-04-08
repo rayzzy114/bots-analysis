@@ -1,6 +1,6 @@
 import re
 
-with open("app/utils.py", "r", encoding="utf-8") as f:
+with open("app/utils.py", encoding="utf-8") as f:
     content = f.read()
 
 new_parse_float = """def _parse_float(raw: str) -> float | None:

@@ -1,9 +1,11 @@
-from aiogram import Router, types, F
-from aiogram.utils.keyboard import InlineKeyboardBuilder
+from aiogram import F, Router, types
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message
 from aiogram.fsm.state import State, StatesGroup
-from db.user import update_user_card, get_user_card
+from aiogram.types import Message
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+from db.user import get_user_card, update_user_card
+
 
 class WalletState(StatesGroup):
     waiting_for_wallet_address = State()
@@ -23,7 +25,7 @@ def get_keyboard():
 
 @router.callback_query(F.data.startswith("partner"))
 async def partner_crypto_handler(callback: types.CallbackQuery):
-    
+
     text = (
         "<b>Условия партнерской программы:</b>\n\n"
         "Рекомендуйте наш сервис, стройте команду получайте вознаграждение от каждого обмена привлеченных вами клиентов!\n\n"

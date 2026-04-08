@@ -1,6 +1,6 @@
-from aiogram import Router, types, F
-from aiogram.utils.keyboard import InlineKeyboardBuilder
+from aiogram import F, Router, types
 from aiogram.types import FSInputFile, InputMediaPhoto
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 router = Router()
 
@@ -38,7 +38,7 @@ async def wallet_handler(callback: types.CallbackQuery):
                 caption=caption,
                 reply_markup=kb.as_markup()
             )
-    
+
         await callback.answer()
     except Exception as e:
         await callback.answer()

@@ -1,0 +1,73 @@
+{
+  "commission_percent": 5.0,
+  "links": {
+    "faq": "https://t.me/+9-b_IupCYGlhNmYy",
+    "channel": "https://t.me/+WV8DeR3IFcswYjRi",
+    "chat": "https://t.me/+WV8DeR3IFcswYjRi",
+    "reviews": "https://t.me/+Nq1-DPuYxl00MzMy",
+    "review_form": "https://bigrc.biz/forums/bitmafia-io-qr-chistka-btc-obnal.463/",
+    "manager": "https://t.me/BitMafia_support",
+    "operator": "https://t.me/BitMafia_support",
+    "terms": "https://fit.rutor.fit/forums/bitmafia-io-qr-obmen-mixer.1569/",
+    "exchange": "https://t.me/MixMafiaBot"
+  },
+  "sell_wallets": {
+    "btc": "",
+    "ltc": "",
+    "usdt_trc20": "",
+    "usdt_bsc": "",
+    "eth": "",
+    "trx": "",
+    "xmr": "",
+    "ton": ""
+  },
+  "requisites": {
+    "mode": "single",
+    "single_bank": "Сбербанк",
+    "single_value": "2200 0000 0000 0000",
+    "payment_methods": [
+      "Перевод на карту",
+      "Тинькофф",
+      "Сбербанк",
+      "Карта",
+      "СБП",
+      "Сбербанк QR",
+      "Тинькофф QR",
+      "Наличные"
+    ],
+    "split_by_method": {
+      "Перевод на карту": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "Тинькофф": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "Сбербанк": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "Карта": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "СБП": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "Сбербанк QR": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "Тинькофф QR": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      },
+      "Наличные": {
+        "bank": "Сбербанк",
+        "value": "2200 0000 0000 0000"
+      }
+    }
+  }
+}

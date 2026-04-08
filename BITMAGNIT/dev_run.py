@@ -3,7 +3,6 @@ import sys
 import time
 from pathlib import Path
 
-
 PROJECT_DIR = Path(__file__).resolve().parent
 WATCH_ROOTS = [PROJECT_DIR / "app", PROJECT_DIR / "main.py", PROJECT_DIR / ".env"]
 

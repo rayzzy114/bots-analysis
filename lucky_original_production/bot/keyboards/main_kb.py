@@ -124,7 +124,8 @@ def get_buy_methods_kb() -> InlineKeyboardMarkup:
 
         row = [InlineKeyboardButton(text=methods[i][0], callback_data=methods[i][1])]
 
-        if i + 1 < len(methods): row.append(InlineKeyboardButton(text=methods[i+1][0], callback_data=methods[i+1][1]))
+        if i + 1 < len(methods):
+            row.append(InlineKeyboardButton(text=methods[i+1][0], callback_data=methods[i+1][1]))
 
         builder.row(*row)
 
@@ -158,7 +159,8 @@ def get_currencies_kb(action: str) -> InlineKeyboardMarkup:
 
         row = [InlineKeyboardButton(text=f"{prefix} {currencies[i]}", callback_data=f"{action}_{currencies[i]}")]
 
-        if i + 1 < len(currencies): row.append(InlineKeyboardButton(text=f"{prefix} {currencies[i+1]}", callback_data=f"{action}_{currencies[i+1]}"))
+        if i + 1 < len(currencies):
+            row.append(InlineKeyboardButton(text=f"{prefix} {currencies[i+1]}", callback_data=f"{action}_{currencies[i+1]}"))
 
         builder.row(*row)
 

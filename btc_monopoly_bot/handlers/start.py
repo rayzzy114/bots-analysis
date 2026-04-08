@@ -1,31 +1,34 @@
-from aiogram import types, Router
+from aiogram import Router, types
 from aiogram.filters import Command
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.types import Message
-from config import operator, rates, sell_btc, news_channel, BOT_USER_LTC, BOT_USER_XMR
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from db.user import add_user
+from runtime_state import get_runtime_state
 
 router = Router()
 
 async def send_start(message: types.Message, edit: bool = False):
     user_id = message.from_user.id
-    
+
     await add_user(user_id)
+
+    # Get runtime state for dynamic links
+    state = get_runtime_state()
 
     kb = InlineKeyboardBuilder()
     kb.button(text="👉🏻 Купить BTC 👈🏻", callback_data="buy_btc")
-    kb.button(text="⚡ Купить LTC ⚡", url=f"https://t.me/{BOT_USER_LTC}")
-    kb.button(text="♻️ Купить XMR ♻️", url=f"https://t.me/{BOT_USER_XMR}")
+    kb.button(text="⚡ Купить LTC ⚡", url=f"https://t.me/{state.BOT_USER_LTC}")
+    kb.button(text="♻️ Купить XMR ♻️", url=f"https://t.me/{state.BOT_USER_XMR}")
     kb.button(text="Промокод", callback_data="promo")
     kb.button(text="👤 Партнерская программа", callback_data="partner")
-    kb.button(text="Поддержка / Оператор", url=f"https://t.me/{operator}")
-    kb.button(text="Отзывы", url=f"https://t.me/{rates}")
+    kb.button(text="Поддержка / Оператор", url=f"https://t.me/{state.operator}")
+    kb.button(text="Отзывы", url=f"https://t.me/{state.rates}")
     kb.button(text="Мои заказы", callback_data="my_orders")
     kb.button(text="Правила", callback_data="rules")
     kb.button(text="💰 Работа 💰", callback_data="work")
-    kb.button(text="Продать биткоин", url=f"https://t.me/{sell_btc}")
-    kb.button(text="Новостной канал", url=f"https://t.me/{news_channel}")
+    kb.button(text="Продать биткоин", url=f"https://t.me/{state.sell_btc}")
+    kb.button(text="Новостной канал", url=f"https://t.me/{state.news_channel}")
     kb.adjust(1, 1, 1, 2, 2, 1, 1, 1, 1)
 
     caption = (

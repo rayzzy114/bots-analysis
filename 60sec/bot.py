@@ -1,82 +1,94 @@
 import asyncio
 import logging
-import aiosqlite
+import os
 import random
 from datetime import datetime, timedelta
-from aiogram import Bot, Dispatcher, F
-from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, InlineQuery, InlineQueryResultArticle, InputTextMessageContent
-from aiogram.filters import Command
-from aiogram.enums import ParseMode
-from aiogram.client.default import DefaultBotProperties
-from dotenv import load_dotenv
-import os
+
+import aiosqlite
 import httpx
+from aiogram import Bot, Dispatcher, F
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
+from aiogram.filters import Command
+from aiogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    InlineQuery,
+    InlineQueryResultArticle,
+    InputTextMessageContent,
+    Message,
+)
+from dotenv import load_dotenv
+
+from services import RateService, SQLiteStorage
 
 load_dotenv()
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# Configuration constants
+BOT_TOKEN = os.getenv("BOT_TOKEN", "")
+ADMIN_ID = int(os.getenv("ADMIN_ID", "0"))
+CURRENCY_RATES: dict[str, float] = {}
+COMMISSION_PERCENT = float(os.getenv("COMMISSION_PERCENT", "2"))
+REVIEWS_HANDLE = os.getenv("REVIEWS_HANDLE", "@reviews")
+EXCHANGE_HANDLE = os.getenv("EXCHANGE_HANDLE", "@exchange")
+HELP_HANDLE = os.getenv("HELP_HANDLE", "@help")
+NEWS_HANDLE = os.getenv("NEWS_HANDLE", "@news")
+COINGECKO_API = "https://api.coingecko.com/api/v3/simple/price"
+RATES_FETCH_RETRIES = 3
+RATES_RETRY_DELAY = 5
+
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-if not BOT_TOKEN:
-    raise ValueError("BOT_TOKEN не найден в переменных окружения!")
-
-ADMIN_ID_STR = os.getenv("ADMIN_ID", "0")
-ADMIN_ID = int(ADMIN_ID_STR) if ADMIN_ID_STR and ADMIN_ID_STR != "" else 0
-
-COMMISSION_PERCENT = float(os.getenv("COMMISSION_PERCENT", "20"))
-
-# Telegram bot handles
-REVIEWS_HANDLE = os.getenv("REVIEWS_HANDLE", "@my60sec_reviews")
-EXCHANGE_HANDLE = os.getenv("EXCHANGE_HANDLE", "@obmen6O_bot")
-HELP_HANDLE = os.getenv("HELP_HANDLE", "@help_obmen60")
-NEWS_HANDLE = os.getenv("NEWS_HANDLE", "@my60sec")
-
-COINGECKO_API = "https://api.coingecko.com/api/v3/simple/price"
-_RATES_TIMEOUT = httpx.Timeout(6.0, connect=2.0)
-_RATES_FETCH_RETRIES = 3
-_RATES_RETRY_DELAY = 0.8
-
-CURRENCY_RATES: dict[str, float] = {}
+storage = SQLiteStorage()
+rate_service = RateService()
+bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+dp = Dispatcher()
+dp["storage"] = storage
+dp["rate_service"] = rate_service
 
 
-async def fetch_crypto_rates() -> dict[str, float]:
-    """Fetch crypto rates from CoinGecko API (RUB)."""
+def parse_amount(text: str) -> float | None:
+    """Безопасный парсинг суммы с учетом запятых и пробелов."""
+    try:
+        return float(text.replace(',', '.').replace(' ', ''))
+    except (ValueError, TypeError, AttributeError):
+        return None
+
+async def fetch_crypto_rates(client: httpx.AsyncClient) -> dict[str, float]:
+    """Fetch crypto rates from CoinGecko API (RUB) using global client."""
     params = {
         "ids": "bitcoin,litecoin,monero,tether",
         "vs_currencies": "rub",
     }
     last_error: Exception | None = None
-    async with httpx.AsyncClient(timeout=_RATES_TIMEOUT) as client:
-        for attempt in range(1, _RATES_FETCH_RETRIES + 1):
-            try:
-                resp = await client.get(COINGECKO_API, params=params)
-                resp.raise_for_status()
-                payload = resp.json()
-                return {
-                    "BTC": float(payload["bitcoin"]["rub"]),
-                    "LTC": float(payload["litecoin"]["rub"]),
-                    "XMR": float(payload["monero"]["rub"]),
-                    "USDT": float(payload["tether"]["rub"]),
-                }
-            except (httpx.HTTPError, KeyError, TypeError, ValueError) as exc:
-                last_error = exc
-                if attempt >= _RATES_FETCH_RETRIES:
-                    break
-                await asyncio.sleep(_RATES_RETRY_DELAY * attempt)
+    for attempt in range(1, RATES_FETCH_RETRIES + 1):
+        try:
+            resp = await client.get(COINGECKO_API, params=params)
+            resp.raise_for_status()
+            payload = resp.json()
+            return {
+                "BTC": float(payload["bitcoin"]["rub"]),
+                "LTC": float(payload["litecoin"]["rub"]),
+                "XMR": float(payload["monero"]["rub"]),
+                "USDT": float(payload["tether"]["rub"]),
+            }
+        except (httpx.HTTPError, KeyError, TypeError, ValueError) as exc:
+            last_error = exc
+            if attempt >= RATES_FETCH_RETRIES:
+                break
+            await asyncio.sleep(RATES_RETRY_DELAY * attempt)
 
     logger.warning(
         "Cannot fetch crypto rates from CoinGecko after %s attempts: %s",
-        _RATES_FETCH_RETRIES,
+        RATES_FETCH_RETRIES,
         last_error,
     )
     return {}
 
-bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-dp = Dispatcher()
+
+# Removed duplicate bot/dp definitions that used undefined BOT_TOKEN
 
 DB_PATH = "bot.db"
 
@@ -99,7 +111,7 @@ async def init_db():
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
-        
+
         await db.execute("""
             CREATE TABLE IF NOT EXISTS exchanges (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -113,7 +125,7 @@ async def init_db():
                 FOREIGN KEY (user_id) REFERENCES users (user_id)
             )
         """)
-        
+
         await db.execute("""
             CREATE TABLE IF NOT EXISTS promo_codes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -123,7 +135,7 @@ async def init_db():
                 FOREIGN KEY (user_id) REFERENCES users (user_id)
             )
         """)
-        
+
         await db.execute("""
             CREATE TABLE IF NOT EXISTS orders (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -141,7 +153,7 @@ async def init_db():
                 FOREIGN KEY (user_id) REFERENCES users (user_id)
             )
         """)
-        
+
         await db.execute("""
             CREATE TABLE IF NOT EXISTS payment_details (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -152,7 +164,7 @@ async def init_db():
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
-        
+
         await db.commit()
 
 
@@ -165,7 +177,7 @@ async def add_user(user_id: int, username: str = None, first_name: str = None):
         await db.commit()
 
 
-async def create_exchange(user_id: int, from_currency: str, to_currency: str, 
+async def create_exchange(user_id: int, from_currency: str, to_currency: str,
                           amount: float, rate: float, status: str = "pending"):
     async with aiosqlite.connect(DB_PATH) as db:
         cursor = await db.execute("""
@@ -180,10 +192,10 @@ async def create_order(user_id: int, currency: str, amount: float, final_amount:
                        crypto_amount: float, wallet_address: str, payment_method: str) -> int:
     import random
     from datetime import datetime, timedelta
-    
+
     order_number = random.randint(80000, 99999)
     expires_at = datetime.now() + timedelta(minutes=30)
-    
+
     async with aiosqlite.connect(DB_PATH) as db:
         while True:
             cursor = await db.execute("SELECT COUNT(*) FROM orders WHERE order_number = ?", (order_number,))
@@ -191,12 +203,12 @@ async def create_order(user_id: int, currency: str, amount: float, final_amount:
             if result[0] == 0:
                 break
             order_number = random.randint(80000, 99999)
-        
+
         await db.execute("""
             INSERT INTO orders (order_number, user_id, currency, amount, final_amount, 
                               crypto_amount, wallet_address, payment_method, expires_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (order_number, user_id, currency, amount, final_amount, 
+        """, (order_number, user_id, currency, amount, final_amount,
               crypto_amount, wallet_address, payment_method, expires_at.strftime("%Y-%m-%d %H:%M:%S")))
         await db.commit()
         return order_number
@@ -310,7 +322,7 @@ async def cmd_start(message: Message):
         username=user.username,
         first_name=user.first_name
     )
-    
+
     await message.answer(
         get_start_message(),
         reply_markup=get_start_keyboard(),
@@ -321,20 +333,20 @@ async def cmd_start(message: Message):
 @dp.message(Command("admin"))
 async def cmd_admin(message: Message):
     user_id = message.from_user.id
-    
+
     if user_id != ADMIN_ID and ADMIN_ID != 0:
         await message.answer("❌ У вас нет доступа к админ-панели.")
         return
-    
+
     text = "🔧 Админ-панель\n\nВыберите действие:"
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="💳 Настроить реквизиты (Карты)", callback_data="admin_set_cards")],
         [InlineKeyboardButton(text="🏦 Настроить реквизиты (СБП)", callback_data="admin_set_sbp")],
         [InlineKeyboardButton(text="💱 Настроить реквизиты (Трансгран)", callback_data="admin_set_crossborder")],
         [InlineKeyboardButton(text="📋 Просмотреть реквизиты", callback_data="admin_view_details")]
     ])
-    
+
     await message.answer(text, reply_markup=keyboard)
 
 
@@ -342,7 +354,7 @@ async def cmd_admin(message: Message):
 async def handle_inline_query(inline_query: InlineQuery):
     query = inline_query.query.strip()
     user_id = inline_query.from_user.id
-    
+
     if not query or query.startswith("rate_"):
         results = []
         currency = user_selected_currency.get(user_id, "BTC")
@@ -352,7 +364,7 @@ async def handle_inline_query(inline_query: InlineQuery):
             "rate_ltc_rub",
             "rate_xmr_rub"
         ]
-        
+
         for rate_query in rate_queries:
             currency_name = rate_query.replace('rate_', '').replace('_rub', '').upper()
             results.append(
@@ -365,10 +377,10 @@ async def handle_inline_query(inline_query: InlineQuery):
                     )
                 )
             )
-        
+
         await inline_query.answer(results, cache_time=1)
         return
-    
+
     try:
         import re
         numbers = re.findall(r'\d+\.?\d*', query.replace(',', '.'))
@@ -376,7 +388,7 @@ async def handle_inline_query(inline_query: InlineQuery):
             amount = float(numbers[0])
             currency = user_selected_currency.get(user_id, "BTC")
             rate = CURRENCY_RATES.get(currency, 1)
-            
+
             if currency in ["BTC", "LTC", "XMR", "USDT"]:
                 rub_amount = amount * rate
                 markup_percent = COMMISSION_PERCENT / 100
@@ -387,7 +399,7 @@ async def handle_inline_query(inline_query: InlineQuery):
                 amount_with_markup = amount * (1 + markup_percent)
                 crypto_amount = amount_with_markup / rate
                 result_text = f"💸 <code>{amount:.2f}</code> <b>₽</b> = {crypto_amount:.12f} {currency}"
-            
+
             results = [
                 InlineQueryResultArticle(
                     id="calc_result",
@@ -399,9 +411,9 @@ async def handle_inline_query(inline_query: InlineQuery):
                     )
                 )
             ]
-            
+
             await inline_query.answer(results, cache_time=1)
-    except:
+    except Exception:
         results = [
             InlineQueryResultArticle(
                 id="help",
@@ -419,11 +431,11 @@ async def handle_inline_query(inline_query: InlineQuery):
 async def handle_text_message(message: Message):
     text = message.text.strip()
     user_id = message.from_user.id
-    
+
     if user_id in user_state and user_state[user_id].startswith("admin_setting_"):
         if user_id != ADMIN_ID and ADMIN_ID != 0:
             return
-        
+
         lines = text.split('\n')
         if len(lines) >= 3:
             card_number = lines[0].strip()
@@ -431,7 +443,7 @@ async def handle_text_message(message: Message):
             bank_name = lines[2].strip()
             method = user_state[user_id].replace("admin_setting_", "")
             await set_payment_details(method, card_number, recipient_name, bank_name)
-            
+
             await message.answer(
                 f"✅ Реквизиты для метода <b>{method}</b> успешно сохранены!\n\n"
                 f"💳 Карта: {card_number}\n"
@@ -442,7 +454,7 @@ async def handle_text_message(message: Message):
         else:
             await message.answer("❌ Неверный формат. Отправьте данные в формате:\n1. Номер карты\n2. ФИО получателя\n3. Название банка")
         return
-    
+
     if text.upper() == "60SEC":
         if await check_promo_code(user_id, "60SEC"):
             await message.answer("❌ Этот промокод уже активирован ❌")
@@ -453,7 +465,7 @@ async def handle_text_message(message: Message):
                 "💰 Вы получили скидку 300 рублей на следующий обмен."
             )
         return
-    
+
     if user_id in user_state and user_state[user_id] == "waiting_wallet":
         wallet_address = text
         currency = user_selected_currency.get(user_id, "")
@@ -477,7 +489,7 @@ async def handle_text_message(message: Message):
 ℹ️ При поддержке международных переводов со стороны вашего банка платёж, как правило, проходит оперативно.
 
 ⬇️ Выберите удобный метод оплаты"""
-        
+
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="💳 Карты", callback_data="payment_cards")],
             [InlineKeyboardButton(text="🏦 СБП", callback_data="payment_sbp")],
@@ -487,19 +499,19 @@ async def handle_text_message(message: Message):
                 InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")
             ]
         ])
-        
+
         await message.answer(payment_text, reply_markup=keyboard)
         user_state[user_id] = "waiting_payment_method"
         return
-    
+
     if user_id in user_input_mode and user_input_mode[user_id] == "crypto_amount":
         try:
             crypto_amount = float(text.replace(',', '.').replace(' ', ''))
-            
+
             if crypto_amount <= 0:
                 await message.answer("❌ Количество криптовалюты должно быть больше нуля.")
                 return
-            
+
             currency = user_selected_currency.get(user_id, "BTC")
             rate = CURRENCY_RATES.get(currency, 1)
             amount_rub = crypto_amount * rate
@@ -518,20 +530,20 @@ async def handle_text_message(message: Message):
             currency_symbol = currency_names.get(currency, currency)
             message_text = f"💸 На ваш счёт поступит <code>{crypto_amount:.12f}</code> <b>{currency_symbol}</b>\n"
             message_text += f"📊 По текущему курсу это <code>{final_amount:.0f}</code> <b>₽</b>\n"
-            
+
             if has_promo:
                 message_text += "🎁 Применён промокод <u><b>60SEC</b></u> (300₽)\n"
-            
+
             message_text += "\n➡️ Чтобы продолжить, введите свой кошелёк ниже:\n"
             message_text += "🪙 <b>Введите адрес</b> ⬇️"
-            
+
             keyboard = InlineKeyboardMarkup(inline_keyboard=[
                 [
                     InlineKeyboardButton(text="🔙 Вернуться", callback_data="buy"),
                     InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")
                 ]
             ])
-            
+
             await message.answer(message_text, reply_markup=keyboard)
             user_state[user_id] = "waiting_wallet"
             del user_input_mode[user_id]
@@ -539,11 +551,11 @@ async def handle_text_message(message: Message):
         except ValueError:
             await message.answer("❌ Неверный формат. Введите число, например: 0.01 или 0,01")
             return
-    
+
     if user_id in user_selected_currency:
         try:
             amount = float(text.replace(',', '.').replace(' ', ''))
-            
+
             if amount < 3000:
                 await message.answer("❌ К сожалению, минимальная сумма платежа не может быть меньше 3000 рублей.")
             else:
@@ -564,20 +576,20 @@ async def handle_text_message(message: Message):
                 currency_symbol = currency_names.get(currency, currency)
                 message_text = f"💸 На ваш счёт поступит <code>{crypto_amount:.12f}</code> <b>{currency_symbol}</b>\n"
                 message_text += f"📊 По текущему курсу это <code>{final_amount:.0f}</code> <b>₽</b>\n"
-                
+
                 if has_promo:
                     message_text += "🎁 Применён промокод <u><b>60SEC</b></u> (300₽)\n"
-                
+
                 message_text += "\n➡️ Чтобы продолжить, введите свой кошелёк ниже:\n"
                 message_text += "🪙 <b>Введите адрес</b> ⬇️"
-                
+
                 keyboard = InlineKeyboardMarkup(inline_keyboard=[
                     [
                         InlineKeyboardButton(text="🔙 Вернуться", callback_data="buy"),
                         InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")
                     ]
                 ])
-                
+
                 await message.answer(message_text, reply_markup=keyboard)
                 user_state[user_id] = "waiting_wallet"
                 user_exchange_amount[user_id] = amount
@@ -604,7 +616,7 @@ async def callback_buy(callback: CallbackQuery):
     if user_id in user_input_mode:
         del user_input_mode[user_id]
     text = "🌍Какую крипту хотите приобрести?"
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="💰 Bitcoin (BTC)", callback_data="currency_btc")],
         [InlineKeyboardButton(text="🔶 Monero (XMR)", callback_data="currency_xmr")],
@@ -614,7 +626,7 @@ async def callback_buy(callback: CallbackQuery):
             InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")
         ]
     ])
-    
+
     await callback.message.edit_text(text, reply_markup=keyboard)
 
 
@@ -660,11 +672,11 @@ async def callback_about(callback: CallbackQuery):
 <b>Наша цель — сделать криптообмен настолько простым, что доверять станет естественно.</b>
 
 🚀 <b><u>60SEC</u> — быстро. честно. безопасно.</b>"""
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")]
     ])
-    
+
     await callback.message.edit_text(text, reply_markup=keyboard)
 
 
@@ -700,11 +712,11 @@ async def callback_how_to_exchange(callback: CallbackQuery):
 Бот <u>60SEC</u> сам проведёт вас через каждый шаг, уведомит о статусе и сообщит, когда средства будут зачислены.
 
 🔒 <u>60SEC</u> — обмен без ожиданий."""
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")]
     ])
-    
+
     await callback.message.edit_text(text, reply_markup=keyboard)
 
 
@@ -755,11 +767,11 @@ async def callback_useful(callback: CallbackQuery):
 
 💠 <u>60SEC</u> — быстро, безопасно, надёжно.
 Мы всегда рядом, чтобы ваш обмен проходил спокойно и уверенно 💙"""
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")]
     ])
-    
+
     await callback.message.edit_text(text, reply_markup=keyboard)
 
 
@@ -773,7 +785,7 @@ async def callback_other(callback: CallbackQuery):
         ],
         [InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")]
     ])
-    
+
     await callback.message.edit_reply_markup(reply_markup=keyboard)
 
 
@@ -814,9 +826,9 @@ async def callback_currency(callback: CallbackQuery):
         "USDT": "В USDT"
     }
     currency_text = currency_button_text.get(currency, f"В {currency}")
-    
+
     text = "💸Введите желаемую сумму в рублях"
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [
             InlineKeyboardButton(text="Калькулятор", switch_inline_query_current_chat="rate_"),
@@ -827,7 +839,7 @@ async def callback_currency(callback: CallbackQuery):
             InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")
         ]
     ])
-    
+
     await callback.message.edit_text(text, reply_markup=keyboard)
 
 
@@ -845,10 +857,10 @@ async def callback_convert_currency(callback: CallbackQuery):
         "USDT": "USDT"
     }
     currency_display = currency_names.get(currency, currency)
-    
+
     text = f"""💸 Введите желаемое количество {currency_display}
 ⚡ Пример: 0.01 или 0,01"""
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [
             InlineKeyboardButton(text="Калькулятор", switch_inline_query_current_chat="rate_"),
@@ -859,7 +871,7 @@ async def callback_convert_currency(callback: CallbackQuery):
             InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")
         ]
     ])
-    
+
     await callback.message.edit_text(text, reply_markup=keyboard)
 
 
@@ -905,7 +917,7 @@ async def callback_payment_method(callback: CallbackQuery):
 
 ⏳ Реквизиты будут отправлены в течение 10 минут
 ⚡ После оплаты перевод будет отправлен в течение 5 минут"""
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="✅ Начать обмен", callback_data="start_exchange")],
         [
@@ -1007,7 +1019,7 @@ async def send_payment_details_after_delay(user_id: int, application_number: int
 💰 Сумма: <u>{final_amount:.2f} ₽</u>
 
 ──────────────────────"""
-    
+
     await bot.send_message(user_id, payment_text)
 
 
@@ -1041,12 +1053,12 @@ async def callback_admin(callback: CallbackQuery):
     if user_id != ADMIN_ID and ADMIN_ID != 0:
         await callback.answer("❌ У вас нет доступа", show_alert=True)
         return
-    
+
     await callback.answer()
     if callback.data == "admin_view_details":
         methods = ["Карты", "СБП", "Трансгран перевод"]
         details_text = "📋 Текущие реквизиты:\n\n"
-        
+
         for method in methods:
             details = await get_payment_details(method)
             if details:
@@ -1056,7 +1068,7 @@ async def callback_admin(callback: CallbackQuery):
                 details_text += f"🏦 Банк: {details['bank_name']}\n\n"
             else:
                 details_text += f"<b>{method}:</b> не настроено\n\n"
-        
+
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="🔙 Назад", callback_data="admin_back")]
         ])
@@ -1068,7 +1080,7 @@ async def callback_admin(callback: CallbackQuery):
             "admin_set_crossborder": "Трансгран перевод"
         }
         method = method_map.get(callback.data, "Карты")
-        
+
         text = f"⚙️ Настройка реквизитов для метода: <b>{method}</b>\n\n"
         text += "Отправьте данные в следующем формате (каждое значение с новой строки):\n"
         text += "1. Номер карты\n"
@@ -1078,7 +1090,7 @@ async def callback_admin(callback: CallbackQuery):
         text += "2200700730760997\n"
         text += "Рамазанов Шахбаз Романович\n"
         text += "Т-Банк (Тинькофф)"
-        
+
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="🔙 Назад", callback_data="admin_back")]
         ])
@@ -1104,11 +1116,11 @@ async def callback_contact_operator(callback: CallbackQuery):
 • Помощь — {HELP_HANDLE}
 
 Наши специалисты всегда на связи и помогут решить любой вопрос."""
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")]
     ])
-    
+
     await callback.message.edit_text(text, reply_markup=keyboard, disable_web_page_preview=True)
 
 
@@ -1120,28 +1132,17 @@ async def callback_promo_codes(callback: CallbackQuery):
 💌 <u><b>60SEC</b></u> — скидка 300Р
 
 🚀 Чтобы применить новый промокод, просто отправьте его в чат и получите бонус мгновенно!"""
-    
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🚀 Главное меню", callback_data="back_to_main")]
     ])
-    
+
     await callback.message.edit_text(text, reply_markup=keyboard)
 
 
 async def main():
-    global CURRENCY_RATES
-    await init_db()
-    logger.info("База данных инициализирована")
-
-    # Fetch crypto rates from CoinGecko
-    CURRENCY_RATES = await fetch_crypto_rates()
-    if CURRENCY_RATES:
-        logger.info("Курсы криптовалют загружены: BTC=%.2f, LTC=%.2f, XMR=%.2f, USDT=%.2f",
-                    CURRENCY_RATES.get("BTC", 0), CURRENCY_RATES.get("LTC", 0),
-                    CURRENCY_RATES.get("XMR", 0), CURRENCY_RATES.get("USDT", 0))
-    else:
-        logger.warning("Не удалось загрузить курсы криптовалют, используются значения по умолчанию")
-
+    await storage.init()
+    asyncio.create_task(rate_service.run_loop())
     logger.info("Бот запущен")
     await dp.start_polling(bot)
 

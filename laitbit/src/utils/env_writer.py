@@ -7,7 +7,7 @@ def update_env_var(key: str, value: str):
     lines = []
     found = False
     if ENV_PATH.exists():
-        with open(ENV_PATH, "r", encoding="utf-8") as f:
+        with open(ENV_PATH, encoding="utf-8") as f:
             for line in f:
                 if line.strip().startswith(f"{key}="):
                     lines.append(f"{key}={value}\n")
@@ -22,7 +22,7 @@ def update_env_var(key: str, value: str):
 
 def read_env_var(key: str, default: str = "") -> str:
     if ENV_PATH.exists():
-        with open(ENV_PATH, "r", encoding="utf-8") as f:
+        with open(ENV_PATH, encoding="utf-8") as f:
             for line in f:
                 if line.strip().startswith(f"{key}="):
                     return line.strip().split("=", 1)[1].strip()

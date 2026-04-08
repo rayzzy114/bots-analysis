@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -57,7 +58,7 @@ EXCHANGE_LIMIT_BTC = os.getenv("EXCHANGE_LIMIT_BTC", "0.05")
 EXCHANGE_LIMIT_LTC = os.getenv("EXCHANGE_LIMIT_LTC", "50.0")
 EXCHANGE_LIMIT_USDT = os.getenv("EXCHANGE_LIMIT_USDT", "5000.0")
 
-ADMIN_IDS = [int(id.strip()) for id in os.getenv("ADMIN_IDS", "").split(",") if id.strip()]
 
 def is_admin(user_id: int) -> bool:
-    return user_id in ADMIN_IDS
+    from runtime_state import get_runtime_state
+    return user_id in get_runtime_state().admin_ids

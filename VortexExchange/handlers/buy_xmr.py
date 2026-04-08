@@ -1,20 +1,20 @@
-from aiogram import Router, F
-from aiogram.types import Message, CallbackQuery
-from aiogram.utils.keyboard import InlineKeyboardBuilder
-from handlers.buy_base import show_payment_methods
-
+from aiogram import F, Router
 from aiogram.fsm.context import FSMContext
+from aiogram.types import CallbackQuery, Message
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+from handlers.buy_base import show_payment_methods
 
 router = Router()
 
 @router.message(F.text == "🚀 Купить XMR (Monero)")
 async def buy_xmr_handler(message: Message, edit: bool = False):
     msg = "Покупка Monero (XMR)"
-    
+
     kb = InlineKeyboardBuilder()
     kb.button(text="✈️ Купить XMR", callback_data="buy_xmr_standard")
     kb.adjust(1)
-    
+
     if edit:
         await message.edit_text(msg, reply_markup=kb.as_markup())
     else:
