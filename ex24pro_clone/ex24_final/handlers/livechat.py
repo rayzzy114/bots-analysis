@@ -48,29 +48,33 @@ async def _get_link(key: str) -> str:
 
 
 async def _send_source_aftercare_via_bot(bot: Bot, user_id: int, lang: str, is_alt_text: bool = False, brief_only: bool = False, skip_cooldown: bool = False) -> None:
+    """Send aftercare messages to user. Silently ignores if user blocked the bot."""
     now = time.monotonic()
     if not skip_cooldown:
         last = _manager_last_connected.get(user_id, 0)
         if now - last < MANAGER_COOLDOWN_SECS:
             return
     _manager_last_connected[user_id] = now
-    connecting = get_text("welcome_manager_connecting_alt" if is_alt_text else "welcome_manager_connecting", lang)
-    temp_msg = await bot.send_message(user_id, connecting)
-    if brief_only:
-        return
-    connected = get_text("welcome_manager_connected", lang)
-    help_prompt = get_text("welcome_help_prompt", lang)
-    await asyncio.sleep(7)
     try:
-        await temp_msg.delete()
+        connecting = get_text("welcome_manager_connecting_alt" if is_alt_text else "welcome_manager_connecting", lang)
+        temp_msg = await bot.send_message(user_id, connecting)
+        if brief_only:
+            return
+        connected = get_text("welcome_manager_connected", lang)
+        help_prompt = get_text("welcome_help_prompt", lang)
+        await asyncio.sleep(7)
+        try:
+            await temp_msg.delete()
+        except Exception:
+            pass
+        await bot.send_message(
+            user_id, connected,
+            link_preview_options=LinkPreviewOptions(is_disabled=True),
+        )
+        await asyncio.sleep(3)
+        await bot.send_message(user_id, help_prompt)
     except Exception as e:
-        print(f'Exception caught: {e}')
-    await bot.send_message(
-        user_id, connected,
-        link_preview_options=LinkPreviewOptions(is_disabled=True),
-    )
-    await asyncio.sleep(3)
-    await bot.send_message(user_id, help_prompt)
+        logger.debug("Aftercare failed for user %d: %s", user_id, e)
 
 
 # --- /chatid helper ---
@@ -210,16 +214,23 @@ async def admin_private_reply(message: Message, bot: Bot, state: FSMContext) -> 
         return
 
     # Forward admin message to client
-    if message.photo:
-        await bot.send_photo(target_id, message.photo[-1].file_id, caption=message.caption)
-    elif message.document:
-        await bot.send_document(target_id, message.document.file_id, caption=message.caption)
-    elif message.video:
-        await bot.send_video(target_id, message.video.file_id, caption=message.caption)
-    elif message.text and not message.text.startswith("/"):
-        await bot.send_message(target_id, message.text)
-    else:
-        return  # command handled elsewhere
+    try:
+        if message.photo:
+            await bot.send_photo(target_id, message.photo[-1].file_id, caption=message.caption)
+        elif message.document:
+            await bot.send_document(target_id, message.document.file_id, caption=message.caption)
+        elif message.video:
+            await bot.send_video(target_id, message.video.file_id, caption=message.caption)
+        elif message.text and not message.text.startswith("/"):
+            await bot.send_message(target_id, message.text)
+        else:
+            await state.clear()
+            return  # command handled elsewhere
+    except Exception as e:
+        logger.error("Failed to send admin private reply to user %d: %s", target_id, e)
+        await message.reply(f"❌ Не удалось отправить сообщение клиенту #{target_id}.")
+        await state.clear()
+        return
 
     await state.clear()
     await message.reply(f"✅ Сообщение отправлено клиенту #{target_id}.")
@@ -377,8 +388,11 @@ async def client_text(message: Message, bot: Bot) -> None:
         text=message.text or "",
     )
     if ADMIN_CHAT_ID:
-        sent = await bot.send_message(ADMIN_CHAT_ID, forward_text)
-        message_to_user[sent.message_id] = user_id
+        try:
+            sent = await bot.send_message(ADMIN_CHAT_ID, forward_text)
+            message_to_user[sent.message_id] = user_id
+        except Exception as e:
+            logger.error("Failed to forward client text to admin chat: %s", e)
 
 
 @router.message(
@@ -400,8 +414,11 @@ async def client_photo(message: Message, bot: Bot) -> None:
     )
     photo = message.photo[-1]
     if ADMIN_CHAT_ID:
-        sent = await bot.send_photo(ADMIN_CHAT_ID, photo.file_id, caption=caption)
-        message_to_user[sent.message_id] = user_id
+        try:
+            sent = await bot.send_photo(ADMIN_CHAT_ID, photo.file_id, caption=caption)
+            message_to_user[sent.message_id] = user_id
+        except Exception as e:
+            logger.error("Failed to forward client photo to admin chat: %s", e)
 
 
 @router.message(
@@ -422,10 +439,13 @@ async def client_document(message: Message, bot: Bot) -> None:
         ticket_id=ticket_id,
     )
     if ADMIN_CHAT_ID:
-        sent = await bot.send_document(
-            ADMIN_CHAT_ID, message.document.file_id, caption=caption,
-        )
-        message_to_user[sent.message_id] = user_id
+        try:
+            sent = await bot.send_document(
+                ADMIN_CHAT_ID, message.document.file_id, caption=caption,
+            )
+            message_to_user[sent.message_id] = user_id
+        except Exception as e:
+            logger.error("Failed to forward client document to admin chat: %s", e)
 
 
 @router.message(
@@ -446,10 +466,13 @@ async def client_video(message: Message, bot: Bot) -> None:
         ticket_id=ticket_id,
     )
     if ADMIN_CHAT_ID:
-        sent = await bot.send_video(
-            ADMIN_CHAT_ID, message.video.file_id, caption=caption,
-        )
-        message_to_user[sent.message_id] = user_id
+        try:
+            sent = await bot.send_video(
+                ADMIN_CHAT_ID, message.video.file_id, caption=caption,
+            )
+            message_to_user[sent.message_id] = user_id
+        except Exception as e:
+            logger.error("Failed to forward client video to admin chat: %s", e)
 
 
 # --- Admin chat -> Client (reply) ---
@@ -472,19 +495,22 @@ async def admin_reply(message: Message, bot: Bot) -> None:
     if user_id is None:
         return
 
-    if message.photo:
-        photo = message.photo[-1]
-        await bot.send_photo(user_id, photo.file_id, caption=message.caption)
-    elif message.document:
-        await bot.send_document(
-            user_id, message.document.file_id, caption=message.caption,
-        )
-    elif message.video:
-        await bot.send_video(
-            user_id, message.video.file_id, caption=message.caption,
-        )
-    elif message.text:
-        await bot.send_message(user_id, message.text)
+    try:
+        if message.photo:
+            photo = message.photo[-1]
+            await bot.send_photo(user_id, photo.file_id, caption=message.caption)
+        elif message.document:
+            await bot.send_document(
+                user_id, message.document.file_id, caption=message.caption,
+            )
+        elif message.video:
+            await bot.send_video(
+                user_id, message.video.file_id, caption=message.caption,
+            )
+        elif message.text:
+            await bot.send_message(user_id, message.text)
+    except Exception as e:
+        logger.error("Failed to send admin reply to user %d: %s", user_id, e)
 
 
 # --- /close command ---
@@ -613,35 +639,44 @@ async def on_rating(cb: CallbackQuery, bot: Bot) -> None:
 
     # Forward rating to admin chat
     if ADMIN_CHAT_ID:
-        manager_name = _close_manager.get(user_id, "—")
-        await bot.send_message(
-            ADMIN_CHAT_ID,
-            f"⭐ Клиент #{user_id} поставил оценку: {score}/5 (менеджер: {manager_name})",
-        )
+        try:
+            manager_name = _close_manager.get(user_id, "—")
+            await bot.send_message(
+                ADMIN_CHAT_ID,
+                f"⭐ Клиент #{user_id} поставил оценку: {score}/5 (менеджер: {manager_name})",
+            )
+        except Exception as e:
+            logger.error("Failed to forward rating to admin chat: %s", e)
 
     # Bad rating response
     if score <= 3:
-        bad_text = get_text("close_bad_rating", lang)
-        await bot.send_message(user_id, bad_text)
+        try:
+            bad_text = get_text("close_bad_rating", lang)
+            await bot.send_message(user_id, bad_text)
+        except Exception as e:
+            logger.debug("Failed to send bad rating response to user %d: %s", user_id, e)
 
     # Review request with cat photo
-    link_reviews = await _get_link("reviews")
-    review_text = get_text("close_review", lang).format(link_reviews=link_reviews)
+    try:
+        link_reviews = await _get_link("reviews")
+        review_text = get_text("close_review", lang).format(link_reviews=link_reviews)
 
-    review_photo = PROJECT_DIR / "media" / "review_cat.jpg"
-    if review_photo.exists():
-        await bot.send_photo(
-            user_id,
-            FSInputFile(str(review_photo)),
-            caption=review_text,
-            reply_markup=kb_review(link_reviews),
-        )
-    else:
-        await bot.send_message(
-            user_id,
-            review_text,
-            reply_markup=kb_review(link_reviews),
-        )
+        review_photo = PROJECT_DIR / "media" / "review_cat.jpg"
+        if review_photo.exists():
+            await bot.send_photo(
+                user_id,
+                FSInputFile(str(review_photo)),
+                caption=review_text,
+                reply_markup=kb_review(link_reviews),
+            )
+        else:
+            await bot.send_message(
+                user_id,
+                review_text,
+                reply_markup=kb_review(link_reviews),
+            )
+    except Exception as e:
+        logger.debug("Failed to send review request to user %d: %s", user_id, e)
 
     await cb.answer("Спасибо за оценку!")
 
@@ -651,9 +686,12 @@ async def client_source_stale(callback: CallbackQuery) -> None:
     lang = _get_lang(callback.from_user.id)
     await callback.answer()
     if callback.message:
-        msg = await callback.message.answer(get_text("welcome_followup", lang))
-        await asyncio.sleep(2)
         try:
-            await msg.delete()
+            msg = await callback.message.answer(get_text("welcome_followup", lang))
+            await asyncio.sleep(2)
+            try:
+                await msg.delete()
+            except Exception:
+                pass
         except Exception as e:
-            print(f'Exception caught: {e}')
+            logger.debug("Failed to send stale source response: %s", e)

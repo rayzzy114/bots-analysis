@@ -54,7 +54,8 @@ async def _check_aftercare(user_id: int, state: FSMContext, bot: Bot, lang: str)
         from handlers.start import user_source_selected
         user_source_selected.add(user_id)
     from handlers.livechat import _send_source_aftercare_via_bot
-    asyncio.create_task(_send_source_aftercare_via_bot(bot, user_id, lang, is_alt_text=True))
+    task = asyncio.create_task(_send_source_aftercare_via_bot(bot, user_id, lang, is_alt_text=True))
+    task.add_done_callback(lambda t: t.exception() and logger.debug("Aftercare task failed: %s", t.exception()))
 
 async def _get_rate_kwargs() -> dict[str, str]:
     from runtime_state import rate_service

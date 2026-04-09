@@ -35,23 +35,11 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-async def main() -> None:
-    if not BOT_TOKEN:
-        logger.error("BOT_TOKEN is empty — set it in .env")
-        sys.exit(1)
-
-    bot = Bot(
-        token=BOT_TOKEN,
-        default=DefaultBotProperties(parse_mode=ParseMode.HTML),
-    )
-    dp = Dispatcher(storage=MemoryStorage())
-    dp.update.outer_middleware(BanMiddleware())
-
-    # Admin router (handles /admin and admin:* callbacks)
+def _setup_routers(dp: Dispatcher) -> None:
+    """Include all routers into the dispatcher."""
     if admin_router is not None:
         dp.include_router(admin_router)
 
-    # Application routers
     from handlers.livechat import router as livechat_router
     from handlers.menu import router as menu_router
     from handlers.start import router as start_router
@@ -60,11 +48,45 @@ async def main() -> None:
     dp.include_router(menu_router)
     dp.include_router(livechat_router)
 
+
+async def run_bot() -> None:
+    """Single bot lifecycle: create bot, poll, shutdown."""
+    bot = Bot(
+        token=BOT_TOKEN,
+        default=DefaultBotProperties(parse_mode=ParseMode.HTML),
+    )
+    dp = Dispatcher(storage=MemoryStorage())
+    dp.update.outer_middleware(BanMiddleware())
+
+    _setup_routers(dp)
+
     # Pre-fetch rates on startup
     await rate_service.get_rates(force=True)
 
     logger.info("Bot started")
-    await dp.start_polling(bot, drop_pending_updates=True)
+    try:
+        await dp.start_polling(bot, drop_pending_updates=True)
+    finally:
+        await bot.session.close()
+
+
+async def main() -> None:
+    if not BOT_TOKEN:
+        logger.error("BOT_TOKEN is empty — set it in .env")
+        sys.exit(1)
+
+    delay = 1
+    max_delay = 60
+    while True:
+        try:
+            await run_bot()
+        except asyncio.CancelledError:
+            logger.info("Bot shutdown requested")
+            break
+        except Exception:
+            logger.exception("Bot crashed — restarting in %d seconds", delay)
+            await asyncio.sleep(delay)
+            delay = min(delay * 2, max_delay)
 
 
 if __name__ == "__main__":

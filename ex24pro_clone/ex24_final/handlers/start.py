@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import logging
 import random
 
 from aiogram import Bot, Router
@@ -15,6 +16,7 @@ from states import ClientState
 from texts import get_text
 
 router = Router()
+logger = logging.getLogger(__name__)
 
 user_lang: dict[int, str] = {}
 user_manager: dict[int, str] = {}
@@ -63,7 +65,7 @@ async def cmd_start(message: Message, bot: Bot, state: FSMContext) -> None:
                 )
                 register_admin_message(sent.message_id, user_id)
             except Exception as e:
-                print(f'Exception caught: {e}')
+                logger.error("Failed to notify admin chat about new client: %s", e)
 
         from runtime_state import app_context
         if app_context.users is not None:
@@ -101,8 +103,9 @@ async def cmd_start(message: Message, bot: Bot, state: FSMContext) -> None:
             await state.set_state(ClientState.waiting_for_source)
         else:
             from handlers.livechat import _send_source_aftercare_via_bot
-            asyncio.create_task(
+            task = asyncio.create_task(
                 _send_source_aftercare_via_bot(bot, user_id, lang, is_alt_text=True, skip_cooldown=True)
             )
+            task.add_done_callback(lambda t: t.exception() and logger.debug("Aftercare task failed: %s", t.exception()))
     finally:
         _start_processing.discard(user_id)
