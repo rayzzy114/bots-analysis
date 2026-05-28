@@ -45,13 +45,13 @@ BTN_NEW_EXCHANGE2 = "➕ новый обмен"
 BTN_RECENT = "📁 недавние обмены"
 
 # Кнопки выбора монеты (обмен / кошельки)
-# Справочник / FAQ (со скрина пользователя)
-BTN_FAQ_ABOUT = "🐈‍⬛ обо мне"
-BTN_FAQ_SPEED = "❓ скорость обмена"
-BTN_FAQ_WALLET_ERR = "❓ ошибка в кошельке"
-BTN_FAQ_REF = "❓ реферальная система"
-BTN_FAQ_RELIABILITY = "❓ надежность сервиса"
-BTN_FAQ_PRIVACY = "❓ приватность"
+# Справочник / FAQ (дословно из flow.json)
+BTN_FAQ_ABOUT = "👾 обо мне"
+BTN_FAQ_SPEED = "❔скорость обмена"
+BTN_FAQ_WALLET_ERR = "❔ошибка в кошельке"
+BTN_FAQ_REF = "❔реферальная система"
+BTN_FAQ_RELIABILITY = "❔надежность сервиса"
+BTN_FAQ_PRIVACY = "❔приватность"
 BTN_HOME_ARROW = "⬅️ на главную"
 FAQ_QUESTION_BTNS = {
     BTN_FAQ_ABOUT, BTN_FAQ_SPEED, BTN_FAQ_WALLET_ERR,

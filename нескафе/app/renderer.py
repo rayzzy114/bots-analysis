@@ -52,6 +52,8 @@ def base_context(settings: SettingsStore) -> dict[str, Any]:
     """Ссылочные значения, доступные во всех шаблонах."""
     return {
         "operator_url": settings.operator_url,
+        "chat_url": settings.chat_url,
+        "news_url": settings.news_url,
         "reviews_url": settings.reviews_url,
         "giveaways_url": settings.giveaways_url,
         "site_url": settings.site_url,

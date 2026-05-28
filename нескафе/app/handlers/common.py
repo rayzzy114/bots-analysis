@@ -30,10 +30,24 @@ async def help_section(message: Message, state: FSMContext, ctx: AppContext) -> 
     )
 
 
-@router.message(F.text.in_(kb.FAQ_QUESTION_BTNS))
+# Кнопка → (транзиентный эмодзи, текст ответа)
+FAQ_MAP = {
+    kb.BTN_FAQ_ABOUT: (texts.FAQ_TRANSIENT_ABOUT, texts.FAQ_ABOUT),
+    kb.BTN_FAQ_SPEED: (texts.FAQ_TRANSIENT_QUESTION, texts.FAQ_SPEED),
+    kb.BTN_FAQ_WALLET_ERR: (texts.FAQ_TRANSIENT_QUESTION, texts.FAQ_WALLET_ERR),
+    kb.BTN_FAQ_REF: (texts.FAQ_TRANSIENT_QUESTION, texts.FAQ_REF),
+    kb.BTN_FAQ_RELIABILITY: (texts.FAQ_TRANSIENT_QUESTION, texts.FAQ_RELIABILITY),
+    kb.BTN_FAQ_PRIVACY: (texts.FAQ_TRANSIENT_QUESTION, texts.FAQ_PRIVACY),
+}
+
+
+@router.message(F.text.in_(set(FAQ_MAP)))
 async def faq_question(message: Message, state: FSMContext, ctx: AppContext) -> None:
-    # Тексты FAQ-разделов пользователь добавит позже.
-    await message.answer(texts.FAQ_PLACEHOLDER, reply_markup=kb.kb_faq())
+    transient, answer = FAQ_MAP[message.text]
+    await utils.send_transient_then(
+        message, transient, renderer.render(answer, ctx.settings),
+        reply_markup=kb.kb_faq(), disable_web_page_preview=True,
+    )
 
 
 @router.message(F.text == kb.BTN_HOME_ARROW)

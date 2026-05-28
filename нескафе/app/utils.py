@@ -22,6 +22,20 @@ async def send_sticker(message: Message, emoji: str) -> None:
         log.warning("send_sticker(%s) failed: %s", emoji, exc)
 
 
+async def send_transient_then(message: Message, transient_emoji: str, answer: str, **kwargs) -> None:
+    """Послать эмодзи-сообщение, удалить его и отправить ответ (как в оригинале).
+
+    В справочнике перед каждым ответом всплывает и тут же исчезает эмодзи
+    (❔ для вопросов, 🤖 для «обо мне»).
+    """
+    try:
+        ghost = await message.answer(transient_emoji)
+        await ghost.delete()
+    except Exception as exc:  # noqa: BLE001
+        log.warning("transient emoji failed: %s", exc)
+    await message.answer(answer, **kwargs)
+
+
 async def send_animation_or_text(
     message: Message, doc: FSInputFile | None, *, text: str, **kwargs
 ) -> None:

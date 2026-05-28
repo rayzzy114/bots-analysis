@@ -69,6 +69,13 @@ async def test_chat_and_news_propagate_to_help_panel(settings):
     assert "https://t.me/NewNews" in urls
 
 
+async def test_faq_reliability_uses_chat_url(settings):
+    await settings.set("chat_url", "https://t.me/NewOpenChat")
+    out = renderer.render(texts.FAQ_RELIABILITY, settings)
+    assert 'href="https://t.me/NewOpenChat"' in out
+    assert "открытый чат" in out
+
+
 async def test_commission_propagates_to_calc(settings):
     from app import calc
 

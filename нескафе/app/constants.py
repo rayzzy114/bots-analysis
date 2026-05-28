@@ -36,7 +36,7 @@ COIN_KEYS = tuple(COINS.keys())
 # Источник: clone_spec.md §3. Все подставляются в тексты динамически.
 DEFAULT_SETTINGS: dict[str, object] = {
     "operator_url": "https://t.me/ExchangeNeskafeExmoLTC",
-    "chat_url": "https://t.me/ExchangeNeskafeExmoLTC",
+    "chat_url": "https://t.me/+4gnTdye4_jRkNmNi",
     "news_url": "https://t.me/Neskafe_Exchange",
     "reviews_url": "https://t.me/Neskafe_Exchange",
     "giveaways_url": "https://t.me/+4gnTdye4_jRkNmNi",
