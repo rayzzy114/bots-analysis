@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.env
+# Рантайм-данные пользователей (settings.json оставляем как стартовый конфиг)
+data/admin/users.json
+data/admin/orders.json
+data/admin/wallets.json

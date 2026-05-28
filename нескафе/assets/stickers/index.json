@@ -1,0 +1,142 @@
+{
+  "set": "ExNeskafe",
+  "title": "NeskafeExchange",
+  "count": 15,
+  "stickers": [
+    {
+      "i": 0,
+      "id": 5429109352457842817,
+      "file": "stickers/00_5429109352457842817.tgs",
+      "emoji": [
+        "👌"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 1,
+      "id": 5429112698237368760,
+      "file": "stickers/01_5429112698237368760.tgs",
+      "emoji": [
+        "👋"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 2,
+      "id": 5429097803290783517,
+      "file": "stickers/02_5429097803290783517.tgs",
+      "emoji": [
+        "🤫"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 3,
+      "id": 5429519225481868870,
+      "file": "stickers/03_5429519225481868870.tgs",
+      "emoji": [
+        "🤝"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 4,
+      "id": 5429537491977778348,
+      "file": "stickers/04_5429537491977778348.tgs",
+      "emoji": [
+        "❔"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 5,
+      "id": 5429575038581878223,
+      "file": "stickers/05_5429575038581878223.tgs",
+      "emoji": [
+        "😘"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 6,
+      "id": 5429513951262027948,
+      "file": "stickers/06_5429513951262027948.tgs",
+      "emoji": [
+        "👍"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 7,
+      "id": 5429259139442290343,
+      "file": "stickers/07_5429259139442290343.tgs",
+      "emoji": [
+        "🏃‍♂"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 8,
+      "id": 5429252327624158809,
+      "file": "stickers/08_5429252327624158809.tgs",
+      "emoji": [
+        "😆"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 9,
+      "id": 5429553095593966132,
+      "file": "stickers/09_5429553095593966132.tgs",
+      "emoji": [
+        "😭"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 10,
+      "id": 5429320514524950573,
+      "file": "stickers/10_5429320514524950573.tgs",
+      "emoji": [
+        "😌"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 11,
+      "id": 5429258546736806045,
+      "file": "stickers/11_5429258546736806045.tgs",
+      "emoji": [
+        "🍻"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 12,
+      "id": 5429357176365789502,
+      "file": "stickers/12_5429357176365789502.tgs",
+      "emoji": [
+        "😎"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 13,
+      "id": 5429474703850876050,
+      "file": "stickers/13_5429474703850876050.tgs",
+      "emoji": [
+        "💻"
+      ],
+      "mime": "application/x-tgsticker"
+    },
+    {
+      "i": 14,
+      "id": 5429204644897239944,
+      "file": "stickers/14_5429204644897239944.tgs",
+      "emoji": [
+        "🤬"
+      ],
+      "mime": "application/x-tgsticker"
+    }
+  ]
+}

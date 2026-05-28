@@ -1,0 +1,18 @@
+{
+  "operator_url": "https://t.me/ExchangeNeskafeExmoLTC",
+  "chat_url": "https://t.me/ExchangeNeskafeExmoLTC",
+  "news_url": "https://t.me/Neskafe_Exchange",
+  "reviews_url": "https://t.me/Neskafe_Exchange",
+  "giveaways_url": "https://t.me/+4gnTdye4_jRkNmNi",
+  "site_url": "https://nesk.bot/",
+  "ref_link_base": "https://nesk.bot/go?ref={user_id}",
+  "commission_percent": 5.0,
+  "cashback_percent": 0.5,
+  "start_bonus": 50,
+  "min_rub_by_coin": {
+    "btc": 795,
+    "ltc": 728,
+    "usdt": 48670,
+    "xmr": 54000
+  }
+}

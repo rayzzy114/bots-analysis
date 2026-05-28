@@ -1,0 +1,19 @@
+[project]
+name = "neskafe-clone"
+version = "0.1.0"
+description = "Клон @NeskafeEx_bot на aiogram 3 (полный флоу + админка)"
+requires-python = ">=3.11"
+dependencies = [
+    "aiogram>=3.13",
+    "aiohttp>=3.9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
