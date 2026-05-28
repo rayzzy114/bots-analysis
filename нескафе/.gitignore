@@ -7,3 +7,4 @@ __pycache__/
 data/admin/users.json
 data/admin/orders.json
 data/admin/wallets.json
+data/admin/settings.json

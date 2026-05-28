@@ -1,0 +1,48 @@
+name: Deploy neskafe bot
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "нескафе/**"
+      - ".github/workflows/deploy-neskafe.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-neskafe
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "${{ secrets.VPS_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Rsync project to VPS
+        run: |
+          rsync -az --delete \
+            --exclude '.git' --exclude '__pycache__' --exclude '.pytest_cache' \
+            --exclude '.venv' --exclude '.env' \
+            --exclude 'data/admin/' \
+            -e "ssh -i ~/.ssh/id_ed25519" \
+            "нескафе/" "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/opt/neskafe/"
+
+      - name: Install deps & restart service
+        run: |
+          ssh -i ~/.ssh/id_ed25519 "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" bash -s <<'EOF'
+          set -e
+          cd /opt/neskafe
+          mkdir -p data/admin
+          .venv/bin/pip install -q "aiogram>=3.13" "aiohttp>=3.9"
+          systemctl restart neskafe-bot
+          sleep 5
+          systemctl is-active neskafe-bot
+          journalctl -u neskafe-bot -n 5 --no-pager
+          EOF

@@ -93,6 +93,7 @@ async def choose_coin(message: Message, state: FSMContext, ctx: AppContext) -> N
     if coin == "usdt":
         # доп. шаг скидки только у USDT
         await message.answer(renderer.render(texts.USDT_DISCOUNT, ctx.settings))
+        await utils.human_delay()  # «активирую скидку» 2–4 c
         await message.answer(texts.USDT_DISCOUNT_OK)
     await _start_amount(message, state, ctx, coin)
 
@@ -240,6 +241,7 @@ async def address_input(message: Message, state: FSMContext, ctx: AppContext) ->
     address = message.text.strip()
     await utils.send_sticker(message, const.STICKER_WALLET_CHECK)
     await message.answer(texts.WALLET_CHECKING)
+    await utils.human_delay()  # «проверка» 2–4 c
     if _valid_address(coin, address):
         await state.update_data(address=address)
         await message.answer(texts.WALLET_VALID, reply_markup=kb.kb_address_valid())
@@ -288,6 +290,7 @@ async def check_payment(message: Message, state: FSMContext, ctx: AppContext) ->
     # стикер 🏃 отдельным сообщением, затем «Проверка оплаты...» (reply)
     await utils.send_sticker(message, const.STICKER_PAYMENT_CHECK)
     await message.answer(texts.PAYMENT_CHECKING, reply_markup=kb.kb_payment_checking())
+    await utils.human_delay()  # «проверка оплаты» 2–4 c
     await state.set_state(ExchangeSG.awaiting_proof)
     # §9 кастомный экран («пришлите PDF/скрин») — текст уточняется у пользователя.
 

@@ -2,13 +2,24 @@
 
 from __future__ import annotations
 
+import asyncio
 import logging
+import random
 
 from aiogram.types import FSInputFile, Message
 
 from . import media
 
 log = logging.getLogger(__name__)
+
+# Диапазон «человеческой» задержки на экранах проверки (сек).
+HUMAN_DELAY_MIN = 2.0
+HUMAN_DELAY_MAX = 4.0
+
+
+async def human_delay(lo: float = HUMAN_DELAY_MIN, hi: float = HUMAN_DELAY_MAX) -> None:
+    """Случайная пауза 2–4 с — чтобы «проверка» выглядела реалистично."""
+    await asyncio.sleep(random.uniform(lo, hi))
 
 
 async def send_sticker(message: Message, emoji: str) -> None:
