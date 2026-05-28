@@ -9,6 +9,7 @@ import os
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
+from aiogram.types import BotCommand
 
 from app.handlers import account, admin, common, exchange, start
 from app.runtime import AppContext
@@ -37,6 +38,11 @@ async def main() -> None:
     dp.include_router(exchange.router)
     dp.include_router(account.router)
     dp.include_router(common.router)
+
+    # Меню команд (popup при вводе «/»)
+    await bot.set_my_commands([
+        BotCommand(command="restart", description="🔄 если что-то пошло не так"),
+    ])
 
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
