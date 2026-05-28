@@ -34,13 +34,14 @@ async def send_sticker(message: Message, emoji: str) -> None:
 
 
 async def send_transient_then(message: Message, transient_emoji: str, answer: str, **kwargs) -> None:
-    """Послать эмодзи-сообщение, удалить его и отправить ответ (как в оригинале).
+    """Послать эмодзи-сообщение, подержать 2–3 с, удалить и отправить ответ.
 
-    В справочнике перед каждым ответом всплывает и тут же исчезает эмодзи
+    В справочнике перед каждым ответом всплывает и через паузу исчезает эмодзи
     (❔ для вопросов, 🤖 для «обо мне»).
     """
     try:
         ghost = await message.answer(transient_emoji)
+        await human_delay(2.0, 3.0)
         await ghost.delete()
     except Exception as exc:  # noqa: BLE001
         log.warning("transient emoji failed: %s", exc)
