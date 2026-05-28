@@ -291,8 +291,9 @@ async def check_payment(message: Message, state: FSMContext, ctx: AppContext) ->
     await utils.send_sticker(message, const.STICKER_PAYMENT_CHECK)
     await message.answer(texts.PAYMENT_CHECKING, reply_markup=kb.kb_payment_checking())
     await utils.human_delay()  # «проверка оплаты» 2–4 c
+    # §9: просим скрин/PDF чека о переводе
+    await message.answer(texts.PROOF_REQUEST, reply_markup=kb.kb_payment_checking())
     await state.set_state(ExchangeSG.awaiting_proof)
-    # §9 кастомный экран («пришлите PDF/скрин») — текст уточняется у пользователя.
 
 
 @router.message(ExchangeSG.awaiting_payment, F.text == kb.BTN_RECENT)
@@ -359,5 +360,11 @@ async def receive_proof(message: Message, state: FSMContext, ctx: AppContext) ->
             await message.forward(admin_id)
         except Exception as exc:  # noqa: BLE001
             log.warning("notify admin %s failed: %s", admin_id, exc)
-    # ответ пользователю — текст §9 уточняется; пока подтверждаем нейтрально
-    await message.answer("✅ Получено. Оператор проверит перевод и свяжется с вами.")
+    # ответ пользователю
+    await message.answer(texts.PROOF_RECEIVED, reply_markup=kb.kb_payment_checking())
+
+
+@router.message(ExchangeSG.awaiting_proof, F.text)
+async def proof_need_file(message: Message, state: FSMContext, ctx: AppContext) -> None:
+    # прислали текст вместо файла — напоминаем (кнопки отмена/недавние обработаны выше)
+    await message.answer(texts.PROOF_NEED_FILE, reply_markup=kb.kb_payment_checking())
