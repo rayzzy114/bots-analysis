@@ -2,7 +2,7 @@
 name = "neskafe-clone"
 version = "0.1.0"
 description = "Клон @NeskafeEx_bot на aiogram 3 (полный флоу + админка)"
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 dependencies = [
     "aiogram>=3.13",
     "aiohttp>=3.9",
