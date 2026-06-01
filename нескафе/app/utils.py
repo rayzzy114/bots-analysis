@@ -35,16 +35,30 @@ async def safe_delete(message) -> None:
         log.debug("delete failed: %s", exc)
 
 
-async def transient_hourglass(message: Message, *, reply_to: int | None = None,
-                              hold: float = 2.0) -> None:
-    """Показать "⏳" отдельным сообщением и убрать через `hold` секунд."""
+async def transient_message(message: Message, *, text: str | None = None,
+                            sticker: FSInputFile | None = None,
+                            reply_to: int | None = None, hold: float = 2.0) -> None:
+    """Показать отдельное сообщение (текст ИЛИ стикер) и убрать через `hold` секунд.
+
+    Используется для «мелькающих» медиа бота: ⏳ на проверках, 🧮 на «МИН ОБМЕН»,
+    стикер-заяц на «списать монеты».
+    """
     try:
-        ghost = await message.answer(HOURGLASS, reply_to_message_id=reply_to)
+        if sticker is not None:
+            ghost = await message.answer_sticker(sticker, reply_to_message_id=reply_to)
+        else:
+            ghost = await message.answer(text or HOURGLASS, reply_to_message_id=reply_to)
     except Exception as exc:  # noqa: BLE001
-        log.debug("hourglass send failed: %s", exc)
+        log.debug("transient send failed: %s", exc)
         return
     await asyncio.sleep(hold)
     await safe_delete(ghost)
+
+
+async def transient_hourglass(message: Message, *, reply_to: int | None = None,
+                              hold: float = 2.0) -> None:
+    """Показать "⏳" отдельным сообщением и убрать через `hold` секунд."""
+    await transient_message(message, text=HOURGLASS, reply_to=reply_to, hold=hold)
 
 
 async def send_sticker(message: Message, emoji: str) -> None:

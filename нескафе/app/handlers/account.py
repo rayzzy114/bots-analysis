@@ -139,6 +139,25 @@ async def wallet_delete_back(message: Message, state: FSMContext, ctx: AppContex
     await _show_list(message, state, ctx, data["wallet_coin"])
 
 
+# ВАЖНО: confirm/cancel («✔️ да / ❌ нет») регистрируются РАНЬШЕ catch-all pick —
+# иначе pick (F.text) перехватывает кнопки подтверждения и удаление не срабатывает.
+@router.message(WalletsSG.waiting_delete_id, F.text == kb.BTN_YES)
+async def wallet_delete_confirm(message: Message, state: FSMContext, ctx: AppContext) -> None:
+    data = await state.get_data()
+    coin = data["wallet_coin"]
+    idx = data.get("delete_idx")
+    if idx is not None:
+        await ctx.wallets.delete(message.from_user.id, coin, idx)
+        await message.answer(texts.WALLET_DELETED)
+    await _show_list(message, state, ctx, coin)
+
+
+@router.message(WalletsSG.waiting_delete_id, F.text == kb.BTN_NO)
+async def wallet_delete_cancel(message: Message, state: FSMContext, ctx: AppContext) -> None:
+    data = await state.get_data()
+    await _show_list(message, state, ctx, data["wallet_coin"])
+
+
 @router.message(WalletsSG.waiting_delete_id, F.text)
 async def wallet_delete_pick(message: Message, state: FSMContext, ctx: AppContext) -> None:
     data = await state.get_data()
@@ -157,23 +176,6 @@ async def wallet_delete_pick(message: Message, state: FSMContext, ctx: AppContex
                         address=it.get("address", ""), label=it.get("label", "")),
         reply_markup=kb.kb_yes_no(),
     )
-
-
-@router.message(WalletsSG.waiting_delete_id, F.text == kb.BTN_YES)
-async def wallet_delete_confirm(message: Message, state: FSMContext, ctx: AppContext) -> None:
-    data = await state.get_data()
-    coin = data["wallet_coin"]
-    idx = data.get("delete_idx")
-    if idx is not None:
-        await ctx.wallets.delete(message.from_user.id, coin, idx)
-        await message.answer(texts.WALLET_DELETED)
-    await _show_list(message, state, ctx, coin)
-
-
-@router.message(WalletsSG.waiting_delete_id, F.text == kb.BTN_NO)
-async def wallet_delete_cancel(message: Message, state: FSMContext, ctx: AppContext) -> None:
-    data = await state.get_data()
-    await _show_list(message, state, ctx, data["wallet_coin"])
 
 
 # === Переименование =========================================================

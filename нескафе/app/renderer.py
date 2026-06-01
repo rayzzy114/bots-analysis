@@ -40,8 +40,13 @@ def fmt_rub_comma(value: float) -> str:
     return f"{int(round(value)):,}"
 
 
-def fmt_coin(amount: float) -> str:
-    """`0.00698029`, `3`, `2.66088919` — целое без дробной части, иначе до 8 знаков."""
+def fmt_coin(amount: float, coin: str | None = None) -> str:
+    """`0.00698029`, `3`, `2.66088919` — целое без дробной части, иначе до 8 знаков.
+
+    USDT округляется до целого (решение пользователя: `950 USDT`, без хвоста).
+    """
+    if coin == "usdt":
+        return str(int(round(amount)))
     if amount == int(amount):
         return str(int(amount))
     s = f"{amount:.8f}".rstrip("0").rstrip(".")

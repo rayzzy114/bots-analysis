@@ -19,6 +19,12 @@ STEP_DELAY = 1.0
 
 
 async def show_main_menu(message: Message, ctx: AppContext) -> None:
+    # В оригинале таблице курсов ВСЕГДА предшествует GIF-инфопанель со ссылками
+    # (Поддержка/отзывы/розыгрыши) — на любом возврате в меню. См. events.jsonl.
+    await utils.send_animation_or_text(
+        message, media.help_links_doc(), text="",
+        reply_markup=kb.kb_help_links(ctx.settings),
+    )
     # disable_web_page_preview — убирает превью-карточку nesk.bot под таблицей курсов
     await message.answer(
         renderer.render_main_menu(ctx.settings),
@@ -45,11 +51,7 @@ async def _known_user_flow(message: Message, ctx: AppContext) -> None:
         text=renderer.render(texts.ALREADY_IN_SYSTEM, ctx.settings),
     )
     await utils.human_delay(STEP_DELAY, STEP_DELAY)
-    await utils.send_animation_or_text(
-        message, media.help_links_doc(), text="",
-        reply_markup=kb.kb_help_links(ctx.settings),
-    )
-    await utils.human_delay(STEP_DELAY, STEP_DELAY)
+    # GIF-инфопанель + таблицу курсов шлёт show_main_menu (как в оригинале)
     await show_main_menu(message, ctx)
     await utils.human_delay(STEP_DELAY, STEP_DELAY)
     await _save_site_message(message, ctx)
@@ -58,11 +60,7 @@ async def _known_user_flow(message: Message, ctx: AppContext) -> None:
 async def _restart_flow(message: Message, ctx: AppContext) -> None:
     """/restart → GIF со ссылками + главное меню (2 сообщения, см. скрин)."""
     await utils.human_delay(STEP_DELAY, STEP_DELAY)
-    await utils.send_animation_or_text(
-        message, media.help_links_doc(), text="",
-        reply_markup=kb.kb_help_links(ctx.settings),
-    )
-    await utils.human_delay(STEP_DELAY, STEP_DELAY)
+    # GIF-инфопанель + таблицу курсов шлёт show_main_menu
     await show_main_menu(message, ctx)
 
 

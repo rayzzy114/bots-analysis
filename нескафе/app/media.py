@@ -53,6 +53,9 @@ SYSTEM_PHOTO = const.MEDIA_DIR / "photo_6107149655184445175.jpg"
 SAVE_SITE_DOC = const.MEDIA_DIR / "video_5357196511702712269.mp4"
 HELP_LINKS_DOC = const.MEDIA_DIR / "video_5382101656957631959.mp4"
 
+# Транзиентный стикер-заяц: мелькает ~2с при «списать монеты» (прислал пользователь).
+BURN_STICKER = const.STICKERS_DIR / "rabbit_burn.tgs"
+
 
 def _file(path: Path) -> FSInputFile | None:
     return FSInputFile(path) if path.exists() else None
@@ -68,3 +71,7 @@ def save_site_doc() -> FSInputFile | None:
 
 def help_links_doc() -> FSInputFile | None:
     return _file(HELP_LINKS_DOC)
+
+
+def burn_sticker() -> FSInputFile | None:
+    return _file(BURN_STICKER)

@@ -20,7 +20,7 @@ def test_calc_body_matches_spec(settings):
 
 
 def test_payment_details_matches_spec(settings):
-    # новый формат: реквизиты/банк (tap-to-copy + «(копируется)»), без «к ОПЕРАТОРУ»
+    # новый формат: реквизиты/банк (tap-to-copy в <code>), без «к ОПЕРАТОРУ» и без «(копируется)»
     expected = (
         "<strong>К получению:</strong>\n"
         "<code>│\n"
@@ -31,9 +31,9 @@ def test_payment_details_matches_spec(settings):
         "\n"
         "<strong>К оплате:</strong>\n"
         "\n"
-        "<code>├─</code> Реквизиты: <code>0000 0000 0000 0000</code> (копируется)\n"
+        "<code>├─</code> Реквизиты: <code>0000 0000 0000 0000</code>\n"
         "<code>│</code>\n"
-        "<code>├─</code> Банк: <code>Сбербанк</code> (копируется)\n"
+        "<code>├─</code> Банк: <code>Сбербанк</code>\n"
         "<code>│</code>\n"
         "<code>├─</code> Сумма:  15 054 RUB 🇷🇺\n"
         "<code>├</code>\n"

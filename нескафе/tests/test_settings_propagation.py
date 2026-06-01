@@ -28,7 +28,7 @@ async def test_requisites_and_bank_propagate(settings):
     assert "1111 2222 3333 4444" in out
     assert "Тинькофф" in out
     assert "ОПЕРАТОРУ" not in out
-    assert "(копируется)" in out
+    assert "(копируется)" not in out   # убрано по фидбеку — было только для разработчика
 
 
 async def test_reviews_and_giveaways_propagate_to_keyboard(settings):
@@ -113,4 +113,5 @@ async def test_commission_applies_at_order(settings):
     q = calc.build_quote("ltc", 50000, rate=100.0,
                          commission_percent=settings.commission_percent,
                          cashback_percent=settings.cashback_percent)
-    assert q.coin_amount == 400.0   # 50000 * 0.80 / 100 — ровно −20%
+    assert q.coin_amount == 500.0   # 50000 / 100 — монета чистая, без комиссии
+    assert q.payable == 40000.0     # 50000 * 0.80 — комиссия 20% режет «к оплате»

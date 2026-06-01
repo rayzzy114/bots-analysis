@@ -108,6 +108,11 @@ def kb_back() -> ReplyKeyboardMarkup:
     return _reply([[BTN_BACK]])
 
 
+def kb_saved_addresses(addresses: list[str]) -> ReplyKeyboardMarkup:
+    """Шаг адреса в обмене: сохранённые адреса кнопками + назад (issue 5)."""
+    return _reply([[a] for a in addresses] + [[BTN_BACK]])
+
+
 def kb_skip() -> ReplyKeyboardMarkup:
     return _reply([[BTN_SKIP]])
 
@@ -163,6 +168,14 @@ def kb_operator(settings: SettingsStore, label: str = "👨‍💻 Операт�
 def kb_site(settings: SettingsStore) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🌐 САЙТ", url=settings.site_url)]
+    ])
+
+
+def kb_proof_done(settings: SettingsStore) -> InlineKeyboardMarkup:
+    """Финальное «Спасибо, ожидайте подтверждения»: Оператор + Главное меню."""
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="👨‍💻 Оператор", url=settings.operator_url)],
+        [InlineKeyboardButton(text="🏠 Главное меню", callback_data="go:main")],
     ])
 
 
