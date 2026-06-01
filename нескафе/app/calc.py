@@ -19,7 +19,7 @@ class Quote:
     coin_amount: float    # «к получению» (монета) — чистая конвертация rub/курс
     cashback: int
     discount: int = 0
-    payable: float = 0.0  # «к оплате» = rub·(1+комиссия%) − discount
+    payable: float = 0.0  # «к оплате» — см. build_quote (зависит от режима ввода)
 
 
 def cashback_for(rub: float, cashback_percent: float) -> int:
@@ -45,23 +45,31 @@ def coin_received(rub: float, rate: float) -> float:
 
 def build_quote(
     coin: str, rub: float, rate: float, commission_percent: float,
-    cashback_percent: float, discount: int = 0,
+    cashback_percent: float, discount: int = 0, unit: str = "coin",
 ) -> Quote:
-    """Расчёт: комиссия — это наценка сервиса на «к оплате» (клиент платит больше).
+    """Расчёт сумм. Комиссия «съедает» ту сторону, которую пользователь НЕ вводил.
 
-    rub — брутто RUB-эквивалент (в COIN-режиме = монета×курс, в RUB-режиме = рубли).
-      • к получению = rub/курс                       — чистая конвертация, без комиссии;
-      • к оплате    = rub·(1+комиссия%) − discount   — комиссия наценивает рубли, затем скидка;
-      • кэшбэк      = ⌈rub·кэшбэк%⌉                   — на pre-discount rub.
+    rub — брутто RUB-эквивалент ввода (в COIN-режиме = монета×курс, в RUB-режиме = рубли).
+      • COIN-режим (ввёл монету): получает ровно монету, комиссия НАЦЕНИВАЕТ «к оплате»
+          к получению = rub/курс;  к оплате = rub·(1+комиссия%) − discount
+      • RUB-режим (ввёл рубли): платит ровно введённое, комиссия ВЫЧИТАЕТСЯ из монеты
+          к получению = rub·(1−комиссия%)/курс;  к оплате = rub − discount
+      • кэшбэк = ⌈«к оплате до скидки»·кэшбэк%⌉ — как в оригинале (0.5% от суммы оплаты).
     """
-    payable = rub * (1 + commission_percent / 100.0) - discount
+    c = commission_percent / 100.0
+    if unit == "rub":
+        coin_amount = (rub * (1 - c)) / rate if rate > 0 else 0.0
+        payable_gross = rub
+    else:
+        coin_amount = coin_received(rub, rate)
+        payable_gross = rub * (1 + c)
     return Quote(
         coin=coin,
         rub=rub,
-        coin_amount=coin_received(rub, rate),
-        cashback=cashback_for(rub, cashback_percent),
+        coin_amount=coin_amount,
+        cashback=cashback_for(payable_gross, cashback_percent),
         discount=discount,
-        payable=max(0.0, payable),
+        payable=max(0.0, payable_gross - discount),
     )
 
 
@@ -86,7 +94,8 @@ def render_calc(data: dict, settings) -> tuple[str, object]:
         # «к оплате» уже включает наценку-комиссию, как в оригинале (0.0005 BTC → 3522 RUB).
         # Скидка («списать монеты») режет «к оплате».
         quote = build_quote(coin, gross_rub, rate, settings.commission_percent,
-                            cashback_percent=settings.cashback_percent, discount=discount)
+                            cashback_percent=settings.cashback_percent, discount=discount,
+                            unit=unit)
         cashback = quote.cashback
         coin_amount = renderer.fmt_coin(quote.coin_amount, coin)
         payable_str = renderer.fmt_rub_space(quote.payable)

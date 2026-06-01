@@ -40,6 +40,25 @@ def test_build_quote_discount_reduces_payable():
     assert q.cashback == 76                       # кэшбэк на pre-discount 15104
 
 
+def test_rub_mode_commission_cuts_coin_not_payable():
+    # RUB-режим: «к оплате» = ровно введённое, комиссия вычитается из монеты (битка)
+    from app.calc import build_quote
+    q = build_quote("btc", 5000, rate=5_000_000, commission_percent=20,
+                    cashback_percent=0.5, discount=0, unit="rub")
+    assert q.payable == pytest.approx(5000)                      # платит ровно 5000
+    assert q.coin_amount == pytest.approx(4000 / 5_000_000)      # 5000·0.8/курс
+    assert q.cashback == 25                                      # 0.5% от 5000
+
+
+def test_coin_mode_commission_adds_to_payable():
+    # COIN-режим: получает ровно монету, комиссия наценивает «к оплате»
+    from app.calc import build_quote
+    q = build_quote("btc", 5000, rate=5_000_000, commission_percent=20,
+                    cashback_percent=0.5, discount=0, unit="coin")
+    assert q.coin_amount == pytest.approx(5000 / 5_000_000)      # монета чистая
+    assert q.payable == pytest.approx(6000)                      # 5000·1.2
+
+
 def test_commission_is_exactly_n_percent():
     # анти-регресс: комиссия 20% наценивает «к оплате» ровно на 20%, монета — чистая.
     from app.calc import build_quote

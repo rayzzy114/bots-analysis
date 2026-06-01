@@ -148,8 +148,9 @@ async def amount_input(message: Message, state: FSMContext, ctx: AppContext) -> 
     await utils.safe_delete(message)
     if parsed is None:
         return
-    rub, _ = parsed
-    await state.update_data(rub=rub, pad="")
+    rub, basis = parsed
+    # basis ∈ {"coin","rub"} — фиксируем режим, чтобы комиссия списывалась с нужной стороны
+    await state.update_data(rub=rub, pad="", unit=basis)
     await _show_calc(message, state, ctx, edit=True)
 
 
@@ -292,6 +293,7 @@ async def _create_order(message: Message, state: FSMContext, ctx: AppContext) ->
     quote = calc_mod.build_quote(
         coin, rub, rate, ctx.settings.commission_percent,
         ctx.settings.cashback_percent, int(data.get("discount", 0)),
+        unit=data.get("unit", "coin"),
     )
     await message.answer(
         renderer.render(texts.EXCHANGE_WAIT_PAYMENT, ctx.settings),
@@ -377,7 +379,8 @@ async def receive_proof(message: Message, state: FSMContext, ctx: AppContext) ->
     rate = float(data.get("rate", 0))
     discount = int(data.get("discount", 0))
     quote = calc_mod.build_quote(coin, rub, rate, ctx.settings.commission_percent,
-                                 ctx.settings.cashback_percent, discount) if rate else None
+                                 ctx.settings.cashback_percent, discount,
+                                 unit=data.get("unit", "coin")) if rate else None
     coin_amount = renderer.fmt_coin(quote.coin_amount, coin) if quote else "?"
     payable = renderer.fmt_rub_space(quote.payable if quote else rub)
     ticker = const.COINS.get(coin, {}).get("ticker", coin)
