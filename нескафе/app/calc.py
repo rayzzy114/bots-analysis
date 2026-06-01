@@ -82,10 +82,10 @@ def render_calc(data: dict, settings) -> tuple[str, object]:
 
     discount = bonus if burn else 0
     if gross_rub > 0:
-        # Калькулятор — чистый конвертер: комиссия здесь НЕ применяется
-        # (к получению = монета 1:1), она вступает в силу позже, при расчёте
-        # заявки (_create_order). Скидка («списать монеты») режет «к оплате».
-        quote = build_quote(coin, gross_rub, rate, commission_percent=0,
+        # Авторасчёт с комиссией: «к получению» = монета 1:1 (чистая конвертация),
+        # «к оплате» уже включает наценку-комиссию, как в оригинале (0.0005 BTC → 3522 RUB).
+        # Скидка («списать монеты») режет «к оплате».
+        quote = build_quote(coin, gross_rub, rate, settings.commission_percent,
                             cashback_percent=settings.cashback_percent, discount=discount)
         cashback = quote.cashback
         coin_amount = renderer.fmt_coin(quote.coin_amount, coin)

@@ -87,11 +87,12 @@ async def test_faq_reliability_uses_chat_url(settings):
     assert "открытый чат" in out
 
 
-async def test_commission_NOT_applied_in_calculator(settings):
-    """Калькулятор — чистый конвертер: комиссия на «к получению» не влияет.
+async def test_commission_auto_applied_to_payable_in_calculator(settings):
+    """Калькулятор авто-считает «к оплате» С комиссией; монета остаётся чистой.
 
-    Пользователь: «на этот калькулятор ничего не влияет, только дальше при
-    расчётах уже комиссия». 1 монета остаётся 1 монетой в калькуляторе.
+    Пользователь: «в калькуляторе добавь авторасчёт с комсой» — «к оплате» в
+    калькуляторе уже включает наценку, как в оригинале (0.0005 BTC → 3522 RUB).
+    «К получению» (монета) при этом не меняется.
     """
     from app import calc
 
@@ -100,9 +101,11 @@ async def test_commission_NOT_applied_in_calculator(settings):
     t0, _ = calc.render_calc(data, settings)
     await settings.set("commission_percent", 50)
     t1, _ = calc.render_calc(data, settings)
-    # к получению одинаково при любой комиссии — калькулятор её не применяет
-    assert "500 LTC" in t0
-    assert "500 LTC" in t1
+    # к получению (монета) — чистая, не меняется от комиссии
+    assert "500 LTC" in t0 and "500 LTC" in t1
+    # к оплате — авторасчёт с комиссией: 50 000 → 75 000 при +50%
+    assert "50 000 RUB" in t0
+    assert "75 000 RUB" in t1
 
 
 async def test_commission_applies_at_order(settings):
