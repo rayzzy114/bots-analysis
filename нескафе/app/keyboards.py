@@ -203,30 +203,44 @@ def _ib(text: str, data: str) -> InlineKeyboardButton:
     return InlineKeyboardButton(text=text, callback_data=data)
 
 
-def kb_calc_default(coin: str, min_label: str, burn_active: bool) -> InlineKeyboardMarkup:
+def _burn_label(burn_active: bool, bonus: int | None = None) -> str:
+    if burn_active:
+        return "😌 сохранить монеты 🪙"
+    return f"🪙 списать монеты: {bonus}" if bonus is not None else "🪙 списать монеты"
+
+
+def kb_calc_default(
+    coin: str, min_label: str, burn_active: bool, bonus: int, unit: str = "coin"
+) -> InlineKeyboardMarkup:
     """Дефолтный (новый) калькулятор: сумма вводится сообщением."""
-    burn = "😌 сохранить монеты 🪙" if burn_active else "🪙 списать монеты: 50"
+    from . import constants as const
+
     rows = [[_ib("🧮 старый калькулятор 📟", "calc:old")]]
     if coin == "usdt":
-        rows.append([_ib("🇷🇺 Ввод суммы в RUB", "calc:unit")])
+        ticker = const.COINS[coin]["ticker"]
+        # кнопка показывает режим, в который ПЕРЕКЛЮЧИТ
+        unit_label = "🇷🇺 Ввод суммы в RUB" if unit == "coin" else f"💲 Ввод суммы в {ticker}"
+        rows.append([_ib(unit_label, "calc:unit")])
     rows.append([_ib(f"🤏🏽 МИН ОБМЕН : {min_label} RUB", "calc:min")])
-    rows.append([_ib(burn, "calc:burn")])
+    rows.append([_ib(_burn_label(burn_active, bonus), "calc:burn")])
     rows.append([_ib(BTN_BACK, "calc:nav_back"), _ib("готово ➡️", "calc:done")])
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
-def kb_calc_pad(coin: str) -> InlineKeyboardMarkup:
+def kb_calc_pad(coin: str, burn_active: bool = False, unit: str = "coin") -> InlineKeyboardMarkup:
     """Старый калькулятор: цифровой кейпад (fffb274e)."""
     from . import constants as const
 
     emoji = const.COINS[coin]["emoji"]
     ticker = const.COINS[coin]["ticker"]
+    # кнопка показывает режим, в который ПЕРЕКЛЮЧИТ (монета↔RUB)
+    unit_label = "🇷🇺 Ввод в RUB" if unit == "coin" else f"{emoji} Ввод в {ticker}"
     return InlineKeyboardMarkup(inline_keyboard=[
         [_ib("7", "calc:digit:7"), _ib("8", "calc:digit:8"), _ib("9", "calc:digit:9")],
         [_ib("4", "calc:digit:4"), _ib("5", "calc:digit:5"), _ib("6", "calc:digit:6")],
         [_ib("1", "calc:digit:1"), _ib("2", "calc:digit:2"), _ib("3", "calc:digit:3")],
         [_ib("0", "calc:digit:0"), _ib(",", "calc:dot"), _ib("<x", "calc:back")],
-        [_ib(f"{emoji} Ввод в {ticker}", "calc:unit"), _ib("🤏🏽 МИН ОБМЕН", "calc:min")],
-        [_ib("🪙 списать монеты", "calc:burn")],
+        [_ib(unit_label, "calc:unit"), _ib("🤏🏽 МИН ОБМЕН", "calc:min")],
+        [_ib(_burn_label(burn_active), "calc:burn")],
         [_ib(BTN_BACK, "calc:nav_back"), _ib("готово ➡️", "calc:done")],
     ])

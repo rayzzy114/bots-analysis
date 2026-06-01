@@ -46,6 +46,9 @@ DEFAULT_SETTINGS: dict[str, object] = {
     "cashback_percent": 0.5,     # кэшбэк на бонусный счёт
     "start_bonus": 50,
     "min_rub_by_coin": {"btc": 795, "ltc": 728, "usdt": 48670, "xmr": 54000},
+    # Реквизиты для экрана «К оплате» (правятся в /admin → 💳 Реквизиты)
+    "requisites": "0000 0000 0000 0000",
+    "bank": "Сбербанк",
 }
 
 # Человекочитаемые лейблы полей — ТОЛЬКО для админ-панели (не для юзер-текстов).
@@ -60,6 +63,8 @@ SETTING_LABELS: dict[str, str] = {
     "commission_percent": "🏦 Комиссия, %",
     "cashback_percent": "💸 Кэшбэк, %",
     "start_bonus": "🎉 Стартовый бонус, ₽",
+    "requisites": "💳 Реквизиты (номер)",
+    "bank": "🏦 Банк",
 }
 
 # Ссылочные поля (правятся в разделе «Ссылки / контакты»).
@@ -69,6 +74,8 @@ LINK_KEYS = (
 )
 # Числовые поля (правятся в разделе «Настройки»).
 NUMERIC_KEYS = ("commission_percent", "cashback_percent", "start_bonus")
+# Текстовые реквизиты для экрана «К оплате» (правятся в разделе «Реквизиты»).
+REQUISITE_KEYS = ("requisites", "bank")
 
 # --- Стикеры: точки отправки (clone_spec.md §5), эмодзи → момент -------------
 STICKER_START_NEW = "😌"      # первый /start (новый юзер, «Начислено 50₽»)

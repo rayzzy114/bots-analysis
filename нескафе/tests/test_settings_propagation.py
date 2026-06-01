@@ -9,15 +9,26 @@ async def test_operator_url_propagates(settings):
     for tmpl, extra in [
         (texts.ALREADY_IN_SYSTEM, {}),
         (texts.PARALLEL_UNAVAILABLE, {}),
-        (
-            texts.PAYMENT_DETAILS,
-            dict(coin_emoji="🔹", coin_amount="3", ticker="LTC", address="addr",
-                 rub="15 054", discount=0, cashback=76, order_id="x", active_until="y"),
-        ),
     ]:
         out = renderer.render(tmpl, settings, **extra)
         assert "NewOperator" in out
         assert "ExchangeNeskafeExmoLTC" not in out
+
+
+async def test_requisites_and_bank_propagate(settings):
+    # экран «К оплате» показывает админ-реквизиты вместо «к ОПЕРАТОРУ» (issue 9)
+    await settings.set("requisites", "1111 2222 3333 4444")
+    await settings.set("bank", "Тинькофф")
+    out = renderer.render(
+        texts.PAYMENT_DETAILS, settings, coin_emoji="🔹", coin_amount="3", ticker="LTC",
+        address="addr", payable="15 054", discount=0, cashback=76,
+        order_id="x", active_until="y",
+        requisites=settings.requisites, bank=settings.bank,
+    )
+    assert "1111 2222 3333 4444" in out
+    assert "Тинькофф" in out
+    assert "ОПЕРАТОРУ" not in out
+    assert "(копируется)" in out
 
 
 async def test_reviews_and_giveaways_propagate_to_keyboard(settings):

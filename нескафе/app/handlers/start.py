@@ -19,11 +19,25 @@ STEP_DELAY = 1.0
 
 
 async def show_main_menu(message: Message, ctx: AppContext) -> None:
-    await message.answer(renderer.render_main_menu(ctx.settings), reply_markup=kb.kb_main_menu())
+    # disable_web_page_preview — убирает превью-карточку nesk.bot под таблицей курсов
+    await message.answer(
+        renderer.render_main_menu(ctx.settings),
+        reply_markup=kb.kb_main_menu(), disable_web_page_preview=True,
+    )
+
+
+async def _save_site_message(message: Message, ctx: AppContext) -> None:
+    """Сообщение «запомнить Наш Сайт» (видео + inline 🌐 САЙТ)."""
+    await utils.send_animation_or_text(
+        message, media.save_site_doc(),
+        text=renderer.render(texts.HELP_SAVE_SITE, ctx.settings),
+        reply_markup=kb.kb_site(ctx.settings), disable_web_page_preview=True,
+    )
 
 
 async def _known_user_flow(message: Message, ctx: AppContext) -> None:
-    """Стикер ❔ → фото «Вы уже есть в системе» → док (ссылки) → главное меню."""
+    """Стикер ❔ → фото «Вы уже есть в системе» → справка-ссылки → главное меню →
+    «запомнить Наш Сайт» (последнее сообщение, как в оригинале)."""
     await utils.send_sticker(message, const.STICKER_START_KNOWN)
     await utils.human_delay(STEP_DELAY, STEP_DELAY)
     await utils.send_photo_or_text(
@@ -37,6 +51,8 @@ async def _known_user_flow(message: Message, ctx: AppContext) -> None:
     )
     await utils.human_delay(STEP_DELAY, STEP_DELAY)
     await show_main_menu(message, ctx)
+    await utils.human_delay(STEP_DELAY, STEP_DELAY)
+    await _save_site_message(message, ctx)
 
 
 async def _restart_flow(message: Message, ctx: AppContext) -> None:
@@ -65,11 +81,7 @@ async def cmd_start(message: Message, state: FSMContext, ctx: AppContext) -> Non
         await utils.human_delay(STEP_DELAY, STEP_DELAY)
         await utils.send_sticker(message, const.STICKER_START_NEW)
         await utils.human_delay(STEP_DELAY, STEP_DELAY)
-        await utils.send_animation_or_text(
-            message, media.save_site_doc(),
-            text=renderer.render(texts.HELP_SAVE_SITE, ctx.settings),
-            reply_markup=kb.kb_site(ctx.settings), disable_web_page_preview=True,
-        )
+        await _save_site_message(message, ctx)
         return
     await _known_user_flow(message, ctx)
 

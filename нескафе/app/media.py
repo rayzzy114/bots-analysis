@@ -46,10 +46,12 @@ def sticker(emoji: str) -> FSInputFile | None:
 # Фото «Вы уже есть в системе» (MessageMediaPhoto экрана 8ddd73a61f).
 SYSTEM_PHOTO = const.MEDIA_DIR / "photo_6107149655184445175.jpg"
 
-# Онбординг-«документы» с кнопками (MessageMediaDocument). В записи это анимации;
-# из media/ им соответствуют два video_*.mp4. Точное сопоставление — косметика.
-SAVE_SITE_DOC = const.MEDIA_DIR / "video_5382101656957631959.mp4"
-HELP_LINKS_DOC = const.MEDIA_DIR / "video_5357196511702712269.mp4"
+# Онбординг-«документы» с кнопками (MessageMediaDocument). В записи это анимации.
+# Сопоставление выверено по events.jsonl run 20260601:
+#   «запомнить Наш Сайт» (🌐 САЙТ)         → video_5357196511702712269.mp4
+#   справка-ссылки (Поддержка/отзывы/розыгрыши) → video_5382101656957631959.mp4
+SAVE_SITE_DOC = const.MEDIA_DIR / "video_5357196511702712269.mp4"
+HELP_LINKS_DOC = const.MEDIA_DIR / "video_5382101656957631959.mp4"
 
 
 def _file(path: Path) -> FSInputFile | None:

@@ -15,10 +15,11 @@ from dataclasses import dataclass
 @dataclass
 class Quote:
     coin: str
-    rub: float
-    coin_amount: float
+    rub: float            # «брутто» RUB-эквивалент ввода (до вычета скидки)
+    coin_amount: float    # «к получению» (монета), с учётом комиссии
     cashback: int
     discount: int = 0
+    payable: float = 0.0  # «к оплате» = rub − discount
 
 
 def cashback_for(rub: float, cashback_percent: float) -> int:
@@ -26,35 +27,40 @@ def cashback_for(rub: float, cashback_percent: float) -> int:
 
     Примеры из записи (clone_spec §4) совпадают с ceil, а не floor:
     50000→250, 5000→25, 90000→450, 15104→76, 88434→443.
+    Считается на pre-discount RUB (LTC: 15104→кэшбэк 76 при скидке 50).
     """
     return int(math.ceil(rub * cashback_percent / 100.0))
 
 
 def coin_received(rub: float, rate: float, commission_percent: float = 0.0) -> float:
-    """Сумма к получению в монете.
+    """Сумма к получению в монете = RUB × (1 − комиссия%) / курс.
 
-    Комиссия сервиса уменьшает выдаваемую сумму: пользователь платит `rub`,
-    а получает монету за вычетом комиссии по рыночному курсу.
-    Скидка (списанные бонусы) увеличивает эффективную сумму обратно.
+    Комиссия сервиса уменьшает выдаваемую монету ровно на commission_percent%.
+    Скидка (бонусы) на «к получению» НЕ влияет — она режет «к оплате».
     """
     if rate <= 0:
         return 0.0
-    effective_rub = rub * (1 - commission_percent / 100.0)
-    return effective_rub / rate
+    return rub * (1 - commission_percent / 100.0) / rate
 
 
 def build_quote(
     coin: str, rub: float, rate: float, commission_percent: float,
     cashback_percent: float, discount: int = 0,
 ) -> Quote:
-    # скидка (бонусы) компенсирует часть комиссии: добавляем её обратно к сумме
-    effective_rub = rub * (1 - commission_percent / 100.0) + discount
+    """Расчёт по модели оригинала + наша комиссия.
+
+    rub — брутто RUB-эквивалент (в COIN-режиме = монета×курс, в RUB-режиме = рубли).
+      • к получению = rub·(1−комиссия%)/курс — комиссия режет монету на N %;
+      • к оплате    = rub − discount       — скидка («списать монеты») режет рубли;
+      • кэшбэк      = ⌈rub·кэшбэк%⌉        — на pre-discount rub.
+    """
     return Quote(
         coin=coin,
         rub=rub,
-        coin_amount=effective_rub / rate if rate > 0 else 0.0,
+        coin_amount=coin_received(rub, rate, commission_percent),
         cashback=cashback_for(rub, cashback_percent),
         discount=discount,
+        payable=max(0.0, rub - discount),
     )
 
 
@@ -66,31 +72,34 @@ def render_calc(data: dict, settings) -> tuple[str, object]:
 
     coin = data["coin"]
     rate = float(data.get("rate", 0))
-    rub = float(data.get("rub", 0))
+    gross_rub = float(data.get("rub", 0))   # брутто RUB-эквивалент ввода
     burn = bool(data.get("burn", False))
     mode = data.get("mode", "default")
+    unit = data.get("unit", "coin")
     min_rub = settings.min_rub(coin)
+    bonus = int(data.get("bonus_available", settings.start_bonus))
 
-    discount = int(data.get("bonus_available", settings.start_bonus)) if burn else 0
-    if rub > 0:
-        quote = build_quote(coin, rub, rate, settings.commission_percent,
+    discount = bonus if burn else 0
+    if gross_rub > 0:
+        quote = build_quote(coin, gross_rub, rate, settings.commission_percent,
                             settings.cashback_percent, discount)
         cashback = quote.cashback
         coin_amount = renderer.fmt_coin(quote.coin_amount)
+        payable_str = renderer.fmt_rub_space(quote.payable)
     else:
         cashback = 0
         coin_amount = "_"
-    rub_str = renderer.fmt_rub_space(rub) if rub > 0 else "0"
+        payable_str = "0"
 
     text = renderer.render(
         texts.CALC_BODY, settings,
         coin_emoji=const.COINS[coin]["emoji"], coin_amount=coin_amount,
-        ticker=const.COINS[coin]["ticker"], rub=rub_str, cashback=cashback, discount=discount,
+        ticker=const.COINS[coin]["ticker"], rub=payable_str, cashback=cashback, discount=discount,
     )
     if mode == "pad":
-        markup = kb.kb_calc_pad(coin)
+        markup = kb.kb_calc_pad(coin, burn, unit)
     else:
-        markup = kb.kb_calc_default(coin, str(int(min_rub)), burn)
+        markup = kb.kb_calc_default(coin, str(int(min_rub)), burn, bonus, unit)
     return text, markup
 
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import logging
 import secrets
 from datetime import datetime, timedelta, timezone
@@ -23,6 +24,15 @@ router = Router(name="exchange")
 
 MSK = timezone(timedelta(hours=3))
 COIN_BY_BUTTON = {v: k for k, v in kb.COIN_BTN.items()}
+
+# держим ссылки на фоновые задачи (⏳-транзиент), чтобы их не собрал GC
+_bg_tasks: set[asyncio.Task] = set()
+
+
+def _spawn(coro) -> None:
+    task = asyncio.create_task(coro)
+    _bg_tasks.add(task)
+    task.add_done_callback(_bg_tasks.discard)
 
 
 # --- helpers ----------------------------------------------------------------
@@ -134,6 +144,8 @@ async def amount_back(message: Message, state: FSMContext, ctx: AppContext) -> N
 async def amount_input(message: Message, state: FSMContext, ctx: AppContext) -> None:
     data = await state.get_data()
     parsed = calc_mod.parse_amount(message.text, data["coin"], data["rate"], ctx.settings.min_rub(data["coin"]))
+    # убрать введённую сумму из истории чата (как в оригинале — суммы не копятся)
+    await utils.safe_delete(message)
     if parsed is None:
         return
     rub, _ = parsed
@@ -147,15 +159,18 @@ async def calc_cb(cb: CallbackQuery, state: FSMContext, ctx: AppContext) -> None
     action = cb.data[len("calc:"):]
     coin, rate = data["coin"], float(data["rate"])
     min_rub = ctx.settings.min_rub(coin)
+    unit = data.get("unit", "coin")
 
     if action == "old":
         await state.update_data(mode="pad")
     elif action == "min":
+        # МИН ОБМЕН задаёт брутто-сумму = минимум (в рублях); набор сбрасываем
         await state.update_data(rub=min_rub, pad="")
     elif action == "burn":
         await state.update_data(burn=not data.get("burn", False))
     elif action == "unit":
-        await state.update_data(unit="rub" if data.get("unit", "coin") == "coin" else "coin", pad="")
+        # переключение монета↔RUB: начинаем ввод заново в новом режиме
+        await state.update_data(unit="rub" if unit == "coin" else "coin", pad="", rub=0)
     elif action in ("digit", "dot", "back") or action.startswith("digit:"):
         pad = data.get("pad", "")
         if action.startswith("digit:"):
@@ -168,13 +183,14 @@ async def calc_cb(cb: CallbackQuery, state: FSMContext, ctx: AppContext) -> None
         if pad and pad != ".":
             try:
                 val = float(pad)
-                rub = val * rate if data.get("unit", "coin") == "coin" else val
+                # COIN-режим: набор = монета → брутто = монета×курс; RUB-режим: брутто = рубли
+                rub = val * rate if unit == "coin" else val
             except ValueError:
                 rub = 0.0
         await state.update_data(pad=pad, rub=rub)
     elif action == "nav_back":
         await cb.answer()
-        await cb.message.delete()
+        await utils.safe_delete(cb.message)
         await new_exchange(cb.message, state, ctx)
         return
     elif action == "done":
@@ -190,6 +206,8 @@ async def calc_cb(cb: CallbackQuery, state: FSMContext, ctx: AppContext) -> None
     except Exception:  # noqa: BLE001
         pass
     await cb.answer()
+    # ⏳ появляется и исчезает через ~2 с (как у бота), фоном — калькулятор не тормозит
+    _spawn(utils.transient_hourglass(cb.message, reply_to=cb.message.message_id))
 
 
 # === Адрес ==================================================================
@@ -239,9 +257,12 @@ async def address_input(message: Message, state: FSMContext, ctx: AppContext) ->
     data = await state.get_data()
     coin = data["coin"]
     address = message.text.strip()
+    # порядок как в записи: статус → ⏳ → стикер 💻 → результат
+    checking = await message.answer(texts.WALLET_CHECKING)
+    _spawn(utils.transient_hourglass(message, reply_to=checking.message_id))
     await utils.send_sticker(message, const.STICKER_WALLET_CHECK)
-    await message.answer(texts.WALLET_CHECKING)
     await utils.human_delay()  # «проверка» 2–4 c
+    await utils.safe_delete(checking)  # убрать «Проверка кошелька...» после проверки (issue 8)
     if _valid_address(coin, address):
         await state.update_data(address=address)
         await message.answer(texts.WALLET_VALID, reply_markup=kb.kb_address_valid())
@@ -264,6 +285,10 @@ async def _create_order(message: Message, state: FSMContext, ctx: AppContext) ->
         "user_id": message.from_user.id, "coin": coin, "rub": rub,
         "address": data.get("address", ""), "status": "awaiting_payment",
     })
+    quote = calc_mod.build_quote(
+        coin, rub, rate, ctx.settings.commission_percent,
+        ctx.settings.cashback_percent, int(data.get("discount", 0)),
+    )
     await message.answer(
         renderer.render(texts.EXCHANGE_WAIT_PAYMENT, ctx.settings),
         reply_markup=kb.kb_operator(ctx.settings),
@@ -272,13 +297,12 @@ async def _create_order(message: Message, state: FSMContext, ctx: AppContext) ->
         renderer.render(
             texts.PAYMENT_DETAILS, ctx.settings,
             coin_emoji=const.COINS[coin]["emoji"],
-            coin_amount=renderer.fmt_coin(
-                calc_mod.build_quote(coin, rub, rate, ctx.settings.commission_percent,
-                                     ctx.settings.cashback_percent,
-                                     int(data.get("discount", 0))).coin_amount),
+            coin_amount=renderer.fmt_coin(quote.coin_amount),
             ticker=const.COINS[coin]["ticker"], address=data.get("address", ""),
-            rub=renderer.fmt_rub_space(rub), discount=int(data.get("discount", 0)),
-            cashback=int(data.get("cashback", 0)), order_id=order_id, active_until=active_until,
+            requisites=ctx.settings.requisites, bank=ctx.settings.bank,
+            payable=renderer.fmt_rub_space(quote.payable),
+            discount=quote.discount, cashback=quote.cashback,
+            order_id=order_id, active_until=active_until,
         ),
         reply_markup=kb.kb_payment(),
     )
@@ -287,10 +311,12 @@ async def _create_order(message: Message, state: FSMContext, ctx: AppContext) ->
 
 @router.message(ExchangeSG.awaiting_payment, F.text == kb.BTN_CHECK_PAYMENT)
 async def check_payment(message: Message, state: FSMContext, ctx: AppContext) -> None:
-    # стикер 🏃 отдельным сообщением, затем «Проверка оплаты...» (reply)
+    # стикер 🏃 + «Проверка оплаты...»; через 5 с убираем статус и просим чек (issue 10)
     await utils.send_sticker(message, const.STICKER_PAYMENT_CHECK)
-    await message.answer(texts.PAYMENT_CHECKING, reply_markup=kb.kb_payment_checking())
-    await utils.human_delay()  # «проверка оплаты» 2–4 c
+    checking = await message.answer(texts.PAYMENT_CHECKING, reply_markup=kb.kb_payment_checking())
+    _spawn(utils.transient_hourglass(message, reply_to=checking.message_id))
+    await asyncio.sleep(5)  # «Проверка оплаты...» висит ровно 5 с
+    await utils.safe_delete(checking)
     # §9: просим скрин/PDF чека о переводе
     await message.answer(texts.PROOF_REQUEST, reply_markup=kb.kb_payment_checking())
     await state.set_state(ExchangeSG.awaiting_proof)
@@ -335,10 +361,10 @@ async def receive_proof(message: Message, state: FSMContext, ctx: AppContext) ->
     rub = float(data.get("rub", 0))
     rate = float(data.get("rate", 0))
     discount = int(data.get("discount", 0))
-    coin_amount = renderer.fmt_coin(
-        calc_mod.build_quote(coin, rub, rate, ctx.settings.commission_percent,
-                             ctx.settings.cashback_percent, discount).coin_amount
-    ) if rate else "?"
+    quote = calc_mod.build_quote(coin, rub, rate, ctx.settings.commission_percent,
+                                 ctx.settings.cashback_percent, discount) if rate else None
+    coin_amount = renderer.fmt_coin(quote.coin_amount) if quote else "?"
+    payable = renderer.fmt_rub_space(quote.payable if quote else rub)
     ticker = const.COINS.get(coin, {}).get("ticker", coin)
     u = message.from_user
     username = f"@{u.username}" if u.username else "—"
@@ -348,7 +374,7 @@ async def receive_proof(message: Message, state: FSMContext, ctx: AppContext) ->
         f"Заявка: <code>{order_id}</code>\n"
         f"Клиент: <code>{u.id}</code> {username}\n"
         f"Монета: <b>{ticker}</b>\n"
-        f"К оплате: <b>{renderer.fmt_rub_space(rub)} ₽</b>\n"
+        f"К оплате: <b>{payable} ₽</b>\n"
         f"К получению: <b>{coin_amount} {ticker}</b>\n"
         f"Скидка: {discount}  |  Комиссия: {ctx.settings.commission_percent:g}%\n"
         f"Адрес: <code>{data.get('address', '')}</code>"
@@ -360,8 +386,8 @@ async def receive_proof(message: Message, state: FSMContext, ctx: AppContext) ->
             await message.forward(admin_id)
         except Exception as exc:  # noqa: BLE001
             log.warning("notify admin %s failed: %s", admin_id, exc)
-    # ответ пользователю
-    await message.answer(texts.PROOF_RECEIVED, reply_markup=kb.kb_payment_checking())
+    # ответ пользователю + убираем кнопки «отменить обмен / …» (issue 11)
+    await message.answer(texts.PROOF_RECEIVED, reply_markup=kb.REMOVE)
 
 
 @router.message(ExchangeSG.awaiting_proof, F.text)

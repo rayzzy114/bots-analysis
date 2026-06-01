@@ -20,7 +20,7 @@ def test_calc_body_matches_spec(settings):
 
 
 def test_payment_details_matches_spec(settings):
-    # экран 8adc1c9acc (operator_url дефолтный)
+    # новый формат: реквизиты/банк (tap-to-copy + «(копируется)»), без «к ОПЕРАТОРУ»
     expected = (
         "<strong>К получению:</strong>\n"
         "<code>│\n"
@@ -30,10 +30,13 @@ def test_payment_details_matches_spec(settings):
         "\n"
         "\n"
         "<strong>К оплате:</strong>\n"
+        "\n"
+        "<code>├─</code> Реквизиты: <code>0000 0000 0000 0000</code> (копируется)\n"
         "<code>│</code>\n"
-        "<code>├─</code>🇷🇺 <u>15 054 RUB</u>\n"
-        '<code>│</code>❗️обратитесь к <a href="https://t.me/ExchangeNeskafeExmoLTC">ОПЕРАТОРУ</a> 🧑‍💻\n'
+        "<code>├─</code> Банк: <code>Сбербанк</code> (копируется)\n"
         "<code>│</code>\n"
+        "<code>├─</code> Сумма:  15 054 RUB 🇷🇺\n"
+        "<code>├</code>\n"
         "<code>╰─</code>💸 скидка: 50  |  кэшбэк: 76\n"
         "\n"
         "\n"
@@ -42,8 +45,10 @@ def test_payment_details_matches_spec(settings):
     )
     out = renderer.render(
         texts.PAYMENT_DETAILS, settings, coin_emoji="🔹", coin_amount="3", ticker="LTC",
-        address="moQ3AJUMFTar9VomjWWsHWK8RFxJjjoZLh", rub="15 054", discount=50,
-        cashback=76, order_id="6a1887d118bd309b79d51449", active_until="21:37 28/05 MSK",
+        address="moQ3AJUMFTar9VomjWWsHWK8RFxJjjoZLh",
+        requisites="0000 0000 0000 0000", bank="Сбербанк",
+        payable="15 054", discount=50, cashback=76,
+        order_id="6a1887d118bd309b79d51449", active_until="21:37 28/05 MSK",
     )
     assert out == expected
 

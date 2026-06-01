@@ -22,6 +22,31 @@ async def human_delay(lo: float = HUMAN_DELAY_MIN, hi: float = HUMAN_DELAY_MAX) 
     await asyncio.sleep(random.uniform(lo, hi))
 
 
+# Транзиентные «песочные часы» бота: отдельное сообщение "⏳", которое
+# появляется и удаляется через ~2 с (events.jsonl: msg «⏳» при проверках/калькуляторе).
+HOURGLASS = "⏳"
+
+
+async def safe_delete(message) -> None:
+    """Удалить сообщение, молча игнорируя сбой (нет прав / уже удалено)."""
+    try:
+        await message.delete()
+    except Exception as exc:  # noqa: BLE001
+        log.debug("delete failed: %s", exc)
+
+
+async def transient_hourglass(message: Message, *, reply_to: int | None = None,
+                              hold: float = 2.0) -> None:
+    """Показать "⏳" отдельным сообщением и убрать через `hold` секунд."""
+    try:
+        ghost = await message.answer(HOURGLASS, reply_to_message_id=reply_to)
+    except Exception as exc:  # noqa: BLE001
+        log.debug("hourglass send failed: %s", exc)
+        return
+    await asyncio.sleep(hold)
+    await safe_delete(ghost)
+
+
 async def send_sticker(message: Message, emoji: str) -> None:
     """Отправить стикер по эмодзи отдельным сообщением (молча игнорируя сбои)."""
     sticker = media.sticker(emoji)

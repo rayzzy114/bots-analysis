@@ -189,7 +189,8 @@ ADDRESS_REMEMBERED = (
 # ca6b0e29d2 (inline-статус, Оператор)
 EXCHANGE_WAIT_PAYMENT = "<strong>🔄 Обмен: ожидание оплаты</strong>"
 
-# 33332b6718 / 8adc1c9acc / 12aa8f6cd8 — реквизиты «как в оригинале»
+# Экран «К получению / К оплате» — с реквизитами и банком (вместо «к ОПЕРАТОРУ»).
+# Реквизиты/банк в <code> → копируются по тапу; «(копируется)» — литерально.
 PAYMENT_DETAILS = (
     "<strong>К получению:</strong>\n"
     "<code>│\n"
@@ -199,10 +200,13 @@ PAYMENT_DETAILS = (
     "\n"
     "\n"
     "<strong>К оплате:</strong>\n"
+    "\n"
+    "<code>├─</code> Реквизиты: <code>{requisites}</code> (копируется)\n"
     "<code>│</code>\n"
-    "<code>├─</code>🇷🇺 <u>{rub} RUB</u>\n"
-    '<code>│</code>❗️обратитесь к <a href="{operator_url}">ОПЕРАТОРУ</a> 🧑‍💻\n'
+    "<code>├─</code> Банк: <code>{bank}</code> (копируется)\n"
     "<code>│</code>\n"
+    "<code>├─</code> Сумма:  {payable} RUB 🇷🇺\n"
+    "<code>├</code>\n"
     "<code>╰─</code>💸 скидка: {discount}  |  кэшбэк: {cashback}\n"
     "\n"
     "\n"

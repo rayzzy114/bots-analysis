@@ -27,12 +27,35 @@ def test_commission_reduces_payout():
     assert with_fee == pytest.approx(475.0)
 
 
-def test_build_quote_discount_adds_back():
+def test_build_quote_discount_reduces_payable():
+    # модель оригинала: скидка («списать монеты») режет «к оплате», не монету.
     from app.calc import build_quote
-    q = build_quote("ltc", 50000, rate=100, commission_percent=5,
+    q = build_quote("ltc", 15104, rate=15104 / 3, commission_percent=0,
                     cashback_percent=0.5, discount=50)
-    # effective = 50000*0.95 + 50 = 47550 → /100 = 475.5
-    assert q.coin_amount == pytest.approx(475.5)
+    assert q.coin_amount == pytest.approx(3.0)   # к получению не меняется скидкой
+    assert q.payable == pytest.approx(15054)     # к оплате = 15104 − 50
+    assert q.cashback == 76                       # кэшбэк на pre-discount 15104
+
+
+def test_commission_is_exactly_n_percent():
+    # анти-регресс «комиссия 20% режет 24%»: должно быть ровно −20%.
+    from app.calc import build_quote
+    q = build_quote("btc", 1000, rate=100, commission_percent=20,
+                    cashback_percent=0.5, discount=0)
+    assert q.coin_amount == pytest.approx(8.0)   # 1000 * 0.80 / 100
+    assert q.payable == pytest.approx(1000)
+
+
+def test_burn_does_not_change_coin_for_btc():
+    # issue 6: BTC + «списать монеты» — монета считается верно, скидка уходит в оплату.
+    from app.calc import build_quote
+    rate = 7_000_000
+    base = build_quote("btc", 10000, rate=rate, commission_percent=20,
+                       cashback_percent=0.5, discount=0)
+    burned = build_quote("btc", 10000, rate=rate, commission_percent=20,
+                         cashback_percent=0.5, discount=50)
+    assert burned.coin_amount == pytest.approx(base.coin_amount)  # монета не меняется
+    assert burned.payable == pytest.approx(base.payable - 50)     # оплата меньше на 50
 
 
 def test_calc_example_always_passes_min():

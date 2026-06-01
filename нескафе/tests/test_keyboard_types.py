@@ -19,8 +19,21 @@ def test_link_and_status_screens_are_inline(tmp_path):
 
 
 def test_calc_is_inline(tmp_path):
-    assert isinstance(keyboards.kb_calc_default("btc", "795", False), InlineKeyboardMarkup)
+    assert isinstance(keyboards.kb_calc_default("btc", "795", False, 50), InlineKeyboardMarkup)
     assert isinstance(keyboards.kb_calc_pad("btc"), InlineKeyboardMarkup)
+
+
+def test_proof_received_removes_keyboard():
+    from aiogram.types import ReplyKeyboardRemove
+
+    # после прикрепления чека кнопки «отменить обмен / …» снимаются (issue 11)
+    assert isinstance(keyboards.REMOVE, ReplyKeyboardRemove)
+
+
+def test_calc_default_burn_label_uses_bonus():
+    kb = keyboards.kb_calc_default("btc", "795", False, 77)
+    labels = [b.text for row in kb.inline_keyboard for b in row]
+    assert any("списать монеты: 77" in t for t in labels)
 
 
 def test_menu_coin_address_wallets_are_reply():

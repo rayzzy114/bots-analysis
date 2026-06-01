@@ -31,3 +31,4 @@ class AdminSG(StatesGroup):
     waiting_link = State()        # правка ссылочного поля
     waiting_numeric = State()     # правка числового поля
     waiting_min_rub = State()     # правка минимума per-coin
+    waiting_requisite = State()   # правка реквизита/банка (текст «К оплате»)

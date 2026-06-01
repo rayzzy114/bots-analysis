@@ -30,9 +30,16 @@ def _kb(rows: list[list[InlineKeyboardButton]]) -> InlineKeyboardMarkup:
 def kb_home() -> InlineKeyboardMarkup:
     return _kb([
         [_ib("🔗 Ссылки / контакты", "a:links")],
+        [_ib("💳 Реквизиты (К оплате)", "a:reqs")],
         [_ib("⚙️ Настройки", "a:settings")],
         [_ib("✖ Закрыть", "a:close")],
     ])
+
+
+def kb_requisites(settings) -> InlineKeyboardMarkup:
+    rows = [[_ib(const.SETTING_LABELS[k], f"a:req:{k}")] for k in const.REQUISITE_KEYS]
+    rows.append([_ib("⬅️ В меню", "a:home")])
+    return _kb(rows)
 
 
 def kb_links(settings) -> InlineKeyboardMarkup:
@@ -64,6 +71,16 @@ def kb_cancel(target: str) -> InlineKeyboardMarkup:
 def _links_body(settings) -> str:
     lines = ["🔗 <b>Ссылки / контакты</b>", "", "Тап по полю — задать новое значение.", ""]
     for k in const.LINK_KEYS:
+        lines.append(f"• <b>{const.SETTING_LABELS[k]}</b>\n<code>{settings.get(k)}</code>")
+    return "\n".join(lines)
+
+
+def _requisites_body(settings) -> str:
+    lines = [
+        "💳 <b>Реквизиты (экран «К оплате»)</b>", "",
+        "Тап по полю — задать новое значение. Показываются клиенту на экране оплаты.", "",
+    ]
+    for k in const.REQUISITE_KEYS:
         lines.append(f"• <b>{const.SETTING_LABELS[k]}</b>\n<code>{settings.get(k)}</code>")
     return "\n".join(lines)
 
@@ -168,6 +185,54 @@ async def msg_link_save(message: Message, state: FSMContext, ctx: AppContext) ->
     )
 
 
+# === Реквизиты (К оплате) ===================================================
+@router.callback_query(F.data == "a:reqs")
+async def cb_reqs(cb: CallbackQuery, state: FSMContext, ctx: AppContext) -> None:
+    if not _guard(cb, ctx):
+        return await cb.answer()
+    await state.clear()
+    await cb.message.edit_text(_requisites_body(ctx.settings), reply_markup=kb_requisites(ctx.settings))
+    await cb.answer()
+
+
+@router.callback_query(F.data.startswith("a:req:"))
+async def cb_req_edit(cb: CallbackQuery, state: FSMContext, ctx: AppContext) -> None:
+    if not _guard(cb, ctx):
+        return await cb.answer()
+    key = cb.data[len("a:req:"):]
+    if key not in const.REQUISITE_KEYS:
+        return await cb.answer()
+    await state.set_state(AdminSG.waiting_requisite)
+    await state.update_data(key=key)
+    await cb.message.edit_text(
+        f"✏️ <b>{const.SETTING_LABELS[key]}</b>\n\n"
+        f"Текущее значение: <code>{ctx.settings.get(key)}</code>\n\n"
+        f"Пришлите новое значение одним сообщением.",
+        reply_markup=kb_cancel("a:reqs"),
+    )
+    await cb.answer()
+
+
+@router.message(AdminSG.waiting_requisite, F.text)
+async def msg_req_save(message: Message, state: FSMContext, ctx: AppContext) -> None:
+    if not ctx.is_admin(message.from_user.id):
+        return
+    data = await state.get_data()
+    key = data.get("key")
+    if key not in const.REQUISITE_KEYS:
+        await state.clear()
+        return
+    value = message.text.strip()
+    if not value:
+        await message.answer("Пустое значение — попробуйте ещё раз.")
+        return
+    await ctx.settings.set(key, value)
+    await state.clear()
+    await message.answer(
+        f"✅ {const.SETTING_LABELS[key]} обновлено.", reply_markup=kb_requisites(ctx.settings)
+    )
+
+
 # === Числовые настройки =====================================================
 @router.callback_query(F.data == "a:settings")
 async def cb_settings(cb: CallbackQuery, state: FSMContext, ctx: AppContext) -> None:
@@ -205,7 +270,8 @@ async def msg_num_save(message: Message, state: FSMContext, ctx: AppContext) -> 
     if key not in const.NUMERIC_KEYS:
         await state.clear()
         return
-    raw = message.text.strip().replace(",", ".")
+    # допускаем ввод вида «20 %», «20%», «0,5» — чистим символ процента и пробелы
+    raw = message.text.strip().replace("%", "").replace(",", ".").replace(" ", "")
     try:
         value: float | int = float(raw)
     except ValueError:

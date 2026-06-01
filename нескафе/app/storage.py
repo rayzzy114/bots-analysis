@@ -126,6 +126,14 @@ class SettingsStore:
     def start_bonus(self) -> int:
         return int(self._data["start_bonus"])
 
+    @property
+    def requisites(self) -> str:
+        return str(self._data["requisites"])
+
+    @property
+    def bank(self) -> str:
+        return str(self._data["bank"])
+
     def min_rub(self, coin: str) -> float:
         mins = self._data.get("min_rub_by_coin", {})
         return float(mins.get(coin, 1500))
