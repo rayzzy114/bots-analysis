@@ -15,6 +15,29 @@ from app.handlers import account, admin, common, exchange, start
 from app.runtime import AppContext
 
 
+def _load_dotenv(path: str | None = None) -> None:
+    """Подхватить переменные из .env (KEY=VALUE), без сторонних зависимостей.
+
+    Файл ищем рядом с main.py. Уже заданные переменные не перезаписываем.
+    """
+    if path is None:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    try:
+        with open(path, encoding="utf-8") as f:
+            lines = f.readlines()
+    except FileNotFoundError:
+        return
+    for raw in lines:
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = value
+
+
 async def _inject_ctx(handler, event, data):
     """Middleware: прокидывает AppContext во все хендлеры как ctx."""
     data["ctx"] = data["dispatcher"]["ctx"]
@@ -23,6 +46,7 @@ async def _inject_ctx(handler, event, data):
 
 async def main() -> None:
     logging.basicConfig(level=logging.INFO)
+    _load_dotenv()  # загрузить .env рядом с main.py (если есть)
     token = os.environ["BOT_TOKEN"]
 
     bot = Bot(token=token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
