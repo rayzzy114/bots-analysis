@@ -19,7 +19,7 @@ class Quote:
     coin_amount: float    # «к получению» (монета) — чистая конвертация rub/курс
     cashback: int
     discount: int = 0
-    payable: float = 0.0  # «к оплате» = rub·(1−комиссия%) − discount
+    payable: float = 0.0  # «к оплате» = rub·(1+комиссия%) − discount
 
 
 def cashback_for(rub: float, cashback_percent: float) -> int:
@@ -47,14 +47,14 @@ def build_quote(
     coin: str, rub: float, rate: float, commission_percent: float,
     cashback_percent: float, discount: int = 0,
 ) -> Quote:
-    """Расчёт по модели пользователя: комиссия режет «к оплате».
+    """Расчёт: комиссия — это наценка сервиса на «к оплате» (клиент платит больше).
 
     rub — брутто RUB-эквивалент (в COIN-режиме = монета×курс, в RUB-режиме = рубли).
       • к получению = rub/курс                       — чистая конвертация, без комиссии;
-      • к оплате    = rub·(1−комиссия%) − discount   — комиссия режет рубли, затем скидка;
+      • к оплате    = rub·(1+комиссия%) − discount   — комиссия наценивает рубли, затем скидка;
       • кэшбэк      = ⌈rub·кэшбэк%⌉                   — на pre-discount rub.
     """
-    payable = rub * (1 - commission_percent / 100.0) - discount
+    payable = rub * (1 + commission_percent / 100.0) - discount
     return Quote(
         coin=coin,
         rub=rub,

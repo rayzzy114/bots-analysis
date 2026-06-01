@@ -114,4 +114,4 @@ async def test_commission_applies_at_order(settings):
                          commission_percent=settings.commission_percent,
                          cashback_percent=settings.cashback_percent)
     assert q.coin_amount == 500.0   # 50000 / 100 — монета чистая, без комиссии
-    assert q.payable == 40000.0     # 50000 * 0.80 — комиссия 20% режет «к оплате»
+    assert q.payable == 60000.0     # 50000 * 1.20 — комиссия 20% наценивает «к оплате»

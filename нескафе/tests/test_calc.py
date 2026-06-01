@@ -19,15 +19,15 @@ def test_coin_received():
     assert round(coin_received(50000, rate), 8) == pytest.approx(0.00698021, abs=1e-8)
 
 
-def test_commission_reduces_payable_not_coin():
-    # модель пользователя: комиссия режет «к оплате», монета — чистая конвертация
+def test_commission_adds_to_payable_not_coin():
+    # комиссия — наценка на «к оплате» (клиент платит больше), монета — чистая
     from app.calc import build_quote
     full = build_quote("ltc", 50000, rate=100, commission_percent=0, cashback_percent=0.5)
     with_fee = build_quote("ltc", 50000, rate=100, commission_percent=5, cashback_percent=0.5)
     assert full.coin_amount == pytest.approx(500.0)      # к получению не меняется
     assert with_fee.coin_amount == pytest.approx(500.0)  # монета та же при любой комиссии
-    assert full.payable == pytest.approx(50000)          # без комиссии — полная сумма
-    assert with_fee.payable == pytest.approx(47500)      # 5% режет «к оплате»
+    assert full.payable == pytest.approx(50000)          # без комиссии — базовая сумма
+    assert with_fee.payable == pytest.approx(52500)      # 5% наценка на «к оплате»
 
 
 def test_build_quote_discount_reduces_payable():
@@ -41,12 +41,12 @@ def test_build_quote_discount_reduces_payable():
 
 
 def test_commission_is_exactly_n_percent():
-    # анти-регресс: комиссия 20% режет «к оплате» ровно на 20%, монета — чистая.
+    # анти-регресс: комиссия 20% наценивает «к оплате» ровно на 20%, монета — чистая.
     from app.calc import build_quote
     q = build_quote("btc", 1000, rate=100, commission_percent=20,
                     cashback_percent=0.5, discount=0)
     assert q.coin_amount == pytest.approx(10.0)  # 1000 / 100 — без комиссии
-    assert q.payable == pytest.approx(800)       # 1000 * 0.80
+    assert q.payable == pytest.approx(1200)      # 1000 * 1.20
 
 
 def test_burn_does_not_change_coin_for_btc():
