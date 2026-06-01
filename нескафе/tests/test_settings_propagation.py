@@ -87,7 +87,12 @@ async def test_faq_reliability_uses_chat_url(settings):
     assert "открытый чат" in out
 
 
-async def test_commission_propagates_to_calc(settings):
+async def test_commission_NOT_applied_in_calculator(settings):
+    """Калькулятор — чистый конвертер: комиссия на «к получению» не влияет.
+
+    Пользователь: «на этот калькулятор ничего не влияет, только дальше при
+    расчётах уже комиссия». 1 монета остаётся 1 монетой в калькуляторе.
+    """
     from app import calc
 
     data = {"coin": "ltc", "rate": 100.0, "rub": 50000, "burn": False, "mode": "default"}
@@ -95,6 +100,17 @@ async def test_commission_propagates_to_calc(settings):
     t0, _ = calc.render_calc(data, settings)
     await settings.set("commission_percent", 50)
     t1, _ = calc.render_calc(data, settings)
-    # при комиссии 50% сумма к получению вдвое меньше
+    # к получению одинаково при любой комиссии — калькулятор её не применяет
     assert "500 LTC" in t0
-    assert "250 LTC" in t1
+    assert "500 LTC" in t1
+
+
+async def test_commission_applies_at_order(settings):
+    """Комиссия вступает в силу при расчёте заявки (build_quote)."""
+    from app import calc
+
+    await settings.set("commission_percent", 20)
+    q = calc.build_quote("ltc", 50000, rate=100.0,
+                         commission_percent=settings.commission_percent,
+                         cashback_percent=settings.cashback_percent)
+    assert q.coin_amount == 400.0   # 50000 * 0.80 / 100 — ровно −20%
