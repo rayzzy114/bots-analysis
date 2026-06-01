@@ -61,6 +61,16 @@ async def transient_hourglass(message: Message, *, reply_to: int | None = None,
     await transient_message(message, text=HOURGLASS, reply_to=reply_to, hold=hold)
 
 
+async def delete_after(message, delay: float = 2.0) -> None:
+    """Удалить уже отправленное сообщение через `delay` секунд (фон).
+
+    Для случая «эмодзи показываем СРАЗУ, удаляем позже» — само сообщение шлётся
+    синхронно до основного действия, а тут только отложенное удаление.
+    """
+    await asyncio.sleep(delay)
+    await safe_delete(message)
+
+
 async def send_sticker(message: Message, emoji: str) -> None:
     """Отправить стикер по эмодзи отдельным сообщением (молча игнорируя сбои)."""
     sticker = media.sticker(emoji)

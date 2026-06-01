@@ -165,12 +165,17 @@ async def calc_cb(cb: CallbackQuery, state: FSMContext, ctx: AppContext) -> None
     if action == "old":
         await state.update_data(mode="pad")
     elif action == "min":
-        # МИН ОБМЕН задаёт брутто-сумму = минимум (в рублях); набор сбрасываем
-        await state.update_data(rub=min_rub, pad="")
-        _spawn(utils.transient_message(cb.message, text="🧮"))  # счёты мелькают ~2с
+        # эмодзи СНАЧАЛА, потом действие: шлём 🧮 синхронно, удаляем через 2с в фоне
+        ghost = await cb.message.answer("🧮")
+        _spawn(utils.delete_after(ghost))
+        # МИН ОБМЕН: «к оплате» = ровно минимум (RUB-режим), комиссия — из крипты
+        await state.update_data(rub=min_rub, pad="", unit="rub")
     elif action == "burn":
+        st = media.burn_sticker()
+        if st is not None:  # стикер-заяц СНАЧАЛА, потом пересчёт
+            ghost = await cb.message.answer_sticker(st)
+            _spawn(utils.delete_after(ghost))
         await state.update_data(burn=not data.get("burn", False))
-        _spawn(utils.transient_message(cb.message, sticker=media.burn_sticker()))  # заяц ~2с
     elif action == "unit":
         # переключение монета↔RUB: начинаем ввод заново в новом режиме
         await state.update_data(unit="rub" if unit == "coin" else "coin", pad="", rub=0)
