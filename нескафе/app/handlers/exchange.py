@@ -206,8 +206,6 @@ async def calc_cb(cb: CallbackQuery, state: FSMContext, ctx: AppContext) -> None
     except Exception:  # noqa: BLE001
         pass
     await cb.answer()
-    # ⏳ появляется и исчезает через ~2 с (как у бота), фоном — калькулятор не тормозит
-    _spawn(utils.transient_hourglass(cb.message, reply_to=cb.message.message_id))
 
 
 # === Адрес ==================================================================
