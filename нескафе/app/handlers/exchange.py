@@ -68,6 +68,31 @@ async def _show_calc(message: Message, state: FSMContext, ctx: AppContext, *, ed
     await state.update_data(calc_msg_id=sent.message_id)
 
 
+async def _flash_then_recalc(cb: CallbackQuery, state: FSMContext, ctx: AppContext, *,
+                             text: str | None = None, sticker=None) -> None:
+    """Эмодзи/стикер СНАЧАЛА (отдельным сообщением), затем калькулятор НИЖЕ него.
+
+    Порядок «эмодзи → действие»: шлём эмодзи, удаляем старую карточку и пересылаем
+    свежую (она оказывается под эмодзи). Эмодзи само гаснет через 2с.
+    """
+    ghost = None
+    try:
+        if sticker is not None:
+            ghost = await cb.message.answer_sticker(sticker)
+        elif text is not None:
+            ghost = await cb.message.answer(text)
+    except Exception as exc:  # noqa: BLE001
+        log.debug("flash send failed: %s", exc)
+    if ghost is not None:
+        _spawn(utils.delete_after(ghost))
+    await utils.safe_delete(cb.message)  # убрать старую карточку (она была ВЫШЕ эмодзи)
+    fresh = await state.get_data()
+    body, markup = calc_mod.render_calc(fresh, ctx.settings)
+    sent = await cb.message.answer(body, reply_markup=markup)
+    await state.update_data(calc_msg_id=sent.message_id)
+    await cb.answer()
+
+
 async def _start_amount(message: Message, state: FSMContext, ctx: AppContext, coin: str) -> None:
     try:
         rate = await ctx.rates.get(coin)
@@ -165,17 +190,16 @@ async def calc_cb(cb: CallbackQuery, state: FSMContext, ctx: AppContext) -> None
     if action == "old":
         await state.update_data(mode="pad")
     elif action == "min":
-        # эмодзи СНАЧАЛА, потом действие: шлём 🧮 синхронно, удаляем через 2с в фоне
-        ghost = await cb.message.answer("🧮")
-        _spawn(utils.delete_after(ghost))
-        # МИН ОБМЕН: «к оплате» = ровно минимум (RUB-режим), комиссия — из крипты
+        # МИН ОБМЕН: «к оплате» = ровно минимум (RUB-режим), комиссия — из крипты;
+        # эмодзи-счёты 🧮 ПЕРЕД новой карточкой калькулятора
         await state.update_data(rub=min_rub, pad="", unit="rub")
+        await _flash_then_recalc(cb, state, ctx, text="🧮")
+        return
     elif action == "burn":
-        st = media.burn_sticker()
-        if st is not None:  # стикер-заяц СНАЧАЛА, потом пересчёт
-            ghost = await cb.message.answer_sticker(st)
-            _spawn(utils.delete_after(ghost))
+        # стикер-заяц ПЕРЕД новой карточкой калькулятора
         await state.update_data(burn=not data.get("burn", False))
+        await _flash_then_recalc(cb, state, ctx, sticker=media.burn_sticker())
+        return
     elif action == "unit":
         # переключение монета↔RUB: начинаем ввод заново в новом режиме
         await state.update_data(unit="rub" if unit == "coin" else "coin", pad="", rub=0)
